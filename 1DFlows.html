@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Flows on the line – MA32011</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./PythonAppendix.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1DFlows.html">1D flows</a></li><li class="breadcrumb-item"><a href="./1DFlows.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Flows on the line</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">MA32011</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dundeemath/MA32011/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./MA32011.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">1D flows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1DFlows.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Flows on the line</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#geometric" id="toc-geometric" class="nav-link active" data-scroll-target="#geometric"><span class="header-section-number">2.1</span> Geometric</a></li>
+  <li><a href="#fixed-points-and-stability" id="toc-fixed-points-and-stability" class="nav-link" data-scroll-target="#fixed-points-and-stability"><span class="header-section-number">2.2</span> Fixed points and stability</a>
+  <ul class="collapse">
+  <li><a href="#fixed-points" id="toc-fixed-points" class="nav-link" data-scroll-target="#fixed-points"><span class="header-section-number">2.2.1</span> Fixed points</a></li>
+  <li><a href="#linear-stability-analysis" id="toc-linear-stability-analysis" class="nav-link" data-scroll-target="#linear-stability-analysis"><span class="header-section-number">2.2.2</span> Linear stability analysis</a></li>
+  </ul></li>
+  <li><a href="#validity-of-linear-classification" id="toc-validity-of-linear-classification" class="nav-link" data-scroll-target="#validity-of-linear-classification"><span class="header-section-number">2.3</span> Validity of linear classification</a></li>
+  <li><a href="#case-study-population-dynamics" id="toc-case-study-population-dynamics" class="nav-link" data-scroll-target="#case-study-population-dynamics"><span class="header-section-number">2.4</span> Case study: population dynamics</a>
+  <ul class="collapse">
+  <li><a href="#steady-states-and-linear-stability" id="toc-steady-states-and-linear-stability" class="nav-link" data-scroll-target="#steady-states-and-linear-stability"><span class="header-section-number">2.4.1</span> Steady states and linear stability</a></li>
+  <li><a href="#graphical-analysis" id="toc-graphical-analysis" class="nav-link" data-scroll-target="#graphical-analysis"><span class="header-section-number">2.4.2</span> Graphical analysis</a></li>
+  <li><a href="#an-exact-solution" id="toc-an-exact-solution" class="nav-link" data-scroll-target="#an-exact-solution"><span class="header-section-number">2.4.3</span> An exact solution</a></li>
+  </ul></li>
+  <li><a href="#existence-and-uniqueness" id="toc-existence-and-uniqueness" class="nav-link" data-scroll-target="#existence-and-uniqueness"><span class="header-section-number">2.5</span> Existence and uniqueness</a></li>
+  <li><a href="#impossibility-of-oscillations" id="toc-impossibility-of-oscillations" class="nav-link" data-scroll-target="#impossibility-of-oscillations"><span class="header-section-number">2.6</span> Impossibility of oscillations</a></li>
+  <li><a href="#potential-flows" id="toc-potential-flows" class="nav-link" data-scroll-target="#potential-flows"><span class="header-section-number">2.7</span> Potential flows</a></li>
+  <li><a href="#numerical-solutions-1" id="toc-numerical-solutions-1" class="nav-link" data-scroll-target="#numerical-solutions-1"><span class="header-section-number">2.8</span> Numerical solutions</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">2.9</span> References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1DFlows.html">1D flows</a></li><li class="breadcrumb-item"><a href="./1DFlows.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Flows on the line</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Flows on the line</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>First order in time.</p>
+<p>Let <span class="math inline">\(x=x(t)\)</span>. <span id="eq-fp1d"><span class="math display">\[
+\dot{x}=f(x).
+\tag{2.1}\]</span></span></p>
+<p><span class="math inline">\(f\)</span> is smooth and real valued. autonomous. Nonlinear.</p>
+<section id="geometric" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="geometric"><span class="header-section-number">2.1</span> Geometric</h2>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.1</strong></span> Let <span class="math inline">\(x(t)\)</span>. Consider the ODE <span class="math display">\[
+\dot{x}=\sin x.
+\]</span></p>
+<p>For the initial condition <span class="math inline">\(x(0)=\pi/4\)</span>, describe solution behaviour as <span class="math inline">\(t\rightarrow \infty\)</span>.</p>
+</div>
+<div id="Solution*-1" class="Solution">
+<details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
+<p>An implicit solution is</p>
+<p><span class="math display">\[
+t=-\ln |\csc x + \cot x| + C,
+\]</span> where <span class="math inline">\(C\)</span> is an integration constant.</p>
+<div id="db6ed60c" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>np.sin(x)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.plot(x,y)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">$'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow target (arrow head)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[np.pi, np.pi, <span class="op">-</span>np.pi, <span class="op">-</span>np.pi]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow start</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>[<span class="fl">0.0</span>,<span class="fl">2.0</span><span class="op">*</span>np.pi,<span class="fl">0.0</span>,<span class="op">-</span><span class="fl">2.0</span><span class="op">*</span>np.pi]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x_i,y_i,x0_i,y0_i <span class="kw">in</span> <span class="bu">zip</span>(x,y,x0,y0):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  ax.annotate(<span class="st">''</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      xy<span class="op">=</span>(x_i, y_i),        <span class="co"># arrow head</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      xytext<span class="op">=</span>(x0_i, y0_i),  <span class="co"># arrow tail</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>      arrowprops<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>          arrowstyle<span class="op">=</span><span class="st">'-&gt;'</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>          color<span class="op">=</span><span class="st">'black'</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      ha<span class="op">=</span><span class="st">'center'</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1DFlows_files/figure-html/cell-2-output-1.png" width="646" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></details>
+</div>
+</section>
+<section id="fixed-points-and-stability" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="fixed-points-and-stability"><span class="header-section-number">2.2</span> Fixed points and stability</h2>
+<section id="fixed-points" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">2.2.1</span> Fixed points</h3>
+<p>Let <span class="math inline">\(x=x^*\)</span> be a fixed point of <a href="#eq-fp1d" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>. At <span class="math inline">\(x=x^*\)</span> <span class="math display">\[
+\dot{x}=0 \implies f(x^*)=0.
+\]</span></p>
+<p>There are a number of interpretations of <span class="math inline">\(x^*\)</span>:</p>
+<ul>
+<li>roots of <span class="math inline">\(f\)</span> (algebraic)</li>
+<li>stagnation points of the flow (topological)</li>
+</ul>
+<div id="Corollary-1" class="Corollary">
+<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary 1</strong></summary><div>Any trajectory initialised at a fixed point remains there for all <span class="math inline">\(t\)</span>.<p></p>
+</div></details>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.2</strong></span> Find all the fixed points of <span class="math display">\[
+\dot{x}=x^2-1,
+\]</span></p>
+</div>
+<div id="Solution*-2" class="Solution">
+<details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
+<p>The fixed points are <span class="math inline">\(x^*=\pm 1\)</span>.</p>
+<div id="2c7255a6" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>np.sin(x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ax.plot(x,y)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1DFlows_files/figure-html/cell-3-output-1.png" width="590" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></details>
+</div>
+</section>
+<section id="linear-stability-analysis" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="linear-stability-analysis"><span class="header-section-number">2.2.2</span> Linear stability analysis</h3>
+<section id="a-change-of-dependent-variable" class="level4" data-number="2.2.2.1">
+<h4 data-number="2.2.2.1" class="anchored" data-anchor-id="a-change-of-dependent-variable"><span class="header-section-number">2.2.2.1</span> A change of dependent variable</h4>
+<p>To perform a linear stability analysis we make the change of variables <span class="math display">\[
+x(t)=x^*+\hat{x}(t)
+\]</span> where the new dependent variable, <span class="math inline">\(\hat{x}(t)\)</span>, is a perturbation about the steady state.</p>
+<p>The time derivative on the left-hand side of <span class="quarto-unresolved-ref">?eq-gensinglespecodeagain</span> transforms to <span class="math display">\[
+\dot{x}= \frac{d }{dt} (x^*) + \frac{d }{dt}(\hat{x}(t))=\dot{\hat{x}}.
+\]</span> Hence <span class="quarto-unresolved-ref">?eq-gensinglespecodeagain</span> transforms to <span class="math display">\[
+\dot{\hat{x}} = f(x^*+\hat{x}(t)).
+\]</span></p>
+</section>
+<section id="taylor-expansion-and-a-linear-system" class="level4" data-number="2.2.2.2">
+<h4 data-number="2.2.2.2" class="anchored" data-anchor-id="taylor-expansion-and-a-linear-system"><span class="header-section-number">2.2.2.2</span> Taylor expansion and a linear system</h4>
+<p>Employing the Taylor expansion on the right-hand side of <span class="quarto-unresolved-ref">?eq-gensinglespecodeagain</span> and making the assumption that perturbations are small <span class="math display">\[
+\dot{\hat{x}} = f(x^*)+  f'(x^*)\hat{x}(t) + f''(x^*)\hat{x}^2(t) + h.o.t.
+\]</span> Noting that<br>
+<span class="math display">\[
+f(x^*)=0
+\]</span> and retaining linear terms yields <span class="math display">\[
+\dot{\hat{x}} =  f'(x^*)\hat{x}(t)
+\]</span> with solution <span class="math display">\[
+\hat{x}(t)=  \eta e^{f'(x^*) t}
+\]</span> where <span class="math inline">\(\eta\)</span> is some initial perturbation about the steady-state.</p>
+</section>
+<section id="a-condition-for-linear-stability" class="level4" data-number="2.2.2.3">
+<h4 data-number="2.2.2.3" class="anchored" data-anchor-id="a-condition-for-linear-stability"><span class="header-section-number">2.2.2.3</span> A condition for linear stability</h4>
+<p>When <span class="math inline">\(f'(x^*)&gt;0\)</span> the perturbation grows exponentially fast and the steady-state is unstable. When <span class="math inline">\(f'(x^*)&lt;0\)</span> the perturbation decays exponentially fast and the steady-state is stable.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.3</strong></span> Determine the linear stability of the fixed points of <span class="math display">\[
+\dot{x}=x^2-1.
+\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.4</strong></span> What can be said about the stability of the fixed points of the following ODEs: 1. <span class="math display">\[
+\dot{x}=-x^3.
+\]</span> 2. <span class="math display">\[
+\dot{x}=x^3.
+\]</span></p>
+</div>
+</section>
+</section>
+</section>
+<section id="validity-of-linear-classification" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="validity-of-linear-classification"><span class="header-section-number">2.3</span> Validity of linear classification</h2>
+<p>Hyperbolic FP - eigenvalues nonzero Hartman Grobman - if system has hyperbolic FP, classification of nonlinear system determined by linear classification non-hypberbolic FP - need to consider higher order terms.</p>
+</section>
+<section id="case-study-population-dynamics" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="case-study-population-dynamics"><span class="header-section-number">2.4</span> Case study: population dynamics</h2>
+<p>Let <span class="math inline">\(N=N(t)\)</span>. The logistic model of population growth, due to Verhulst, takes the form <span id="eq-logisticode"><span class="math display">\[
+\dot{N}=rN(t)\left (1-\frac{N(t)}{K}\right),
+\tag{2.2}\]</span></span></p>
+<p>where <span class="math inline">\(r\)</span> is the linear growth rate and <span class="math inline">\(K\)</span> is carrying capacity. We consider both <span class="math inline">\(r,K\in \Re^+\)</span>.</p>
+<p>Questions to ask of such a model are: what type of biologically realistic solutions does it possess? Are there steady-states? If so, are they stable or unstable? Are there bifurcations in solutions?</p>
+<section id="numerical-solutions" class="level4" data-number="2.4.0.1">
+<h4 data-number="2.4.0.1" class="anchored" data-anchor-id="numerical-solutions"><span class="header-section-number">2.4.0.1</span> Numerical solutions</h4>
+<p>In <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> we present numerical solutions of equation using different initial conditions. Note the limiting behaviour of solutions as <span class="math inline">\(t\rightarrow \infty\)</span>. In <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> it is clear that even though some solutions are initialised at <span class="math inline">\(N_0=0.1\)</span>, much closer to <span class="math inline">\(N^*=0\)</span> than <span class="math inline">\(N^*=K\)</span>, they tend to the limit <span class="math inline">\(N=K\)</span>. Why do solutions not tend to <span class="math inline">\(N^*=0\)</span>?</p>
+<div id="cell-fig-logisticgrowthmodel" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This codes computes a numerical solution of the logistic growth model</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model parameters</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>K<span class="op">=</span><span class="dv">12</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">0.22</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span><span class="fl">0.42</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span><span class="fl">0.72</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting parameter</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="fl">1.1</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial condition</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>n_0<span class="op">=</span><span class="fl">1.5</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Max time</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>T<span class="op">=</span><span class="dv">20</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>t<span class="op">=</span>np.linspace(<span class="dv">0</span>,T,<span class="dv">100</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhslogistic_model(x,t,r,K):</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  rhs<span class="op">=</span>r<span class="op">*</span>x<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>K)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> rhs</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Numerically solve the ODE for different parameter values</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>sol1<span class="op">=</span>odeint(rhslogistic_model,n_0,t,args<span class="op">=</span>(r_1,K))</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>sol2<span class="op">=</span>odeint(rhslogistic_model,n_0,t,args<span class="op">=</span>(r_2,K))</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>sol3<span class="op">=</span>odeint(rhslogistic_model,n_0,t,args<span class="op">=</span>(r_3,K))</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot solutions</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>ax.plot(t, sol1,t, sol2,t, sol3)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$N$'</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_1),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3)])</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-logisticgrowthmodel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-logisticgrowthmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="1DFlows_files/figure-html/fig-logisticgrowthmodel-output-1.png" width="585" height="429" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-logisticgrowthmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Numerical solution of the logistic growth model
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dimensional-analysis-and-nondimensionalisation" class="level4" data-number="2.4.0.2">
+<h4 data-number="2.4.0.2" class="anchored" data-anchor-id="dimensional-analysis-and-nondimensionalisation"><span class="header-section-number">2.4.0.2</span> Dimensional analysis and nondimensionalisation</h4>
+<p><span class="math inline">\(N\)</span> represents the population density and has units of one over area (say <span class="math inline">\(1/m^2\)</span>) and <span class="math inline">\(t\)</span> has units of time (say, seconds, <span class="math inline">\(s\)</span>). Hence the left-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> has units of <span class="math inline">\(1/(m^2 s)\)</span>. The first term on the right-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> is <span class="math inline">\(rN\)</span>. <span class="math inline">\(N\)</span> has units <span class="math inline">\(1/m^2\)</span> hence the parameter <span class="math inline">\(r\)</span> must have units of <span class="math inline">\(1/s\)</span> for dimensional consistency. This is consistent as <span class="math inline">\(r\)</span> represents the linear growth rate.</p>
+<p>The second term has the form <span class="math inline">\(rN^2/K\)</span>. Given the chosen units for <span class="math inline">\(r\)</span> and <span class="math inline">\(N\)</span>, the parameter <span class="math inline">\(K\)</span> must have dimensions <span class="math inline">\(1/m^2\)</span>. Again, this is consistent as <span class="math inline">\(K\)</span> is a carrying capacity (i.e.&nbsp;it has units of population density).</p>
+<p>We define the nondimensionalised variables <span class="math display">\[
+n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}
+\]</span> where <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span> are constants that have units of population density and time, respectively. Hence <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> transforms, upon change of variables, to <span class="math display">\[
+\begin{aligned}
+\frac{\tilde{N}}{\tilde{T} }\frac{dn}{d\tau}=r\tilde{N}n(1-\frac{n\tilde{N}}{K}).
+\end{aligned}
+\]</span></p>
+<p>In the case of the logistic equation there is only one time scale and density scale in the problem, hence we choose <span class="math display">\[
+\tilde{T}=\frac{1}{r}  \ \ \ and \ \ \ \tilde{N}=K
+\]</span> and the dimensionless model is <span id="eq-logisticnondim"><span class="math display">\[
+\begin{aligned}
+\frac{dn}{d\tau}= n(1-n)
+\end{aligned}
+\tag{2.3}\]</span></span> Note that we can retrieve the original equation by rescaling and calculating <span class="math inline">\(N=\tilde{N}n\)</span> and <span class="math inline">\(t=\tilde{T}\tau\)</span>.</p>
+</section>
+<section id="steady-states-and-linear-stability" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="steady-states-and-linear-stability"><span class="header-section-number">2.4.1</span> Steady states and linear stability</h3>
+<p>Steady states satisfy <span class="math display">\[
+n^*(1-n^*)=0.
+\]</span> Hence <span class="math display">\[
+n^*=0, \ \ \ \ n^*=1.
+\]</span></p>
+<p>To determine linear stability we compute <span class="math display">\[
+H'(n)= (1-2n).
+\]</span> When <span class="math inline">\(n=n^*=0\)</span> we obtain <span class="math display">\[
+H'(n)= 1.
+\]</span> Hence the origin is an unstable steady-state.</p>
+<p>At the steady-state <span class="math inline">\(n^*=1\)</span> <span class="math display">\[
+H'(n^*)= -1
+\]</span> hence <span class="math inline">\(n^*=1\)</span> is linearly stable.</p>
+<p>Note that the linear stability analysis can explain the observations regarding the numeric solutions presented in <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
+</section>
+<section id="graphical-analysis" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="graphical-analysis"><span class="header-section-number">2.4.2</span> Graphical analysis</h3>
+<p>In <a href="#fig-dlogisticrhs" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> we plot the right-hand side of <a href="#eq-logisticnondim" class="quarto-xref">Equation&nbsp;<span>2.3</span></a>. We can qualitatively describe model solutions by considering the arrow along the x axis. Suppose we consider an initial condition with <span class="math inline">\(0&lt;n_0&lt;1\)</span>. Using the graph of <span class="math inline">\(H(n)\)</span>, <span class="math inline">\(dn/d\tau\)</span> is positive, hence <span class="math inline">\(n\)</span> increases as a function of time until <span class="math inline">\(n(\tau)\rightarrow 1\)</span>.</p>
+<div id="cell-fig-dlogisticrhs" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="fl">2.1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>K<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>r<span class="op">=</span><span class="fl">0.2</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>N_vec<span class="op">=</span>np.linspace(<span class="dv">0</span>,N_max,<span class="dv">100</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>rhs<span class="op">=</span>r<span class="op">*</span>N_vec<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>N_vec<span class="op">/</span>K)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.plot(N_vec, rhs)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$N$'</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$H(N)$'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-dlogisticrhs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dlogisticrhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="1DFlows_files/figure-html/fig-dlogisticrhs-output-1.png" width="610" height="429" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dlogisticrhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Right-hand side of the logistic ODE
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="an-exact-solution" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="an-exact-solution"><span class="header-section-number">2.4.3</span> An exact solution</h3>
+<p>Separation of variables yields <span class="math display">\[
+\int\frac{ dN}{N(1-\frac{N}{K})}=r\int dt.
+\]</span> Using partial fractions <span class="math display">\[
+\int\frac{ dN}{N} + \frac{1}{K}\int\frac{ dN}{1-\frac{N}{K}}=r\int dt.
+\]</span> Integration yields <span class="math display">\[
+\ln N - \ln\left(1-\frac{N}{K}\right)= \ln \frac{N }{1-\frac{N}{K}} =  rt+C.
+\]</span> Hence <span class="math display">\[
+N=\frac{De^{rt}}{1+\frac{D}{K}e^{rt}}
+\]</span> Given an initial condition <span class="math inline">\(N(0)=N_0\)</span>, we obtain <span class="math display">\[
+N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
+\]</span></p>
+<section id="qualitative-analysis-of-the-exact-solution" class="level4" data-number="2.4.3.1">
+<h4 data-number="2.4.3.1" class="anchored" data-anchor-id="qualitative-analysis-of-the-exact-solution"><span class="header-section-number">2.4.3.1</span> Qualitative analysis of the exact solution</h4>
+<p>As <span class="math inline">\(t\rightarrow \infty\)</span>, <span class="math inline">\(N\rightarrow K\)</span>. At <span class="math inline">\(t=0\)</span>, <span class="math inline">\(N=N_0\)</span> and that for small <span class="math inline">\(N_0\ll K\)</span> the initial growth phase is exponential, i.e.&nbsp; <span class="math display">\[
+N(t)\sim N_0 e^{rt} \\ \ \ \ \ N_0\ll K, t\ll \frac{1}{r}.
+\]</span></p>
+<p>Note that in almost all the models that we will consider the above method is not an usually an option as the ODE is not explicitly integrable.</p>
+</section>
+</section>
+</section>
+<section id="existence-and-uniqueness" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="existence-and-uniqueness"><span class="header-section-number">2.5</span> Existence and uniqueness</h2>
+<p>Consider the ODE <span class="math display">\[
+\dot{x}=f(x), \quad x(a)=b.
+\]</span> There exists a unique solution on a local interval <span class="math inline">\(x\in[c,d]\)</span> with <span class="math inline">\(c&lt;x_0&lt;d\)</span> given that <span class="math inline">\(f\)</span> is bounded and Lipschitz continuous on <span class="math inline">\([c,d]\)</span>.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.5</strong></span> Show that</p>
+<p><span class="math display">\[
+\dot{x}=x^{\frac{1}{2}}, \ \quad x(0)=0
+\]</span> has an infinite family of solutions.</p>
+</div>
+</section>
+<section id="impossibility-of-oscillations" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="impossibility-of-oscillations"><span class="header-section-number">2.6</span> Impossibility of oscillations</h2>
+</section>
+<section id="potential-flows" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="potential-flows"><span class="header-section-number">2.7</span> Potential flows</h2>
+<p>Consider the ODE <span class="math display">\[
+\dot{x}=f(x).
+\]</span></p>
+<p>Suppose that <span class="math display">\[
+f(x)=-\frac{d V(x)}{dx}.
+\]</span></p>
+<p>Now consider <span class="math display">\[
+\dot{V}.
+\]</span> Applying the chain rule <span class="math display">\[
+\dot{V}=\frac{dV}{dx}\dot{x}=-(\frac{dV}{dx})^2\leq 0.
+\]</span></p>
+<p>Hence for a potential flow <span class="math inline">\(V\)</span> is never increasing.</p>
+</section>
+<section id="numerical-solutions-1" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="numerical-solutions-1"><span class="header-section-number">2.8</span> Numerical solutions</h2>
+</section>
+<section id="references" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="references"><span class="header-section-number">2.9</span> References</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./PythonAppendix.html" class="pagination-link" aria-label="Python">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
