@@ -59,8 +59,10 @@ See this [link](https://dundeemath.github.io/Admissions/posts/RecurrenceRelation
 
 ```{shinylive-python}
 #| standalone: true
-#| components: [viewer]
-#| viewerHeight: 500
+#| viewerHeight: 800
+
+
+
 
 from shiny import App, Inputs, Outputs, Session, render, ui
 from shiny import reactive
@@ -71,26 +73,19 @@ import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
 app_ui = ui.page_fluid(
-    ui.layout_sidebar(
-        ui.sidebar(
-    ui.input_slider(id="r",label="r",min=0.0,max=5.0,value=0.1,step=0.001),             
+                 
     ui.input_slider(id="u0",label="u_0",min=0.0,max=1.0,value=0.5,step=0.01),
     ui.input_slider(id="T",label="Number of iterations",min=0.0,max=60.0,value=20.0,step=1.0),
     ui.input_slider(id="r_range",label="r zoomed",min=0.0,max=4.0,value=[0.0,4.0],step=0.001),
-    ui.input_slider(id="u_range",label="u zoomed",min=0.0,max=1.0,value=[0.0,1.0],step=0.01),
-              
-          
-            ),
-
-        ui.output_plot("plot"),
-    ),
+    ui.input_slider(id="u_range",label="u zoomed",min=0.0,max=1.0,value=[0.0,1.0],step=0.01),ui.output_plot("plot"),
+    ui.input_slider(id="r",label="r",min=0.0,max=5.0,value=0.1,step=0.001),
 )
 
 def server(input, output, session):
-    
+    @output
     @render.plot
     def plot():
-        fig, ax = plt.subplots(3,1)
+        fig, ax = plt.subplots(3,1,figsize=(12, 4))
         #ax.set_ylim([-2, 2])
         # Filter fata
         
@@ -184,25 +179,26 @@ app = App(app_ui, server)
 
 
 
-### Key questions
+### Key questions to ask of  nonlinear dynamical system
 
  - do solutions exist? If so are they unique?
  - Is there an explicit solution?
- - Can we qualitatively describe solutions?
+ - Can we qualitatively describe solution behaviour?
  - How do the solutions depend on the model parameters? 
+ - Are their critical values of parameters where solution behaviour changes?
 
 
-## Autonomous v nonautonomous
+## Autonomous v nonautonomous ODEs
 
 For an autonomous system, the update does not explicitly depend on the independent variable. @eq-logdemo is autonomous. But 
 $$
 \dot{x}=rx(1-x+t)
 $$
-is nonautonomous because of the explicit time dependence on the right-hand side.
+is nonautonomous (because of the explicit time dependence on the right-hand side).
 
 ## Linear v Nonlinear
 
-Linear systems satisfy a linear supposition principle:  a sum of solutions is itself a solution. This property does not hold in the study of nonlinear systems.
+Linear systems satisfy a linear supposition principle: a sum of solutions is itself a solution. In general, this property does not hold for nonlinear systems.
 
 In linear dynamical systems, the dynamics are a function of linear sums of the dependent variables. Hence
 
@@ -235,14 +231,14 @@ $$
 x(t*)=x_0/2 \implies t^* = \frac{\ln 2}{k}.
 $$
 
-However, in the study of nonlinear systems, most problems will not have an explicit solution.   For example, consider the nonlinear ODE
+However, in the study of nonlinear systems, most problems will not have an explicit solution. For example, consider the nonlinear ODE
 
 $$
 \dot{x}=-\frac{k\sin(x)+\sqrt{x}}{1+x}, \quad  x(0)=x_0
 $$
 where $0<x_0<\pi$.
 
-I cannot integrate this equation in order to find solutions in terms of standard functions. Hence I cannot quantitatively describe the solution. However, I can identify that
+I cannot integrate this equation in order to find solutions in terms of standard functions. Hence I cannot *quantitatively* describe the solution. However, I can identify that
 
 $$
 \dot{x}<0, \  \forall \  0<x<\pi.
@@ -253,16 +249,16 @@ Hence the solution will decrease in value from the given initial condition. This
 
 ## Representing solutions
 
-
 It is useful to introduce some nomenclature to describe the solutions of a dynamical system.  Consider an ODE
 $$
 \dot{x}=f(x), \quad x(0)=x_0,
 $$
 where $f$ is a prescribed function and $x_0$ is an initial condition. At some time $t$ we define
 
-- *phase point* - value of the solution 
+- phase space 
+- *phase point* - value of the solution at given time point 
 - *vector field* - the derivative of the solution, i.e. $f$. The sign represents whether the solution is increasing/decreasing whilst the magnitude represents the rate of change.
-- *trajectory* - traces out a solutions as it evolves from initial condition
+- *trajectory* - a line in phase space that traces out a solution as time evolves
 - *phase portrait* - collection of trajectories (i.e. solutions with different initial conditions)
 
 
@@ -279,16 +275,17 @@ Stability analyses are used to investigate the dynamics of perturbations about t
 
 We will restrict ourselves to problems in which the vector fields are sufficiently well behaved such that unique solutions exist. However, problems can be identified where solutions do not exists or where multiple solutions exist. 
 
+
 ## Nondimensionalisation
 
-In real world problems, variable and parameters typically have units (e.g. time - seconds, Force - Newtons etc.). We can nondimensionalise problems by defining rescaled variables. This process can be used to justify simplifications to models and to reduce the number of parameters.
+In real world problems, variables and parameters typically have units (e.g. time - seconds, Force - Newtons etc.). We can nondimensionalise problems by defining rescaled variables. This process can be used to justify simplifications to models and to reduce the number of parameters.
 
 ## Numerical solutions
 
 Numerical solutions are used to numerically compute approximate solutions to problems. The simplest example of a numerical method in a dynamical system is the forward Euler method. Suppose we want to study the ODE
 
 $$
-\dot{x}=f(x)
+\dot{x}=f(x), \quad x(0)=x_0, \quad 0<t<T.
 $$
 
 Discretise the independent variable $t$ by defining t=0,\Delta t,2\Delta t,...,T.
@@ -299,12 +296,12 @@ $$
 \dot{x}=\frac{dx}{dt}\sim \frac{x(t+\Delta t)-x(t)}{\Delta t}
 $$
 
-Hence the ODE can be approximated by the iterative scheme
+Hence the solution at time $t+\Delta t$ can be approximated by
 $$
 x(t+\Delta t)=x(t)+\Delta t f(x(t)).
 $$
 
 Given an initial condition $x(0)=a$ we can compute the approximate solution at time $\Delta t$.
 
-Numerical solution provide a a very useful way to explore solution behaviour. However, they describe  the quantitative behaviour  of a solution for a particular initial condition and set of  parameter values. 
+Numerical solutions provide a a very useful way to explore solution behaviour. However, they describe  the quantitative behaviour  of a solution for a particular initial condition and set of parameter values. 
 
