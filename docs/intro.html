@@ -42,6 +42,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -71,6 +76,18 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
@@ -79,13 +96,17 @@ ul.task-list li input[type="checkbox"] {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
 }
-.Solution {
+.Proof {
   --color1: #c0c0c0;
   --color2: #808080;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 .Lemma {
   --color1: #948bde;
@@ -94,22 +115,6 @@ ul.task-list li input[type="checkbox"] {
 .Conjecture {
   --color1: #948bde;
   --color2: #584eab;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
 }
 </style>
 
@@ -241,7 +246,7 @@ window.Quarto = {
   <ul>
   <li><a href="#discrete-v-continuous-time" id="toc-discrete-v-continuous-time" class="nav-link active" data-scroll-target="#discrete-v-continuous-time"><span class="header-section-number">1.1</span> Discrete v continuous time</a>
   <ul class="collapse">
-  <li><a href="#differential-equation" id="toc-differential-equation" class="nav-link" data-scroll-target="#differential-equation"><span class="header-section-number">1.1.1</span> Differential equation</a></li>
+  <li><a href="#differential-equations" id="toc-differential-equations" class="nav-link" data-scroll-target="#differential-equations"><span class="header-section-number">1.1.1</span> Differential equations</a></li>
   <li><a href="#difference-equations" id="toc-difference-equations" class="nav-link" data-scroll-target="#difference-equations"><span class="header-section-number">1.1.2</span> Difference equations</a></li>
   <li><a href="#key-questions" id="toc-key-questions" class="nav-link" data-scroll-target="#key-questions"><span class="header-section-number">1.1.3</span> Key questions</a></li>
   </ul></li>
@@ -283,9 +288,9 @@ window.Quarto = {
 <p>To begin with we introduce some key terminology.</p>
 <section id="discrete-v-continuous-time" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="discrete-v-continuous-time"><span class="header-section-number">1.1</span> Discrete v continuous time</h2>
-<section id="differential-equation" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="differential-equation"><span class="header-section-number">1.1.1</span> Differential equation</h3>
-<p>Let <span class="math inline">\(t\)</span> be a continuous variable and <span class="math inline">\(x=x(t)\)</span>. Consider the ODE <span id="eq-logdemo"><span class="math display">\[
+<section id="differential-equations" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="differential-equations"><span class="header-section-number">1.1.1</span> Differential equations</h3>
+<p>Let <span class="math inline">\(t\)</span> be a continuous variable and <span class="math inline">\(x=x(t)\)</span>. Consider the ordinary differential equation (ODE) <span id="eq-logdemo"><span class="math display">\[
 \dot{x}=rx(1-x).
 \tag{1.1}\]</span></span></p>
 <p><span class="math inline">\(\dot{x}\)</span> is used to denote the time derivative, i.e. <span class="math display">\[
@@ -294,12 +299,154 @@ window.Quarto = {
 <p>Similarly, the second order derivative is represented by <span class="math display">\[
 \ddot{x}:=\frac{d^2x}{dt^2}.
 \]</span></p>
+<p>Many of the second order ODE problems that we will examine originate from Newton’s Second Law, i.e.</p>
+<p><span class="math display">\[
+m\ddot{x}=F(x)
+\]</span> where <span class="math inline">\(x(t)\)</span> represents the position of a particle at time, <span class="math inline">\(t\)</span>, <span class="math inline">\(m\)</span> represents a constant particle mass and <span class="math inline">\(F\)</span> a resultant force.</p>
+<p>Consider the case in which <span class="math inline">\(F\)</span> represents a linear restoring force, i.e. <span class="math display">\[
+F(x)=-kx.
+\]</span> The equation of motion can be written as <span class="math display">\[
+\ddot{x}=-\mu x,
+\]</span> where <span class="math inline">\(\mu=-k/m\)</span>.</p>
 </section>
 <section id="difference-equations" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="difference-equations"><span class="header-section-number">1.1.2</span> Difference equations</h3>
 <p>Suppose that <span class="math inline">\(n\)</span> is a discrete variable. Let <span class="math inline">\(y_n\)</span> represent a dependent variable at iteration <span class="math inline">\(n\)</span>. Consider the difference equation <span class="math display">\[
 y_{n+1}=ry_n(1-y_n),
-\]</span> where <span class="math inline">\(r \in \Re\)</span>.</p>
+\]</span> where <span class="math inline">\(r\in \Re\)</span>.</p>
+<p>See this <a href="https://dundeemath.github.io/Admissions/posts/RecurrenceRelations.html">link</a> for exploration of model solutions.</p>
+<div id="fig-logisticmodel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-logisticmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| components: [viewer]
+#| viewerHeight: 500
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+app_ui = ui.page_fluid(
+    ui.layout_sidebar(
+        ui.sidebar(
+    ui.input_slider(id="r",label="r",min=0.0,max=5.0,value=0.1,step=0.001),             
+    ui.input_slider(id="u0",label="u_0",min=0.0,max=1.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="Number of iterations",min=0.0,max=60.0,value=20.0,step=1.0),
+    ui.input_slider(id="r_range",label="r zoomed",min=0.0,max=4.0,value=[0.0,4.0],step=0.001),
+    ui.input_slider(id="u_range",label="u zoomed",min=0.0,max=1.0,value=[0.0,1.0],step=0.01),
+              
+          
+            ),
+
+        ui.output_plot("plot"),
+    ),
+)
+
+def server(input, output, session):
+    
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(3,1)
+        #ax.set_ylim([-2, 2])
+        # Filter fata
+        
+        
+        r=float(input.r())
+        u0=float(input.u0())
+        T=int(input.T())
+        r_min=float(input.r_range()[0])
+        r_max=float(input.r_range()[1])
+        u_min=float(input.u_range()[0])
+        u_max=float(input.u_range()[1])
+
+
+        # Define rhs of logistic map 
+        def logistic_map(y,t,r):
+          rhs=r*y*(1-y)
+          return rhs
+        
+        def DiscreteSol(rhs_pop_model,y_0,t,r):
+            y=np.zeros_like(t,dtype=float)
+            y[0]=y_0
+            for i in t:
+                if i&gt;0:
+
+                    y[i]=rhs_pop_model(y[i-1],t[i],r)
+            return y
+
+        # Define discretised t domain
+        t = np.arange(0, T, 1)
+        # define initial conditions
+        init_cond=u0
+        
+        # Compute numerical solution of ODEs
+        sol1 = DiscreteSol(logistic_map,init_cond,t,r)
+
+        # Plot results
+        y=sol1
+        
+        ax[0].plot(t,y)
+        ax[0].set_xlabel('$n$')
+        ax[0].set_ylabel('$y_n$')
+
+        plt.grid()
+
+        # Parameters
+        n_iterations = 1000  # total iterations for each value of r
+        n_last = 100         # number of iterations to plot (for steady state)
+        r_values = np.linspace(0.0, 4.0, 10000)  # range of r values
+        u0 = 0.5  # initial population (seed)
+
+        delta=0.25
+        #r_min=r-delta
+        #r_max=r+delta
+
+        r_values2 = np.linspace(r_min, r_max, 10000)  # range of r values
+
+        # Initialize plot
+        x = np.full_like(r_values, u0)
+        x2 = np.full_like(r_values2, u0)
+
+        # Iterate and plot bifurcation diagram
+         
+        for _ in range(n_iterations):
+            x = r_values * x * (1 - x)  # logistic map function
+            x2 = r_values2 * x2 * (1 - x2)  # logistic map function
+
+            if _ &gt;= (n_iterations - n_last):  # plot only steady state
+                ax[1].plot(r_values, x, ',k', alpha=0.25)
+                ax[1].plot([r,r],[0,1],'r--')
+                ax[2].plot(r_values2, x2, ',k', alpha=0.25)
+                ax[2].plot([r,r],[0,1],'r--')
+
+            # Labels and display
+            ax[1].set_title("Bifurcation Diagram")
+            ax[1].set_xlabel("$r$")
+            ax[1].set_ylabel("$y^*$")
+            ax[2].set_title("Bifurcation Diagram (zoomed in) ")
+            ax[2].set_xlabel("$r$")
+            ax[2].set_ylabel("$y^*$")
+            ax[2].set_xlim([r_min,r_max])
+            ax[2].set_ylim([u_min,u_max])
+
+
+
+        plt.show()
+    
+app = App(app_ui, server)</code></pre>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-logisticmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="key-questions" class="level3" data-number="1.1.3">
 <h3 data-number="1.1.3" class="anchored" data-anchor-id="key-questions"><span class="header-section-number">1.1.3</span> Key questions</h3>
