@@ -106,41 +106,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.Theorem {
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
 .Conjecture {
   --color1: #948bde;
   --color2: #584eab;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .TODO {
   --color1: #e7b1b4;
@@ -336,7 +336,7 @@ window.Quarto = {
 <p><span class="math display">\[
 t=-\ln |\csc x + \cot x| + C,
 \]</span> where <span class="math inline">\(C\)</span> is an integration constant.</p>
-<div id="febc954e" class="cell" data-execution_count="1">
+<div id="f5c6dec7" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -388,7 +388,7 @@ t=-\ln |\csc x + \cot x| + C,
 <h2 data-number="2.2" class="anchored" data-anchor-id="fixed-points-and-stability"><span class="header-section-number">2.2</span> Fixed points and stability</h2>
 <section id="fixed-points" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">2.2.1</span> Fixed points</h3>
-<p>Let <span class="math inline">\(x=x^*\)</span> be a fixed point of <a href="#eq-fp1d" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>. At <span class="math inline">\(x=x^*\)</span> <span class="math display">\[
+<p>Let <span class="math inline">\(x=x^*\)</span> be a fixed point of <a href="#eq-fp1d" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-fp1d</span></a>. At <span class="math inline">\(x=x^*\)</span> <span class="math display">\[
 \dot{x}=0 \implies f(x^*)=0.
 \]</span></p>
 <p>There are a number of interpretations of <span class="math inline">\(x^*\)</span>:</p>
@@ -408,7 +408,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="Solution*-2" class="Solution">
 <details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
 <p>The fixed points are <span class="math inline">\(x^*=\pm 1\)</span>.</p>
-<div id="5b7d45ee" class="cell" data-execution_count="2">
+<div id="65eb654e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
@@ -439,15 +439,15 @@ t=-\ln |\csc x + \cot x| + C,
 <p>To perform a linear stability analysis we make the change of variables <span class="math display">\[
 x(t)=x^*+\hat{x}(t)
 \]</span> where the new dependent variable, <span class="math inline">\(\hat{x}(t)\)</span>, is a perturbation about the steady state.</p>
-<p>The time derivative on the left-hand side of <span class="quarto-unresolved-ref">?eq-gensinglespecodeagain</span> transforms to <span class="math display">\[
+<p>The time derivative on the left-hand side of <a href="#eq-gensinglespecodeagain" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-gensinglespecodeagain</span></a> transforms to <span class="math display">\[
 \dot{x}= \frac{d }{dt} (x^*) + \frac{d }{dt}(\hat{x}(t))=\dot{\hat{x}}.
-\]</span> Hence <span class="quarto-unresolved-ref">?eq-gensinglespecodeagain</span> transforms to <span class="math display">\[
+\]</span> Hence <a href="#eq-gensinglespecodeagain" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-gensinglespecodeagain</span></a> transforms to <span class="math display">\[
 \dot{\hat{x}} = f(x^*+\hat{x}(t)).
 \]</span></p>
 </section>
 <section id="taylor-expansion-and-a-linear-system" class="level4" data-number="2.2.2.2">
 <h4 data-number="2.2.2.2" class="anchored" data-anchor-id="taylor-expansion-and-a-linear-system"><span class="header-section-number">2.2.2.2</span> Taylor expansion and a linear system</h4>
-<p>Employing the Taylor expansion on the right-hand side of <span class="quarto-unresolved-ref">?eq-gensinglespecodeagain</span> and making the assumption that perturbations are small <span class="math display">\[
+<p>Employing the Taylor expansion on the right-hand side of <a href="#eq-gensinglespecodeagain" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-gensinglespecodeagain</span></a> and making the assumption that perturbations are small <span class="math display">\[
 \dot{\hat{x}} = f(x^*)+  f'(x^*)\hat{x}(t) + f''(x^*)\hat{x}^2(t) + h.o.t.
 \]</span> Noting that<br>
 <span class="math display">\[
@@ -489,7 +489,7 @@ f(x^*)=0
 <p>Questions to ask of such a model are: what type of biologically realistic solutions does it possess? Are there steady-states? If so, are they stable or unstable? Are there bifurcations in solutions?</p>
 <section id="numerical-solutions" class="level4" data-number="2.4.0.1">
 <h4 data-number="2.4.0.1" class="anchored" data-anchor-id="numerical-solutions"><span class="header-section-number">2.4.0.1</span> Numerical solutions</h4>
-<p>In <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> we present numerical solutions of equation using different initial conditions. Note the limiting behaviour of solutions as <span class="math inline">\(t\rightarrow \infty\)</span>. In <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> it is clear that even though some solutions are initialised at <span class="math inline">\(N_0=0.1\)</span>, much closer to <span class="math inline">\(N^*=0\)</span> than <span class="math inline">\(N^*=K\)</span>, they tend to the limit <span class="math inline">\(N=K\)</span>. Why do solutions not tend to <span class="math inline">\(N^*=0\)</span>?</p>
+<p>In <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-logisticgrowthmodel</span></a> we present numerical solutions of equation using different initial conditions. Note the limiting behaviour of solutions as <span class="math inline">\(t\rightarrow \infty\)</span>. In <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-logisticgrowthmodel</span></a> it is clear that even though some solutions are initialised at <span class="math inline">\(N_0=0.1\)</span>, much closer to <span class="math inline">\(N^*=0\)</span> than <span class="math inline">\(N^*=K\)</span>, they tend to the limit <span class="math inline">\(N=K\)</span>. Why do solutions not tend to <span class="math inline">\(N^*=0\)</span>?</p>
 <div id="cell-fig-logisticgrowthmodel" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
@@ -552,11 +552,11 @@ Figure&nbsp;2.1: Numerical solution of the logistic growth model
 </section>
 <section id="dimensional-analysis-and-nondimensionalisation" class="level4" data-number="2.4.0.2">
 <h4 data-number="2.4.0.2" class="anchored" data-anchor-id="dimensional-analysis-and-nondimensionalisation"><span class="header-section-number">2.4.0.2</span> Dimensional analysis and nondimensionalisation</h4>
-<p><span class="math inline">\(N\)</span> represents the population density and has units of one over area (say <span class="math inline">\(1/m^2\)</span>) and <span class="math inline">\(t\)</span> has units of time (say, seconds, <span class="math inline">\(s\)</span>). Hence the left-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> has units of <span class="math inline">\(1/(m^2 s)\)</span>. The first term on the right-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> is <span class="math inline">\(rN\)</span>. <span class="math inline">\(N\)</span> has units <span class="math inline">\(1/m^2\)</span> hence the parameter <span class="math inline">\(r\)</span> must have units of <span class="math inline">\(1/s\)</span> for dimensional consistency. This is consistent as <span class="math inline">\(r\)</span> represents the linear growth rate.</p>
+<p><span class="math inline">\(N\)</span> represents the population density and has units of one over area (say <span class="math inline">\(1/m^2\)</span>) and <span class="math inline">\(t\)</span> has units of time (say, seconds, <span class="math inline">\(s\)</span>). Hence the left-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-logisticode</span></a> has units of <span class="math inline">\(1/(m^2 s)\)</span>. The first term on the right-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-logisticode</span></a> is <span class="math inline">\(rN\)</span>. <span class="math inline">\(N\)</span> has units <span class="math inline">\(1/m^2\)</span> hence the parameter <span class="math inline">\(r\)</span> must have units of <span class="math inline">\(1/s\)</span> for dimensional consistency. This is consistent as <span class="math inline">\(r\)</span> represents the linear growth rate.</p>
 <p>The second term has the form <span class="math inline">\(rN^2/K\)</span>. Given the chosen units for <span class="math inline">\(r\)</span> and <span class="math inline">\(N\)</span>, the parameter <span class="math inline">\(K\)</span> must have dimensions <span class="math inline">\(1/m^2\)</span>. Again, this is consistent as <span class="math inline">\(K\)</span> is a carrying capacity (i.e.&nbsp;it has units of population density).</p>
 <p>We define the nondimensionalised variables <span class="math display">\[
 n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}
-\]</span> where <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span> are constants that have units of population density and time, respectively. Hence <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> transforms, upon change of variables, to <span class="math display">\[
+\]</span> where <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span> are constants that have units of population density and time, respectively. Hence <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-logisticode</span></a> transforms, upon change of variables, to <span class="math display">\[
 \begin{aligned}
 \frac{\tilde{N}}{\tilde{T} }\frac{dn}{d\tau}=r\tilde{N}n(1-\frac{n\tilde{N}}{K}).
 \end{aligned}
@@ -584,11 +584,11 @@ H'(n)= 1.
 <p>At the steady-state <span class="math inline">\(n^*=1\)</span> <span class="math display">\[
 H'(n^*)= -1
 \]</span> hence <span class="math inline">\(n^*=1\)</span> is linearly stable.</p>
-<p>Note that the linear stability analysis can explain the observations regarding the numeric solutions presented in <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
+<p>Note that the linear stability analysis can explain the observations regarding the numeric solutions presented in <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-logisticgrowthmodel</span></a>.</p>
 </section>
 <section id="graphical-analysis" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="graphical-analysis"><span class="header-section-number">2.4.2</span> Graphical analysis</h3>
-<p>In <a href="#fig-dlogisticrhs" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> we plot the right-hand side of <a href="#eq-logisticnondim" class="quarto-xref">Equation&nbsp;<span>2.3</span></a>. We can qualitatively describe model solutions by considering the arrow along the x axis. Suppose we consider an initial condition with <span class="math inline">\(0&lt;n_0&lt;1\)</span>. Using the graph of <span class="math inline">\(H(n)\)</span>, <span class="math inline">\(dn/d\tau\)</span> is positive, hence <span class="math inline">\(n\)</span> increases as a function of time until <span class="math inline">\(n(\tau)\rightarrow 1\)</span>.</p>
+<p>In <a href="#fig-dlogisticrhs" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-dlogisticrhs</span></a> we plot the right-hand side of <a href="#eq-logisticnondim" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-logisticnondim</span></a>. We can qualitatively describe model solutions by considering the arrow along the x axis. Suppose we consider an initial condition with <span class="math inline">\(0&lt;n_0&lt;1\)</span>. Using the graph of <span class="math inline">\(H(n)\)</span>, <span class="math inline">\(dn/d\tau\)</span> is positive, hence <span class="math inline">\(n\)</span> increases as a function of time until <span class="math inline">\(n(\tau)\rightarrow 1\)</span>.</p>
 <div id="cell-fig-dlogisticrhs" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>

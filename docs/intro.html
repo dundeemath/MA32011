@@ -80,7 +80,19 @@ ul.task-list li input[type="checkbox"] {
   --color1: #c0c0c0;
   --color2: #808080;
 }
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -88,29 +100,17 @@ ul.task-list li input[type="checkbox"] {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
 .Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Proof {
   --color1: #c0c0c0;
   --color2: #808080;
 }
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 .Theorem {
   --color1: #948bde;
@@ -308,12 +308,12 @@ F(x)=-kx.
 \ddot{x}=-\mu x,
 \]</span> {eq-secondorderODE} where <span class="math inline">\(\mu=-k/m\)</span>.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.1</strong></span> The app in <a href="#fig-popmodel" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> encodes a numerical solution of the second order ODE</p>
+<p><span class="theorem-title"><strong>Example 1.1</strong></span> The app in <a href="#fig-popmodel" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-popmodel</span></a> encodes a numerical solution of the second order ODE</p>
 <p><span class="math display">\[
 a\ddot{x}+b\dot{x}+cx=0.
 \]</span></p>
 <p>Choose an appropriate value of the parameters <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span> so that the solution captures the case of a particle of mass (<span class="math inline">\(m\)</span>) equal to 3 subjected to a linear restoring force with spring constant (<span class="math inline">\(k\)</span>) equal to 5.</p>
-<p>Is the behaviour of the numerical solution consistent with <span class="quarto-unresolved-ref">?eq-secondorderODE</span>.</p>
+<p>Is the behaviour of the numerical solution consistent with <a href="#eq-secondorderODE" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-secondorderODE</span></a>.</p>
 </div>
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-popmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -552,7 +552,7 @@ Figure&nbsp;1.2: Exploring behaviour of the logistic map using numerical solutio
 </section>
 <section id="autonomous-v-nonautonomous-odes" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="autonomous-v-nonautonomous-odes"><span class="header-section-number">1.2</span> Autonomous v nonautonomous ODEs</h2>
-<p>For an autonomous system, the update does not explicitly depend on the independent variable. <a href="#eq-logdemo" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> is autonomous. But <span class="math display">\[
+<p>For an autonomous system, the update does not explicitly depend on the independent variable. <a href="#eq-logdemo" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-logdemo</span></a> is autonomous. But <span class="math display">\[
 \dot{x}=rx(1-x+t)
 \]</span> is nonautonomous (because of the explicit time dependence on the right-hand side).</p>
 </section>

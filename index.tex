@@ -1,0 +1,1083 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\usepackage{chemarr}
+\usepackage{lipsum}
+\usepackage{tikz}
+\AtBeginDocument{\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{MA32011Cover.png}};
+\end{tikzpicture}\clearpage}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem{refremark}{Remark}[chapter]
+\newtheorem{refsolution}{Solution}[chapter]
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+%%%% ---foldboxy preamble ----- %%%%%
+
+\definecolor{fbx-default-color1}{HTML}{c7c7d0}
+\definecolor{fbx-default-color2}{HTML}{a3a3aa}
+
+\definecolor{fbox-color1}{HTML}{c7c7d0}
+\definecolor{fbox-color2}{HTML}{a3a3aa}
+
+% arguments: #1 typelabelnummer: #2 titel: #3
+\newenvironment{fbx}[3]{\begin{tcolorbox}[enhanced, breakable,%
+attach boxed title to top*={xshift=1.4pt},
+boxed title style={boxrule=0.0mm, fuzzy shadow={1pt}{-1pt}{0mm}{0.1mm}{gray}, arc=.3em, rounded corners=east, sharp corners=west}, colframe=#1-color2, colbacktitle=#1-color1, colback = white, coltitle=black,  titlerule=0mm, toprule=0pt, bottomrule=.7pt, leftrule=.3em, rightrule=0pt, outer arc=.3em,  arc=0pt,	 sharp corners = east, left=.5em, bottomtitle=1mm, toptitle=1mm,title=\textbf{#2}\hspace{0.5em}{#3}]}
+{\end{tcolorbox}}
+
+% boxed environment with right border
+\newenvironment{fbxSimple}[3]{\begin{tcolorbox}[enhanced, breakable,%
+attach boxed title to top*={xshift=1.4pt},
+boxed title style={boxrule=0.0mm, fuzzy shadow={1pt}{-1pt}{0mm}{0.1mm}{gray}, arc=.3em, rounded corners=east, sharp corners=west}, colframe=#1-color2, colbacktitle=#1-color1, colback = white, coltitle=black,  titlerule=0mm, toprule=0pt, bottomrule=.7pt, leftrule=.3em, rightrule=.7pt, outer arc=.3em,  	left=.5em, right=.5em, bottomtitle=1mm, toptitle=1mm,title=\textbf{#2}\hspace{0.5em}{#3}]}
+{\end{tcolorbox}}
+
+%%%% --- end foldboxy preamble ----- %%%%%
+%%==== colors from yaml ===%
+\definecolor{Feature-color1}{HTML}{c0c0c0}
+\definecolor{Feature-color2}{HTML}{808080}
+\definecolor{Conjecture-color1}{HTML}{948bde}
+\definecolor{Conjecture-color2}{HTML}{584eab}
+\definecolor{Theorem-color1}{HTML}{948bde}
+\definecolor{Theorem-color2}{HTML}{584eab}
+\definecolor{Lemma-color1}{HTML}{948bde}
+\definecolor{Lemma-color2}{HTML}{584eab}
+\definecolor{Solution-color1}{HTML}{c0c0c0}
+\definecolor{Solution-color2}{HTML}{808080}
+\definecolor{Definition-color1}{HTML}{d999d3}
+\definecolor{Definition-color2}{HTML}{a01793}
+\definecolor{Proof-color1}{HTML}{c0c0c0}
+\definecolor{Proof-color2}{HTML}{808080}
+\definecolor{Corollary-color1}{HTML}{948bde}
+\definecolor{Corollary-color2}{HTML}{584eab}
+\definecolor{DONE-color1}{HTML}{cce7b1}
+\definecolor{DONE-color2}{HTML}{86b754}
+\definecolor{TODO-color1}{HTML}{e7b1b4}
+\definecolor{TODO-color2}{HTML}{8c3236}
+%=============%
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={MA32011},
+  pdfauthor={Philip Murray},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{MA32011}
+\author{Philip Murray}
+\date{2026-01-19}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Preface}\label{preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+\markboth{Preface}{Preface}
+
+Welcome to the module MA32011 Dynamical systems.
+
+My name is Philip Murray and I am the module lead.
+
+\section*{How to contact me?}\label{how-to-contact-me}
+\addcontentsline{toc}{section}{How to contact me?}
+
+\markright{How to contact me?}
+
+\begin{itemize}
+\tightlist
+\item
+  email: pmurray@dundee.ac.uk
+\item
+  office: G11, Fulton Building
+\item
+  Teams: PM me
+\end{itemize}
+
+\section*{Lecture notes}\label{lecture-notes}
+\addcontentsline{toc}{section}{Lecture notes}
+
+\markright{Lecture notes}
+
+You can find lecture notes for the module on this page. If you would
+like a pdf this can be easily generated by clicking on the pdf link of
+the webpage. I will occasionally edit/update the notes as we proceed
+through lectures. If you spot any errors, typos or omissions please let
+me know.
+
+\section*{Reading}\label{reading}
+\addcontentsline{toc}{section}{Reading}
+
+\markright{Reading}
+
+Nonlinear dynamics and chaos, Steven Strogatz Strogatz (2001)
+Mathematical Biology I, Murray (2002)
+
+\section*{Python codes}\label{python-codes}
+\addcontentsline{toc}{section}{Python codes}
+
+\markright{Python codes}
+
+I have provided Python codes for most of the figures in the notes (you
+can unfold code section by clicking `Code'). Note that the Python code
+does not appear in the pdf.
+
+Many of you have taken the Introduction to Programming module at Level 2
+and have therefore some experience using Python. I strongly encourage
+you to use the provided codes as a tool to play around with numerical
+solutions of the various models that we will be working on. The codes
+should run as standalone Python codes.
+
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, opacityback=0, titlerule=0mm, toprule=.15mm, colback=white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomrule=.15mm, breakable, bottomtitle=1mm, toptitle=1mm, rightrule=.15mm, left=2mm, coltitle=black]
+
+To access Python on Uni machines:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Launch Anaconda from AppsAnywhere
+\item
+  When a folder opens, double click on \emph{Spyder}.
+\item
+  Paste a code from lecture notes into the editor on the left-hand side.
+\item
+  Click on the green arrow to run the code.
+\item
+  The plots should appear in the plots tab on the right-hand side.
+\item
+  Experiment with the code. When you change a model parameter, does the
+  solution change in an expected way?
+\end{enumerate}
+
+\end{tcolorbox}
+
+I have also provided some examples of how to use Python as a symbolic
+calculator. This uses a Python library called \emph{sympy} and is quite
+similar to Maple.
+
+\section*{Assessment}\label{assessment}
+\addcontentsline{toc}{section}{Assessment}
+
+\markright{Assessment}
+
+\begin{itemize}
+\item
+  Final exam (80 \%)
+\item
+  2 class tests (8 \% each), Week 7 and 11
+\item
+  4 quizes (1 \% each), Week 2,4,6 and 9
+\end{itemize}
+
+\section*{Plan}\label{plan}
+\addcontentsline{toc}{section}{Plan}
+
+\markright{Plan}
+
+\begin{longtable}[]{@{}llll@{}}
+\caption{Projected delivery}\tabularnewline
+\toprule\noalign{}
+Week & Up to Section & Tutorial sheet & Assessment \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Week & Up to Section & Tutorial sheet & Assessment \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & & 1 & \\
+2 & & 1 & Quiz 1 \\
+3 & & 2 & \\
+4 & & 2 & Quiz 2 \\
+5 & & 3 & \\
+6 & & 3 & Quiz 3 \\
+7 & & 4 & Test 1 \\
+8 & & 4 & \\
+9 & & 5 & Quiz 4 4 \\
+10 & & 5 & \\
+11 & & Test 2 & \\
+\end{longtable}
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\markright{References}
+
+\bookmarksetup{startatroot}
+
+\chapter{Introduction}\label{introduction}
+
+The goal of this module is to provide an introduction to dynamical
+systems. We will introduce key mathematical concepts and explore
+examples from physics and biology.
+
+To begin with we introduce some key terminology.
+
+\section{Discrete v continuous time}\label{discrete-v-continuous-time}
+
+\subsection{Differential equations}\label{differential-equations}
+
+Let \(t\) be a continuous variable and \(x=x(t)\). Consider the ordinary
+differential equation (ODE)
+\begin{equation}\phantomsection\label{eq-logdemo}{
+\dot{x}=rx(1-x).
+}\end{equation}
+
+\(\dot{x}\) is used to denote the time derivative, i.e. \[
+\dot{x}:=\frac{dx}{dt}.
+\]
+
+Similarly, the second order derivative is represented by \[
+\ddot{x}:=\frac{d^2x}{dt^2}.
+\]
+
+Many of the second order ODE problems that we will examine originate
+from Newton's Second Law, i.e.
+
+\[
+m\ddot{x}=F(x)
+\] where \(x(t)\) represents the position of a particle at time, \(t\),
+\(m\) represents a constant particle mass and \(F\) a resultant force.
+
+Consider the case in which \(F\) represents a linear restoring force,
+i.e. \[
+F(x)=-kx.
+\] The equation of motion can be written as \[
+\ddot{x}=-\mu x,
+\] \{eq-secondorderODE\} where \(\mu=-k/m\).
+
+\begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
+
+The app in Figure~\ref{fig-popmodel} encodes a numerical solution of the
+second order ODE
+
+\[
+a\ddot{x}+b\dot{x}+cx=0.
+\]
+
+Choose an appropriate value of the parameters \(a\), \(b\) and \(c\) so
+that the solution captures the case of a particle of mass (\(m\)) equal
+to 3 subjected to a linear restoring force with spring constant (\(k\))
+equal to 5.
+
+Is the behaviour of the numerical solution consistent with
+\textbf{?@eq-secondorderODE}.
+
+\end{example}
+
+\subsection{Difference equations}\label{difference-equations}
+
+Suppose that \(n\) is a discrete variable. Let \(y_n\) represent a
+dependent variable at iteration \(n\). Consider the difference equation
+\[
+y_{n+1}=ry_n(1-y_n),
+\] where \(r\in \Re\).
+
+See this
+\href{https://dundeemath.github.io/Admissions/posts/RecurrenceRelations.html}{link}
+for exploration of model solutions.
+
+\subsection{Key questions to ask of a dynamical
+system}\label{key-questions-to-ask-of-a-dynamical-system}
+
+\begin{itemize}
+\tightlist
+\item
+  do solutions exist? If so are they unique?
+\item
+  Is there an explicit solution?
+\item
+  Can we qualitatively describe solution behaviour?
+\item
+  How do the solutions depend on the model parameters?
+\item
+  Are their critical values of parameters where solution behaviour
+  changes?
+\end{itemize}
+
+\section{Autonomous v nonautonomous
+ODEs}\label{autonomous-v-nonautonomous-odes}
+
+For an autonomous system, the update does not explicitly depend on the
+independent variable. Equation~\ref{eq-logdemo} is autonomous. But \[
+\dot{x}=rx(1-x+t)
+\] is nonautonomous (because of the explicit time dependence on the
+right-hand side).
+
+\section{Linear v Nonlinear}\label{linear-v-nonlinear}
+
+Linear systems satisfy a linear supposition principle: a sum of
+solutions is itself a solution. In general, this property does not hold
+for nonlinear systems.
+
+In linear dynamical systems, the dynamics are a function of linear sums
+of the dependent variables. Hence
+
+\[
+\dot{x}=-x
+\] is a linear ordinary differential equation (ODE). But \[
+\dot{x}=-x^2
+\] is nonlinear.
+
+\section{Quantitative v qualitative
+solutions}\label{quantitative-v-qualitative-solutions}
+
+You are likely used to solving problems in which an explicit solution
+can be found. For example, consider the ODE \[
+\dot{x}=-kx, \quad  x(0)=x_0
+\] where \(k,x_0 \in \Re^+\) .
+
+We can integrate and express the solution as
+
+\[
+x(t)=x_0e^{-kt}
+\]
+
+Using the explicit solution we can then answer questions about its
+behaviour. For example, let's say we want to find the time, \(t^*\), at
+which the solution is half it's maximum. Hence \[
+x(t*)=x_0/2 \implies t^* = \frac{\ln 2}{k}.
+\]
+
+However, in the study of nonlinear systems, most problems will not have
+an explicit solution. For example, consider the nonlinear ODE
+
+\[
+\dot{x}=-\frac{k\sin(x)+\sqrt{x}}{1+x}, \quad  x(0)=x_0
+\] where \(0<x_0<\pi\).
+
+I cannot integrate this equation in order to find solutions in terms of
+standard functions. Hence I cannot \emph{quantitatively} describe the
+solution. However, I can identify that
+
+\[
+\dot{x}<0, \  \forall \  0<x<\pi.
+\]
+
+Hence the solution will decrease in value from the given initial
+condition and tend to zero as \(t\rightarrow \infty\). This is an
+example of a \emph{qualitative} analysis.
+
+\section{Representing solutions}\label{representing-solutions}
+
+It is useful to introduce some nomenclature to describe the solutions of
+a dynamical system. Consider an ODE \[
+\dot{x}=f(x), \quad x(0)=x_0,
+\] where \(f\) is a prescribed function and \(x_0\) is an initial
+condition.
+
+\begin{itemize}
+\tightlist
+\item
+  phase space - put dependent variable on Cartesian axes
+\item
+  \emph{phase point} - value of the solution at given time point
+\item
+  \emph{vector field} - the derivative of the solution, i.e.~\(f\).
+\item
+  \emph{trajectory} - a line in phase space that traces out a solution
+  as time evolves
+\item
+  \emph{phase portrait} - collection of trajectories (i.e.~solutions
+  with different initial conditions)
+\end{itemize}
+
+\section{Fixed points and their
+stability}\label{fixed-points-and-their-stability}
+
+Many of the dynamical systems that we will study will be nonlinear.
+Hence it will not be possible to compute exact solutions.
+
+The behaviour of dynamical systems can often be understood by
+considering the fixed points, i.e.~values of the dependent variables at
+which the dynamics are at steady state.
+
+Stability analyses are used to investigate the dynamics of perturbations
+about the steady state.
+
+\section{Uniqueness and existence}\label{uniqueness-and-existence}
+
+We will restrict ourselves to problems in which the vector fields are
+sufficiently well behaved such that unique solutions exist. However,
+problems can be identified where solutions do not exists or where
+multiple solutions exist.
+
+\begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
+
+Show that the solution to the ODE \[
+\dot{x}=x^2 \quad x(0)=2
+\] is not defined for all \(t>0\).
+
+\end{example}
+
+\begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
+
+Show that the solution to the ODE \[
+\dot{x}=\sqrt{x} \quad x(0)=0
+\] is given by \[
+x=\begin{cases}
+&0 \ \  &t\leq\delta \\
+&\frac{(t-\delta)^2}{4}>\delta \ &t> \delta
+\end{cases}
+\]
+
+\end{example}
+
+\section{Nondimensionalisation}\label{nondimensionalisation}
+
+In real world problems, variables and parameters typically have units
+(e.g.~time - seconds, Force - Newtons etc.). We can nondimensionalise
+problems by defining rescaled variables. This process can be used to
+justify simplifications to models and to reduce the number of
+parameters.
+
+\section{Numerical solutions}\label{numerical-solutions}
+
+Numerical solutions are used to numerically compute approximate
+solutions to problems. The simplest example of a numerical method in a
+dynamical system is the forward Euler method. Suppose we want to study
+the ODE
+
+\[
+\dot{x}=f(x), \quad x(0)=x_0, \quad 0<t<T.
+\]
+
+Discretise the independent variable \(t\) by defining
+t=0,\Delta t,2\Delta t,\ldots,T.
+
+Approximate the time derivative
+
+\[
+\dot{x}=\frac{dx}{dt}\sim \frac{x(t+\Delta t)-x(t)}{\Delta t}
+\]
+
+Hence the solution at time \(t+\Delta t\) can be approximated by \[
+x(t+\Delta t)=x(t)+\Delta t f(x(t)).
+\]
+
+Given an initial condition \(x(0)=a\) we can compute the approximate
+solution at time \(\Delta t\).
+
+Numerical solutions provide a a very useful way to explore solution
+behaviour. However, they describe the quantitative behaviour of a
+solution for a particular initial condition and set of parameter values.
+
+\part{1D flows}
+
+\chapter{Flows on the line}\label{flows-on-the-line}
+
+First order in time.
+
+Let \(x=x(t)\). \begin{equation}\phantomsection\label{eq-fp1d}{
+\dot{x}=f(x).
+}\end{equation}
+
+\(f\) is smooth and real valued. autonomous. Nonlinear.
+
+\section{Geometric}\label{geometric}
+
+\begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
+
+Let \(x(t)\). Consider the ODE \[
+\dot{x}=\sin x.
+\]
+
+For the initial condition \(x(0)=\pi/4\), describe solution behaviour as
+\(t\rightarrow \infty\).
+
+\end{example}
+
+\phantomsection\label{Solutionux2a-1}
+\begin{fbx}{Solution}{Solution}{}
+\phantomsection\label{Solution*-1}
+
+An implicit solution is
+
+\[
+t=-\ln |\csc x + \cot x| + C,
+\] where \(C\) is an integration constant.
+
+\pandocbounded{\includegraphics[keepaspectratio]{1DFlows_files/figure-pdf/cell-2-output-1.pdf}}
+
+\end{fbx}
+
+\section{Fixed points and stability}\label{fixed-points-and-stability}
+
+\subsection{Fixed points}\label{fixed-points}
+
+Let \(x=x^*\) be a fixed point of Equation~\ref{eq-fp1d}. At \(x=x^*\)
+\[
+\dot{x}=0 \implies f(x^*)=0.
+\]
+
+There are a number of interpretations of \(x^*\):
+
+\begin{itemize}
+\tightlist
+\item
+  roots of \(f\) (algebraic)
+\item
+  stagnation points of the flow (topological)
+\end{itemize}
+
+\phantomsection\label{Corollary-1}
+\begin{fbxSimple}{Corollary}{Corollary 1}{}
+\phantomsection\label{Corollary-1}
+Any trajectory initialised at a fixed point remains there for all \(t\).
+
+\end{fbxSimple}
+
+\begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
+
+Find all the fixed points of \[
+\dot{x}=x^2-1,
+\]
+
+\end{example}
+
+\phantomsection\label{Solutionux2a-2}
+\begin{fbx}{Solution}{Solution}{}
+\phantomsection\label{Solution*-2}
+
+The fixed points are \(x^*=\pm 1\).
+
+\pandocbounded{\includegraphics[keepaspectratio]{1DFlows_files/figure-pdf/cell-3-output-1.pdf}}
+
+\end{fbx}
+
+\subsection{Linear stability analysis}\label{linear-stability-analysis}
+
+\subsubsection{A change of dependent
+variable}\label{a-change-of-dependent-variable}
+
+To perform a linear stability analysis we make the change of variables
+\[
+x(t)=x^*+\hat{x}(t)
+\] where the new dependent variable, \(\hat{x}(t)\), is a perturbation
+about the steady state.
+
+The time derivative on the left-hand side of
+\textbf{?@eq-gensinglespecodeagain} transforms to \[
+\dot{x}= \frac{d }{dt} (x^*) + \frac{d }{dt}(\hat{x}(t))=\dot{\hat{x}}.
+\] Hence \textbf{?@eq-gensinglespecodeagain} transforms to \[
+\dot{\hat{x}} = f(x^*+\hat{x}(t)).
+\]
+
+\subsubsection{Taylor expansion and a linear
+system}\label{taylor-expansion-and-a-linear-system}
+
+Employing the Taylor expansion on the right-hand side of
+\textbf{?@eq-gensinglespecodeagain} and making the assumption that
+perturbations are small \[
+\dot{\hat{x}} = f(x^*)+  f'(x^*)\hat{x}(t) + f''(x^*)\hat{x}^2(t) + h.o.t.
+\] Noting that\\
+\[
+f(x^*)=0
+\] and retaining linear terms yields \[
+\dot{\hat{x}} =  f'(x^*)\hat{x}(t)
+\] with solution \[
+\hat{x}(t)=  \eta e^{f'(x^*) t}
+\] where \(\eta\) is some initial perturbation about the steady-state.
+
+\subsubsection{A condition for linear
+stability}\label{a-condition-for-linear-stability}
+
+When \(f'(x^*)>0\) the perturbation grows exponentially fast and the
+steady-state is unstable. When \(f'(x^*)<0\) the perturbation decays
+exponentially fast and the steady-state is stable.
+
+\begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
+
+Determine the linear stability of the fixed points of \[
+\dot{x}=x^2-1.
+\]
+
+\end{example}
+
+\begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
+
+What can be said about the stability of the fixed points of the
+following ODEs: 1. \[
+\dot{x}=-x^3.
+\] 2. \[
+\dot{x}=x^3.
+\]
+
+\end{example}
+
+\section{Validity of linear
+classification}\label{validity-of-linear-classification}
+
+Hyperbolic FP - eigenvalues nonzero Hartman Grobman - if system has
+hyperbolic FP, classification of nonlinear system determined by linear
+classification non-hypberbolic FP - need to consider higher order terms.
+
+\section{Case study: population
+dynamics}\label{case-study-population-dynamics}
+
+Let \(N=N(t)\). The logistic model of population growth, due to
+Verhulst, takes the form
+\begin{equation}\phantomsection\label{eq-logisticode}{
+\dot{N}=rN(t)\left (1-\frac{N(t)}{K}\right),
+}\end{equation}
+
+where \(r\) is the linear growth rate and \(K\) is carrying capacity. We
+consider both \(r,K\in \Re^+\).
+
+Questions to ask of such a model are: what type of biologically
+realistic solutions does it possess? Are there steady-states? If so, are
+they stable or unstable? Are there bifurcations in solutions?
+
+\subsubsection{Numerical solutions}\label{numerical-solutions-1}
+
+In Figure~\ref{fig-logisticgrowthmodel} we present numerical solutions
+of equation using different initial conditions. Note the limiting
+behaviour of solutions as \(t\rightarrow \infty\). In
+Figure~\ref{fig-logisticgrowthmodel} it is clear that even though some
+solutions are initialised at \(N_0=0.1\), much closer to \(N^*=0\) than
+\(N^*=K\), they tend to the limit \(N=K\). Why do solutions not tend to
+\(N^*=0\)?
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{1DFlows_files/figure-pdf/fig-logisticgrowthmodel-output-1.pdf}}
+
+}
+
+\caption{\label{fig-logisticgrowthmodel}Numerical solution of the
+logistic growth model}
+
+\end{figure}%
+
+\subsubsection{Dimensional analysis and
+nondimensionalisation}\label{dimensional-analysis-and-nondimensionalisation}
+
+\(N\) represents the population density and has units of one over area
+(say \(1/m^2\)) and \(t\) has units of time (say, seconds, \(s\)). Hence
+the left-hand side of Equation~\ref{eq-logisticode} has units of
+\(1/(m^2 s)\). The first term on the right-hand side of
+Equation~\ref{eq-logisticode} is \(rN\). \(N\) has units \(1/m^2\) hence
+the parameter \(r\) must have units of \(1/s\) for dimensional
+consistency. This is consistent as \(r\) represents the linear growth
+rate.
+
+The second term has the form \(rN^2/K\). Given the chosen units for
+\(r\) and \(N\), the parameter \(K\) must have dimensions \(1/m^2\).
+Again, this is consistent as \(K\) is a carrying capacity (i.e.~it has
+units of population density).
+
+We define the nondimensionalised variables \[
+n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}
+\] where \(\tilde{N}\) and \(\tilde{T}\) are constants that have units
+of population density and time, respectively. Hence
+Equation~\ref{eq-logisticode} transforms, upon change of variables, to
+\[
+\begin{aligned}
+\frac{\tilde{N}}{\tilde{T} }\frac{dn}{d\tau}=r\tilde{N}n(1-\frac{n\tilde{N}}{K}).
+\end{aligned}
+\]
+
+In the case of the logistic equation there is only one time scale and
+density scale in the problem, hence we choose \[
+\tilde{T}=\frac{1}{r}  \ \ \ and \ \ \ \tilde{N}=K
+\] and the dimensionless model is
+\begin{equation}\phantomsection\label{eq-logisticnondim}{
+\begin{aligned}
+\frac{dn}{d\tau}= n(1-n)
+\end{aligned}
+}\end{equation} Note that we can retrieve the original equation by
+rescaling and calculating \(N=\tilde{N}n\) and \(t=\tilde{T}\tau\).
+
+\subsection{Steady states and linear
+stability}\label{steady-states-and-linear-stability}
+
+Steady states satisfy \[
+n^*(1-n^*)=0.
+\] Hence \[
+n^*=0, \ \ \ \ n^*=1.
+\]
+
+To determine linear stability we compute \[
+H'(n)= (1-2n).
+\] When \(n=n^*=0\) we obtain \[
+H'(n)= 1.
+\] Hence the origin is an unstable steady-state.
+
+At the steady-state \(n^*=1\) \[
+H'(n^*)= -1
+\] hence \(n^*=1\) is linearly stable.
+
+Note that the linear stability analysis can explain the observations
+regarding the numeric solutions presented in
+Figure~\ref{fig-logisticgrowthmodel}.
+
+\subsection{Graphical analysis}\label{graphical-analysis}
+
+In Figure~\ref{fig-dlogisticrhs} we plot the right-hand side of
+Equation~\ref{eq-logisticnondim}. We can qualitatively describe model
+solutions by considering the arrow along the x axis. Suppose we consider
+an initial condition with \(0<n_0<1\). Using the graph of \(H(n)\),
+\(dn/d\tau\) is positive, hence \(n\) increases as a function of time
+until \(n(\tau)\rightarrow 1\).
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{1DFlows_files/figure-pdf/fig-dlogisticrhs-output-1.pdf}}
+
+}
+
+\caption{\label{fig-dlogisticrhs}Right-hand side of the logistic ODE}
+
+\end{figure}%
+
+\subsection{An exact solution}\label{an-exact-solution}
+
+Separation of variables yields \[
+\int\frac{ dN}{N(1-\frac{N}{K})}=r\int dt.
+\] Using partial fractions \[
+\int\frac{ dN}{N} + \frac{1}{K}\int\frac{ dN}{1-\frac{N}{K}}=r\int dt.
+\] Integration yields \[
+\ln N - \ln\left(1-\frac{N}{K}\right)= \ln \frac{N }{1-\frac{N}{K}} =  rt+C.
+\] Hence \[
+N=\frac{De^{rt}}{1+\frac{D}{K}e^{rt}}
+\] Given an initial condition \(N(0)=N_0\), we obtain \[
+N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
+\]
+
+\subsubsection{Qualitative analysis of the exact
+solution}\label{qualitative-analysis-of-the-exact-solution}
+
+As \(t\rightarrow \infty\), \(N\rightarrow K\). At \(t=0\), \(N=N_0\)
+and that for small \(N_0\ll K\) the initial growth phase is exponential,
+i.e.~ \[
+N(t)\sim N_0 e^{rt} \\ \ \ \ \ N_0\ll K, t\ll \frac{1}{r}.
+\]
+
+Note that in almost all the models that we will consider the above
+method is not an usually an option as the ODE is not explicitly
+integrable.
+
+\section{Existence and uniqueness}\label{existence-and-uniqueness}
+
+Consider the ODE \[
+\dot{x}=f(x), \quad x(a)=b.
+\] There exists a unique solution on a local interval \(x\in[c,d]\) with
+\(c<x_0<d\) given that \(f\) is bounded and Lipschitz continuous on
+\([c,d]\).
+
+\begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
+
+Show that
+
+\[
+\dot{x}=x^{\frac{1}{2}}, \ \quad x(0)=0
+\] has an infinite family of solutions.
+
+\end{example}
+
+\section{Impossibility of
+oscillations}\label{impossibility-of-oscillations}
+
+\section{Potential flows}\label{potential-flows}
+
+Consider the ODE \[
+\dot{x}=f(x).
+\]
+
+Suppose that \[
+f(x)=-\frac{d V(x)}{dx}.
+\]
+
+Now consider \[
+\dot{V}.
+\] Applying the chain rule \[
+\dot{V}=\frac{dV}{dx}\dot{x}=-(\frac{dV}{dx})^2\leq 0.
+\]
+
+Hence for a potential flow \(V\) is never increasing.
+
+\section{Numerical solutions}\label{numerical-solutions-2}
+
+\section{References}\label{references-1}
+
+\part{Appendices}
+
+\chapter{Python}\label{python}
+
+\section{Symbolic calculations}\label{symbolic-calculations}
+
+Symbolic calculations ahve been performed using the Python library
+\href{https://docs.sympy.org/latest/index.html}{Sympy}.
+
+This library comes with
+\href{https://docs.sympy.org/latest/tutorials/index.html\#tutorials}{tutorials}.
+
+You are encouraged to familiarise yourself with the syntax by working
+through some of the tutorial examples provided at the links above.
+
+Many of the calculations that we do throughout the course involve
+solving systems of algebraic equations
+
+\section{Numerical solution of difference
+equations}\label{numerical-solution-of-difference-equations}
+
+Difference equations have been solved using a for loop. Routinse have
+been written to solve either single or coupled system of difference
+equaitons.
+
+\section{Numerical integration of
+ODEs}\label{numerical-integration-of-odes}
+
+Throughout the notes systems of ODEs have been integrated using the
+\href{https://scipython.com}{Scipy} function
+\href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html}{odeint}.
+
+\section{Plotting}\label{plotting}
+
+Line graphs are plotted using the Python library
+\href{https://matplotlib.org}{Matplotlib}.
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-murray2002mathematical}
+Murray, J. D. 2002. \emph{Mathematical Biology i: An Introduction}.
+Springer.
+
+\bibitem[\citeproctext]{ref-strogatz2001nonlinear}
+Strogatz, Steven H. 2001. \emph{Nonlinear Dynamics and Chaos: With
+Applications to Physics, Biology, Chemistry, and Engineering (Studies in
+Nonlinearity)}. Vol. 1. Westview press.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}
