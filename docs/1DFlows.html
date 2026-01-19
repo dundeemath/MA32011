@@ -106,33 +106,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Proof {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
 }
 .Solution {
   --color1: #c0c0c0;
@@ -142,9 +122,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 </style>
 
@@ -336,7 +336,7 @@ window.Quarto = {
 <p><span class="math display">\[
 t=-\ln |\csc x + \cot x| + C,
 \]</span> where <span class="math inline">\(C\)</span> is an integration constant.</p>
-<div id="c6793167" class="cell" data-execution_count="1">
+<div id="fa1583b7" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -408,7 +408,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="Solution*-2" class="Solution">
 <details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
 <p>The fixed points are <span class="math inline">\(x^*=\pm 1\)</span>.</p>
-<div id="1b05059a" class="cell" data-execution_count="2">
+<div id="b07f0db6" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
@@ -611,7 +611,7 @@ H'(n^*)= -1
 <div id="fig-dlogisticrhs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dlogisticrhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="1DFlows_files/figure-html/fig-dlogisticrhs-output-1.png" width="609" height="429" class="figure-img">
+<img src="1DFlows_files/figure-html/fig-dlogisticrhs-output-1.png" width="610" height="429" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dlogisticrhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.2: Right-hand side of the logistic ODE
