@@ -1,0 +1,20 @@
+---
+title: "Flows on the circle"
+format: html
+---
+
+## Uniform oscillator
+
+## Nonuniform oscillator
+
+## Ghosts and bottlenecks
+
+## Overdamped pendulum
+
+## Fireflies
+
+
+
+
+
+## References

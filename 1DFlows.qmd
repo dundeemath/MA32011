@@ -1,0 +1,458 @@
+---
+title: "Flows on the line"
+format: html
+---
+
+
+First order in time.
+
+
+Let $x=x(t)$.
+$$
+\dot{x}=f(x).
+$$ {#eq-fp1d}
+
+$f$ is smooth and real valued.
+autonomous. Nonlinear.
+
+## Geometric
+
+
+::: {#exm-    }
+
+Let $x(t)$. Consider the ODE
+$$
+\dot{x}=\sin x.
+$$
+
+For the initial condition $x(0)=\pi/4$, describe solution behaviour as $t\rightarrow \infty$.
+
+:::
+
+::: {.Solution}
+
+An implicit solution is
+
+$$
+t=-\ln |\csc x + \cot x| + C,
+$$
+where $C$ is an integration constant.
+
+
+
+```{python}
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x=np.linspace(-5,5)
+
+y=np.sin(x)
+
+fig,ax=plt.subplots()
+
+ax.plot(x,y)
+ax.set_xlabel('$x$')
+ax.set_ylabel('$\dot{x}$')
+# Arrow target (arrow head)
+x=[np.pi, np.pi, -np.pi, -np.pi]
+y=[0.0, 0.0,0.0,0.0]
+
+# Arrow start
+x0=[0.0,2.0*np.pi,0.0,-2.0*np.pi]
+y0 = [0.0,0.0,0.0,0.0]
+
+
+for x_i,y_i,x0_i,y0_i in zip(x,y,x0,y0):
+  ax.annotate('',
+      xy=(x_i, y_i),        # arrow head
+      xytext=(x0_i, y0_i),  # arrow tail
+      arrowprops=dict(
+          arrowstyle='->',
+          color='black'
+      ),
+      ha='center'
+  )
+  
+plt.show()
+
+
+
+```
+:::
+
+
+## Fixed points and stability
+
+
+### Fixed points 
+
+Let $x=x^*$ be a fixed point of @eq-fp1d. At $x=x^*$ 
+$$
+\dot{x}=0 \implies f(x^*)=0.
+$$
+
+There are a number of interpretations of $x^*$:
+
+- roots of $f$ (algebraic)
+- stagnation points of the flow (topological)
+
+::: {.Corollary}
+
+Any trajectory initialised at a fixed point remains there for all $t$.
+
+:::
+
+
+::: {#exm-    }
+
+Find all the fixed points of 
+$$
+\dot{x}=x^2-1,
+$$
+:::
+
+::: {.Solution}
+
+The fixed points are $x^*=\pm 1$.
+
+```{python}
+x=np.linspace(-5,5)
+
+y=np.sin(x)
+
+fig,ax=plt.subplots()
+
+ax.plot(x,y)
+
+plt.show()
+```
+
+:::
+
+
+
+### Linear stability analysis
+
+
+
+####  A change of dependent variable
+To perform a linear stability analysis we make the change of variables
+$$
+x(t)=x^*+\hat{x}(t)
+$$
+where the new dependent variable, $\hat{x}(t)$, is a perturbation about the steady state.
+
+The time derivative on the left-hand side of @eq-gensinglespecodeagain transforms to
+$$
+\dot{x}= \frac{d }{dt} (x^*) + \frac{d }{dt}(\hat{x}(t))=\dot{\hat{x}}.
+$$
+Hence @eq-gensinglespecodeagain  transforms to
+$$
+\dot{\hat{x}} = f(x^*+\hat{x}(t)).
+$$
+
+####  Taylor expansion and a linear system
+
+Employing the Taylor expansion on the right-hand side of @eq-gensinglespecodeagain and making  the assumption that perturbations are small
+$$
+\dot{\hat{x}} = f(x^*)+  f'(x^*)\hat{x}(t) + f''(x^*)\hat{x}^2(t) + h.o.t.
+$$
+Noting that  
+$$
+f(x^*)=0
+$$ 
+and retaining linear terms yields 
+$$
+\dot{\hat{x}} =  f'(x^*)\hat{x}(t)
+$$
+with solution
+$$
+\hat{x}(t)=  \eta e^{f'(x^*) t}
+$$
+where $\eta$ is some initial perturbation about the steady-state.
+
+#### A condition for linear stability
+When $f'(x^*)>0$ the perturbation grows exponentially fast and the steady-state is unstable.
+When $f'(x^*)<0$ the perturbation decays exponentially fast and the steady-state is stable.
+
+::: {#exm-    }
+
+Determine the linear stability of the fixed points of 
+$$
+\dot{x}=x^2-1.
+$$
+:::
+
+::: {#exm-    }
+
+What can be said about the stability of the fixed points of the following ODEs:
+1. $$
+\dot{x}=-x^3.
+$$
+2. 
+$$
+\dot{x}=x^3.
+$$
+
+
+:::
+
+## Validity of linear classification
+
+Hyperbolic FP - eigenvalues nonzero
+Hartman Grobman - if system has hyperbolic FP, classification of nonlinear system determined by linear classification
+non-hypberbolic FP - need to consider higher order terms.
+
+
+## Case study: population dynamics
+
+Let $N=N(t)$. The logistic model of population growth,  due to Verhulst,  takes the form
+$$
+\dot{N}=rN(t)\left (1-\frac{N(t)}{K}\right),
+$$ {#eq-logisticode}
+
+where $r$ is the linear  growth rate and $K$ is carrying capacity. We consider both $r,K\in \Re^+$. 
+
+Questions to ask of such a model are: what type of biologically realistic solutions does it possess? Are there steady-states? If so, are they stable or unstable? Are there bifurcations in solutions?
+
+#### Numerical solutions
+In @fig-logisticgrowthmodel we present numerical solutions of equation   using different initial conditions. Note the limiting behaviour of solutions as $t\rightarrow \infty$. In @fig-logisticgrowthmodel it is clear that even though some solutions are initialised at $N_0=0.1$, much closer to $N^*=0$ than $N^*=K$, they tend to the limit $N=K$. 
+ Why do solutions not tend to $N^*=0$?
+
+```{python}
+#| label: fig-logisticgrowthmodel
+#| fig-cap: "Numerical solution of the logistic growth model"
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy
+from scipy.integrate import odeint
+# This codes computes a numerical solution of the logistic growth model
+
+
+# Define model parameters
+K=12
+r_1=0.22
+r_2=0.42
+r_3=0.72
+
+# Plotting parameter
+N_max=1.1
+
+# Initial condition
+n_0=1.5
+# Max time
+T=20
+t=np.linspace(0,T,100)
+
+def rhslogistic_model(x,t,r,K):
+
+  rhs=r*x*(1-x/K)
+  return rhs
+
+# Numerically solve the ODE for different parameter values
+sol1=odeint(rhslogistic_model,n_0,t,args=(r_1,K))
+sol2=odeint(rhslogistic_model,n_0,t,args=(r_2,K))
+sol3=odeint(rhslogistic_model,n_0,t,args=(r_3,K))
+
+
+# Plot solutions
+fig, ax = plt.subplots(1)
+
+ax.plot(t, sol1,t, sol2,t, sol3)
+plt.xlabel('$t$')
+plt.ylabel('$N$')
+plt.grid(True)
+plt.legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
+plt.show()
+```
+
+
+
+#### Dimensional analysis and nondimensionalisation
+$N$ represents the population density and has units of one over area (say $1/m^2$) and $t$ has units of time (say, seconds, $s$). Hence the left-hand side of @eq-logisticode  has units of $1/(m^2 s)$. 
+The first term on the right-hand side of @eq-logisticode is $rN$. 
+$N$  has units $1/m^2$ hence the parameter $r$ must have units of $1/s$ for dimensional consistency. 
+This is consistent as $r$ represents the linear growth rate. 
+
+The second term has the form $rN^2/K$. Given the chosen units for $r$ and $N$, the parameter $K$ must have dimensions $1/m^2$. Again, this is consistent as $K$ is a carrying capacity (i.e. it has units of population density).
+
+
+We define the nondimensionalised variables
+$$
+n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}
+$$
+where $\tilde{N}$ and $\tilde{T}$ are constants that have units of population density and time, respectively. Hence @eq-logisticode transforms, upon change of variables, to
+$$
+\begin{aligned}
+\frac{\tilde{N}}{\tilde{T} }\frac{dn}{d\tau}=r\tilde{N}n(1-\frac{n\tilde{N}}{K}).
+\end{aligned}
+$$
+
+
+In the case of the logistic equation there is only one time scale and density scale in the problem, hence we choose
+$$
+\tilde{T}=\frac{1}{r}  \ \ \ and \ \ \ \tilde{N}=K
+$$
+and the dimensionless model is
+$$
+\begin{aligned}
+\frac{dn}{d\tau}= n(1-n)
+\end{aligned}
+$${#eq-logisticnondim}
+Note that we can retrieve the original equation by rescaling and calculating $N=\tilde{N}n$ and  $t=\tilde{T}\tau$.
+
+
+
+
+
+### Steady states and linear stability
+
+Steady states satisfy
+$$
+n^*(1-n^*)=0.
+$$
+Hence 
+$$
+n^*=0, \ \ \ \ n^*=1.
+$$
+
+
+To determine linear stability we compute
+$$
+H'(n)= (1-2n).
+$$
+When $n=n^*=0$ we obtain
+$$
+H'(n)= 1.
+$$
+Hence the origin is an unstable steady-state.
+
+At the steady-state $n^*=1$
+$$
+H'(n^*)= -1
+$$
+hence $n^*=1$ is linearly stable. 
+
+Note that the linear stability analysis can explain the observations regarding the numeric solutions presented in @fig-logisticgrowthmodel.
+
+### Graphical analysis
+
+
+In  @fig-dlogisticrhs we plot the right-hand side of @eq-logisticnondim.
+We can qualitatively describe model solutions by considering the arrow along the x axis. 
+Suppose we consider an initial condition with $0<n_0<1$. Using the graph of $H(n)$, $dn/d\tau$ is positive, hence $n$ increases as a function of time until $n(\tau)\rightarrow 1$. 
+
+```{python}
+#| label: fig-dlogisticrhs
+#| fig-cap: "Right-hand side of the logistic ODE"
+import numpy as np
+import matplotlib.pyplot as plt
+N_max=2.1
+K=2
+r=0.2
+N_vec=np.linspace(0,N_max,100)
+
+rhs=r*N_vec*(1-N_vec/K)
+fig, ax = plt.subplots(1)
+
+ax.plot(N_vec, rhs)
+plt.xlabel('$N$')
+plt.ylabel('$H(N)$')
+plt.show()
+
+```
+### An exact solution
+Separation of variables yields
+$$
+\int\frac{ dN}{N(1-\frac{N}{K})}=r\int dt.
+$$
+Using partial fractions 
+$$
+\int\frac{ dN}{N} + \frac{1}{K}\int\frac{ dN}{1-\frac{N}{K}}=r\int dt.
+$$
+Integration yields
+$$
+\ln N - \ln\left(1-\frac{N}{K}\right)= \ln \frac{N }{1-\frac{N}{K}} =  rt+C.
+$$
+Hence
+$$
+N=\frac{De^{rt}}{1+\frac{D}{K}e^{rt}}
+$$
+Given an initial condition $N(0)=N_0$, we obtain
+$$
+N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
+$$
+
+
+#### Qualitative analysis of the exact solution
+As $t\rightarrow \infty$, $N\rightarrow K$. 
+At $t=0$, $N=N_0$ and that for small $N_0\ll K$ the initial growth phase is exponential, i.e. 
+$$
+N(t)\sim N_0 e^{rt} \\ \ \ \ \ N_0\ll K, t\ll \frac{1}{r}.
+$$
+
+Note that in almost all the models that we will consider the above method is not an usually an option as the ODE is not explicitly integrable.
+
+
+
+
+
+## Existence and uniqueness
+
+Consider the ODE 
+$$
+\dot{x}=f(x), \quad x(a)=b.
+$$
+There exists a unique solution on a local interval $x\in[c,d]$ with $c<x_0<d$ given that $f$ is bounded and Lipschitz continuous on $[c,d]$.
+
+::: {#exm-    }
+
+Show that 
+
+$$
+\dot{x}=x^{\frac{1}{2}}, \ \quad x(0)=0
+$$
+has an infinite family of solutions.
+
+:::
+
+## Impossibility of oscillations
+
+## Potential flows
+
+Consider the ODE
+$$
+\dot{x}=f(x).
+$$
+
+Suppose that
+$$
+f(x)=-\frac{d V(x)}{dx}.
+$$
+
+Now consider
+$$
+\dot{V}.
+$$
+Applying the chain rule
+$$
+\dot{V}=\frac{dV}{dx}\dot{x}=-(\frac{dV}{dx})^2\leq 0.
+$$
+
+Hence for a potential flow $V$ is never increasing.
+
+
+
+
+
+
+
+
+
+
+## Numerical solutions
+
+
+
+## References

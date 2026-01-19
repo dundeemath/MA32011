@@ -1,0 +1,124 @@
+project:
+  type: book
+  output-dir: docs
+  resources: 
+    lectureslides.pdf
+
+
+
+book:
+  title: "MA32011"
+  author: "Philip Murray"
+  date: "01/19/2026"
+  repo-url: https://github.com/dundeemath/MA32011/
+  downloads: pdf
+  repo-actions: [issue]
+  cover-image: MA32011Cover.png
+
+
+  
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - part: "1D flows"
+      chapters:
+       - 1DFlows.qmd
+       #- Bifurcations.qmd
+       #- FlowsOnCircle.qmd   
+    #- part: "2D flows"
+      #chapters:
+       #- 2DLinearSystems.qmd 
+       #- 2DNonLinearPhasePlane.qmd 
+       #- LimitCycles.qmd
+       #- 2DBifurcations.qmd
+
+    #- part: "Chaotic dynamics"
+    #  chapters:
+    #   - IterativeMaps.qmd 
+    #   - Lorenz.qmd
+      
+
+
+    - part: "Appendices"
+      chapters:
+        - PythonAppendix.qmd    
+      
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    code-fold: true
+  pdf:
+    documentclass: scrreprt
+    echo: false
+    include-in-header:
+      - text: |
+          \usepackage{chemarr}
+          \usepackage{lipsum}
+          \usepackage{tikz}
+          \AtBeginDocument{\thispagestyle{empty}
+          \begin{tikzpicture}[remember picture,overlay]
+          \node at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{MA32011Cover.png}};
+          \end{tikzpicture}\clearpage}
+filters:
+  - shinylive
+  - custom-numbered-blocks
+
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+    Corollary:
+      group: thmlike
+    Lemma:
+      group: thmlike
+    Conjecture:
+      group: thmlike
+      collapse: true  
+    Proof:
+      group: todos
+      collapse: true  
+      numbered: false
+    Solution:
+      group: todos
+      collapse: true  
+      numbered: false
+    Definition:
+      group: thmlike
+      colors: [d999d3, a01793]
+    Feature: default
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos
+  crossref:
+    chapters: true
+
+crossref:
+  chapters: true
+  eq-title: Eq.
+     #  eq-title: Eq -->
+    
+
+execute:
+  warning: false
+     
+
+
+  
+
+
+

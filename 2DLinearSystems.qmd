@@ -1,0 +1,197 @@
+---
+title: "Linear systems"
+format: html
+---
+
+
+## Introduction
+
+A 2D linear system has two dependent variables with coupled dynamics. You will have met this system before in the Differential Equations module.
+
+Consider
+$$
+\begin{aligned}
+\dot{x} &=ax+by \\
+\dot{y}&=cx+dy
+\end{aligned}
+$$
+
+In matrix form
+$$
+\dot{\mathbf{x}}=A\mathbf{x}
+$$
+where
+$$
+A=
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+$$
+and
+$$
+\mathbf{x}(t)=\begin{pmatrix}
+x(t)  \\ y(t)
+\end{pmatrix}
+$$
+
+It is straightforward to show that if $\mathbf{x}_1(t)$ and $\mathbf{x}_2(t)$ are solutions, the linear sum
+$$
+ c_1\mathbf{x}_1(t) +  c_2 \mathbf{x}_2(t),
+$$
+where $c_1$ and $c_2$ are arbitrary constants, is itself a solution. Moreover, the zero vector is a fixed point.
+
+
+## General solution
+
+Seeking a solution of @eq-linearsystem2d of the form 
+
+$$
+\mathbf{w}=\mathbf{v}e^{\lambda t}
+$$
+ 
+one obtains the characteristic equation
+
+$$
+\lambda^2 -\lambda \mathrm{tr}(A)+\det(A)=0,
+$$ 
+which has solutions
+
+$$
+\lambda = \frac{\mathrm{tr}{A}\pm \sqrt{\mathrm{tr}{A}^2-4\det{A}}}{2}.
+$$
+
+Given distinct eigenvalues, the general solution is
+$$
+\mathbf{x}(t)=C_1\mathbf{v}_1e^{\lambda_1 t}+C_2\mathbf{v}_2 e^{\lambda_2 t}.
+$$
+
+The behaviour of the solutions of a 2D  linear system of ODEs can be classified given the knowledge of the eigenvectors/eigenvalues.
+
+## An example problem introducing phase portraits and stability 
+
+
+Let's consider a decoupled 2D problem given by
+
+$$
+\begin{aligned}
+\dot{x}=ax \\
+\dot{y}=-y,
+\end{aligned}
+$$
+where $a \in \Re$. We will use this system to introduce some important concepts regarding phase portraits and stability.
+
+The solution is 
+$$
+x(t)=x_0e^{at}, \quad y(t)=y_0e^{-t}.
+$$
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x_0_vec=[-2,-1,0,1,2]
+y_0_vec=[-2,-1,0,1,2]
+
+t=np.linspace(0,20,1000,dtype=float)
+
+ind=5
+
+fig,ax=plt.subplots(2,3)
+ax=ax.flatten()
+a_vec=np.array([-1.5,-1.0,-0.5,0.0,0.5,1.5])
+a_vec=a_vec.astype(float)
+
+k=0
+for a in a_vec:
+    for x_0 in x_0_vec:
+        for y_0 in y_0_vec:
+            sol_x=x_0*np.exp(a*t)
+            sol_y=y_0*np.exp(-t)
+            
+            sol_x_rev=x_0*np.exp(a*t*-1)
+            sol_y_rev=y_0*np.exp(-t*-1)
+
+            ax[k].plot(sol_x,sol_y,'k',sol_x_rev,sol_y_rev,'k')
+            ax[k].annotate('',
+            xy=(sol_x[ind], sol_y[ind]),        # arrow head
+            xytext=(sol_x[ind-2], sol_y[ind-2]),  # arrow tail
+            arrowprops=dict(
+            arrowstyle='->',
+            color='black'
+            ),
+            ha='center'
+        )
+    ax[k].set_xlim([-3,3])
+    ax[k].set_ylim([-3,3])
+    ax[k].set_title('$a = $' + str(a))
+    ax[k].grid()
+    x=[np.pi]
+    y=[0.0, 0.0,0.0,0.0]
+    # Arrow start
+    x0=[0.0,2.0*np.pi,0.0,-2.0*np.pi]
+    y0 = [0.0,0.0,0.0,0.0]
+
+
+
+    
+    k+=1
+fig.tight_layout()
+plt.show()
+
+```
+
+
+Discuss: stable node, star node, line of fixed points, saddle with stable and unstable manifold.
+
+Stability: attracting, globally attracting, Laipunov stable, neutrally stable, asymptotically stable, unstable.
+
+
+
+## Classification of linear systems
+
+Whilst a complete classification of the linear stability of a steady state can be obtained by explicitly calculating the eigenvalues, in many cases it is sufficient to deduce whether or not a steady state is stable or unstable. This can be achieved by calculating the determinant and trace of the Jacobian matrix ($\det(A)$ and  $\mathrm{tr}(A)$, respectively) and referring to @fig-tdplane. 
+
+
+![Stability in the trace detemrinant plane.](TDPlane.png){#fig-tdplane}
+
+The different cases can be categorised as follows:
+
+*  $\det(A)<0$
+There is one positive and one negative real eigenvalue. Hence the steady state is a saddle which is unstable.
+* $\det(A)>0$
+ The steady state can be either stable or unstable, depending on $\mathrm{tr}(A)$ (and the real part of the eigenvalues).
+
+    + If $\mathrm{tr}(A)>0$,  the steady state is unstable.  
+        - If  $\mathrm{tr}(A)^2>4 \det(A)$, it is an unstable node.
+        - If  $\mathrm{tr}(A)^2<4 \det(A)$ it is an unstable spiral.
+    +  If $\mathrm{tr}(A)<0$, the steady state is stable.
+        - If  $\mathrm{tr}(A)^2>4 \det(A)$, it is an stable node.
+        - If  $\mathrm{tr}(A)^2<4 \det(A)$, it is an stable spiral.
+
+These different cases can be distinguished in the trace-determinant plane plotted in @fig-tdplane.
+
+
+The condition$\det(A)>0$ excludes the  case that the eigenvalues are real but have opposite signs (i.e. it cannot be a saddle point).
+
+The condition $\mathrm{tr}(A)>0$ implies that the real part of both eigenvalues are positive (i.e.  the steady state is unstable).
+
+The condition $\mathrm{tr}(A)^2<4 \det(A)$ implies that the eigenvalues are complex. Hence 
+$$
+\lambda_{\pm}=\mu\pm i\omega \ \ \ 
+$$
+and the solution of the system can be written
+$$
+e^{\lambda t} = e^{(\mu+i\omega) t} = e^{\mu t}e^{i\omega t}. 
+$$
+For $\mu>0$ the magnitude of the perturbation grows but it oscillates about the steady state. Hence the steady state is an unstable spiral.
+
+
+
+Degenerate node
+
+
+
+
+
+## References
