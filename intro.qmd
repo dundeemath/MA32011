@@ -1,7 +1,5 @@
 # Introduction
 
-Dynamical systems
-
 The goal of this module is to provide an introduction to dynamical systems. We will introduce key mathematical concepts and explore examples from physics and biology.  
  
 To begin with we introduce some key terminology.
@@ -41,8 +39,115 @@ $$
 The equation of motion can be written as 
 $$
 \ddot{x}=-\mu x,
-$$
+$$ {eq-secondorderODE}
 where $\mu=-k/m$.
+
+
+
+::: {#exm-    }
+The app in @fig-popmodel encodes a numerical solution of the second order ODE
+
+$$
+a\ddot{x}+b\dot{x}+cx=0.
+$$
+
+Choose an appropriate value of the parameters $a$, $b$ and $c$ so that the solution captures the case of a particle of mass ($m$) equal to 3 subjected to a linear restoring force with spring constant ($k$) equal to 5.
+
+Is the behaviour of the numerical solution consistent with @eq-secondorderODE.
+
+
+:::
+
+::: {#fig-popmodel .content-visible when-format="html"}
+
+```{shinylive-python}
+#| standalone: true
+#| components: [viewer]
+#| viewerHeight: 800
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+app_ui = ui.page_fluid(
+    ui.input_slider(id="a",label="a",min=0.01,max=3,value=0.1,step=0.001),
+    ui.input_slider(id="b",label="b",min=0.0,max=15.0,value=10.0,step=0.1),             
+    ui.input_slider(id="c",label="c",min=0.0,max=30.0,value=5.0,step=1.0),   
+    ui.input_slider(id="y0",label="x(t=0)",min=0.0,max=20.0,value=5.0,step=1.0),
+    ui.input_slider(id="y0p",label="dx/dt(t=0)",min=0.0,max=20.0,value=1,step=1.0),
+    ui.input_slider(id="T",label="Simulation time",min=0.0,max=60.0,value=20.0,step=0.5),
+        ui.output_plot("plot"),
+)
+
+def server(input, output, session):
+    
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots()
+        #ax.set_ylim([-2, 2])
+        # Filter fata
+        
+        
+        a=float(input.a())
+        b=float(input.b())
+        c=float(input.c())
+        y_0=float(input.y0())
+        y_0_p=float(input.y0p())
+        T=float(input.T())
+        
+
+        
+        # Define rhs of LV ODEs
+        def rhs_pop_model(y,t,a,b,c):
+          rhs=np.zeros_like(y,dtype=float)
+
+          z=y[1]
+
+          #ay'' + by'+cy=0
+          # y'=z
+          # z'=y''=-(by'+cy)/a
+
+
+          dy_dt=y[1]
+          dz_dt=-(b*z+c*y[0])/a
+
+          rhs[0]=dy_dt
+          rhs[1]=dz_dt
+
+          return rhs
+
+        # Define discretised t domain
+        t = np.linspace(0, T, 1000)
+
+        # define initial conditions
+        init_cond=[y_0,y_0_p]
+        
+        # Compute numerical solution of ODEs
+        sol1 = odeint(rhs_pop_model, init_cond,t,args=(a,b,c))
+
+        # Plot results
+        y=sol1[:,0]
+        yp=sol1[:,1]
+        
+        
+        ax.plot(t, y)
+        ax.set_xlabel('$t$')
+        ax.set_ylabel('$y(t)$')
+
+        plt.grid()
+        #plt.show()
+    
+app = App(app_ui, server)
+```
+
+Exploring numerical solutions of a linear second order ODE.
+:::
+
+
 
 
 ### Difference equations
@@ -55,7 +160,7 @@ where $r\in \Re$.
 
 See this [link](https://dundeemath.github.io/Admissions/posts/RecurrenceRelations.html) for exploration of model solutions.
 
-::: {#fig-logisticmodel}
+::: {#fig-logisticmodel .content-visible when-format="html"}
 
 ```{shinylive-python}
 #| standalone: true
@@ -174,12 +279,12 @@ def server(input, output, session):
     
 app = App(app_ui, server)
 ```
+
+Exploring behaviour of the logistic map using numerical solutions and bifurcation diagrams.
 :::
 
 
-
-
-### Key questions to ask of  nonlinear dynamical system
+### Key questions to ask of a dynamical system
 
  - do solutions exist? If so are they unique?
  - Is there an explicit solution?
@@ -244,20 +349,19 @@ $$
 \dot{x}<0, \  \forall \  0<x<\pi.
 $$
 
-Hence the solution will decrease in value from the given initial condition. This is an example of a *qualitative* analysis.
-
+Hence the solution will decrease in value from the given initial condition and tend to zero as $t\rightarrow \infty$. This is an example of a *qualitative* analysis.
 
 ## Representing solutions
 
-It is useful to introduce some nomenclature to describe the solutions of a dynamical system.  Consider an ODE
+It is useful to introduce some nomenclature to describe the solutions of a dynamical system. Consider an ODE
 $$
 \dot{x}=f(x), \quad x(0)=x_0,
 $$
-where $f$ is a prescribed function and $x_0$ is an initial condition. At some time $t$ we define
+where $f$ is a prescribed function and $x_0$ is an initial condition. 
 
-- phase space 
+- phase space - put dependent variable on  Cartesian axes
 - *phase point* - value of the solution at given time point 
-- *vector field* - the derivative of the solution, i.e. $f$. The sign represents whether the solution is increasing/decreasing whilst the magnitude represents the rate of change.
+- *vector field* - the derivative of the solution, i.e. $f$. 
 - *trajectory* - a line in phase space that traces out a solution as time evolves
 - *phase portrait* - collection of trajectories (i.e. solutions with different initial conditions)
 
@@ -274,6 +378,31 @@ Stability analyses are used to investigate the dynamics of perturbations about t
 ## Uniqueness and existence
 
 We will restrict ourselves to problems in which the vector fields are sufficiently well behaved such that unique solutions exist. However, problems can be identified where solutions do not exists or where multiple solutions exist. 
+
+::: {#exm-    }
+
+Show that the solution to the ODE
+$$
+\dot{x}=x^2 \quad x(0)=2
+$$
+is not defined for all $t>0$.
+:::
+
+
+::: {#exm-    }
+
+Show that the solution to the ODE
+$$
+\dot{x}=\sqrt{x} \quad x(0)=0
+$$
+is given by
+$$
+x=\begin{cases}
+&0 \ \  &t\leq\delta \\
+&\frac{(t-\delta)^2}{4}>\delta \ &t> \delta
+\end{cases}
+$$
+:::
 
 
 ## Nondimensionalisation
