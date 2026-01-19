@@ -39,7 +39,7 @@ $$
 The equation of motion can be written as 
 $$
 \ddot{x}=-\mu x,
-$$ {eq-secondorderODE}
+$$ {#eq-secondorderODE}
 where $\mu=-k/m$.
 
 
@@ -54,7 +54,6 @@ $$
 Choose an appropriate value of the parameters $a$, $b$ and $c$ so that the solution captures the case of a particle of mass ($m$) equal to 3 subjected to a linear restoring force with spring constant ($k$) equal to 5.
 
 Is the behaviour of the numerical solution consistent with @eq-secondorderODE.
-
 
 :::
 
@@ -136,7 +135,7 @@ def server(input, output, session):
         
         ax.plot(t, y)
         ax.set_xlabel('$t$')
-        ax.set_ylabel('$y(t)$')
+        ax.set_ylabel('$x(t)$')
 
         plt.grid()
         #plt.show()
@@ -417,7 +416,7 @@ $$
 \dot{x}=f(x), \quad x(0)=x_0, \quad 0<t<T.
 $$
 
-Discretise the independent variable $t$ by defining t=0,\Delta t,2\Delta t,...,T.
+Discretise the independent variable $t$ by defining $t=0$,$\Delta t$,$2\Delta t$,...,$T=N\Delta T$.
 
 Approximate the time derivative
 
@@ -430,7 +429,7 @@ $$
 x(t+\Delta t)=x(t)+\Delta t f(x(t)).
 $$
 
-Given an initial condition $x(0)=a$ we can compute the approximate solution at time $\Delta t$.
+Given an initial condition $x(0)=a$ we can compute the approximate solution at time $\Delta t$. Further iteration then allows an approximate solution to be calculated. 
 
 Numerical solutions provide a a very useful way to explore solution behaviour. However, they describe  the quantitative behaviour  of a solution for a particular initial condition and set of parameter values. 
 
