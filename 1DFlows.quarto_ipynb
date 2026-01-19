@@ -44,7 +44,7 @@
         "$$\n",
         "where $C$ is an integration constant.\n"
       ],
-      "id": "d59a5046"
+      "id": "3c57cdb7"
     },
     {
       "cell_type": "code",
@@ -84,7 +84,7 @@
         "  \n",
         "plt.show()\n"
       ],
-      "id": "f3accf77",
+      "id": "3f009cda",
       "execution_count": null,
       "outputs": []
     },
@@ -129,7 +129,7 @@
         "\n",
         "The fixed points are $x^*=\\pm 1$."
       ],
-      "id": "bfd3a02c"
+      "id": "38f09ec3"
     },
     {
       "cell_type": "code",
@@ -145,7 +145,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "9722247a",
+      "id": "197fef47",
       "execution_count": null,
       "outputs": []
     },
@@ -245,7 +245,7 @@
         "In @fig-logisticgrowthmodel we present numerical solutions of equation   using different initial conditions. Note the limiting behaviour of solutions as $t\\rightarrow \\infty$. In @fig-logisticgrowthmodel it is clear that even though some solutions are initialised at $N_0=0.1$, much closer to $N^*=0$ than $N^*=K$, they tend to the limit $N=K$. \n",
         " Why do solutions not tend to $N^*=0$?"
       ],
-      "id": "3be41c0d"
+      "id": "675d35ed"
     },
     {
       "cell_type": "code",
@@ -378,7 +378,7 @@
         "We can qualitatively describe model solutions by considering the arrow along the x axis. \n",
         "Suppose we consider an initial condition with $0<n_0<1$. Using the graph of $H(n)$, $dn/d\\tau$ is positive, hence $n$ increases as a function of time until $n(\\tau)\\rightarrow 1$. "
       ],
-      "id": "5ae33629"
+      "id": "d970869b"
     },
     {
       "cell_type": "code",
@@ -504,7 +504,7 @@
         "\n",
         "## References"
       ],
-      "id": "ec1b7a1f"
+      "id": "d3cfff23"
     }
   ],
   "metadata": {
