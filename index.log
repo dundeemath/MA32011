@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.9.26)  19 JAN 2026 22:36
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.9.26)  19 JAN 2026 22:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1194,10 +1194,13 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 
-LaTeX Warning: Reference `fig-popmodel' on page 7 undefined on input line 474.
+LaTeX Warning: Reference `fig-popmodel' on page 7 undefined on input line 475.
 
 
-LaTeX Warning: Reference `eq-logdemo' on page 7 undefined on input line 525.
+LaTeX Warning: Reference `eq-secondorderODE' on page 7 undefined on input line 488.
+
+
+LaTeX Warning: Reference `eq-logdemo' on page 7 undefined on input line 526.
 
 
 
@@ -1209,13 +1212,13 @@ LaTeX Warning: Reference `eq-logdemo' on page 7 undefined on input line 525.
 ! Extra alignment tab has been changed to \cr.
 <template> ...w@strut \hfil $\relax $\endtemplate 
                                                   
-l.642 &0 \ \  &
+l.643 &0 \ \  &
                t\leq\delta \\ 
 Here is how much of TeX's memory you used:
- 39307 strings out of 475785
- 810408 string characters out of 5771936
+ 39308 strings out of 475785
+ 810427 string characters out of 5771936
  1606220 words of memory out of 5000000
- 61688 multiletter control sequences out of 15000+600000
+ 61689 multiletter control sequences out of 15000+600000
  565292 words of font info for 89 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  108i,9n,114p,10919b,945s stack positions out of 10000i,1000n,20000p,200000b,200000s

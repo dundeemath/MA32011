@@ -241,26 +241,26 @@ boxed title style={boxrule=0.0mm, fuzzy shadow={1pt}{-1pt}{0mm}{0.1mm}{gray}, ar
 
 %%%% --- end foldboxy preamble ----- %%%%%
 %%==== colors from yaml ===%
-\definecolor{Feature-color1}{HTML}{c0c0c0}
-\definecolor{Feature-color2}{HTML}{808080}
-\definecolor{Conjecture-color1}{HTML}{948bde}
-\definecolor{Conjecture-color2}{HTML}{584eab}
-\definecolor{Theorem-color1}{HTML}{948bde}
-\definecolor{Theorem-color2}{HTML}{584eab}
-\definecolor{Lemma-color1}{HTML}{948bde}
-\definecolor{Lemma-color2}{HTML}{584eab}
-\definecolor{Solution-color1}{HTML}{c0c0c0}
-\definecolor{Solution-color2}{HTML}{808080}
-\definecolor{Definition-color1}{HTML}{d999d3}
-\definecolor{Definition-color2}{HTML}{a01793}
-\definecolor{Proof-color1}{HTML}{c0c0c0}
-\definecolor{Proof-color2}{HTML}{808080}
-\definecolor{Corollary-color1}{HTML}{948bde}
-\definecolor{Corollary-color2}{HTML}{584eab}
-\definecolor{DONE-color1}{HTML}{cce7b1}
-\definecolor{DONE-color2}{HTML}{86b754}
 \definecolor{TODO-color1}{HTML}{e7b1b4}
 \definecolor{TODO-color2}{HTML}{8c3236}
+\definecolor{DONE-color1}{HTML}{cce7b1}
+\definecolor{DONE-color2}{HTML}{86b754}
+\definecolor{Proof-color1}{HTML}{c0c0c0}
+\definecolor{Proof-color2}{HTML}{808080}
+\definecolor{Conjecture-color1}{HTML}{948bde}
+\definecolor{Conjecture-color2}{HTML}{584eab}
+\definecolor{Solution-color1}{HTML}{c0c0c0}
+\definecolor{Solution-color2}{HTML}{808080}
+\definecolor{Corollary-color1}{HTML}{948bde}
+\definecolor{Corollary-color2}{HTML}{584eab}
+\definecolor{Lemma-color1}{HTML}{948bde}
+\definecolor{Lemma-color2}{HTML}{584eab}
+\definecolor{Definition-color1}{HTML}{d999d3}
+\definecolor{Definition-color2}{HTML}{a01793}
+\definecolor{Theorem-color1}{HTML}{948bde}
+\definecolor{Theorem-color2}{HTML}{584eab}
+\definecolor{Feature-color1}{HTML}{c0c0c0}
+\definecolor{Feature-color2}{HTML}{808080}
 %=============%
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -349,7 +349,7 @@ you to use the provided codes as a tool to play around with numerical
 solutions of the various models that we will be working on. The codes
 should run as standalone Python codes.
 
-\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, opacityback=0, titlerule=0mm, toprule=.15mm, colback=white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomrule=.15mm, breakable, bottomtitle=1mm, toptitle=1mm, rightrule=.15mm, left=2mm, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, leftrule=.75mm, rightrule=.15mm, coltitle=black, breakable, toprule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, toptitle=1mm, bottomrule=.15mm, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, left=2mm, opacitybacktitle=0.6, colback=white]
 
 To access Python on Uni machines:
 
@@ -465,9 +465,10 @@ m\ddot{x}=F(x)
 Consider the case in which \(F\) represents a linear restoring force,
 i.e. \[
 F(x)=-kx.
-\] The equation of motion can be written as \[
+\] The equation of motion can be written as
+\begin{equation}\phantomsection\label{eq-secondorderODE}{
 \ddot{x}=-\mu x,
-\] \{eq-secondorderODE\} where \(\mu=-k/m\).
+}\end{equation} where \(\mu=-k/m\).
 
 \begin{example}[]\protect\hypertarget{exm-}{}\label{exm-}
 
@@ -484,7 +485,7 @@ to 3 subjected to a linear restoring force with spring constant (\(k\))
 equal to 5.
 
 Is the behaviour of the numerical solution consistent with
-\textbf{?@eq-secondorderODE}.
+Equation~\ref{eq-secondorderODE}.
 
 \end{example}
 
@@ -666,7 +667,7 @@ the ODE
 \]
 
 Discretise the independent variable \(t\) by defining
-t=0,\Delta t,2\Delta t,\ldots,T.
+\(t=0\),\(\Delta t\),\(2\Delta t\),\ldots,\(T=N\Delta T\).
 
 Approximate the time derivative
 
@@ -679,7 +680,8 @@ x(t+\Delta t)=x(t)+\Delta t f(x(t)).
 \]
 
 Given an initial condition \(x(0)=a\) we can compute the approximate
-solution at time \(\Delta t\).
+solution at time \(\Delta t\). Further iteration then allows an
+approximate solution to be calculated.
 
 Numerical solutions provide a a very useful way to explore solution
 behaviour. However, they describe the quantitative behaviour of a
