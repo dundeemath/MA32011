@@ -76,26 +76,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
@@ -108,13 +88,33 @@ ul.task-list li input[type="checkbox"] {
   --color1: #c0c0c0;
   --color2: #808080;
 }
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
 .Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 </style>
 
@@ -304,16 +304,16 @@ m\ddot{x}=F(x)
 \]</span> where <span class="math inline">\(x(t)\)</span> represents the position of a particle at time, <span class="math inline">\(t\)</span>, <span class="math inline">\(m\)</span> represents a constant particle mass and <span class="math inline">\(F\)</span> a resultant force.</p>
 <p>Consider the case in which <span class="math inline">\(F\)</span> represents a linear restoring force, i.e. <span class="math display">\[
 F(x)=-kx.
-\]</span> The equation of motion can be written as <span class="math display">\[
+\]</span> The equation of motion can be written as <span id="eq-secondorderODE"><span class="math display">\[
 \ddot{x}=-\mu x,
-\]</span> {eq-secondorderODE} where <span class="math inline">\(\mu=-k/m\)</span>.</p>
+\tag{1.2}\]</span></span> where <span class="math inline">\(\mu=-k/m\)</span>.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 1.1</strong></span> The app in <a href="#fig-popmodel" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> encodes a numerical solution of the second order ODE</p>
 <p><span class="math display">\[
 a\ddot{x}+b\dot{x}+cx=0.
 \]</span></p>
 <p>Choose an appropriate value of the parameters <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span> so that the solution captures the case of a particle of mass (<span class="math inline">\(m\)</span>) equal to 3 subjected to a linear restoring force with spring constant (<span class="math inline">\(k\)</span>) equal to 5.</p>
-<p>Is the behaviour of the numerical solution consistent with <span class="quarto-unresolved-ref">?eq-secondorderODE</span>.</p>
+<p>Is the behaviour of the numerical solution consistent with <a href="#eq-secondorderODE" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>.</p>
 </div>
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-popmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -395,7 +395,7 @@ def server(input, output, session):
         
         ax.plot(t, y)
         ax.set_xlabel('$t$')
-        ax.set_ylabel('$y(t)$')
+        ax.set_ylabel('$x(t)$')
 
         plt.grid()
         #plt.show()
@@ -636,7 +636,7 @@ x=\begin{cases}
 <p><span class="math display">\[
 \dot{x}=f(x), \quad x(0)=x_0, \quad 0&lt;t&lt;T.
 \]</span></p>
-<p>Discretise the independent variable <span class="math inline">\(t\)</span> by defining t=0,t,2t,…,T.</p>
+<p>Discretise the independent variable <span class="math inline">\(t\)</span> by defining <span class="math inline">\(t=0\)</span>,<span class="math inline">\(\Delta t\)</span>,<span class="math inline">\(2\Delta t\)</span>,…,<span class="math inline">\(T=N\Delta T\)</span>.</p>
 <p>Approximate the time derivative</p>
 <p><span class="math display">\[
 \dot{x}=\frac{dx}{dt}\sim \frac{x(t+\Delta t)-x(t)}{\Delta t}
@@ -644,7 +644,7 @@ x=\begin{cases}
 <p>Hence the solution at time <span class="math inline">\(t+\Delta t\)</span> can be approximated by <span class="math display">\[
 x(t+\Delta t)=x(t)+\Delta t f(x(t)).
 \]</span></p>
-<p>Given an initial condition <span class="math inline">\(x(0)=a\)</span> we can compute the approximate solution at time <span class="math inline">\(\Delta t\)</span>.</p>
+<p>Given an initial condition <span class="math inline">\(x(0)=a\)</span> we can compute the approximate solution at time <span class="math inline">\(\Delta t\)</span>. Further iteration then allows an approximate solution to be calculated.</p>
 <p>Numerical solutions provide a a very useful way to explore solution behaviour. However, they describe the quantitative behaviour of a solution for a particular initial condition and set of parameter values.</p>
 
 
