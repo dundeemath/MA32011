@@ -90,6 +90,16 @@
     ]
   },
   {
+    "objectID": "intro.html#discrete-v-continuous-time",
+    "href": "intro.html#discrete-v-continuous-time",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1.1 Differential equation\nLet \\(t\\) be a continuous variable and \\(x=x(t)\\). Consider the ODE \\[\n\\dot{x}=rx(1-x).\n\\tag{1.1}\\]\n\\(\\dot{x}\\) is used to denote the time derivative, i.e. \\[\n\\dot{x}:=\\frac{dx}{dt}.\n\\]\nSimilarly, the second order derivative is represented by \\[\n\\ddot{x}:=\\frac{d^2x}{dt^2}.\n\\]\n\n\n1.1.2 Difference equations\nSuppose that \\(n\\) is a discrete variable. Let \\(y_n\\) represent a dependent variable at iteration \\(n\\). Consider the difference equation \\[\ny_{n+1}=ry_n(1-y_n),\n\\] where \\(r \\in \\Re\\).\n\n\n1.1.3 Key questions\n\ndo solutions exist? If so are they unique?\nIs there an explicit solution?\nCan we qualitatively describe solutions?\nHow do the solutions depend on the model parameters?",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
     "objectID": "intro.html#autonomous-v-nonautonomous",
     "href": "intro.html#autonomous-v-nonautonomous",
     "title": "1  Introduction",
@@ -321,38 +331,6 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Python</span>"
-    ]
-  },
-  {
-    "objectID": "CurveSketching.html",
-    "href": "CurveSketching.html",
-    "title": "4  Curve sketching",
-    "section": "",
-    "text": "4.1\nIn the module we will be required to graph of nonlinear function.\nConsider a nonlinear function \\[\nf(x;p), \\quad x \\in \\Re.\n\\] where \\(p\\) is a constant.\nFor example, \\[\nf(x)=rx(1-x), \\quad x \\in \\Re.\n\\]\nOur goal is usually to sketch \\(f\\) in qualitatively distinct cases. For example: the graph of \\(f\\) when \\(r=1\\) is qualitatively equivelent to the graph of \\(f\\) when \\(r=2\\). However, when \\(r=-1\\) it is qualitatively distinct.\nThe challenge is to firstly identify qualitatively distinct cases. Then sketch \\(f\\) for each of these cases.\nT0 identify qualitatively distinct cases we test the properties of \\(f\\) as follows:",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Curve sketching</span>"
-    ]
-  },
-  {
-    "objectID": "CurveSketching.html#section",
-    "href": "CurveSketching.html#section",
-    "title": "4  Curve sketching",
-    "section": "",
-    "text": "Identify the biologically relevant roots of f.  We define \\(x^*\\) such that \\[\nf(x^*;p)=0.\n\\] Biologically relevant solutions require \\(x^*\\geq0\\).\nDoes the number of biologically relevant solutions depend on the parameter \\(p\\)?\nIdentify the turning points of f.\nDifferentiate \\(f\\) with respect to \\(x\\). Identify turning points, \\(x_c\\), such that \\[\n     \\frac{df}{dx}\\bigg|_{x=x_c}=0.\n\\] Are there any turning points? Are they biologically relevant? Does the number of biologically relevant solutions depend on the parameter \\(p\\)?\nIdentify limiting behaviour as \\(x\\rightarrow \\infty\\). Compute the limit \\[\n\\lim_{x\\rightarrow \\infty}f(x;p)=0.\n\\]",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Curve sketching</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#discrete-v-continuous-time",
-    "href": "intro.html#discrete-v-continuous-time",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "1.1.1 Differential equation\nLet \\(t\\) be a continuous variable and \\(x=x(t)\\). Consider the ODE \\[\n\\dot{x}=rx(1-x).\n\\tag{1.1}\\]\n\\(\\dot{x}\\) is used to denote the time derivative, i.e. \\[\n\\dot{x}:=\\frac{dx}{dt}.\n\\]\nSimilarly, the second order derivative is represented by \\[\n\\ddot{x}:=\\frac{d^2x}{dt^2}.\n\\]\n\n\n1.1.2 Difference equations\nSuppose that \\(n\\) is a discrete variable. Let \\(y_n\\) represent a dependent variable at iteration \\(n\\). Consider the difference equation \\[\ny_{n+1}=ry_n(1-y_n),\n\\] where \\(r \\in \\Re\\).\n\n\n1.1.3 Key questions\n\ndo solutions exist? If so are they unique?\nIs there an explicit solution?\nCan we qualitatively describe solutions?\nHow do the solutions depend on the model parameters?",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   }
 ]
