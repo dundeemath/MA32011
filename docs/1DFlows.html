@@ -106,26 +106,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 .Conjecture {
   --color1: #948bde;
   --color2: #584eab;
@@ -133,6 +113,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 .Theorem {
   --color1: #948bde;
   --color2: #584eab;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .TODO {
   --color1: #e7b1b4;
@@ -142,9 +130,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #cce7b1;
   --color2: #86b754;
 }
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 </style>
 
@@ -336,7 +336,7 @@ window.Quarto = {
 <p><span class="math display">\[
 t=-\ln |\csc x + \cot x| + C,
 \]</span> where <span class="math inline">\(C\)</span> is an integration constant.</p>
-<div id="632e4542" class="cell" data-execution_count="1">
+<div id="18c1abf8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -408,7 +408,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="Solution*-2" class="Solution">
 <details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
 <p>The fixed points are <span class="math inline">\(x^*=\pm 1\)</span>.</p>
-<div id="93c0059d" class="cell" data-execution_count="2">
+<div id="5b8b40fc" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span>
