@@ -100,11 +100,11 @@
     ]
   },
   {
-    "objectID": "intro.html#autonomous-v-nonautonomous",
-    "href": "intro.html#autonomous-v-nonautonomous",
+    "objectID": "intro.html#autonomous-v-nonautonomous-odes",
+    "href": "intro.html#autonomous-v-nonautonomous-odes",
     "title": "1  Introduction",
-    "section": "1.2 Autonomous v nonautonomous",
-    "text": "1.2 Autonomous v nonautonomous\nFor an autonomous system, the update does not explicitly depend on the independent variable. Equation 1.1 is autonomous. But \\[\n\\dot{x}=rx(1-x+t)\n\\] is nonautonomous because of the explicit time dependence on the right-hand side.",
+    "section": "1.2 Autonomous v nonautonomous ODEs",
+    "text": "1.2 Autonomous v nonautonomous ODEs\nFor an autonomous system, the update does not explicitly depend on the independent variable. Equation 1.1 is autonomous. But \\[\n\\dot{x}=rx(1-x+t)\n\\] is nonautonomous (because of the explicit time dependence on the right-hand side).",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -331,16 +331,6 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Python</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#autonomous-v-nonautonomous-odes",
-    "href": "intro.html#autonomous-v-nonautonomous-odes",
-    "title": "1  Introduction",
-    "section": "1.2 Autonomous v nonautonomous ODEs",
-    "text": "1.2 Autonomous v nonautonomous ODEs\nFor an autonomous system, the update does not explicitly depend on the independent variable. Equation 1.1 is autonomous. But \\[\n\\dot{x}=rx(1-x+t)\n\\] is nonautonomous (because of the explicit time dependence on the right-hand side).",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   }
 ]
