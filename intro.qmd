@@ -10,12 +10,7 @@ To begin with we introduce some key terminology.
 
 ### Differential equations
 
-Let $t$ be a continuous variable and $x=x(t)$. Consider the ordinary differential equation (ODE)
-$$
-\dot{x}=rx(1-x).
-$$ {#eq-logdemo}
-
-$\dot{x}$ is used to denote the time derivative, i.e.
+Let $t$ be a continuous variable and $x=x(t)$. $\dot{x}$ is used to denote the time derivative, i.e.
 $$
 \dot{x}:=\frac{dx}{dt}.
 $$
@@ -25,16 +20,46 @@ Similarly, the second order derivative is represented by
 \ddot{x}:=\frac{d^2x}{dt^2}.
 $$
 
-Many of the  second order ODE problems that we will examine originate from Newton's Second Law, i.e.
+#### Population dynamics 
+
+Many of the biological examples that we will encounter later describe population dynamics.  Let $N(t)$ represent the size of a population at time $t$.
+
+Suppose that individuals are born at per capita constant rate $b$ and die at a rate $d$.
+
+We can write 
+$$
+N(t+\Delta t)=N(t)+bN(t)\Delta t -dN(t)\Delta t
+$$
+
+Gathering terms and taking the limit $\Delta t \rightarrow 0$ yields
+$$
+\dot{N}=(b-d)N.
+$$
+
+If we allow the birth and death rates to depend on population size then we can derive a more general equation
+$$
+\dot{N}=H(N),
+$$
+where $H$ is some prescribed function. An example is the logistic growth equation
+$$
+\dot{N}=rN(1-N).
+$$ {#eq-logdemo}
+
+
+
+
+#### Newton's second law
+
+Many of the physics examples that we will examine later originate from Newton's Second Law, i.e.
 
 $$
-m\ddot{x}=F(x)
+m\ddot{x}=F(x,\dot{x})
 $$
 where $x(t)$ represents the position of a particle at time, $t$, $m$ represents a constant particle mass and $F$ a resultant force.
 
 Consider the case in which $F$ represents a linear restoring force, i.e.
 $$
-F(x)=-kx.
+F(x,\dot{x})=-kx.
 $$
 The equation of motion can be written as 
 $$
@@ -160,7 +185,15 @@ y_{n+1}=ry_n(1-y_n),
 $$
 where $r\in \Re$.
 
-See this [link](https://dundeemath.github.io/Admissions/posts/RecurrenceRelations.html) for exploration of model solutions.
+
+::: {#exm-    }
+
+Use the app below to
+1.  explore how the solution behaviour (top row) changes qualitatively as the parameter $r$ increases.
+2. connect the branching structure in the bifurcation diagram (second and third rows) to the qualitative behaviour of the solution (top row).
+3. demonstrate self similarity (by zooming in on the bifurcation diagram (bottom row) show that the structure appears to repeat at finer scales).
+
+:::
 
 ::: {#fig-logisticmodel .content-visible when-format="html"}
 
@@ -388,6 +421,20 @@ Stability analyses are used to investigate the dynamics of perturbations about t
 
 We will restrict ourselves to problems in which the vector fields are sufficiently *well behaved* such that unique solutions exist. 
 
+
+::: {.Theorem #thm-existunique}
+
+Suppose that
+$$
+\dot{{x}}=f(x), \quad x(0)=x_0.
+$$ {#eq-genODE}
+
+If $f$ is continuously differentiable on an open interval $D$ of the $x$ axis and $x_0$ is a point in $D$, @eq-genODE possesses a unique solution on some time interval  $(-\tau,\tau)$.
+
+:::
+
+
+
 However, it is noted that problems can be identified where solutions do not exist or where multiple solutions exist. 
 
 ::: {#exm-    }
@@ -397,6 +444,8 @@ $$
 \dot{x}=x^2 \quad x(0)=2
 $$
 blows up after a finite time.
+
+Is this result consistent with  @thm-existunique?
 :::
 
 
@@ -413,7 +462,8 @@ x=\begin{cases}
 &\frac{(t-\delta)^2}{4}>\delta \  \, t> \delta
 \end{cases}
 $$
-for any $\delta >0$. 
+for any $\delta >0$.  Why does this form imply that the solution is not unique? Is this result consistent with  @thm-existunique?
+
 :::
 
 

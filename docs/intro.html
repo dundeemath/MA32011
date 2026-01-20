@@ -76,6 +76,18 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
@@ -84,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Proof {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -92,29 +104,17 @@ ul.task-list li input[type="checkbox"] {
   --color1: #948bde;
   --color2: #584eab;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
 .Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 </style>
 
@@ -289,21 +289,36 @@ window.Quarto = {
 <h2 data-number="1.1" class="anchored" data-anchor-id="discrete-v-continuous-time"><span class="header-section-number">1.1</span> Discrete v continuous time</h2>
 <section id="differential-equations" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="differential-equations"><span class="header-section-number">1.1.1</span> Differential equations</h3>
-<p>Let <span class="math inline">\(t\)</span> be a continuous variable and <span class="math inline">\(x=x(t)\)</span>. Consider the ordinary differential equation (ODE) <span id="eq-logdemo"><span class="math display">\[
-\dot{x}=rx(1-x).
-\tag{1.1}\]</span></span></p>
-<p><span class="math inline">\(\dot{x}\)</span> is used to denote the time derivative, i.e. <span class="math display">\[
+<p>Let <span class="math inline">\(t\)</span> be a continuous variable and <span class="math inline">\(x=x(t)\)</span>. <span class="math inline">\(\dot{x}\)</span> is used to denote the time derivative, i.e. <span class="math display">\[
 \dot{x}:=\frac{dx}{dt}.
 \]</span></p>
 <p>Similarly, the second order derivative is represented by <span class="math display">\[
 \ddot{x}:=\frac{d^2x}{dt^2}.
 \]</span></p>
-<p>Many of the second order ODE problems that we will examine originate from Newton’s Second Law, i.e.</p>
+<section id="population-dynamics" class="level4" data-number="1.1.1.1">
+<h4 data-number="1.1.1.1" class="anchored" data-anchor-id="population-dynamics"><span class="header-section-number">1.1.1.1</span> Population dynamics</h4>
+<p>Many of the biological examples that we will encounter later describe population dynamics. Let <span class="math inline">\(N(t)\)</span> represent the size of a population at time <span class="math inline">\(t\)</span>.</p>
+<p>Suppose that individuals are born at per capita constant rate <span class="math inline">\(b\)</span> and die at a rate <span class="math inline">\(d\)</span>.</p>
+<p>We can write <span class="math display">\[
+N(t+\Delta t)=N(t)+bN(t)\Delta t -dN(t)\Delta t
+\]</span></p>
+<p>Gathering terms and taking the limit <span class="math inline">\(\Delta t \rightarrow 0\)</span> yields <span class="math display">\[
+\dot{N}=(b-d)N.
+\]</span></p>
+<p>If we allow the birth and death rates to depend on population size then we can derive a more general equation <span class="math display">\[
+\dot{N}=H(N),
+\]</span> where <span class="math inline">\(H\)</span> is some prescribed function. An example is the logistic growth equation <span id="eq-logdemo"><span class="math display">\[
+\dot{N}=rN(1-N).
+\tag{1.1}\]</span></span></p>
+</section>
+<section id="newtons-second-law" class="level4" data-number="1.1.1.2">
+<h4 data-number="1.1.1.2" class="anchored" data-anchor-id="newtons-second-law"><span class="header-section-number">1.1.1.2</span> Newton’s second law</h4>
+<p>Many of the physics examples that we will examine later originate from Newton’s Second Law, i.e.</p>
 <p><span class="math display">\[
-m\ddot{x}=F(x)
+m\ddot{x}=F(x,\dot{x})
 \]</span> where <span class="math inline">\(x(t)\)</span> represents the position of a particle at time, <span class="math inline">\(t\)</span>, <span class="math inline">\(m\)</span> represents a constant particle mass and <span class="math inline">\(F\)</span> a resultant force.</p>
 <p>Consider the case in which <span class="math inline">\(F\)</span> represents a linear restoring force, i.e. <span class="math display">\[
-F(x)=-kx.
+F(x,\dot{x})=-kx.
 \]</span> The equation of motion can be written as <span id="eq-secondorderODE"><span class="math display">\[
 \ddot{x}=-\mu x,
 \tag{1.2}\]</span></span> where <span class="math inline">\(\mu=-k/m\)</span>.</p>
@@ -411,12 +426,15 @@ Figure&nbsp;1.1: Exploring numerical solutions of a linear second order ODE.
 </figcaption>
 </figure>
 </section>
+</section>
 <section id="difference-equations" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="difference-equations"><span class="header-section-number">1.1.2</span> Difference equations</h3>
 <p>Suppose that <span class="math inline">\(n\)</span> is a discrete variable. Let <span class="math inline">\(y_n\)</span> represent a dependent variable at iteration <span class="math inline">\(n\)</span>. Consider the difference equation <span class="math display">\[
 y_{n+1}=ry_n(1-y_n),
 \]</span> where <span class="math inline">\(r\in \Re\)</span>.</p>
-<p>See this <a href="https://dundeemath.github.io/Admissions/posts/RecurrenceRelations.html">link</a> for exploration of model solutions.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1.2</strong></span> Use the app below to 1. explore how the solution behaviour (top row) changes qualitatively as the parameter <span class="math inline">\(r\)</span> increases. 2. connect the branching structure in the bifurcation diagram (second and third rows) to the qualitative behaviour of the solution (top row). 3. demonstrate self similarity (by zooming in on the bifurcation diagram (bottom row) show that the structure appears to repeat at finer scales).</p>
+</div>
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-logisticmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
@@ -570,7 +588,7 @@ Figure&nbsp;1.2: Exploring behaviour of the logistic map using numerical solutio
 \dot{x}=-x^2
 \tag{1.4}\]</span></span> is nonlinear.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.2</strong></span> Integrate each of <a href="#eq-linex" class="quarto-xref">Equation&nbsp;<span>1.3</span></a> and eq-nonlinex. Use the solutions to demonstrate that the principle of linear superpositions holds for <span class="quarto-unresolved-ref">?eq-lines</span> but not for <a href="#eq-nonlinex" class="quarto-xref">Equation&nbsp;<span>1.4</span></a>.</p>
+<p><span class="theorem-title"><strong>Example 1.3</strong></span> Integrate each of <a href="#eq-linex" class="quarto-xref">Equation&nbsp;<span>1.3</span></a> and <a href="#eq-nonlinex" class="quarto-xref">Equation&nbsp;<span>1.4</span></a>. Use the solutions to demonstrate that the principle of linear superpositions holds for <a href="#eq-linex" class="quarto-xref">Equation&nbsp;<span>1.3</span></a> but not for <a href="#eq-nonlinex" class="quarto-xref">Equation&nbsp;<span>1.4</span></a>.</p>
 </div>
 </section>
 <section id="quantitative-v-qualitative-solutions" class="level2" data-number="1.4">
@@ -617,21 +635,29 @@ x(t*)=x_0/2 \implies t^* = \frac{\ln 2}{k}.
 <section id="uniqueness-and-existence" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="uniqueness-and-existence"><span class="header-section-number">1.7</span> Uniqueness and existence</h2>
 <p>We will restrict ourselves to problems in which the vector fields are sufficiently <em>well behaved</em> such that unique solutions exist.</p>
+<div id="thm-existunique" class="Theorem theorem">
+<p><span class="theorem-title"><strong>Theorem 1.1</strong></span> </p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>Suppose that <span id="eq-genODE"><span class="math display">\[
+\dot{{x}}=f(x), \quad x(0)=x_0.
+\tag{1.5}\]</span></span><p></p>
+<p>If <span class="math inline">\(f\)</span> is continuously differentiable on an open interval <span class="math inline">\(D\)</span> of the <span class="math inline">\(x\)</span> axis and <span class="math inline">\(x_0\)</span> is a point in <span class="math inline">\(D\)</span>, <a href="#eq-genODE" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> possesses a unique solution on some time interval <span class="math inline">\((-\tau,\tau)\)</span>.</p>
+</div></details>
+</div>
 <p>However, it is noted that problems can be identified where solutions do not exist or where multiple solutions exist.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.3</strong></span> Show that the solution to the ODE <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 1.4</strong></span> Show that the solution to the ODE <span class="math display">\[
 \dot{x}=x^2 \quad x(0)=2
 \]</span> blows up after a finite time.</p>
+<p>Is this result consistent with <a href="#thm-existunique" class="quarto-xref">Theorem&nbsp;<span>1.1</span></a>?</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.4</strong></span> Show that the solution to the ODE <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 1.5</strong></span> Show that the solution to the ODE <span class="math display">\[
 \dot{x}=\sqrt{x} \quad x(0)=0
 \]</span> is given by <span class="math display">\[
 x=\begin{cases}
-&amp;0 \ \  &amp;t\leq\delta \\
-&amp;\frac{(t-\delta)^2}{4}&gt;\delta \ &amp;t&gt; \delta
+&amp;0 \ \, t\leq\delta \\
+&amp;\frac{(t-\delta)^2}{4}&gt;\delta \  \, t&gt; \delta
 \end{cases}
-\]</span> for any <span class="math inline">\(\delta &gt;0\)</span>.</p>
+\]</span> for any <span class="math inline">\(\delta &gt;0\)</span>. Why does this form imply that the solution is not unique? Is this result consistent with <a href="#thm-existunique" class="quarto-xref">Theorem&nbsp;<span>1.1</span></a>?</p>
 </div>
 </section>
 <section id="nondimensionalisation" class="level2" data-number="1.8">
@@ -655,7 +681,7 @@ x(t+\Delta t)=x(t)+\Delta t f(x(t)).
 <p>Given an initial condition <span class="math inline">\(x(0)=a\)</span> we can compute the approximate solution at time <span class="math inline">\(\Delta t\)</span>. Further iteration then allows an approximate solution to be calculated.</p>
 <p>Numerical solutions provide a a very useful way to explore solution behaviour. However, they describe the quantitative behaviour of a solution for a particular initial condition and set of parameter values.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.5</strong></span> The app in <a href="#fig-forwardEuler" class="quarto-xref">Figure&nbsp;<span>1.3</span></a> uses the Forward Euler method to compute numerical solutions of the ODE <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 1.6</strong></span> The app below uses the Forward Euler method to compute numerical solutions of the ODE <span class="math display">\[
 \dot{x}=a+bx+cx^2
 \]</span> in the domain <span class="math inline">\([0,T]\)</span> with initial condition <span class="math display">\[
 x(0)=x_0.
@@ -663,11 +689,10 @@ x(0)=x_0.
 <ol type="1">
 <li>Choose model parameters so that the app solves the ODE <span class="math display">\[
 \dot{x}=-bx, \quad x(0)=x_0.
-\]</span> and the numerical solution agrees with the exact solution (dashed line).</li>
+\]</span> and show that the numerical solution agrees (eye ball norm) with the exact solution (dashed line).</li>
 <li>Show that the numerical error increases with <span class="math inline">\(\Delta t\)</span>.</li>
 </ol>
 </div>
-<div id="fig-forwardEuler" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-forwardEuler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
@@ -752,7 +777,6 @@ app = App(app_ui, server)</code></pre>
 Figure&nbsp;1.3: Numerical solution of an ODE with a quadratic right-hand side.
 </figcaption>
 </figure>
-</div>
 
 
 </section>
