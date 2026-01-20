@@ -1,8 +1,0 @@
-/* Force all shinylive blocks to stay open */
-.quarto-book details.quarto-details {
-  open: true;
-}
-
-.quarto-book details.quarto-details > summary {
-  display: none;
-}
