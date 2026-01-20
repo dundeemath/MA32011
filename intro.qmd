@@ -51,7 +51,10 @@ $$
 a\ddot{x}+b\dot{x}+cx=0.
 $$
 
-Choose an appropriate value of the parameters $a$, $b$ and $c$ so that the solution captures the case of a particle of mass ($m$) equal to 3 subjected to a linear restoring force with spring constant ($k$) equal to 5.
+Use the app to:
+
+- identify appropriate values of the parameters $a$, $b$ and $c$ so that the solution captures the case of a particle of mass ($m$) equal to 3 subjected to a linear restoring force with spring constant ($k$) equal to 5.
+- explore the dependence of oscillation period on initial conditions.
 
 Is the behaviour of the numerical solution consistent with @eq-secondorderODE.
 
@@ -308,12 +311,19 @@ In linear dynamical systems, the dynamics are a function of linear sums of the d
 
 $$
 \dot{x}=-x
-$$
+$${#eq-linex}
 is a linear ordinary differential equation (ODE). But 
 $$
 \dot{x}=-x^2
-$$
+$$ {#eq-nonlinex}
 is nonlinear.
+
+::: {#exm-    }
+
+Integrate each of @eq-linex and eq-nonlinex. Use the solutions to demonstrate that the principle of linear superpositions holds for @eq-lines but not for @eq-nonlinex.
+
+
+:::
 
 
 ## Quantitative v qualitative solutions  
@@ -335,10 +345,10 @@ $$
 x(t*)=x_0/2 \implies t^* = \frac{\ln 2}{k}.
 $$
 
-However, in the study of nonlinear systems, most problems will not have an explicit solution. For example, consider the nonlinear ODE
+However, almost all problems that we will encounter in the study of nonlinear systems will not have an explicit solution. For example, consider the nonlinear ODE
 
 $$
-\dot{x}=-\frac{k\sin(x)+\sqrt{x}}{1+x}, \quad  x(0)=x_0
+\dot{x}=-\frac{k\sin(x)+\sqrt{x}}{1+x}, \quad  x(0)=x_0,
 $$
 where $0<x_0<\pi$.
 
@@ -352,16 +362,16 @@ Hence the solution will decrease in value from the given initial condition and t
 
 ## Representing solutions
 
-It is useful to introduce some nomenclature to describe the solutions of a dynamical system. Consider an ODE
+It is useful to define some important concepts that are used to describe the solutions of a dynamical system. Consider an ODE
 $$
-\dot{x}=f(x), \quad x(0)=x_0,
+\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}), \quad \mathbf{x}(0)=\mathbf{x}_0,
 $$
-where $f$ is a prescribed function and $x_0$ is an initial condition. 
+where $\mathbf{f}$ is a prescribed function and $\mathbf{x}_0$ is an initial condition. 
 
-- phase space - put dependent variable on  Cartesian axes
+- *phase space* -  a Cartesian coordinate system with dependent variables represented on Cartesian axes
 - *phase point* - value of the solution at given time point 
-- *vector field* - the derivative of the solution, i.e. $f$. 
-- *trajectory* - a line in phase space that traces out a solution as time evolves
+- *vector field* - the derivative of the solution, i.e. $\mathbf{f}$. 
+- *trajectory* - a line in phase space that traces out a solution as time evolves (must be tangential to vector field)
 - *phase portrait* - collection of trajectories (i.e. solutions with different initial conditions)
 
 
@@ -376,7 +386,9 @@ Stability analyses are used to investigate the dynamics of perturbations about t
 
 ## Uniqueness and existence
 
-We will restrict ourselves to problems in which the vector fields are sufficiently well behaved such that unique solutions exist. However, problems can be identified where solutions do not exists or where multiple solutions exist. 
+We will restrict ourselves to problems in which the vector fields are sufficiently *well behaved* such that unique solutions exist. 
+
+However, it is noted that problems can be identified where solutions do not exist or where multiple solutions exist. 
 
 ::: {#exm-    }
 
@@ -384,7 +396,7 @@ Show that the solution to the ODE
 $$
 \dot{x}=x^2 \quad x(0)=2
 $$
-is not defined for all $t>0$.
+blows up after a finite time.
 :::
 
 
@@ -401,6 +413,7 @@ x=\begin{cases}
 &\frac{(t-\delta)^2}{4}>\delta \ &t> \delta
 \end{cases}
 $$
+for any $\delta >0$. 
 :::
 
 
@@ -433,3 +446,104 @@ Given an initial condition $x(0)=a$ we can compute the approximate solution at t
 
 Numerical solutions provide a a very useful way to explore solution behaviour. However, they describe  the quantitative behaviour  of a solution for a particular initial condition and set of parameter values. 
 
+
+::: {#exm-    }
+
+The app in @fig-forwardEuler uses the Forward Euler method  to compute numerical solutions of the ODE
+$$
+\dot{x}=a+bx+cx^2
+$$
+in the domain $[0,T]$ with initial condition
+$$
+x(0)=x_0.
+$$
+
+1. Choose model parameters so that the app solves the ODE 
+$$
+\dot{x}=-bx, \quad x(0)=x_0.
+$$
+and the numerical solution agrees with the exact solution (dashed line).
+2. Show that the numerical error increases with $\Delta t$. 
+
+:::
+
+::: {#fig-forwardEuler}
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 800
+
+
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="x0",label="x_0",min=0.0,max=10.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T",min=0.0,max=60.0,value=20.0,step=1.0),
+    ui.input_slider(id="a",label="a",min=-5.0,max=5.0,value=-1.0,step=0.01),
+    ui.input_slider(id="b",label="b",min=-5.0,max=5.0,value=2.0,step=0.01),ui.output_plot("plot"),
+    ui.input_slider(id="c",label="c",min=-5.0,max=5.0,value=0.1,step=0.01),
+    ui.input_slider(id="dt",label="dt",min=0.0,max=1.0,value=0.01,step=0.001),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(1,1,figsize=(12, 4))
+       
+        x0=float(input.x0())
+        T=float(input.T())
+        a=float(input.a())
+        b=float(input.b())
+        c=float(input.c())
+        dt=float(input.dt())
+
+
+        # Define rhs of logistic map 
+        def oderhs(y,a,b,c):
+          rhs=a+b*y+c*y**2
+          return rhs
+        
+        def FESol(y_0,t,a,b,c,dt):
+            y=np.zeros_like(t,dtype=float)
+            y[0]=y_0
+            for i in range(len(t)):
+                if i>0:
+                    y[i]=y[i-1]+dt*oderhs(y[i-1],a,b,c)
+            return y
+
+        N=int(np.ceil(T/dt))
+        # Define discretised t domain
+        t = np.linspace(0, T,N)
+        
+        # Compute numerical solution of ODEs
+        sol1 = FESol(x0,t,a,b,c,dt)
+
+        # Plot results
+        y=sol1
+        
+        model_sol=x0*np.exp(b*t)
+        ax.plot(t,y,t,model_sol,'--')
+        ax.set_xlabel('$t$')
+        ax.set_ylabel('$x(t)$')
+        ax.set_ylim([0,2*x0])
+
+        fig.legend(['Num','$x_0e^{bt}$'])
+
+        plt.grid()
+
+        plt.show()
+    
+app = App(app_ui, server)
+```
+
+Numerical solution of an ODE with a quadratic right-hand side.
+:::
