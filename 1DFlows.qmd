@@ -6,7 +6,6 @@ format: html
 
 Here we consider ODE models with a single dependent variable that are first order in time.
 
-
 Let $x=x(t)$.
 $$
 \dot{x}=f(x).
@@ -29,7 +28,7 @@ For the initial condition $x(0)=\pi/4$, describe solution behaviour as $t\righta
 
 :::
 
-::: {.Solution}
+
 
 After applying separation of variables, an implicit solution is given by
 
@@ -84,12 +83,11 @@ for x_i,y_i,x0_i,y0_i in zip(x,y,x0,y0):
   
 plt.show()
 
-
-
 ```
 :::
 
-:::
+
+
 
 
 ## Fixed points and linear stability
@@ -142,10 +140,14 @@ $$
 
 See @fig-fpcalc for graphical solution.
 
+:::
 
 ::: {#fig-fpcalc}
 ```{python}
 #| code-fold: True
+#| 
+import numpy as np
+
 x=np.linspace(-2,2)
 
 y=x**2-1
@@ -186,7 +188,7 @@ plt.show()
 Graphical solution of @eq-findfp.
 :::
 
-:::
+
 
 
 ### Linear stability analysis
@@ -388,6 +390,7 @@ Note that we can retrieve the original equation by rescaling and calculating $N=
 
 
 
+
 ### Steady states and linear stability
 
 Steady states satisfy
@@ -497,7 +500,7 @@ Oscillatory solutions to @eq-genODE are impossible, i.e. first order autonomous 
 This can be argued using geometrical constraints of dynamics on the line. 
 
 
-::: {#exm-}
+::: {#exm-    }
 
 Consider the integral
 $$
@@ -572,6 +575,7 @@ $$
 and identify equilibrium points.
 
 :::
+
 
 
 
