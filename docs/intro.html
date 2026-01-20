@@ -76,11 +76,11 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Corollary {
+.Conjecture {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Conjecture {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -88,17 +88,17 @@ ul.task-list li input[type="checkbox"] {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Lemma {
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .Feature {
   --color1: #c0c0c0;
@@ -108,13 +108,13 @@ ul.task-list li input[type="checkbox"] {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 </style>
 
@@ -312,7 +312,11 @@ F(x)=-kx.
 <p><span class="math display">\[
 a\ddot{x}+b\dot{x}+cx=0.
 \]</span></p>
-<p>Choose an appropriate value of the parameters <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span> so that the solution captures the case of a particle of mass (<span class="math inline">\(m\)</span>) equal to 3 subjected to a linear restoring force with spring constant (<span class="math inline">\(k\)</span>) equal to 5.</p>
+<p>Use the app to:</p>
+<ul>
+<li>identify appropriate values of the parameters <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span> so that the solution captures the case of a particle of mass (<span class="math inline">\(m\)</span>) equal to 3 subjected to a linear restoring force with spring constant (<span class="math inline">\(k\)</span>) equal to 5.</li>
+<li>explore the dependence of oscillation period on initial conditions.</li>
+</ul>
 <p>Is the behaviour of the numerical solution consistent with <a href="#eq-secondorderODE" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>.</p>
 </div>
 <figure class="quarto-float quarto-float-fig figure">
@@ -560,11 +564,14 @@ Figure&nbsp;1.2: Exploring behaviour of the logistic map using numerical solutio
 <h2 data-number="1.3" class="anchored" data-anchor-id="linear-v-nonlinear"><span class="header-section-number">1.3</span> Linear v Nonlinear</h2>
 <p>Linear systems satisfy a linear supposition principle: a sum of solutions is itself a solution. In general, this property does not hold for nonlinear systems.</p>
 <p>In linear dynamical systems, the dynamics are a function of linear sums of the dependent variables. Hence</p>
-<p><span class="math display">\[
+<p><span id="eq-linex"><span class="math display">\[
 \dot{x}=-x
-\]</span> is a linear ordinary differential equation (ODE). But <span class="math display">\[
+\tag{1.3}\]</span></span> is a linear ordinary differential equation (ODE). But <span id="eq-nonlinex"><span class="math display">\[
 \dot{x}=-x^2
-\]</span> is nonlinear.</p>
+\tag{1.4}\]</span></span> is nonlinear.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1.2</strong></span> Integrate each of <a href="#eq-linex" class="quarto-xref">Equation&nbsp;<span>1.3</span></a> and eq-nonlinex. Use the solutions to demonstrate that the principle of linear superpositions holds for <span class="quarto-unresolved-ref">?eq-lines</span> but not for <a href="#eq-nonlinex" class="quarto-xref">Equation&nbsp;<span>1.4</span></a>.</p>
+</div>
 </section>
 <section id="quantitative-v-qualitative-solutions" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="quantitative-v-qualitative-solutions"><span class="header-section-number">1.4</span> Quantitative v qualitative solutions</h2>
@@ -578,9 +585,9 @@ x(t)=x_0e^{-kt}
 <p>Using the explicit solution we can then answer questions about its behaviour. For example, let’s say we want to find the time, <span class="math inline">\(t^*\)</span>, at which the solution is half it’s maximum. Hence <span class="math display">\[
 x(t*)=x_0/2 \implies t^* = \frac{\ln 2}{k}.
 \]</span></p>
-<p>However, in the study of nonlinear systems, most problems will not have an explicit solution. For example, consider the nonlinear ODE</p>
+<p>However, almost all problems that we will encounter in the study of nonlinear systems will not have an explicit solution. For example, consider the nonlinear ODE</p>
 <p><span class="math display">\[
-\dot{x}=-\frac{k\sin(x)+\sqrt{x}}{1+x}, \quad  x(0)=x_0
+\dot{x}=-\frac{k\sin(x)+\sqrt{x}}{1+x}, \quad  x(0)=x_0,
 \]</span> where <span class="math inline">\(0&lt;x_0&lt;\pi\)</span>.</p>
 <p>I cannot integrate this equation in order to find solutions in terms of standard functions. Hence I cannot <em>quantitatively</em> describe the solution. However, I can identify that</p>
 <p><span class="math display">\[
@@ -590,14 +597,14 @@ x(t*)=x_0/2 \implies t^* = \frac{\ln 2}{k}.
 </section>
 <section id="representing-solutions" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="representing-solutions"><span class="header-section-number">1.5</span> Representing solutions</h2>
-<p>It is useful to introduce some nomenclature to describe the solutions of a dynamical system. Consider an ODE <span class="math display">\[
-\dot{x}=f(x), \quad x(0)=x_0,
-\]</span> where <span class="math inline">\(f\)</span> is a prescribed function and <span class="math inline">\(x_0\)</span> is an initial condition.</p>
+<p>It is useful to define some important concepts that are used to describe the solutions of a dynamical system. Consider an ODE <span class="math display">\[
+\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}), \quad \mathbf{x}(0)=\mathbf{x}_0,
+\]</span> where <span class="math inline">\(\mathbf{f}\)</span> is a prescribed function and <span class="math inline">\(\mathbf{x}_0\)</span> is an initial condition.</p>
 <ul>
-<li>phase space - put dependent variable on Cartesian axes</li>
+<li><em>phase space</em> - a Cartesian coordinate system with dependent variables represented on Cartesian axes</li>
 <li><em>phase point</em> - value of the solution at given time point</li>
-<li><em>vector field</em> - the derivative of the solution, i.e.&nbsp;<span class="math inline">\(f\)</span>.</li>
-<li><em>trajectory</em> - a line in phase space that traces out a solution as time evolves</li>
+<li><em>vector field</em> - the derivative of the solution, i.e.&nbsp;<span class="math inline">\(\mathbf{f}\)</span>.</li>
+<li><em>trajectory</em> - a line in phase space that traces out a solution as time evolves (must be tangential to vector field)</li>
 <li><em>phase portrait</em> - collection of trajectories (i.e.&nbsp;solutions with different initial conditions)</li>
 </ul>
 </section>
@@ -609,21 +616,22 @@ x(t*)=x_0/2 \implies t^* = \frac{\ln 2}{k}.
 </section>
 <section id="uniqueness-and-existence" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="uniqueness-and-existence"><span class="header-section-number">1.7</span> Uniqueness and existence</h2>
-<p>We will restrict ourselves to problems in which the vector fields are sufficiently well behaved such that unique solutions exist. However, problems can be identified where solutions do not exists or where multiple solutions exist.</p>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.2</strong></span> Show that the solution to the ODE <span class="math display">\[
-\dot{x}=x^2 \quad x(0)=2
-\]</span> is not defined for all <span class="math inline">\(t&gt;0\)</span>.</p>
-</div>
+<p>We will restrict ourselves to problems in which the vector fields are sufficiently <em>well behaved</em> such that unique solutions exist.</p>
+<p>However, it is noted that problems can be identified where solutions do not exist or where multiple solutions exist.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 1.3</strong></span> Show that the solution to the ODE <span class="math display">\[
+\dot{x}=x^2 \quad x(0)=2
+\]</span> blows up after a finite time.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1.4</strong></span> Show that the solution to the ODE <span class="math display">\[
 \dot{x}=\sqrt{x} \quad x(0)=0
 \]</span> is given by <span class="math display">\[
 x=\begin{cases}
 &amp;0 \ \  &amp;t\leq\delta \\
 &amp;\frac{(t-\delta)^2}{4}&gt;\delta \ &amp;t&gt; \delta
 \end{cases}
-\]</span></p>
+\]</span> for any <span class="math inline">\(\delta &gt;0\)</span>.</p>
 </div>
 </section>
 <section id="nondimensionalisation" class="level2" data-number="1.8">
@@ -646,6 +654,105 @@ x(t+\Delta t)=x(t)+\Delta t f(x(t)).
 \]</span></p>
 <p>Given an initial condition <span class="math inline">\(x(0)=a\)</span> we can compute the approximate solution at time <span class="math inline">\(\Delta t\)</span>. Further iteration then allows an approximate solution to be calculated.</p>
 <p>Numerical solutions provide a a very useful way to explore solution behaviour. However, they describe the quantitative behaviour of a solution for a particular initial condition and set of parameter values.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1.5</strong></span> The app in <a href="#fig-forwardEuler" class="quarto-xref">Figure&nbsp;<span>1.3</span></a> uses the Forward Euler method to compute numerical solutions of the ODE <span class="math display">\[
+\dot{x}=a+bx+cx^2
+\]</span> in the domain <span class="math inline">\([0,T]\)</span> with initial condition <span class="math display">\[
+x(0)=x_0.
+\]</span></p>
+<ol type="1">
+<li>Choose model parameters so that the app solves the ODE <span class="math display">\[
+\dot{x}=-bx, \quad x(0)=x_0.
+\]</span> and the numerical solution agrees with the exact solution (dashed line).</li>
+<li>Show that the numerical error increases with <span class="math inline">\(\Delta t\)</span>.</li>
+</ol>
+</div>
+<div id="fig-forwardEuler" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-forwardEuler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 800
+
+
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="x0",label="x_0",min=0.0,max=10.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T",min=0.0,max=60.0,value=20.0,step=1.0),
+    ui.input_slider(id="a",label="a",min=-5.0,max=5.0,value=-1.0,step=0.01),
+    ui.input_slider(id="b",label="b",min=-5.0,max=5.0,value=2.0,step=0.01),ui.output_plot("plot"),
+    ui.input_slider(id="c",label="c",min=-5.0,max=5.0,value=0.1,step=0.01),
+    ui.input_slider(id="dt",label="dt",min=0.0,max=1.0,value=0.01,step=0.001),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(1,1,figsize=(12, 4))
+       
+        x0=float(input.x0())
+        T=float(input.T())
+        a=float(input.a())
+        b=float(input.b())
+        c=float(input.c())
+        dt=float(input.dt())
+
+
+        # Define rhs of logistic map 
+        def oderhs(y,a,b,c):
+          rhs=a+b*y+c*y**2
+          return rhs
+        
+        def FESol(y_0,t,a,b,c,dt):
+            y=np.zeros_like(t,dtype=float)
+            y[0]=y_0
+            for i in range(len(t)):
+                if i&gt;0:
+                    y[i]=y[i-1]+dt*oderhs(y[i-1],a,b,c)
+            return y
+
+        N=int(np.ceil(T/dt))
+        # Define discretised t domain
+        t = np.linspace(0, T,N)
+        
+        # Compute numerical solution of ODEs
+        sol1 = FESol(x0,t,a,b,c,dt)
+
+        # Plot results
+        y=sol1
+        
+        model_sol=x0*np.exp(b*t)
+        ax.plot(t,y,t,model_sol,'--')
+        ax.set_xlabel('$t$')
+        ax.set_ylabel('$x(t)$')
+        ax.set_ylim([0,2*x0])
+
+        fig.legend(['Num','$x_0e^{bt}$'])
+
+        plt.grid()
+
+        plt.show()
+    
+app = App(app_ui, server)</code></pre>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-forwardEuler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.3: Numerical solution of an ODE with a quadratic right-hand side.
+</figcaption>
+</figure>
+</div>
 
 
 </section>
