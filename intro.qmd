@@ -320,7 +320,7 @@ is nonlinear.
 
 ::: {#exm-    }
 
-Integrate each of @eq-linex and eq-nonlinex. Use the solutions to demonstrate that the principle of linear superpositions holds for @eq-lines but not for @eq-nonlinex.
+Integrate each of @eq-linex and @eq-nonlinex. Use the solutions to demonstrate that the principle of linear superpositions holds for @eq-linex but not for @eq-nonlinex.
 
 
 :::
@@ -409,8 +409,8 @@ $$
 is given by
 $$
 x=\begin{cases}
-&0 \ \  &t\leq\delta \\
-&\frac{(t-\delta)^2}{4}>\delta \ &t> \delta
+&0 \ \, t\leq\delta \\
+&\frac{(t-\delta)^2}{4}>\delta \  \, t> \delta
 \end{cases}
 $$
 for any $\delta >0$. 
@@ -449,7 +449,7 @@ Numerical solutions provide a a very useful way to explore solution behaviour. H
 
 ::: {#exm-    }
 
-The app in @fig-forwardEuler uses the Forward Euler method  to compute numerical solutions of the ODE
+The app below uses the Forward Euler method  to compute numerical solutions of the ODE
 $$
 \dot{x}=a+bx+cx^2
 $$
@@ -462,12 +462,12 @@ $$
 $$
 \dot{x}=-bx, \quad x(0)=x_0.
 $$
-and the numerical solution agrees with the exact solution (dashed line).
+and show that the numerical solution agrees (eye ball norm) with the exact solution (dashed line).
 2. Show that the numerical error increases with $\Delta t$. 
 
 :::
 
-::: {#fig-forwardEuler}
+::: {#fig-forwardEuler .content-visible when-format="html"}
 ```{shinylive-python}
 #| standalone: true
 #| viewerHeight: 800
