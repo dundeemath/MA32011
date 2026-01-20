@@ -106,6 +106,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Proof {
   --color1: #c0c0c0;
   --color2: #808080;
@@ -114,37 +126,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
 .Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
 .Conjecture {
   --color1: #948bde;
   --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 </style>
 
@@ -327,8 +327,6 @@ window.Quarto = {
 \]</span></p>
 <p>For the initial condition <span class="math inline">\(x(0)=\pi/4\)</span>, describe solution behaviour as <span class="math inline">\(t\rightarrow \infty\)</span>.</p>
 </div>
-<div id="Solution*-1" class="Solution">
-<details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
 <p>After applying separation of variables, an implicit solution is given by</p>
 <p><span class="math display">\[
 t=-\ln |\csc x + \cot x| + C,
@@ -375,7 +373,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="fig-ODEqual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ODEqual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="2a6188ea" class="cell" data-execution_count="1">
+<div id="984c6e85" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -389,8 +387,6 @@ t=-\ln |\csc x + \cot x| + C,
 Figure&nbsp;2.1
 </figcaption>
 </figure>
-</div>
-</div></details>
 </div>
 </section>
 <section id="fixed-points-and-linear-stability" class="level2" data-number="2.2">
@@ -414,11 +410,10 @@ Figure&nbsp;2.1
 \dot{x}=x^2-1,
 \tag{2.2}\]</span></span></p>
 </div>
-<div id="Solution*-2" class="Solution">
-<details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
-<p>The fixed points are point, <span class="math inline">\(x^*\)</span> defined such that <span class="math display">\[
+<div id="Solution*-1" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The fixed points are point, <span class="math inline">\(x^*\)</span> defined such that <span class="math display">\[
 \dot{x}=0 \ \implies \ f(x^*)=0.
-\]</span></p>
+\]</span><p></p>
 <p>Hence fixed points satisfy <span class="math display">\[
 {x^*}^2-1=0.
 \]</span></p>
@@ -426,48 +421,52 @@ Figure&nbsp;2.1
 x^*=\pm 1.
 \]</span></p>
 <p>See <a href="#fig-fpcalc" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> for graphical solution.</p>
+</div></details>
+</div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>x<span class="op">**</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>x<span class="op">**</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ax.plot(x,y)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f$'</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylim([<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>])</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow target (arrow head)</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>]</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow start</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>[<span class="op">-</span><span class="fl">2.0</span>,<span class="fl">2.0</span>,<span class="fl">0.0</span>,<span class="fl">2.0</span>]</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x_i,y_i,x0_i,y0_i <span class="kw">in</span> <span class="bu">zip</span>(x,y,x0,y0):</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  ax.annotate(<span class="st">''</span>,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      xy<span class="op">=</span>(x_i, y_i),        <span class="co"># arrow head</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      xytext<span class="op">=</span>(x0_i, y0_i),  <span class="co"># arrow tail</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      arrowprops<span class="op">=</span><span class="bu">dict</span>(</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>          arrowstyle<span class="op">=</span><span class="st">'-&gt;'</span>,</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>          color<span class="op">=</span><span class="st">'black'</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>      ha<span class="op">=</span><span class="st">'center'</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.plot(x,y)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$f$'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylim([<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow target (arrow head)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>]</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow start</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>[<span class="op">-</span><span class="fl">2.0</span>,<span class="fl">2.0</span>,<span class="fl">0.0</span>,<span class="fl">2.0</span>]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x_i,y_i,x0_i,y0_i <span class="kw">in</span> <span class="bu">zip</span>(x,y,x0,y0):</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  ax.annotate(<span class="st">''</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      xy<span class="op">=</span>(x_i, y_i),        <span class="co"># arrow head</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      xytext<span class="op">=</span>(x0_i, y0_i),  <span class="co"># arrow tail</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>      arrowprops<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>          arrowstyle<span class="op">=</span><span class="st">'-&gt;'</span>,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>          color<span class="op">=</span><span class="st">'black'</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>      ha<span class="op">=</span><span class="st">'center'</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="fig-fpcalc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fpcalc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="14243997" class="cell" data-execution_count="2">
+<div id="aa013196" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -481,8 +480,6 @@ x^*=\pm 1.
 Figure&nbsp;2.2: Graphical solution of <a href="#eq-findfp" class="quarto-xref">Equation&nbsp;<span>2.2</span></a>.
 </figcaption>
 </figure>
-</div>
-</div></details>
 </div>
 </section>
 <section id="linear-stability-analysis" class="level3" data-number="2.2.2">
@@ -696,7 +693,7 @@ Figure&nbsp;2.4: Right-hand side of the logistic ODE
 N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
 \]</span></p>
 </div>
-<div id="Solution*-3" class="Solution">
+<div id="Solution*-2" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div><span class="math display">\[
 \int\frac{ dN}{N(1-\frac{N}{K})}=r\int dt.
 \]</span> Using partial fractions <span class="math display">\[
@@ -727,7 +724,7 @@ N(t)\sim N_0 e^{rt} \\ \ \ \ \ N_0\ll K, t\ll \frac{1}{r}.
 \int_t^{t+T} f(x(t))\frac{dx}{dt}dt,
 \]</span> where <span class="math inline">\(T\)</span> is the oscillation period. Use proof by contradiction to show that periodic solutions are impossible.</p>
 </div>
-<div id="Solution*-4" class="Solution">
+<div id="Solution*-3" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>Suppose that a periodic solution exists such that <span class="math display">\[
 x(t+T)=x(t), \ \ x(t+s)\neq x(t+T) \forall 0&lt;s&lt;T.
 \]</span><p></p>
