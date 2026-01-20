@@ -106,35 +106,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Solution {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
-}
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
 }
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Feature {
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -142,7 +134,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Lemma {
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -283,7 +283,7 @@ window.Quarto = {
   <li><a href="#validity-of-linear-classification" id="toc-validity-of-linear-classification" class="nav-link" data-scroll-target="#validity-of-linear-classification"><span class="header-section-number">2.3</span> Validity of linear classification</a></li>
   <li><a href="#case-study-population-dynamics" id="toc-case-study-population-dynamics" class="nav-link" data-scroll-target="#case-study-population-dynamics"><span class="header-section-number">2.4</span> Case study: population dynamics</a>
   <ul class="collapse">
-  <li><a href="#steady-states-and-linear-stability" id="toc-steady-states-and-linear-stability" class="nav-link" data-scroll-target="#steady-states-and-linear-stability"><span class="header-section-number">2.4.1</span> Steady states and linear stability</a></li>
+  <li><a href="#fixed-points-and-linear-stability-1" id="toc-fixed-points-and-linear-stability-1" class="nav-link" data-scroll-target="#fixed-points-and-linear-stability-1"><span class="header-section-number">2.4.1</span> Fixed points and linear stability</a></li>
   <li><a href="#graphical-analysis" id="toc-graphical-analysis" class="nav-link" data-scroll-target="#graphical-analysis"><span class="header-section-number">2.4.2</span> Graphical analysis</a></li>
   </ul></li>
   <li><a href="#impossibility-of-oscillations" id="toc-impossibility-of-oscillations" class="nav-link" data-scroll-target="#impossibility-of-oscillations"><span class="header-section-number">2.5</span> Impossibility of oscillations</a></li>
@@ -373,7 +373,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="fig-ODEqual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ODEqual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="28a31e69" class="cell" data-execution_count="1">
+<div id="97fd1766" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -466,7 +466,7 @@ x^*=\pm 1.
 <div id="fig-fpcalc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fpcalc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="610d3d12" class="cell" data-execution_count="2">
+<div id="b9f24492" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -489,7 +489,7 @@ Figure&nbsp;2.2: Graphical solution of <a href="#eq-findfp" class="quarto-xref">
 <h4 data-number="2.2.2.1" class="anchored" data-anchor-id="a-change-of-dependent-variable"><span class="header-section-number">2.2.2.1</span> A change of dependent variable</h4>
 <p>To perform a linear stability analysis we make the change of variables <span class="math display">\[
 x(t)=x^*+\hat{x}(t)
-\]</span> where the new dependent variable, <span class="math inline">\(\hat{x}(t)\)</span>, is a perturbation about the steady state.</p>
+\]</span> where the new dependent variable, <span class="math inline">\(\hat{x}(t)\)</span>, is a perturbation about the fixed point.</p>
 <p>The time derivative on the left-hand side of <a href="#eq-fp1d" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> transforms to <span class="math display">\[
 \dot{x}= \frac{d }{dt} (x^*) + \frac{d }{dt}(\hat{x}(t))=\dot{\hat{x}}.
 \]</span> Hence <a href="#eq-fp1d" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> transforms to <span class="math display">\[
@@ -511,7 +511,7 @@ f(x^*)=0
 </section>
 <section id="a-condition-for-linear-stability" class="level4" data-number="2.2.2.3">
 <h4 data-number="2.2.2.3" class="anchored" data-anchor-id="a-condition-for-linear-stability"><span class="header-section-number">2.2.2.3</span> A condition for linear stability</h4>
-<p>When <span class="math inline">\(f'(x^*)&gt;0\)</span> the perturbation grows exponentially fast and the steady-state is unstable. When <span class="math inline">\(f'(x^*)&lt;0\)</span> the perturbation decays exponentially fast and the steady-state is stable.</p>
+<p>When <span class="math inline">\(f'(x^*)&gt;0\)</span> the perturbation grows exponentially fast and the steady-state is linearly unstable. When <span class="math inline">\(f'(x^*)&lt;0\)</span> the perturbation decays exponentially fast and the steady-state is linearly stable.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.3</strong></span> Determine the linear stability of the fixed points of <span class="math display">\[
 \dot{x}=x^2-1.
@@ -554,7 +554,7 @@ f'(x*)
 \dot{N}=rN(t)\left (1-\frac{N(t)}{K}\right),
 \tag{2.3}\]</span></span></p>
 <p>where <span class="math inline">\(r\)</span> is the linear growth rate and <span class="math inline">\(K\)</span> is carrying capacity. We consider both <span class="math inline">\(r,K\in \Re^+\)</span>.</p>
-<p>Questions to ask of such a model are: what type of biologically realistic solutions does it possess? Are there steady-states? If so, are they stable or unstable? Are there bifurcations in solutions?</p>
+<p>Questions to ask of such a model are: what type of biologically realistic solutions does it possess? Are there fixed points? If so, are they stable or unstable?</p>
 <section id="numerical-solutions" class="level4" data-number="2.4.0.1">
 <h4 data-number="2.4.0.1" class="anchored" data-anchor-id="numerical-solutions"><span class="header-section-number">2.4.0.1</span> Numerical solutions</h4>
 <p>In <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> we present numerical solutions of equation using different initial conditions. Note the limiting behaviour of solutions as <span class="math inline">\(t\rightarrow \infty\)</span>. In <a href="#fig-logisticgrowthmodel" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> it is clear that even though some solutions are initialised at <span class="math inline">\(N_0=0.1\)</span>, much closer to <span class="math inline">\(N^*=0\)</span> than <span class="math inline">\(N^*=K\)</span>, they tend to the limit <span class="math inline">\(N=K\)</span>. Why do solutions not tend to <span class="math inline">\(N^*=0\)</span>?</p>
@@ -637,9 +637,9 @@ n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}
 \end{aligned}
 \tag{2.4}\]</span></span> Note that we can retrieve the original equation by rescaling and calculating <span class="math inline">\(N=\tilde{N}n\)</span> and <span class="math inline">\(t=\tilde{T}\tau\)</span>.</p>
 </section>
-<section id="steady-states-and-linear-stability" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="steady-states-and-linear-stability"><span class="header-section-number">2.4.1</span> Steady states and linear stability</h3>
-<p>Steady states satisfy <span class="math display">\[
+<section id="fixed-points-and-linear-stability-1" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="fixed-points-and-linear-stability-1"><span class="header-section-number">2.4.1</span> Fixed points and linear stability</h3>
+<p>Fixed points satisfy <span class="math display">\[
 n^*(1-n^*)=0.
 \]</span> Hence <span class="math display">\[
 n^*=0, \ \ \ \ n^*=1.
@@ -648,7 +648,7 @@ n^*=0, \ \ \ \ n^*=1.
 H'(n)= (1-2n).
 \]</span> When <span class="math inline">\(n=n^*=0\)</span> we obtain <span class="math display">\[
 H'(n)= 1.
-\]</span> Hence the origin is an unstable steady-state.</p>
+\]</span> Hence the origin is a linearly unstable fixed point.</p>
 <p>At the steady-state <span class="math inline">\(n^*=1\)</span> <span class="math display">\[
 H'(n^*)= -1
 \]</span> hence <span class="math inline">\(n^*=1\)</span> is linearly stable.</p>
