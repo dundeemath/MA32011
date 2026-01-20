@@ -4,7 +4,7 @@ format: html
 ---
 
 
-First order in time.
+Here we consider ODE models with a single dependent variable that are first order in time.
 
 
 Let $x=x(t)$.
@@ -12,11 +12,11 @@ $$
 \dot{x}=f(x).
 $$ {#eq-fp1d}
 
-$f$ is smooth and real valued.
-autonomous. Nonlinear.
+It is assumed that $f$ is smooth and real valued. 
 
 ## Geometric
 
+For many problem an explicit solution can either not be constructed or is not of practical use.
 
 ::: {#exm-    }
 
@@ -31,16 +31,24 @@ For the initial condition $x(0)=\pi/4$, describe solution behaviour as $t\righta
 
 ::: {.Solution}
 
-An implicit solution is
+After applying separation of variables, an implicit solution is given by
 
 $$
 t=-\ln |\csc x + \cot x| + C,
 $$
 where $C$ is an integration constant.
 
+However, this does not help me to describe the limiting behaviour of the solution as $t\rightarrow \infty$.
+
+Instead let's use a graphical method. In @fig-ODEqual we sketch a graph of $f$, the right-hand side of the ODE. The arrows depict the vector field. Hence when $f>0$, $\dot{x}>0$ and the solution increases. In contrast, when $f<0$, $\dot{x}<0$ and the solution decreases.
+
+Note that $f>0  \ \forall \ 0<x<\pi$. Hence for initial condition $x_0=\pi/4$, $\dot{x}_{t=0}>0$. The solution will increase until it reaches $\pi$. At $x=\pi$, $f=0$.
 
 
+
+::: {#fig-ODEqual}
 ```{python}
+#| code-fold: True
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -81,8 +89,10 @@ plt.show()
 ```
 :::
 
+:::
 
-## Fixed points and stability
+
+## Fixed points and linear stability
 
 
 ### Fixed points 
@@ -109,32 +119,78 @@ Any trajectory initialised at a fixed point remains there for all $t$.
 Find all the fixed points of 
 $$
 \dot{x}=x^2-1,
-$$
+$$ {#eq-findfp}
 :::
 
 ::: {.Solution}
 
-The fixed points are $x^*=\pm 1$.
+The fixed points are point, $x^*$ defined such that 
+$$
+\dot{x}=0 \ \implies \ f(x^*)=0. 
+$$
 
+Hence fixed points satisfy
+$$
+{x^*}^2-1=0.
+$$
+
+The solutions are
+$$
+x^*=\pm 1.
+$$
+
+
+See @fig-fpcalc for graphical solution.
+
+
+::: {#fig-fpcalc}
 ```{python}
-x=np.linspace(-5,5)
+#| code-fold: True
+x=np.linspace(-2,2)
 
-y=np.sin(x)
+y=x**2-1
 
 fig,ax=plt.subplots()
 
 ax.plot(x,y)
+ax.set_xlabel('$x$')
+ax.set_ylabel('$f$')
+ax.grid(True)
+ax.set_ylim([-2,3])
+
+
+# Arrow target (arrow head)
+x=[-1.0, -1.0, 1.0, 1.0]
+y=[0.0, 0.0,0.0,0.0]
+
+# Arrow start
+x0=[-2.0,2.0,0.0,2.0]
+y0 = [0.0,0.0,0.0,0.0]
+
+
+for x_i,y_i,x0_i,y0_i in zip(x,y,x0,y0):
+  ax.annotate('',
+      xy=(x_i, y_i),        # arrow head
+      xytext=(x0_i, y0_i),  # arrow tail
+      arrowprops=dict(
+          arrowstyle='->',
+          color='black'
+      ),
+      ha='center'
+  )
+  
 
 plt.show()
 ```
 
+Graphical solution of @eq-findfp.
+:::
+
 :::
 
 
-
 ### Linear stability analysis
-
-
+Let $x=x^*$ be a fixed point of @eq-fp1d. 
 
 ####  A change of dependent variable
 To perform a linear stability analysis we make the change of variables
@@ -143,18 +199,18 @@ x(t)=x^*+\hat{x}(t)
 $$
 where the new dependent variable, $\hat{x}(t)$, is a perturbation about the steady state.
 
-The time derivative on the left-hand side of @eq-gensinglespecodeagain transforms to
+The time derivative on the left-hand side of @eq-fp1d transforms to
 $$
 \dot{x}= \frac{d }{dt} (x^*) + \frac{d }{dt}(\hat{x}(t))=\dot{\hat{x}}.
 $$
-Hence @eq-gensinglespecodeagain  transforms to
+Hence @eq-fp1d  transforms to
 $$
 \dot{\hat{x}} = f(x^*+\hat{x}(t)).
 $$
 
 ####  Taylor expansion and a linear system
 
-Employing the Taylor expansion on the right-hand side of @eq-gensinglespecodeagain and making  the assumption that perturbations are small
+Employing the Taylor expansion on the right-hand side of @eq-fp1d and making  the assumption that perturbations are small
 $$
 \dot{\hat{x}} = f(x^*)+  f'(x^*)\hat{x}(t) + f''(x^*)\hat{x}^2(t) + h.o.t.
 $$
@@ -187,7 +243,9 @@ $$
 ::: {#exm-    }
 
 What can be said about the stability of the fixed points of the following ODEs:
-1. $$
+
+1. 
+$$
 \dot{x}=-x^3.
 $$
 2. 
@@ -195,14 +253,37 @@ $$
 \dot{x}=x^3.
 $$
 
+3. 
+$$
+\dot{x}=0.
+$$
+
 
 :::
 
 ## Validity of linear classification
 
-Hyperbolic FP - eigenvalues nonzero
-Hartman Grobman - if system has hyperbolic FP, classification of nonlinear system determined by linear classification
-non-hypberbolic FP - need to consider higher order terms.
+It is worth highlighting here that 
+
+$$
+f'(x*)
+$$
+can be interpreted as an eigenvalue of the linearised problem
+$$
+\dot{\hat{x}}=\lambda \hat{x}.
+$$
+where
+$$
+\lambda = f'(x^*).
+$$
+
+A fixed point is said to be hyperbolic when the eigenvalues of its linearisation are nonzero.
+
+The  Hartman-Grobman theorem states that if a system has a hyperbolic FP, the classification of the nonlinear system is determined  by the linear classification.
+
+If a fixed point is non-hypberbolic,  it's classification requires consideration of higher order terms.
+
+
 
 
 ## Case study: population dynamics
@@ -223,6 +304,7 @@ In @fig-logisticgrowthmodel we present numerical solutions of equation   using d
 ```{python}
 #| label: fig-logisticgrowthmodel
 #| fig-cap: "Numerical solution of the logistic growth model"
+#| code-fold: true
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
@@ -340,12 +422,14 @@ Note that the linear stability analysis can explain the observations regarding t
 
 
 In  @fig-dlogisticrhs we plot the right-hand side of @eq-logisticnondim.
-We can qualitatively describe model solutions by considering the arrow along the x axis. 
+We can qualitatively describe model solutions by considering the arrow along the $n$ axis. 
 Suppose we consider an initial condition with $0<n_0<1$. Using the graph of $H(n)$, $dn/d\tau$ is positive, hence $n$ increases as a function of time until $n(\tau)\rightarrow 1$. 
 
 ```{python}
 #| label: fig-dlogisticrhs
 #| fig-cap: "Right-hand side of the logistic ODE"
+#| code-fold: true
+
 import numpy as np
 import matplotlib.pyplot as plt
 N_max=2.1
@@ -362,8 +446,18 @@ plt.ylabel('$H(N)$')
 plt.show()
 
 ```
-### An exact solution
-Separation of variables yields
+
+
+::: {#exm-    }
+Use separation of variables to show that the solution can be written explicitly as
+$$
+N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
+$$
+
+:::
+
+
+::: {.Solution}
 $$
 \int\frac{ dN}{N(1-\frac{N}{K})}=r\int dt.
 $$
@@ -384,6 +478,8 @@ $$
 N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
 $$
 
+:::
+
 
 #### Qualitative analysis of the exact solution
 As $t\rightarrow \infty$, $N\rightarrow K$. 
@@ -392,32 +488,54 @@ $$
 N(t)\sim N_0 e^{rt} \\ \ \ \ \ N_0\ll K, t\ll \frac{1}{r}.
 $$
 
-Note that in almost all the models that we will consider the above method is not an usually an option as the ODE is not explicitly integrable.
 
 
+## Impossibility of oscillations
+
+Oscillatory solutions to @eq-genODE are impossible, i.e. first order autonomous ODEs (with one dependent variable) cannot oscillate.
+
+This can be argued using geometrical constraints of dynamics on the line. 
 
 
+::: {#exm-}
 
-## Existence and uniqueness
-
-Consider the ODE 
+Consider the integral
 $$
-\dot{x}=f(x), \quad x(a)=b.
+\int_t^{t+T} f(x(t))\frac{dx}{dt}dt,
 $$
-There exists a unique solution on a local interval $x\in[c,d]$ with $c<x_0<d$ given that $f$ is bounded and Lipschitz continuous on $[c,d]$.
+where $T$ is the oscillation period. Use proof by contradiction to show that periodic solutions are impossible.
+:::
 
-::: {#exm-    }
-
-Show that 
-
+::: {.Solution}
+Suppose that a periodic solution exists such that
 $$
-\dot{x}=x^{\frac{1}{2}}, \ \quad x(0)=0
+x(t+T)=x(t), \ \ x(t+s)\neq x(t+T) \forall 0<s<T.
 $$
-has an infinite family of solutions.
+
+Consider
+$$
+\int_t^{t+T} f(x(t))\frac{dx}{dt}dt.
+$$
+
+This integral can be written as 
+$$
+\int_t^{t+T} f(x(t))^2 dt>0,
+$$
+as $f$ is not identically zero.
+
+Changing variables yields
+$$
+\int_{x(t)}^{x(t+T)} f(x) dx =0.
+$$
+
+Hence there is a contradiction and no periodic solutions exist.
 
 :::
 
-## Impossibility of oscillations
+
+
+
+
 
 ## Potential flows
 
@@ -440,7 +558,20 @@ $$
 \dot{V}=\frac{dV}{dx}\dot{x}=-(\frac{dV}{dx})^2\leq 0.
 $$
 
-Hence for a potential flow $V$ is never increasing.
+Hence for a potential flow $V$ is never increasing. Hence particle move to points of lower potential until they reach equilibrium given by
+$$
+f(x)=-\frac{d V(x)}{dx}=0.
+$$
+
+::: {#exm-    }
+
+Graph the potential for the system 
+$$
+\dot{x}=-x
+$$
+and identify equilibrium points.
+
+:::
 
 
 
@@ -450,9 +581,3 @@ Hence for a potential flow $V$ is never increasing.
 
 
 
-
-## Numerical solutions
-
-
-
-## References
