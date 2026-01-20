@@ -199,7 +199,7 @@ To perform a linear stability analysis we make the change of variables
 $$
 x(t)=x^*+\hat{x}(t)
 $$
-where the new dependent variable, $\hat{x}(t)$, is a perturbation about the steady state.
+where the new dependent variable, $\hat{x}(t)$, is a perturbation about the fixed point.
 
 The time derivative on the left-hand side of @eq-fp1d transforms to
 $$
@@ -231,8 +231,8 @@ $$
 where $\eta$ is some initial perturbation about the steady-state.
 
 #### A condition for linear stability
-When $f'(x^*)>0$ the perturbation grows exponentially fast and the steady-state is unstable.
-When $f'(x^*)<0$ the perturbation decays exponentially fast and the steady-state is stable.
+When $f'(x^*)>0$ the perturbation grows exponentially fast and the steady-state is linearly  unstable.
+When $f'(x^*)<0$ the perturbation decays exponentially fast and the steady-state is linearly stable.
 
 ::: {#exm-    }
 
@@ -281,7 +281,7 @@ $$
 
 A fixed point is said to be hyperbolic when the eigenvalues of its linearisation are nonzero.
 
-The  Hartman-Grobman theorem states that if a system has a hyperbolic FP, the classification of the nonlinear system is determined  by the linear classification.
+The  Hartman-Grobman theorem states that if a system has a hyperbolic FP, the classification of the nonlinear system is determined by the linear classification.
 
 If a fixed point is non-hypberbolic,  it's classification requires consideration of higher order terms.
 
@@ -297,7 +297,7 @@ $$ {#eq-logisticode}
 
 where $r$ is the linear  growth rate and $K$ is carrying capacity. We consider both $r,K\in \Re^+$. 
 
-Questions to ask of such a model are: what type of biologically realistic solutions does it possess? Are there steady-states? If so, are they stable or unstable? Are there bifurcations in solutions?
+Questions to ask of such a model are: what type of biologically realistic solutions does it possess? Are there fixed points? If so, are they stable or unstable? 
 
 #### Numerical solutions
 In @fig-logisticgrowthmodel we present numerical solutions of equation   using different initial conditions. Note the limiting behaviour of solutions as $t\rightarrow \infty$. In @fig-logisticgrowthmodel it is clear that even though some solutions are initialised at $N_0=0.1$, much closer to $N^*=0$ than $N^*=K$, they tend to the limit $N=K$. 
@@ -389,11 +389,9 @@ Note that we can retrieve the original equation by rescaling and calculating $N=
 
 
 
+### Fixed points and linear stability
 
-
-### Steady states and linear stability
-
-Steady states satisfy
+Fixed points satisfy
 $$
 n^*(1-n^*)=0.
 $$
@@ -411,7 +409,7 @@ When $n=n^*=0$ we obtain
 $$
 H'(n)= 1.
 $$
-Hence the origin is an unstable steady-state.
+Hence the origin is a linearly unstable fixed point.
 
 At the steady-state $n^*=1$
 $$
