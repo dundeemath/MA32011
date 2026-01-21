@@ -14,13 +14,17 @@ include-in-header:
 
 \vspace{10cm}
 
+## Physics and biology
+
+\vspace{10cm}
+
 ## Autonomous v nonautonomous systems 
 
 ## Linear v nonlinear
 
 ## Quantitative v qualitative
 
-## The phase plane
+##  Phase space
 
 ## Fixed points and their stability
 
