@@ -267,6 +267,7 @@ def server(input, output, session):
         ax[0].plot(t,y)
         ax[0].set_xlabel('$n$')
         ax[0].set_ylabel('$y_n$')
+        ax[0].set_ylim([-0.05,1.05])
 
         plt.grid()
 
