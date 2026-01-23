@@ -83,7 +83,7 @@ Use the app to:
 
 Is the behaviour of the numerical solution consistent with @eq-secondorderODE.
 
-:::
+
 
 ::: {#fig-popmodel .content-visible when-format="html"}
 
@@ -267,6 +267,7 @@ def server(input, output, session):
         ax[0].plot(t,y)
         ax[0].set_xlabel('$n$')
         ax[0].set_ylabel('$y_n$')
+        ax[0].set_ylim([-0.05,1.05])
 
         plt.grid()
 
@@ -453,13 +454,13 @@ Is this result consistent with  @thm-existunique?
 
 Show that the solution to the ODE
 $$
-\dot{x}=\sqrt{x} \quad x(0)=0
+\dot{x}=\sqrt{x}, \quad x(0)=0
 $$
 is given by
 $$
 x=\begin{cases}
-&0 \ \, t\leq\delta \\
-&\frac{(t-\delta)^2}{4}>\delta \  \, t> \delta
+&0, \ \ t\leq\delta \\
+&\frac{(t-\delta)^2}{4}>\delta, \  \ t> \delta
 \end{cases}
 $$
 for any $\delta >0$.  Why does this form imply that the solution is not unique? Is this result consistent with  @thm-existunique?
