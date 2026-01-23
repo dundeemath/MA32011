@@ -26,15 +26,94 @@ include-in-header:
 
 ##  Phase space
 
+- Phase space
+- Phase point
+- Trajectory
+- Phase portrait
+
+\vspace{9cm}
+
 ## Fixed points and their stability
+
+Fixed points are singular points in the vector/flow field
+
+
+
+\vspace{9cm}
 
 ## Uniqueness and existence
 
+Suppose that
+$$
+\dot{{x}}=f(x), \quad x(0)=x_0.
+$$ {#eq-genODE}
+
+If $f$ is continuously differentiable on an open interval $D$ of the $x$ axis and $x_0$ is a point in $D$, @eq-genODE possesses a unique solution on some time interval  $(-\tau,\tau)$.
+
+\vspace{5cm}
+
+
 ## Nondimensionalisation
 
-## Numerical solutions
+- Rescale variables to obtain system with fewer free parameters
+
+\vspace{9cm}
+
+## Numerical solutions - Forward Euler
+$$
+x(t+\Delta t)=x(t)+\Delta t f(x(t)).
+$$
+
+\vspace{10cm}
+
+# 1D flows
+
+## Definition
+
+Let $x=x(t)$.
+$$
+\dot{x}=f(x).
+$$ {#eq-fp1d}
+
+It is assumed that $f$ is smooth and real valued. 
+
+\vspace{9cm}
+
+## Exact, but not easily helpful
+
+$$
+\dot{x}=\sin x.
+$$
+
+$x(0)=\pi/4$, Describe solution behaviour as $t\rightarrow \infty$.
+
+\vspace{5cm}
+
+## Fixed points
+
+Let $x=x^*$ be a fixed point of @eq-fp1d. At $x=x^*$ 
+$$
+\dot{x}=0 \implies f(x^*)=0.
+$$
+
+\vspace{9cm}
 
 
+## Example
+ Find all the fixed points of 
+$$
+\dot{x}=x^2-1,
+$$
+
+\vspace{9cm}
+
+
+## Linear stability analysis
+
+How do small perturbation about the fixed point evolve in time?
+
+\vspace{9cm}
+ 
 
 
 
