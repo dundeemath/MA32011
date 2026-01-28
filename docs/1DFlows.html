@@ -110,41 +110,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
 .Theorem {
   --color1: #948bde;
   --color2: #584eab;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
 }
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
 }
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
+}
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 </style>
 
@@ -256,7 +256,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">2D flows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -264,8 +264,47 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./2DLinearSystems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2DNonLinearPhasePlane.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">2D nonlinear systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LimitCycles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2DBifurcations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Chaotic dynamics</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -379,7 +418,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="fig-ODEqual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ODEqual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="5037775e" class="cell" data-execution_count="1">
+<div id="826c14cd" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -447,12 +486,12 @@ x^*=\pm 1.
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow target (arrow head)</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>]</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">2.0</span>]</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow start</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>[<span class="op">-</span><span class="fl">2.0</span>,<span class="fl">2.0</span>,<span class="fl">0.0</span>,<span class="fl">2.0</span>]</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>[<span class="op">-</span><span class="fl">2.0</span>,<span class="fl">1.0</span>,<span class="fl">1.0</span>]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x_i,y_i,x0_i,y0_i <span class="kw">in</span> <span class="bu">zip</span>(x,y,x0,y0):</span>
@@ -472,7 +511,7 @@ x^*=\pm 1.
 <div id="fig-fpcalc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fpcalc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="abc35b85" class="cell" data-execution_count="2">
+<div id="c86bead5" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -697,7 +736,7 @@ H'(n^*)= -1
 <div id="fig-dlogisticrhs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dlogisticrhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="1DFlows_files/figure-html/fig-dlogisticrhs-output-1.png" width="610" height="429" class="figure-img">
+<img src="1DFlows_files/figure-html/fig-dlogisticrhs-output-1.png" width="609" height="429" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dlogisticrhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.4: Right-hand side of the logistic ODE
