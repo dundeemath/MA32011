@@ -106,27 +106,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
 }
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.Lemma {
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -134,17 +126,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Proof {
   --color1: #c0c0c0;
   --color2: #808080;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 </style>
 
@@ -320,13 +320,13 @@ window.Quarto = {
 
 
 <p>Here we consider ODE models with a single dependent variable that are first order in time.</p>
-<p>Let <span class="math inline">\(x=x(t)\)</span>. <span id="eq-fp1d"><span class="math display">\[
+<p>Let <span class="math inline">\(x=x(t)\)</span> and consider the ODE <span id="eq-fp1d"><span class="math display">\[
 \dot{x}=f(x).
 \tag{2.1}\]</span></span></p>
 <p>It is assumed that <span class="math inline">\(f\)</span> is smooth and real valued.</p>
 <section id="geometric" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="geometric"><span class="header-section-number">2.1</span> Geometric</h2>
-<p>For many problem an explicit solution can either not be constructed or is not of practical use.</p>
+<p>For many problems an explicit solution can either not be constructed or is not of practical use.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.1</strong></span> Let <span class="math inline">\(x(t)\)</span>. Consider the ODE <span class="math display">\[
 \dot{x}=\sin x.
@@ -339,7 +339,7 @@ t=-\ln |\csc x + \cot x| + C,
 \]</span> where <span class="math inline">\(C\)</span> is an integration constant.</p>
 <p>However, this does not help me to describe the limiting behaviour of the solution as <span class="math inline">\(t\rightarrow \infty\)</span>.</p>
 <p>Instead let’s use a graphical method. In <a href="#fig-ODEqual" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> we sketch a graph of <span class="math inline">\(f\)</span>, the right-hand side of the ODE. The arrows depict the vector field. Hence when <span class="math inline">\(f&gt;0\)</span>, <span class="math inline">\(\dot{x}&gt;0\)</span> and the solution increases. In contrast, when <span class="math inline">\(f&lt;0\)</span>, <span class="math inline">\(\dot{x}&lt;0\)</span> and the solution decreases.</p>
-<p>Note that <span class="math inline">\(f&gt;0  \ \forall \ 0&lt;x&lt;\pi\)</span>. Hence for initial condition <span class="math inline">\(x_0=\pi/4\)</span>, <span class="math inline">\(\dot{x}_{t=0}&gt;0\)</span>. The solution will increase until it reaches <span class="math inline">\(\pi\)</span>. At <span class="math inline">\(x=\pi\)</span>, <span class="math inline">\(f=0\)</span>.</p>
+<p>Note that <span class="math inline">\(f&gt;0  \ \forall \ 0&lt;x&lt;\pi\)</span>. Hence for the initial condition <span class="math inline">\(x_0=\pi/4\)</span>, <span class="math inline">\(\dot{x}_{t=0}&gt;0\)</span>. The solution will increase until it reaches <span class="math inline">\(\pi\)</span>. At <span class="math inline">\(x=\pi\)</span>, <span class="math inline">\(f=0\)</span>.</p>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -379,7 +379,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="fig-ODEqual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ODEqual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="24088c17" class="cell" data-execution_count="1">
+<div id="5037775e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -472,7 +472,7 @@ x^*=\pm 1.
 <div id="fig-fpcalc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fpcalc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="ff352ba6" class="cell" data-execution_count="2">
+<div id="abc35b85" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -498,9 +498,9 @@ x(t)=x^*+\hat{x}(t)
 \]</span> where the new dependent variable, <span class="math inline">\(\hat{x}(t)\)</span>, is a perturbation about the fixed point.</p>
 <p>The time derivative on the left-hand side of <a href="#eq-fp1d" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> transforms to <span class="math display">\[
 \dot{x}= \frac{d }{dt} (x^*) + \frac{d }{dt}(\hat{x}(t))=\dot{\hat{x}}.
-\]</span> Hence <a href="#eq-fp1d" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> transforms to <span class="math display">\[
+\]</span> Hence <a href="#eq-fp1d" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> transforms to <span id="eq-1DODEpert"><span class="math display">\[
 \dot{\hat{x}} = f(x^*+\hat{x}(t)).
-\]</span></p>
+\tag{2.3}\]</span></span></p>
 </section>
 <section id="taylor-expansion-and-a-linear-system" class="level4" data-number="2.2.2.2">
 <h4 data-number="2.2.2.2" class="anchored" data-anchor-id="taylor-expansion-and-a-linear-system"><span class="header-section-number">2.2.2.2</span> Taylor expansion and a linear system</h4>
@@ -512,8 +512,8 @@ f(x^*)=0
 \]</span> and retaining linear terms yields <span class="math display">\[
 \dot{\hat{x}} =  f'(x^*)\hat{x}(t)
 \]</span> with solution <span class="math display">\[
-\hat{x}(t)=  \eta e^{f'(x^*) t}
-\]</span> where <span class="math inline">\(\eta\)</span> is some initial perturbation about the steady-state.</p>
+\hat{x}(t)=  \eta e^{f'(x^*) t}.
+\]</span> Here <span class="math inline">\(\eta\)</span> is an initial perturbation about the steady-state that is determined by initial conditions.</p>
 </section>
 <section id="a-condition-for-linear-stability" class="level4" data-number="2.2.2.3">
 <h4 data-number="2.2.2.3" class="anchored" data-anchor-id="a-condition-for-linear-stability"><span class="header-section-number">2.2.2.3</span> A condition for linear stability</h4>
@@ -546,19 +546,31 @@ f(x^*)=0
 <p><span class="math display">\[
 f'(x*)
 \]</span> can be interpreted as an eigenvalue of the linearised problem <span class="math display">\[
-\dot{\hat{x}}=\lambda \hat{x}.
+\dot{\hat{x}}=\lambda \hat{x},
 \]</span> where <span class="math display">\[
 \lambda = f'(x^*).
 \]</span></p>
-<p>A fixed point is said to be hyperbolic when the eigenvalues of its linearisation are nonzero.</p>
-<p>The Hartman-Grobman theorem states that if a system has a hyperbolic FP, the classification of the nonlinear system is determined by the linear classification.</p>
+<div id="Definition-2" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 2</strong></summary><div>A fixed point is said to be <em>hyperbolic</em> when the eigenvalues of its linearisation are nonzero.<p></p>
+</div></details>
+</div>
+<div id="hartman-grobman" class="Theorem" title="Hartman-Grobman">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 3: </strong>Hartman-Grobman</summary><div>If a system has a hyperbolic FP, the classification of the nonlinear system at the fixed point is determined by the linear classification.<p></p>
+</div></details>
+</div>
 <p>If a fixed point is non-hypberbolic, it’s classification requires consideration of higher order terms.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.5</strong></span> Apply the Hartman Grobman theorem to the classification of the problem</p>
+<p><span class="math display">\[
+\dot{x}=-x^3.
+\]</span></p>
+</div>
 </section>
 <section id="case-study-population-dynamics" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="case-study-population-dynamics"><span class="header-section-number">2.4</span> Case study: population dynamics</h2>
 <p>Let <span class="math inline">\(N=N(t)\)</span>. The logistic model of population growth, due to Verhulst, takes the form <span id="eq-logisticode"><span class="math display">\[
 \dot{N}=rN(t)\left (1-\frac{N(t)}{K}\right),
-\tag{2.3}\]</span></span></p>
+\tag{2.4}\]</span></span></p>
 <p>where <span class="math inline">\(r\)</span> is the linear growth rate and <span class="math inline">\(K\)</span> is carrying capacity. We consider both <span class="math inline">\(r,K\in \Re^+\)</span>.</p>
 <p>Questions to ask of such a model are: what type of biologically realistic solutions does it possess? Are there fixed points? If so, are they stable or unstable?</p>
 <section id="numerical-solutions" class="level4" data-number="2.4.0.1">
@@ -626,11 +638,11 @@ Figure&nbsp;2.3: Numerical solution of the logistic growth model
 </section>
 <section id="dimensional-analysis-and-nondimensionalisation" class="level4" data-number="2.4.0.2">
 <h4 data-number="2.4.0.2" class="anchored" data-anchor-id="dimensional-analysis-and-nondimensionalisation"><span class="header-section-number">2.4.0.2</span> Dimensional analysis and nondimensionalisation</h4>
-<p><span class="math inline">\(N\)</span> represents the population density and has units of one over area (say <span class="math inline">\(1/m^2\)</span>) and <span class="math inline">\(t\)</span> has units of time (say, seconds, <span class="math inline">\(s\)</span>). Hence the left-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.3</span></a> has units of <span class="math inline">\(1/(m^2 s)\)</span>. The first term on the right-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.3</span></a> is <span class="math inline">\(rN\)</span>. <span class="math inline">\(N\)</span> has units <span class="math inline">\(1/m^2\)</span> hence the parameter <span class="math inline">\(r\)</span> must have units of <span class="math inline">\(1/s\)</span> for dimensional consistency. This is consistent as <span class="math inline">\(r\)</span> represents the linear growth rate.</p>
+<p><span class="math inline">\(N\)</span> represents the population density and has units of one over area (say <span class="math inline">\(1/m^2\)</span>) and <span class="math inline">\(t\)</span> has units of time (say, seconds, <span class="math inline">\(s\)</span>). Hence the left-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> has units of <span class="math inline">\(1/(m^2 s)\)</span>. The first term on the right-hand side of <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> is <span class="math inline">\(rN\)</span>. <span class="math inline">\(N\)</span> has units <span class="math inline">\(1/m^2\)</span> hence the parameter <span class="math inline">\(r\)</span> must have units of <span class="math inline">\(1/s\)</span> for dimensional consistency. This is consistent as <span class="math inline">\(r\)</span> represents the linear growth rate.</p>
 <p>The second term has the form <span class="math inline">\(rN^2/K\)</span>. Given the chosen units for <span class="math inline">\(r\)</span> and <span class="math inline">\(N\)</span>, the parameter <span class="math inline">\(K\)</span> must have dimensions <span class="math inline">\(1/m^2\)</span>. Again, this is consistent as <span class="math inline">\(K\)</span> is a carrying capacity (i.e.&nbsp;it has units of population density).</p>
 <p>We define the nondimensionalised variables <span class="math display">\[
 n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}
-\]</span> where <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span> are constants that have units of population density and time, respectively. Hence <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.3</span></a> transforms, upon change of variables, to <span class="math display">\[
+\]</span> where <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span> are constants that have units of population density and time, respectively. Hence <a href="#eq-logisticode" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> transforms, upon change of variables, to <span class="math display">\[
 \begin{aligned}
 \frac{\tilde{N}}{\tilde{T} }\frac{dn}{d\tau}=r\tilde{N}n(1-\frac{n\tilde{N}}{K}).
 \end{aligned}
@@ -641,7 +653,7 @@ n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}
 \begin{aligned}
 \frac{dn}{d\tau}= n(1-n)
 \end{aligned}
-\tag{2.4}\]</span></span> Note that we can retrieve the original equation by rescaling and calculating <span class="math inline">\(N=\tilde{N}n\)</span> and <span class="math inline">\(t=\tilde{T}\tau\)</span>.</p>
+\tag{2.5}\]</span></span> Note that we can retrieve the original equation by rescaling and calculating <span class="math inline">\(N=\tilde{N}n\)</span> and <span class="math inline">\(t=\tilde{T}\tau\)</span>.</p>
 </section>
 <section id="fixed-points-and-linear-stability-1" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="fixed-points-and-linear-stability-1"><span class="header-section-number">2.4.1</span> Fixed points and linear stability</h3>
@@ -662,7 +674,7 @@ H'(n^*)= -1
 </section>
 <section id="graphical-analysis" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="graphical-analysis"><span class="header-section-number">2.4.2</span> Graphical analysis</h3>
-<p>In <a href="#fig-dlogisticrhs" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> we plot the right-hand side of <a href="#eq-logisticnondim" class="quarto-xref">Equation&nbsp;<span>2.4</span></a>. We can qualitatively describe model solutions by considering the arrow along the <span class="math inline">\(n\)</span> axis. Suppose we consider an initial condition with <span class="math inline">\(0&lt;n_0&lt;1\)</span>. Using the graph of <span class="math inline">\(H(n)\)</span>, <span class="math inline">\(dn/d\tau\)</span> is positive, hence <span class="math inline">\(n\)</span> increases as a function of time until <span class="math inline">\(n(\tau)\rightarrow 1\)</span>.</p>
+<p>In <a href="#fig-dlogisticrhs" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> we plot the right-hand side of <a href="#eq-logisticnondim" class="quarto-xref">Equation&nbsp;<span>2.5</span></a>. We can qualitatively describe model solutions by considering the arrow along the <span class="math inline">\(n\)</span> axis. Suppose we consider an initial condition with <span class="math inline">\(0&lt;n_0&lt;1\)</span>. Using the graph of <span class="math inline">\(H(n)\)</span>, <span class="math inline">\(dn/d\tau\)</span> is positive, hence <span class="math inline">\(n\)</span> increases as a function of time until <span class="math inline">\(n(\tau)\rightarrow 1\)</span>.</p>
 <div id="cell-fig-dlogisticrhs" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
@@ -685,7 +697,7 @@ H'(n^*)= -1
 <div id="fig-dlogisticrhs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dlogisticrhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="1DFlows_files/figure-html/fig-dlogisticrhs-output-1.png" width="609" height="429" class="figure-img">
+<img src="1DFlows_files/figure-html/fig-dlogisticrhs-output-1.png" width="610" height="429" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dlogisticrhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.4: Right-hand side of the logistic ODE
@@ -695,7 +707,7 @@ Figure&nbsp;2.4: Right-hand side of the logistic ODE
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.5</strong></span> Use separation of variables to show that the solution can be written explicitly as <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 2.6</strong></span> Use separation of variables to show that the solution can be written explicitly as <span class="math display">\[
 N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
 \]</span></p>
 </div>
@@ -723,10 +735,17 @@ N(t)\sim N_0 e^{rt} \\ \ \ \ \ N_0\ll K, t\ll \frac{1}{r}.
 </section>
 <section id="impossibility-of-oscillations" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="impossibility-of-oscillations"><span class="header-section-number">2.5</span> Impossibility of oscillations</h2>
+<p>In 1D flows with well behaved <span class="math inline">\(f\)</span>, the range of permissible qualitiative behaviours is limited by the geometry of the line. Solutions must have one of the following behaviours:</p>
+<ul>
+<li>tend towards a stable fixed point</li>
+<li>move away from an unstable fixed point</li>
+<li>stay at a fixed point for all time</li>
+<li>tend to <span class="math inline">\(\pm \infty\)</span></li>
+</ul>
 <p>Oscillatory solutions to <a href="intro.html#eq-genODE" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> are impossible, i.e.&nbsp;first order autonomous ODEs (with one dependent variable) cannot oscillate.</p>
 <p>This can be argued using geometrical constraints of dynamics on the line.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.6</strong></span> Consider the integral <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 2.7</strong></span> Consider the integral <span class="math display">\[
 \int_t^{t+T} f(x(t))\frac{dx}{dt}dt,
 \]</span> where <span class="math inline">\(T\)</span> is the oscillation period. Use proof by contradiction to show that periodic solutions are impossible.</p>
 </div>
@@ -764,7 +783,7 @@ f(x)=-\frac{d V(x)}{dx}.
 f(x)=-\frac{d V(x)}{dx}=0.
 \]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.7</strong></span> Graph the potential for the system <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 2.8</strong></span> Graph the potential for the system <span class="math display">\[
 \dot{x}=-x
 \]</span> and identify equilibrium points.</p>
 </div>

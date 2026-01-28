@@ -53,7 +53,7 @@ $$ {#eq-logdemo}
 Many of the physics examples that we will examine later originate from Newton's Second Law, i.e.
 
 $$
-m\ddot{x}=F(x,\dot{x})
+m\ddot{x}=F(x,\dot{x}),
 $$
 where $x(t)$ represents the position of a particle at time, $t$, $m$ represents a constant particle mass and $F$ a resultant force.
 
@@ -70,7 +70,7 @@ where $\mu=-k/m$.
 
 
 ::: {#exm-    }
-The app in @fig-popmodel encodes a numerical solution of the second order ODE
+The app encodes a numerical solution of the second order ODE
 
 $$
 a\ddot{x}+b\dot{x}+cx=0.
@@ -81,9 +81,9 @@ Use the app to:
 - identify appropriate values of the parameters $a$, $b$ and $c$ so that the solution captures the case of a particle of mass ($m$) equal to 3 subjected to a linear restoring force with spring constant ($k$) equal to 5.
 - explore the dependence of oscillation period on initial conditions.
 
-Is the behaviour of the numerical solution consistent with @eq-secondorderODE.
+Is the behaviour of the numerical solution consistent with @eq-secondorderODE?
 
-
+:::
 
 ::: {#fig-popmodel .content-visible when-format="html"}
 
