@@ -6,7 +6,7 @@ format: html
 
 Here we consider ODE models with a single dependent variable that are first order in time.
 
-Let $x=x(t)$.
+Let $x=x(t)$ and consider the ODE
 $$
 \dot{x}=f(x).
 $$ {#eq-fp1d}
@@ -15,7 +15,7 @@ It is assumed that $f$ is smooth and real valued.
 
 ## Geometric
 
-For many problem an explicit solution can either not be constructed or is not of practical use.
+For many problems an explicit solution can either not be constructed or is not of practical use.
 
 ::: {#exm-    }
 
@@ -41,7 +41,7 @@ However, this does not help me to describe the limiting behaviour of the solutio
 
 Instead let's use a graphical method. In @fig-ODEqual we sketch a graph of $f$, the right-hand side of the ODE. The arrows depict the vector field. Hence when $f>0$, $\dot{x}>0$ and the solution increases. In contrast, when $f<0$, $\dot{x}<0$ and the solution decreases.
 
-Note that $f>0  \ \forall \ 0<x<\pi$. Hence for initial condition $x_0=\pi/4$, $\dot{x}_{t=0}>0$. The solution will increase until it reaches $\pi$. At $x=\pi$, $f=0$.
+Note that $f>0  \ \forall \ 0<x<\pi$. Hence for the initial condition $x_0=\pi/4$, $\dot{x}_{t=0}>0$. The solution will increase until it reaches $\pi$. At $x=\pi$, $f=0$.
 
 
 
@@ -208,7 +208,7 @@ $$
 Hence @eq-fp1d  transforms to
 $$
 \dot{\hat{x}} = f(x^*+\hat{x}(t)).
-$$
+$$ {#eq-1DODEpert}
 
 ####  Taylor expansion and a linear system
 
@@ -226,9 +226,9 @@ $$
 $$
 with solution
 $$
-\hat{x}(t)=  \eta e^{f'(x^*) t}
+\hat{x}(t)=  \eta e^{f'(x^*) t}.
 $$
-where $\eta$ is some initial perturbation about the steady-state.
+Here $\eta$ is an initial perturbation about the steady-state that is determined by initial conditions.
 
 #### A condition for linear stability
 When $f'(x^*)>0$ the perturbation grows exponentially fast and the steady-state is linearly  unstable.
@@ -272,20 +272,35 @@ f'(x*)
 $$
 can be interpreted as an eigenvalue of the linearised problem
 $$
-\dot{\hat{x}}=\lambda \hat{x}.
+\dot{\hat{x}}=\lambda \hat{x},
 $$
 where
 $$
 \lambda = f'(x^*).
 $$
 
-A fixed point is said to be hyperbolic when the eigenvalues of its linearisation are nonzero.
+::: {.Definition}
+A fixed point is said to be *hyperbolic* when the eigenvalues of its linearisation are nonzero.
+:::
 
-The  Hartman-Grobman theorem states that if a system has a hyperbolic FP, the classification of the nonlinear system is determined by the linear classification.
+::: {.Theorem}
+# Hartman-Grobman 
+
+If a system has a hyperbolic FP, the classification of the nonlinear system at the fixed point is determined by the linear classification.
+
+:::
 
 If a fixed point is non-hypberbolic,  it's classification requires consideration of higher order terms.
 
+::: {#exm-    }
 
+Apply the Hartman Grobman theorem to the classification of the problem
+
+$$
+\dot{x}=-x^3.
+$$
+
+:::
 
 
 ## Case study: population dynamics
@@ -493,9 +508,17 @@ $$
 
 ## Impossibility of oscillations
 
+
+ In 1D flows with well behaved $f$, the range of permissible qualitiative behaviours is limited by the geometry of the line. Solutions must have one of the following behaviours:
+ 
+- tend towards a stable fixed point
+- move away from an unstable fixed point
+- stay at a fixed point for all time
+- tend to $\pm \infty$
+
 Oscillatory solutions to @eq-genODE are impossible, i.e. first order autonomous ODEs (with one dependent variable) cannot oscillate.
 
-This can be argued using geometrical constraints of dynamics on the line. 
+This can be argued using geometrical constraints of dynamics on the line.
 
 
 ::: {#exm-    }
