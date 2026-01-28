@@ -126,13 +126,21 @@ div.csl-indent {
   }
 }</script>
 <style>
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .Feature {
   --color1: #c0c0c0;
   --color2: #808080;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
 }
 .TODO {
   --color1: #e7b1b4;
@@ -142,15 +150,7 @@ div.csl-indent {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Conjecture {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -158,13 +158,13 @@ div.csl-indent {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 </style>
 
@@ -384,7 +384,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 <p>For <span class="math inline">\(r=0\)</span> the fixed point is half-stable and it vanishes for <span class="math inline">\(r&gt;0\)</span>. Upon plotting <span class="math inline">\(x^*\)</span> against <span class="math inline">\(r\)</span> we obtain a bifurcation diagram.</p>
 </div></details>
 </div>
-<div id="8b00d58c" class="cell" data-execution_count="1">
+<div id="f40ba363" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -441,7 +441,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-<div id="a4c570be" class="cell" data-execution_count="2">
+<div id="6290674b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -510,7 +510,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The fixed points are <span class="math inline">\(x^*=0\)</span> and <span class="math inline">\(x^*=r\)</span>. For <span class="math inline">\(r&lt;0\)</span>, <span class="math inline">\(x^*=r\)</span> is linearly unstable and <span class="math inline">\(x^*=0\)</span> is linearly stable. At <span class="math inline">\(r=0\)</span> the fixed points coalesce and the fixed point is half stable. For <span class="math inline">\(r&gt;0\)</span> <span class="math inline">\(x^*=0\)</span> is linearly unstable and <span class="math inline">\(x^*=r\)</span> is linearly stable.<p></p>
 </div></details>
 </div>
-<div id="e83902b6" class="cell" data-execution_count="3">
+<div id="45166fe2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -570,7 +570,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-<div id="fdf97224" class="cell" data-execution_count="4">
+<div id="d61f2748" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -640,7 +640,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 <p>The normal form of the supercritical bifurcation is <span class="math display">\[
 \dot{x}=rx-x^3,
 \]</span></p>
-<div id="416eccba" class="cell" data-execution_count="5">
+<div id="23fae319" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -697,7 +697,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-<div id="beb061a4" class="cell" data-execution_count="6">
+<div id="e3bbf644" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -748,7 +748,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 <p><span class="math display">\[
 \dot{x}=rx+x^3,
 \]</span></p>
-<div id="796360af" class="cell" data-execution_count="7">
+<div id="bed0200c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -805,7 +805,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-<div id="a6fc8794" class="cell" data-execution_count="8">
+<div id="e630e2d2" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
