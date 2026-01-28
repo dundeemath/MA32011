@@ -106,17 +106,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 .Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Lemma {
   --color1: #948bde;
@@ -125,26 +145,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
-}
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
 }
 </style>
 
@@ -373,7 +373,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="fig-ODEqual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ODEqual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="868c4f99" class="cell" data-execution_count="1">
+<div id="a959b7ae" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -441,12 +441,12 @@ x^*=\pm 1.
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow target (arrow head)</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>]</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">2.0</span>]</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow start</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>[<span class="op">-</span><span class="fl">2.0</span>,<span class="fl">2.0</span>,<span class="fl">0.0</span>,<span class="fl">2.0</span>]</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>[<span class="op">-</span><span class="fl">2.0</span>,<span class="fl">1.0</span>,<span class="fl">1.0</span>]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> [<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x_i,y_i,x0_i,y0_i <span class="kw">in</span> <span class="bu">zip</span>(x,y,x0,y0):</span>
@@ -466,7 +466,7 @@ x^*=\pm 1.
 <div id="fig-fpcalc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fpcalc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="8882e20a" class="cell" data-execution_count="2">
+<div id="7bb893d9" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

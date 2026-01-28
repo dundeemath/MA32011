@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Philip Murray">
-<meta name="dcterms.date" content="2026-01-19">
 
-<title>MA32011</title>
+<title>7&nbsp; Bifurcations in 2D systems – MA32011</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -52,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./PythonAppendix.html" rel="next">
+<link href="./LimitCycles.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -92,39 +71,7 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
 .Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Proof {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -132,8 +79,69 @@ div.csl-indent {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -146,7 +154,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2DLinearSystems.html">2D flows</a></li><li class="breadcrumb-item"><a href="./2DBifurcations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -177,7 +185,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -202,12 +210,18 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Flows on the line</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Bifurcations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bifurcations</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">2D flows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -215,8 +229,47 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./2DLinearSystems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2DNonLinearPhasePlane.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">2D nonlinear systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LimitCycles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2DBifurcations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Chaotic dynamics</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -231,44 +284,41 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
+  <li><a href="#saddle-node-transcritical-and-pitchfork-bifurcations" id="toc-saddle-node-transcritical-and-pitchfork-bifurcations" class="nav-link" data-scroll-target="#saddle-node-transcritical-and-pitchfork-bifurcations"><span class="header-section-number">7.2</span> Saddle node, transcritical and pitchfork bifurcations</a></li>
+  <li><a href="#hopf-bifurcations" id="toc-hopf-bifurcations" class="nav-link" data-scroll-target="#hopf-bifurcations"><span class="header-section-number">7.3</span> Hopf bifurcations</a>
   <ul class="collapse">
-  <li><a href="#how-to-contact-me" id="toc-how-to-contact-me" class="nav-link" data-scroll-target="#how-to-contact-me">How to contact me?</a></li>
-  <li><a href="#lecture-notes" id="toc-lecture-notes" class="nav-link" data-scroll-target="#lecture-notes">Lecture notes</a></li>
-  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
-  <li><a href="#python-codes" id="toc-python-codes" class="nav-link" data-scroll-target="#python-codes">Python codes</a></li>
-  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment">Assessment</a></li>
-  <li><a href="#plan" id="toc-plan" class="nav-link" data-scroll-target="#plan">Plan</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#supercritical-hopf" id="toc-supercritical-hopf" class="nav-link" data-scroll-target="#supercritical-hopf"><span class="header-section-number">7.3.1</span> Supercritical Hopf</a></li>
+  <li><a href="#subcritical-hopf" id="toc-subcritical-hopf" class="nav-link" data-scroll-target="#subcritical-hopf"><span class="header-section-number">7.3.2</span> Subcritical Hopf</a></li>
   </ul></li>
+  <li><a href="#global-bifurcations-of-cycles" id="toc-global-bifurcations-of-cycles" class="nav-link" data-scroll-target="#global-bifurcations-of-cycles"><span class="header-section-number">7.4</span> Global bifurcations of cycles</a>
+  <ul class="collapse">
+  <li><a href="#saddle-node-bifurcation-of-limit-cycles" id="toc-saddle-node-bifurcation-of-limit-cycles" class="nav-link" data-scroll-target="#saddle-node-bifurcation-of-limit-cycles"><span class="header-section-number">7.4.1</span> Saddle node bifurcation of limit cycles</a></li>
+  <li><a href="#infinite-period" id="toc-infinite-period" class="nav-link" data-scroll-target="#infinite-period"><span class="header-section-number">7.4.2</span> Infinite period</a></li>
+  <li><a href="#homoclinic" id="toc-homoclinic" class="nav-link" data-scroll-target="#homoclinic"><span class="header-section-number">7.4.3</span> Homoclinic</a></li>
+  </ul></li>
+  <li><a href="#poincaire-maps" id="toc-poincaire-maps" class="nav-link" data-scroll-target="#poincaire-maps"><span class="header-section-number">7.5</span> Poincaire maps</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">7.5.1</span> Introduction</a></li>
+  <li><a href="#floquet-multipliers" id="toc-floquet-multipliers" class="nav-link" data-scroll-target="#floquet-multipliers"><span class="header-section-number">7.5.2</span> Floquet multipliers</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7.6</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2DLinearSystems.html">2D flows</a></li><li class="breadcrumb-item"><a href="./2DBifurcations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">MA32011</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Philip Murray </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 19, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -278,157 +328,96 @@ div.csl-indent {
 </header>
 
 
-
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1><p><img src="MA32011Cover.png" title="MA32011" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>Welcome to the module MA32011 Dynamical systems.</p>
-<p>My name is Philip Murray and I am the module lead.</p>
-<section id="how-to-contact-me" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-contact-me">How to contact me?</h2>
+<section id="introduction" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
+<p>Previously we described bifurcations in 1D systems. In this chapter we generalise these ideas to account for the more complex behaviour of 2D systems.</p>
+<p>We will find that the previous notion of a bifurcation involving the creation/annihilation of fixed points or a change in their stability still holds. But we will must generalise to account for the presence of limit cycles in 2D systems.</p>
+<div class="Definiition">
+<p>If the phase portait changes its topological structure, a bifurcaiotn has occurred.</p>
+</div>
+</section>
+<section id="saddle-node-transcritical-and-pitchfork-bifurcations" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="saddle-node-transcritical-and-pitchfork-bifurcations"><span class="header-section-number">7.2</span> Saddle node, transcritical and pitchfork bifurcations</h2>
+<p>The bifurcations introduced in Chapter X have analogues in two dimensions. The interesting dynamics occur in a 1D subspace whilst in the other dimension the flow is either simple attraction or repulsion.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.1</strong></span> Consider the system <span class="math display">\[
+\begin{aligned}
+\dot{x} &amp; = \mu - x^2 \\
+\dot{y} &amp;= -y.
+\end{aligned}
+\]</span></p>
+<p>Sketch the phase portrait for different values of <span class="math inline">\(\mu\)</span>.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.2</strong></span> Consider the system <span class="math display">\[
+\begin{aligned}
+\dot{x} &amp; = -ax+y \\
+\dot{y} &amp;= \frac{x^2}{1+x^2}-by.
+\end{aligned}
+\]</span> where <span class="math inline">\(a,b &gt; 0\)</span>.</p>
+<p>Show that there is a saddle node bifurcation at a critical value <span class="math inline">\(a=a_c\)</span>.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.3</strong></span> Consider the system <span class="math display">\[
+\begin{aligned}
+\dot{x} &amp; = \mu x + y +\sin x \\
+\dot{y} &amp;= x-y.
+\end{aligned}
+\]</span> where <span class="math inline">\(\mu \in \Re\)</span>. Show that a supercritical pitchfork bifurcation occurs at the origin and determine the bifurcation value <span class="math inline">\(\mu_c\)</span>.</p>
+</div>
+<p>Simmilar examples can be considered for transcritical and subcritical pitchfork bifurcations. A common property of all the above bifurcations is that one of the eigenvalues of the Jacobian is zero. Next we will consider a new mechanism for bifurcations to arise.</p>
+</section>
+<section id="hopf-bifurcations" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="hopf-bifurcations"><span class="header-section-number">7.3</span> Hopf bifurcations</h2>
+<p>Hopf bifurcations describe a bifurcation in which oscillatory solutions emerge. Supercritical Hopf bifurcations are characterised the small amplitude oscillations close to the bifurcation point. In contrast, subcritical Hopf bifurcations large amplitude oscillations are typically found at the bifurcation. Hence a system can go from a stable steady state to large oscillation. The key idea with Hopf bifurcations is that there is a pair of complex eigenvalues that cross the imaginary axis. Hence at the bifurcation point the real part of the eigenvalues is zero but the imaginary part is not. Thus the Hopf bifurcation is qualitatively distinct from the previous bifurcations that we have considered (characterised by at least one eigenvalue being zero at the bifurcation point).</p>
+<section id="supercritical-hopf" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="supercritical-hopf"><span class="header-section-number">7.3.1</span> Supercritical Hopf</h3>
+<p>The supercritical Hopf is known as ‘soft’ int he engineering literature: at the bifurcation point small amplitude oscillations emerge.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.4</strong></span> Consider the system <span class="math display">\[
+\begin{aligned}
+\dot{r} &amp; = \mu r - r^3\\
+\dot{\theta} &amp;= \omega+br^2.
+\end{aligned}
+\]</span> where <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\omega\)</span> and <span class="math inline">\(b\)</span> are constants.</p>
+<p>Show that the origin undergoes a supercritical Hopf bifurcation at <span class="math inline">\(\mu=0\)</span>.</p>
+</div>
+<p>Rules of thumb:</p>
 <ul>
-<li>email: pmurray@dundee.ac.uk</li>
-<li>office: G11, Fulton Building</li>
-<li>Teams: PM me</li>
+<li>The size of the limit cycle grows continuously from zero and increases proportional to <span class="math inline">\(\sqrt{\mu-\mu_c}\)</span> for <span class="math inline">\(\mu\)</span> close to <span class="math inline">\(\mu_c\)</span>.</li>
+<li>the frequency of the limit cycle is given approximately by <span class="math inline">\(\omega=\Im \lambda\)</span> evaluated at <span class="math inline">\(\mu=\mu_c\)</span>. The period is therefore approximately <span class="math inline">\(2\pi/\Im(\lambda)\)</span>.</li>
 </ul>
+<p>In more general cases the limit cycle is elliptical rather than circular and the imaginary part of the value also depends on <span class="math inline">\(\mu\)</span>.</p>
 </section>
-<section id="lecture-notes" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-notes">Lecture notes</h2>
-<p>You can find lecture notes for the module on this page. If you would like a pdf this can be easily generated by clicking on the pdf link of the webpage. I will occasionally edit/update the notes as we proceed through lectures. If you spot any errors, typos or omissions please let me know.</p>
+<section id="subcritical-hopf" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="subcritical-hopf"><span class="header-section-number">7.3.2</span> Subcritical Hopf</h3>
 </section>
-<section id="reading" class="level2">
-<h2 class="anchored" data-anchor-id="reading">Reading</h2>
-<p>Nonlinear dynamics and chaos, Steven Strogatz <span class="citation" data-cites="strogatz2001nonlinear">Strogatz (<a href="#ref-strogatz2001nonlinear" role="doc-biblioref">2001</a>)</span> Mathematical Biology I, <span class="citation" data-cites="murray2002mathematical">Murray (<a href="#ref-murray2002mathematical" role="doc-biblioref">2002</a>)</span></p>
 </section>
-<section id="python-codes" class="level2">
-<h2 class="anchored" data-anchor-id="python-codes">Python codes</h2>
-<p>I have provided Python codes for most of the figures in the notes (you can unfold code section by clicking `Code’). Note that the Python code does not appear in the pdf.</p>
-<p>Many of you have taken the Introduction to Programming module at Level 2 and have therefore some experience using Python. I strongly encourage you to use the provided codes as a tool to play around with numerical solutions of the various models that we will be working on. The codes should run as standalone Python codes.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>To access Python on Uni machines:</p>
-<ol type="1">
-<li>Launch Anaconda from AppsAnywhere</li>
-<li>When a folder opens, double click on <em>Spyder</em>.</li>
-<li>Paste a code from lecture notes into the editor on the left-hand side.</li>
-<li>Click on the green arrow to run the code.</li>
-<li>The plots should appear in the plots tab on the right-hand side.</li>
-<li>Experiment with the code. When you change a model parameter, does the solution change in an expected way?</li>
-</ol>
-</div>
-</div>
-<p>I have also provided some examples of how to use Python as a symbolic calculator. This uses a Python library called <em>sympy</em> and is quite similar to Maple.</p>
+<section id="global-bifurcations-of-cycles" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="global-bifurcations-of-cycles"><span class="header-section-number">7.4</span> Global bifurcations of cycles</h2>
+<section id="saddle-node-bifurcation-of-limit-cycles" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="saddle-node-bifurcation-of-limit-cycles"><span class="header-section-number">7.4.1</span> Saddle node bifurcation of limit cycles</h3>
 </section>
-<section id="assessment" class="level2">
-<h2 class="anchored" data-anchor-id="assessment">Assessment</h2>
-<ul>
-<li><p>Final exam (80 %)</p></li>
-<li><p>2 class tests (8 % each), Week 7 and 11</p></li>
-<li><p>4 quizes (1 % each), Week 2,4,6 and 9</p></li>
-</ul>
+<section id="infinite-period" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="infinite-period"><span class="header-section-number">7.4.2</span> Infinite period</h3>
 </section>
-<section id="plan" class="level2">
-<h2 class="anchored" data-anchor-id="plan">Plan</h2>
-<table class="caption-top table">
-<caption>Projected delivery</caption>
-<thead>
-<tr class="header">
-<th>Week</th>
-<th style="text-align: left;">Up to Section</th>
-<th>Tutorial sheet</th>
-<th>Assessment</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td style="text-align: left;"></td>
-<td>1</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td style="text-align: left;"></td>
-<td>1</td>
-<td>Quiz 1</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td style="text-align: left;"></td>
-<td>2</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td style="text-align: left;"></td>
-<td>2</td>
-<td>Quiz 2</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td style="text-align: left;"></td>
-<td>3</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td style="text-align: left;"></td>
-<td>3</td>
-<td>Quiz 3</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td style="text-align: left;"></td>
-<td>4</td>
-<td>Test 1</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td style="text-align: left;"></td>
-<td>4</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td style="text-align: left;"></td>
-<td>5</td>
-<td>Quiz 4 4</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td style="text-align: left;"></td>
-<td>5</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td style="text-align: left;"></td>
-<td>Test 2</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<section id="homoclinic" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="homoclinic"><span class="header-section-number">7.4.3</span> Homoclinic</h3>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+</section>
+<section id="poincaire-maps" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="poincaire-maps"><span class="header-section-number">7.5</span> Poincaire maps</h2>
+<section id="introduction-1" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="introduction-1"><span class="header-section-number">7.5.1</span> Introduction</h3>
+</section>
+<section id="floquet-multipliers" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="floquet-multipliers"><span class="header-section-number">7.5.2</span> Floquet multipliers</h3>
+</section>
+</section>
+<section id="references" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="references"><span class="header-section-number">7.6</span> References</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-murray2002mathematical" class="csl-entry" role="listitem">
-Murray, J. D. 2002. <em>Mathematical Biology i: An Introduction</em>. Springer.
-</div>
-<div id="ref-strogatz2001nonlinear" class="csl-entry" role="listitem">
-Strogatz, Steven H. 2001. <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering (Studies in Nonlinearity)</em>. Vol. 1. Westview press.
-</div>
-</div>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -833,10 +822,13 @@ Strogatz, Steven H. 2001. <em>Nonlinear Dynamics and Chaos: With Applications to
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./LimitCycles.html" class="pagination-link" aria-label="Bifurcations in 2D systems">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./PythonAppendix.html" class="pagination-link" aria-label="Python">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
