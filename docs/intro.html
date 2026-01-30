@@ -76,15 +76,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Proof {
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -92,29 +84,37 @@ ul.task-list li input[type="checkbox"] {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
 }
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Conjecture {
   --color1: #948bde;
   --color2: #584eab;
 }
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 </style>
 
@@ -315,7 +315,7 @@ N(t+\Delta t)=N(t)+bN(t)\Delta t -dN(t)\Delta t
 <h4 data-number="1.1.1.2" class="anchored" data-anchor-id="newtons-second-law"><span class="header-section-number">1.1.1.2</span> Newton’s second law</h4>
 <p>Many of the physics examples that we will examine later originate from Newton’s Second Law, i.e.</p>
 <p><span class="math display">\[
-m\ddot{x}=F(x,\dot{x})
+m\ddot{x}=F(x,\dot{x}),
 \]</span> where <span class="math inline">\(x(t)\)</span> represents the position of a particle at time, <span class="math inline">\(t\)</span>, <span class="math inline">\(m\)</span> represents a constant particle mass and <span class="math inline">\(F\)</span> a resultant force.</p>
 <p>Consider the case in which <span class="math inline">\(F\)</span> represents a linear restoring force, i.e. <span class="math display">\[
 F(x,\dot{x})=-kx.
@@ -323,7 +323,7 @@ F(x,\dot{x})=-kx.
 \ddot{x}=-\mu x,
 \tag{1.2}\]</span></span> where <span class="math inline">\(\mu=-k/m\)</span>.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.1</strong></span> The app in <a href="#fig-popmodel" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> encodes a numerical solution of the second order ODE</p>
+<p><span class="theorem-title"><strong>Example 1.1</strong></span> The app encodes a numerical solution of the second order ODE</p>
 <p><span class="math display">\[
 a\ddot{x}+b\dot{x}+cx=0.
 \]</span></p>
@@ -332,7 +332,7 @@ a\ddot{x}+b\dot{x}+cx=0.
 <li>identify appropriate values of the parameters <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span> so that the solution captures the case of a particle of mass (<span class="math inline">\(m\)</span>) equal to 3 subjected to a linear restoring force with spring constant (<span class="math inline">\(k\)</span>) equal to 5.</li>
 <li>explore the dependence of oscillation period on initial conditions.</li>
 </ul>
-<p>Is the behaviour of the numerical solution consistent with <a href="#eq-secondorderODE" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>.</p>
+<p>Is the behaviour of the numerical solution consistent with <a href="#eq-secondorderODE" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>?</p>
 </div>
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-popmodel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -509,6 +509,7 @@ def server(input, output, session):
         ax[0].plot(t,y)
         ax[0].set_xlabel('$n$')
         ax[0].set_ylabel('$y_n$')
+        ax[0].set_ylim([-0.05,1.05])
 
         plt.grid()
 
@@ -651,11 +652,11 @@ x(t*)=x_0/2 \implies t^* = \frac{\ln 2}{k}.
 </div>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 1.5</strong></span> Show that the solution to the ODE <span class="math display">\[
-\dot{x}=\sqrt{x} \quad x(0)=0
+\dot{x}=\sqrt{x}, \quad x(0)=0
 \]</span> is given by <span class="math display">\[
 x=\begin{cases}
-&amp;0 \ \, t\leq\delta \\
-&amp;\frac{(t-\delta)^2}{4}&gt;\delta \  \, t&gt; \delta
+&amp;0, \ \ t\leq\delta \\
+&amp;\frac{(t-\delta)^2}{4}&gt;\delta, \  \ t&gt; \delta
 \end{cases}
 \]</span> for any <span class="math inline">\(\delta &gt;0\)</span>. Why does this form imply that the solution is not unique? Is this result consistent with <a href="#thm-existunique" class="quarto-xref">Theorem&nbsp;<span>1.1</span></a>?</p>
 </div>
