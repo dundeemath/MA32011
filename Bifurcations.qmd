@@ -5,16 +5,16 @@ format: html
 
 ## Introduction
 
-The solutions of
+The qualitative behaviour of solutions of
 $$
-\dot{x}=f(x)
+\dot{x}=f(x), \quad  x(0)=x_0
 $$
 
-either *flow* to a fixed point or go to $\pm \infty$.
+are limited. Solutions either *flow* to a fixed point, remain at a fixed point or tend to $\pm \infty$. So what is interesting about the study of such problems? 
 
-What is interesting about the study of such problems? Identifying when the structure of solutions (i.e. when the number and/or stability of fixed points changes at particular parameter values). Such points are known as bifurcation points.
+Now we introduce the idea of bifurcations. These arise when the structure of the solutions (i.e. the number and/or stability of fixed points) changes at particular parameter values. 
 
-At a bifurcation point of a 1D system the eigenvalue is 0. the fixed point is *not* hyperbolic.
+At a bifurcation point of a 1D system the eigenvalue is 0. Hence the fixed point is *not* hyperbolic.
 
 
 Consider the 1D system
