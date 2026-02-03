@@ -111,19 +111,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
-.Conjecture {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -135,21 +131,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
-.Proof {
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
 }
 </style>
 
@@ -320,12 +320,12 @@ window.Quarto = {
 
 <section id="introduction" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
-<p>The solutions of <span class="math display">\[
-\dot{x}=f(x)
+<p>The qualitative behaviour of solutions of <span class="math display">\[
+\dot{x}=f(x), \quad  x(0)=x_0
 \]</span></p>
-<p>either <em>flow</em> to a fixed point or go to <span class="math inline">\(\pm \infty\)</span>.</p>
-<p>What is interesting about the study of such problems? Identifying when the structure of solutions (i.e.&nbsp;when the number and/or stability of fixed points changes at particular parameter values). Such points are known as bifurcation points.</p>
-<p>At a bifurcation point of a 1D system the eigenvalue is 0. the fixed point is <em>not</em> hyperbolic.</p>
+<p>are limited. Solutions either <em>flow</em> to a fixed point, remain at a fixed point or tend to <span class="math inline">\(\pm \infty\)</span>. So what is interesting about the study of such problems?</p>
+<p>Now we introduce the idea of bifurcations. These arise when the structure of the solutions (i.e.&nbsp;the number and/or stability of fixed points) changes at particular parameter values.</p>
+<p>At a bifurcation point of a 1D system the eigenvalue is 0. Hence the fixed point is <em>not</em> hyperbolic.</p>
 <p>Consider the 1D system <span class="math display">\[
 \dot{x}=f(x,r)
 \]</span> where <span class="math inline">\(r\)</span> is a parameter.</p>
@@ -428,7 +428,7 @@ f'(x^*)=\pm 2\sqrt{-r}.
 <div id="fig-fsaddlenode" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fsaddlenode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="ee4eeca2" class="cell" data-execution_count="1">
+<div id="47279230" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -484,7 +484,7 @@ Figure&nbsp;3.1
 <div id="fig-saddlenodebfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-saddlenodebfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="2a5050fd" class="cell" data-execution_count="2">
+<div id="b2c7660f" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -706,7 +706,7 @@ i.e. the right-hand side is linear in $r$ and quadratic in $x$.
 <div id="fig-transcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="d9b1d14a" class="cell" data-execution_count="3">
+<div id="e2dd89de" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -765,7 +765,7 @@ Figure&nbsp;3.3
 <div id="fig-transcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="cb053777" class="cell" data-execution_count="4">
+<div id="2c40538a" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1033,7 +1033,7 @@ f'(\pm \sqrt{r})=r-3r=-2r.
 <div id="fig-supcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="24bd517d" class="cell" data-execution_count="5">
+<div id="97748866" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1091,7 +1091,7 @@ Figure&nbsp;3.5
 <div id="fig-supcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="a8bced37" class="cell" data-execution_count="6">
+<div id="c396fedd" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1297,7 +1297,7 @@ app = App(app_ui, server)</code></pre>
 <div id="fig-subcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="11bfb5a9" class="cell" data-execution_count="7">
+<div id="9e842922" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1354,7 +1354,7 @@ Figure&nbsp;3.7
 <div id="fig-subcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="9688ffe5" class="cell" data-execution_count="8">
+<div id="285f0af5" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1447,7 +1447,7 @@ Note that @eq-budwormnondim has two nondimensional parameters and all variables 
 
 :::
 
-::: {#fb3b1cf7 .cell execution_count=9}
+::: {#d8417d28 .cell execution_count=9}
 ``` {.python .cell-code code-fold="true"}
 #| label: fig-sprucebudworm-rhs
 #| fig-cap: "RHS of spr. budworm model"
@@ -1512,7 +1512,7 @@ Our goal is to analyse the model and understand why different parameter values y
 
 :::
 
-::: {#2975a89e .cell execution_count=10}
+::: {#9810e81c .cell execution_count=10}
 ``` {.python .cell-code code-fold="true"}
 #| label: fig-sprucebudworm-numsol
 #| fig-cap: "Numerical solution of spr. budworm model"
@@ -1612,7 +1612,7 @@ In the case where three biologically relevant roots exist, the intermediate root
 
 :::
 
-::: {#60c410f8 .cell execution_count=11}
+::: {#8e7aa4d9 .cell execution_count=11}
 ``` {.python .cell-code code-fold="true"}
 #| label: fig-sprucebudworm-rhsfg
 #| fig-cap: "RHS of spr. budworm model"
