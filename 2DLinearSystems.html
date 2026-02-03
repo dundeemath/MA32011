@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./2DNonLinearPhasePlane.html" rel="next">
+<link href="./PythonAppendix.html" rel="next">
 <link href="./Bifurcations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -110,25 +110,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 .Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 .Lemma {
   --color1: #948bde;
@@ -138,9 +126,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Theorem {
   --color1: #948bde;
@@ -268,24 +268,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2DNonLinearPhasePlane.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">2D nonlinear systems</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./LimitCycles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2DBifurcations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -304,7 +286,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -377,7 +359,7 @@ c_1\mathbf{x}_1(t) +  c_2 \mathbf{x}_2(t),
 </section>
 <section id="general-solution" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="general-solution"><span class="header-section-number">4.2</span> General solution</h2>
-<p>Seeking a solution of <a href="2DNonLinearPhasePlane.html#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>5.3</span></a> of the form</p>
+<p>Seeking a solution of <span class="quarto-unresolved-ref">?eq-linearsystem2d</span> of the form</p>
 <p><span class="math display">\[
 \mathbf{w}=\mathbf{v}e^{\lambda t}
 \]</span></p>
@@ -405,7 +387,7 @@ c_1\mathbf{x}_1(t) +  c_2 \mathbf{x}_2(t),
 <p>The solution is <span class="math display">\[
 x(t)=x_0e^{at}, \quad y(t)=y_0e^{-t}.
 \]</span></p>
-<div id="77bfb922" class="cell" data-execution_count="1">
+<div id="7a463313" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -921,8 +903,8 @@ e^{\lambda t} = e^{(\mu+i\omega) t} = e^{\mu t}e^{i\omega t}.
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./2DNonLinearPhasePlane.html" class="pagination-link" aria-label="2D nonlinear systems">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">2D nonlinear systems</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./PythonAppendix.html" class="pagination-link" aria-label="Python">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -55,27 +55,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -97,6 +77,11 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -126,35 +111,15 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Theorem {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -162,7 +127,27 @@ div.csl-indent {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Feature {
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -305,20 +290,9 @@ window.Quarto = {
   <li><a href="#transcritical" id="toc-transcritical" class="nav-link" data-scroll-target="#transcritical"><span class="header-section-number">3.3</span> Transcritical</a></li>
   <li><a href="#pitchfork" id="toc-pitchfork" class="nav-link" data-scroll-target="#pitchfork"><span class="header-section-number">3.4</span> Pitchfork</a>
   <ul class="collapse">
-  <li><a href="#supercritical" id="toc-supercritical" class="nav-link" data-scroll-target="#supercritical"><span class="header-section-number">3.4.1</span> Supercritical</a></li>
-  <li><a href="#subcritical" id="toc-subcritical" class="nav-link" data-scroll-target="#subcritical"><span class="header-section-number">3.4.2</span> Subcritical</a></li>
+  <li><a href="#supercritical-pitchfork" id="toc-supercritical-pitchfork" class="nav-link" data-scroll-target="#supercritical-pitchfork"><span class="header-section-number">3.4.1</span> Supercritical pitchfork</a></li>
+  <li><a href="#subcritical-pitchfork" id="toc-subcritical-pitchfork" class="nav-link" data-scroll-target="#subcritical-pitchfork"><span class="header-section-number">3.4.2</span> Subcritical pitchfork</a></li>
   </ul></li>
-  <li><a href="#application-the-spruce-budworm-model" id="toc-application-the-spruce-budworm-model" class="nav-link" data-scroll-target="#application-the-spruce-budworm-model"><span class="header-section-number">3.5</span> Application: the spruce budworm model</a>
-  <ul class="collapse">
-  <li><a href="#model-development" id="toc-model-development" class="nav-link" data-scroll-target="#model-development"><span class="header-section-number">3.5.1</span> Model development</a></li>
-  <li><a href="#nondimensionalisation" id="toc-nondimensionalisation" class="nav-link" data-scroll-target="#nondimensionalisation"><span class="header-section-number">3.5.2</span> Nondimensionalisation</a></li>
-  <li><a href="#numerical-solutions" id="toc-numerical-solutions" class="nav-link" data-scroll-target="#numerical-solutions"><span class="header-section-number">3.5.3</span> Numerical solutions</a></li>
-  <li><a href="#steady-state-analysis" id="toc-steady-state-analysis" class="nav-link" data-scroll-target="#steady-state-analysis"><span class="header-section-number">3.5.4</span> Steady state analysis</a></li>
-  <li><a href="#linear-stability-analysis" id="toc-linear-stability-analysis" class="nav-link" data-scroll-target="#linear-stability-analysis"><span class="header-section-number">3.5.5</span> Linear stability analysis</a></li>
-  <li><a href="#bifurcation-analysis" id="toc-bifurcation-analysis" class="nav-link" data-scroll-target="#bifurcation-analysis"><span class="header-section-number">3.5.6</span> Bifurcation analysis</a></li>
-  <li><a href="#hysteresis" id="toc-hysteresis" class="nav-link" data-scroll-target="#hysteresis"><span class="header-section-number">3.5.7</span> Hysteresis</a></li>
-  </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3.6</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -346,31 +320,45 @@ window.Quarto = {
 
 <section id="introduction" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
-<p>1D dynamical systems on a line: solutions either tend to a steady state or go to <span class="math inline">\(\pm \infty\)</span>.</p>
-<p>What is interesting: changes to the structure of solutions (i.e.&nbsp;when the number and/or stability of fixed points changes at particular parameter values.) Such points are known as bifurcation points.</p>
-<p>at bfc point: eigenvalue=0.</p>
-<p><span class="math display">\[
-\dot{x}=f(x,r)
+<p>The solutions of <span class="math display">\[
+\dot{x}=f(x)
 \]</span></p>
-<p>Suppose fixed point <span class="math inline">\(x^*\)</span>.</p>
-<p>Taylor expand <span class="math inline">\(f\)</span> about <span class="math inline">\((x^*,r_c)\)</span></p>
-<p><span class="math display">\[
+<p>either <em>flow</em> to a fixed point or go to <span class="math inline">\(\pm \infty\)</span>.</p>
+<p>What is interesting about the study of such problems? Identifying when the structure of solutions (i.e.&nbsp;when the number and/or stability of fixed points changes at particular parameter values). Such points are known as bifurcation points.</p>
+<p>At a bifurcation point of a 1D system the eigenvalue is 0. the fixed point is <em>not</em> hyperbolic.</p>
+<p>Consider the 1D system <span class="math display">\[
+\dot{x}=f(x,r)
+\]</span> where <span class="math inline">\(r\)</span> is a parameter.</p>
+<p>Suppose that</p>
+<ul>
+<li>there is a fixed point <span class="math inline">\(x=x^*\)</span>.</li>
+<li>at some <span class="math inline">\(r=r_c\)</span> the eigenvalue of the linearised system vanishes.</li>
+</ul>
+<p>Upon Taylor expansion of <span class="math inline">\(f\)</span> about <span class="math inline">\((x^*,r_c)\)</span>, we obtain <span class="math display">\[
 \dot{x}=f(x^*,r_c)+\frac{\partial f}{\partial x}_{(x^*,r_c)}(x-x^*) + \frac{\partial f}{\partial r}_{(x^*,r_c)}(r-r_c)
 + \frac{1}{2}(x-x_c)^2\frac{\partial^2 f}{\partial x^2}_{(x^*,r_c)}  + ... \]</span></p>
 <p>As <span class="math inline">\(x^*\)</span> is a fixed point</p>
 <p><span class="math display">\[
 \dot{x}= \frac{\partial f}{\partial r}_{(x^*,r_c)}(r-r_c)
 + \frac{1}{2}(x-x^*)^2\frac{\partial^2 f}{\partial x^2}_{(x^*,r_c)}  +\frac{1}{2}(r-r_c)^2\frac{\partial^2 f}{\partial r^2}_{(x^*,r_c)} +(r-r_c)(x-x^*)\frac{\partial^2 f}{\partial r \partial x}_{(x^*,r_c)}  ... \]</span></p>
-<p>Close to a bifurcation point, stability will be determined by higher order derivative of <span class="math inline">\(f\)</span> w.r.t. <span class="math inline">\(x\)</span> and <span class="math inline">\(r\)</span>.</p>
+<p>Close to a bifurcation point, the stability classification will be determined by the higher order derivatives of <span class="math inline">\(f\)</span> w.r.t. <span class="math inline">\(x\)</span> and <span class="math inline">\(r\)</span>.</p>
+<p>It can be shown that bifurcations of the systems <span class="math display">\[
+\dot{x}=f(x,r), \quad x(0)=x_0
+\]</span> can be reduced to one of three <em>normal forms</em>:</p>
+<ul>
+<li>saddle node bifurcations</li>
+<li>transcritical bifurcations</li>
+<li>pitchfork bifurcations</li>
+</ul>
 </section>
 <section id="saddle-node" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="saddle-node"><span class="header-section-number">3.2</span> Saddle node</h2>
-<p>At a saddle node bifurcation, two fixed points move towards one another and mutually annihilate. Consider the ODE</p>
-<p><span class="math display">\[
+<p>At a saddle node bifurcation, two fixed points move towards one another and mutually annihilate. The canonical form is given by</p>
+<p><span id="eq-saddlenode1d"><span class="math display">\[
 \dot{x}=f(x,r)=r+x^2,
-\]</span> where <span class="math inline">\(r \in \Re\)</span>.</p>
+\tag{3.1}\]</span></span> where <span class="math inline">\(r \in \Re\)</span>.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.1</strong></span> Determine the fixed points and their linear stability</p>
+<p><span class="theorem-title"><strong>Example 3.1</strong></span> Identify the fixed points of <a href="#eq-saddlenode1d" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> and determine their linear stability.</p>
 </div>
 <div id="Solution*-1" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The fixed points are <span class="math display">\[
@@ -378,13 +366,16 @@ x^*_{\pm}=\pm \sqrt{-r}.
 \]</span><p></p>
 <p>In the case <span class="math inline">\(r&lt;0\)</span></p>
 <p><span class="math display">\[
-f'(x^*)=2\pm \sqrt{-r}.
+f'(x^*)=\pm 2\sqrt{-r}.
 \]</span></p>
 <p>Hence <span class="math inline">\(x^*_-\)</span> is linearly stable and <span class="math inline">\(x^*_+\)</span> is linearly unstable.</p>
-<p>For <span class="math inline">\(r=0\)</span> the fixed point is half-stable and it vanishes for <span class="math inline">\(r&gt;0\)</span>. Upon plotting <span class="math inline">\(x^*\)</span> against <span class="math inline">\(r\)</span> we obtain a bifurcation diagram.</p>
+<p>For <span class="math inline">\(r=0\)</span> the fixed point is <em>half-stable</em> and it vanishes for <span class="math inline">\(r&gt;0\)</span>. Upon plotting <span class="math inline">\(x^*\)</span> against <span class="math inline">\(r\)</span> we obtain a bifurcation diagram.</p>
 </div></details>
 </div>
-<div id="f40ba363" class="cell" data-execution_count="1">
+<p>In <a href="#fig-fsaddlenode" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> we plot <span class="math inline">\(f\)</span> at three different values of <span class="math inline">\(r\)</span>. Note that when <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(f&gt;0\)</span> and the solution is an increasing function of time.</p>
+<p>At <span class="math inline">\(r=0\)</span> there is a double root of <span class="math inline">\(f\)</span>. Here the fixed point is <em>half stable</em>. For the initial condition <span class="math inline">\(x_0&lt;0\)</span> the solution will increase until <span class="math inline">\(x(t=0)\)</span>. It is stable to perturbations along the negative <span class="math inline">\(x\)</span> axis. However, for <span class="math inline">\(x_0&gt;0\)</span> <span class="math inline">\(f&gt;0\)</span> and the solution is an increasing function of time. Hence the solution is unstable to perturbations with <span class="math inline">\(x_0&gt;0\)</span>. Hence the fixed point <span class="math inline">\(x^*=0\)</span> is defined to be half-stable when <span class="math inline">\(r=0\)</span>.</p>
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -417,22 +408,27 @@ f'(x^*)=2\pm \sqrt{-r}.
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    ax[i].set_ylim([<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>])</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    x_arrows <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1.8</span>, <span class="fl">1.8</span>, <span class="dv">6</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    f_arrows <span class="op">=</span> r <span class="op">*</span> x_arrows <span class="op">-</span> x_arrows<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    f_arrows <span class="op">=</span> r<span class="op">+</span>x_arrows<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xa, fa <span class="kw">in</span> <span class="bu">zip</span>(x_arrows, f_arrows):</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(fa) <span class="op">&lt;</span> <span class="fl">1e-3</span>:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(fa) <span class="op">&lt;</span> <span class="fl">1e-6</span>:</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        direction <span class="op">=</span> np.sign(fa)</span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        ax[i].arrow(</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>            xa, <span class="dv">0</span>,</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.12</span> <span class="op">*</span> direction, <span class="dv">0</span>,</span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>            head_width<span class="op">=</span><span class="fl">0.08</span>,</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>            head_length<span class="op">=</span><span class="fl">0.08</span>,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>            head_length<span class="op">=</span><span class="fl">0.16</span>,</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>            fc<span class="op">=</span><span class="st">'k'</span>, ec<span class="op">=</span><span class="st">'k'</span>,</span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>            length_includes_head<span class="op">=</span><span class="va">True</span></span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    fig.supxlabel(<span class="st">'$x$'</span>)</span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    fig.supylabel(<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">$'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-fsaddlenode" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fsaddlenode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="ee4eeca2" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -441,7 +437,15 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-<div id="6290674b" class="cell" data-execution_count="2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-fsaddlenode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1
+</figcaption>
+</figure>
+</div>
+<p>In <a href="#fig-saddlenodebfc" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> we plot the fixed points against the parameter <span class="math inline">\(r\)</span>. For <span class="math inline">\(r&lt;0\)</span> there are two fixed points (<span class="math inline">\(\sqrt{r}\)</span> is linearly unstable whilst <span class="math inline">\(-\sqrt{r}\)</span> is linearly stable). Usually some annotation is used to denote the stability. For <span class="math inline">\(r&gt;0\)</span> there are no fixed points.</p>
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -476,6 +480,11 @@ f'(x^*)=2\pm \sqrt{-r}.
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-saddlenodebfc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-saddlenodebfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="2a5050fd" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -484,22 +493,151 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.2</strong></span> Sketch the bifurcation diagram for the following ODE: <span class="math display">\[
-\dot{x}=1+rx+x^2.
-\]</span></p>
 </div>
-<p>Note that a saddle-node bifurcation is defined by a tangency condition such that <span class="math display">\[
-\frac{\partial f}{\partial x}_{(x^*,r_c)}.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-saddlenodebfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2
+</figcaption>
+</figure>
+</div>
+<p>With the app below you can explore how the value of the parameter value <span class="math inline">\(r\)</span> affects system dynamics.</p>
+<p>The app computes solutions to <span class="math display">\[
+\dot{x}=r+x^2, \quad x(0)=x_0, \quad t \in[0,T].
 \]</span></p>
-<p>Hence the normal form is <span class="math display">\[
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-saddlenode
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="u0",label="x_0 (Init. Cond.)",min=-1.0,max=1.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T (Time)",min=0.1,max=60.0,value=20.0,step=1.0),
+    ui.input_slider(id="r",label="r",min=-1.0,max=1.0,value=0.1,step=0.01),
+    ui.output_plot("plot"),
+
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(3,1,figsize=(12, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        r=float(input.r())
+        u0=float(input.u0())
+        T=int(input.T())
+
+        if r&gt;0:
+            T=1/np.sqrt(r)*(np.pi/2.0-np.arctan(u0/np.sqrt(r)))
+        elif (r&lt;0):
+            if u0&gt;np.sqrt(-r):
+                T=1/np.sqrt(-r)*(np.pi/2.0-np.arctan(u0/np.sqrt(-r)))
+        else:
+            T=1/u0
+        
+
+        # Define rhs of bfc ODE 
+        def saddle_node_bfc_rhs(y,t,r):
+          rhs=r+y**2.0
+          return rhs
+        
+        def ODESol(saddle_node_bfc_rhs,y_0,t,r):
+            y=np.zeros_like(t,dtype=float)
+            init_cond=y_0
+
+            
+            sol1 = odeint(saddle_node_bfc_rhs, init_cond,t,args=(r,))
+            return sol1
+            
+        # Define discretised t domain
+        t = np.linspace(0, T)
+        # define initial conditions
+        init_cond=u0
+        
+        ax[0].set_xlabel('$t$')
+        ax[0].set_ylabel('$x(t)$')
+
+        plt.grid()
+        
+        # Compute numerical solution of ODEs
+        sol1 = ODESol(saddle_node_bfc_rhs,init_cond,t,r)
+
+        # Plot results
+        x=sol1
+        
+        ax[0].plot(t,x)
+        ax[0].set_xlabel('$t$')
+        ax[0].set_ylabel('$x$')
+        ax[0].set_ylim([-3,3])
+        ax[0].set_title('Numerical solution')
+
+        r_values = np.linspace(-2.0, 2.0, 1000)  # range of r values
+        
+        x=np.sqrt(r_values)
+
+        ax[1].plot(-r_values,x,'k--',-r_values,-x,'k')
+        ax[1].set_xlabel('$r$')
+        ax[1].set_ylabel('$x^*$')
+        ax[1].set_xlim([-3,3])
+        ax[1].set_title('Bifurcation diagram')
+        ax[1].plot([r,r],[-3,3],'--')
+
+
+        x_plot=np.linspace(-3,3)
+        f=saddle_node_bfc_rhs(x_plot,0,r)
+        ax[2].plot(x_plot,f)
+        ax[2].set_xlabel('$x$')
+        ax[2].set_ylabel('$f$')
+        ax[2].set_ylim([-2,2])
+        ax[2].plot([u0,u0],[-2,2],'--')
+
+        ax[2].set_title('Phase portrait')
+        
+
+
+        
+app = App(app_ui, server)</code></pre>
+<p>An app to exploring behaviour of the saddle-node bifurcation.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.2</strong></span> Consider the following ODE: <span class="math display">\[
+\dot{x}=1+rx+x^2, \quad x(0)=x_0.
+\]</span></p>
+<ol type="1">
+<li>Sketch the bifurcation diagram.</li>
+<li>Show that upon introducing rescaled variables, the ODE can be written in the normal form <span class="math display">\[
+\dot{y}=r'+y^2.
+\]</span> Hint: try completing the square.</li>
+</ol>
+</div>
+<!--Note that a saddle-node bifurcation is defined by a tangency condition such that 
+$$
+\frac{\partial f}{\partial x}_{(x^*,r_c)}.
+$$
+
+Hence the normal form is 
+$$
 \dot{x}= \frac{\partial f}{\partial r}_{(x^*,r_c)}(r-r_c)
-+ \frac{1}{2}(x-x_c)^2\frac{\partial^2 f}{\partial x^2}_{(x^*,r_c)}
-\]</span> i.e.&nbsp;the right-hand side is linear in <span class="math inline">\(r\)</span> and quadratic in <span class="math inline">\(x\)</span>.</p>
++ \frac{1}{2}(x-x_c)^2\frac{\partial^2 f}{\partial x^2}_{(x^*,r_c)} 
+$$
+i.e. the right-hand side is linear in $r$ and quadratic in $x$.
+-->
 </section>
 <section id="transcritical" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="transcritical"><span class="header-section-number">3.3</span> Transcritical</h2>
-<p>At a transcritical bifurcation the stability of a fixed point changes as a parameter is varied. The <em>normal form</em> for a transcritical bifurcation is</p>
+<p>At a transcritical bifurcation the stability of a fixed point changes as a parameter is varied. However, fixed points do not <em>disappear</em>, as was the case with the saddle node bifurcation.</p>
+<p>The <em>normal form</em> for a transcritical bifurcation is</p>
 <p><span class="math display">\[
 \dot{x}=rx-x^2,
 \]</span></p>
@@ -510,58 +648,65 @@ f'(x^*)=2\pm \sqrt{-r}.
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The fixed points are <span class="math inline">\(x^*=0\)</span> and <span class="math inline">\(x^*=r\)</span>. For <span class="math inline">\(r&lt;0\)</span>, <span class="math inline">\(x^*=r\)</span> is linearly unstable and <span class="math inline">\(x^*=0\)</span> is linearly stable. At <span class="math inline">\(r=0\)</span> the fixed points coalesce and the fixed point is half stable. For <span class="math inline">\(r&gt;0\)</span> <span class="math inline">\(x^*=0\)</span> is linearly unstable and <span class="math inline">\(x^*=r\)</span> is linearly stable.<p></p>
 </div></details>
 </div>
-<div id="45166fe2" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>r_vec<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>,<span class="fl">0.0</span>,<span class="fl">1.0</span>]</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>,sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span>ax.flatten()</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,r_i <span class="kw">in</span> <span class="bu">enumerate</span>(r_vec):</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>r_i<span class="op">*</span>x<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    ax[i].plot(x,f)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    r<span class="op">=</span>r_i</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>     <span class="co"># ---- fixed points ----</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    fixed_points <span class="op">=</span> [<span class="fl">0.0</span>]</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        fixed_points <span class="op">+=</span> [<span class="dv">0</span>,r]</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r<span class="op">&lt;</span><span class="dv">0</span>:</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        fixed_points <span class="op">+=</span> [r,<span class="dv">0</span>]</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x_fp <span class="kw">in</span> fixed_points:</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> r <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x_fp   <span class="co"># derivative at fixed point</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> df <span class="op">&lt;</span> <span class="dv">0</span>:   <span class="co"># stable</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:        <span class="co"># unstable</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markerfacecolor<span class="op">=</span><span class="st">'white'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    ax[i].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    ax[i].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    ax[i].set_title(<span class="ss">f"r = </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    ax[i].set_ylim([<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>])</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    x_arrows <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1.8</span>, <span class="fl">1.8</span>, <span class="dv">6</span>)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    f_arrows <span class="op">=</span> r <span class="op">*</span> x_arrows <span class="op">-</span> x_arrows<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xa, fa <span class="kw">in</span> <span class="bu">zip</span>(x_arrows, f_arrows):</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(fa) <span class="op">&lt;</span> <span class="fl">1e-3</span>:</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        direction <span class="op">=</span> np.sign(fa)</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        ax[i].arrow(</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>            xa, <span class="dv">0</span>,</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.12</span> <span class="op">*</span> direction, <span class="dv">0</span>,</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>            head_width<span class="op">=</span><span class="fl">0.08</span>,</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>            head_length<span class="op">=</span><span class="fl">0.08</span>,</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>            fc<span class="op">=</span><span class="st">'k'</span>, ec<span class="op">=</span><span class="st">'k'</span>,</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>            length_includes_head<span class="op">=</span><span class="va">True</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    fig.supxlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    fig.supylabel(<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">$'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In <a href="#fig-transcritf" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> the function <span class="math inline">\(f\)</span> is plotted for different values of the parameter <span class="math inline">\(r\)</span>. The origin is always a fixed point. For <span class="math inline">\(r&lt;0\)</span> there is a fixed point on the negative real axis whilst for <span class="math inline">\(r&gt;0\)</span> there is a fixed point on the positive real axis. Hence the number of fixed points is two for <span class="math inline">\(|r|&gt;0\)</span>. This bifurcation is fundamentally different to the saddle node bifurcation (where there are no fixed points on one side of the bifurcation).</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>r_vec<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>,<span class="fl">0.0</span>,<span class="fl">1.0</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>,sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span>ax.flatten()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,r_i <span class="kw">in</span> <span class="bu">enumerate</span>(r_vec):</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>r_i<span class="op">*</span>x<span class="op">-</span>x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    ax[i].plot(x,f)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    r<span class="op">=</span>r_i</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>     <span class="co"># ---- fixed points ----</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    fixed_points <span class="op">=</span> [<span class="fl">0.0</span>]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        fixed_points <span class="op">+=</span> [<span class="dv">0</span>,r]</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r<span class="op">&lt;</span><span class="dv">0</span>:</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        fixed_points <span class="op">+=</span> [r,<span class="dv">0</span>]</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x_fp <span class="kw">in</span> fixed_points:</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> r <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x_fp   <span class="co"># derivative at fixed point</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> df <span class="op">&lt;</span> <span class="dv">0</span>:   <span class="co"># stable</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:        <span class="co"># unstable</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markerfacecolor<span class="op">=</span><span class="st">'white'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    ax[i].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    ax[i].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    ax[i].set_title(<span class="ss">f"r = </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    ax[i].set_ylim([<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>])</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    x_arrows <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1.8</span>, <span class="fl">1.8</span>, <span class="dv">6</span>)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    f_arrows <span class="op">=</span> r <span class="op">*</span> x_arrows <span class="op">-</span> x_arrows<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xa, fa <span class="kw">in</span> <span class="bu">zip</span>(x_arrows, f_arrows):</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(fa) <span class="op">&lt;</span> <span class="fl">1e-3</span>:</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        direction <span class="op">=</span> np.sign(fa)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        ax[i].arrow(</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            xa, <span class="dv">0</span>,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.12</span> <span class="op">*</span> direction, <span class="dv">0</span>,</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>            head_width<span class="op">=</span><span class="fl">0.08</span>,</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>            head_length<span class="op">=</span><span class="fl">0.08</span>,</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>            fc<span class="op">=</span><span class="st">'k'</span>, ec<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>            length_includes_head<span class="op">=</span><span class="va">True</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    fig.supxlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    fig.supylabel(<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">$'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-transcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-transcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="d9b1d14a" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -570,44 +715,57 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-<div id="d61f2748" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">400</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed points</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> np.zeros_like(r)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>x_plus <span class="op">=</span> np.full_like(r, np.nan)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>x_minus <span class="op">=</span> np.full_like(r, np.nan)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> r <span class="op">&gt;=</span> <span class="dv">0</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>x_plus[mask] <span class="op">=</span> (r[mask])</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>x_minus[mask] <span class="op">=</span> (r[mask])</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># unstable branch x = 0 for r &gt; 0</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&gt;</span> <span class="dv">0</span>], x0[r <span class="op">&gt;</span> <span class="dv">0</span>], <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&lt;</span> <span class="dv">0</span>], r[r <span class="op">&lt;</span> <span class="dv">0</span>], <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branch x = 0 for r &lt; 0</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&lt;</span> <span class="dv">0</span>], x0[r <span class="op">&lt;</span> <span class="dv">0</span>], <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branches ±sqrt(r)</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_plus, <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_minus, <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"$r$"</span>)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"$x*$"</span>)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-transcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3
+</figcaption>
+</figure>
+</div>
+<p>In <a href="#fig-transcritbfc" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> we plot a bifurcation diagram for the transcritical bifurcation. Note that <span class="math inline">\(x^*=0\)</span> is always a fixed points but it’s stability changes at <span class="math inline">\(r=0\)</span>.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">400</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed points</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> np.zeros_like(r)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>x_plus <span class="op">=</span> np.full_like(r, np.nan)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>x_minus <span class="op">=</span> np.full_like(r, np.nan)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> r <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>x_plus[mask] <span class="op">=</span> (r[mask])</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>x_minus[mask] <span class="op">=</span> (r[mask])</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># unstable branch x = 0 for r &gt; 0</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&gt;</span> <span class="dv">0</span>], x0[r <span class="op">&gt;</span> <span class="dv">0</span>], <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&lt;</span> <span class="dv">0</span>], r[r <span class="op">&lt;</span> <span class="dv">0</span>], <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branch x = 0 for r &lt; 0</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&lt;</span> <span class="dv">0</span>], x0[r <span class="op">&lt;</span> <span class="dv">0</span>], <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branches ±sqrt(r)</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_plus, <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_minus, <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"$r$"</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"$x*$"</span>)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-transcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-transcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="cb053777" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -616,139 +774,213 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-<p>For a transcritical bifurcation</p>
-<p><span class="math display">\[
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-transcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4
+</figcaption>
+</figure>
+</div>
+<p>With the app below you can explore how the value of the parameter value <span class="math inline">\(r\)</span> affects system dynamics for the transcritical bifurcation.</p>
+<p>The app computes solutions to <span class="math display">\[
+\dot{x}=rx-x^2, \quad x(0)=x_0, \quad t \in[0,T].
+\]</span></p>
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-transcrit
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="u0",label="x_0 (Init. Cond.)",min=-3.0,max=3.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T (Time)",min=0.1,max=60.0,value=20.0,step=1.0),
+    ui.input_slider(id="r",label="r",min=-2.0,max=2.0,value=0.1,step=0.1),
+    ui.output_plot("plot"),
+
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(3,1,figsize=(12, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        r=float(input.r())
+        u0=float(input.u0())
+        T=int(input.T())
+    
+        
+        # Define rhs of bfc ODE 
+        def saddle_node_bfc_rhs(t,y,r):
+          rhs=r*y-y**2
+          return rhs
+        def stop_event(t, y,r):
+            return np.abs(y[0]-10)          # trigger when y[0] == 0
+
+        
+        def ODESol(saddle_node_bfc_rhs,y_0,T,r):
+            #y=np.zeros_like(t,dtype=float)
+            init_cond=y_0
+
+            stop_event.terminal = True   # STOP integration
+            stop_event.direction = 1   # only trigger when crossing downward
+
+            sol1 = solve_ivp(saddle_node_bfc_rhs,t_span=(0, T),y0=[init_cond],
+                events=stop_event,args=(r,)
+            )
+            return sol1
+            
+        # Define discretised t domain
+        # define initial conditions
+        init_cond=u0
+        
+        ax[0].set_xlabel('$t$')
+        ax[0].set_ylabel('$x(t)$')
+
+        plt.grid()
+        
+        # Compute numerical solution of ODEs
+        sol1 = ODESol(saddle_node_bfc_rhs,init_cond,T,r)
+        
+        ax[0].plot(sol1.t,sol1.y[0])
+        ax[0].set_xlabel('$t$')
+        ax[0].set_ylabel('$x$')
+        ax[0].set_ylim([-10,10])
+        ax[0].set_title('Numerical solution')
+
+        
+        r_values = np.linspace(-2.0, 2.0, 1000)  # range of r values
+        
+        x_1=np.zeros_like(r_values)
+        x_2=r_values
+
+        ax[1].plot(r_values[r_values&lt;0],x_1[r_values&lt;0],'k',r_values[r_values&lt;0],x_2[r_values&lt;0],'k--')
+        ax[1].plot(r_values[r_values&gt;0],x_1[r_values&gt;0],'k--',r_values[r_values&gt;0],x_2[r_values&gt;0],'k')
+        ax[1].set_xlabel('$r$')
+        ax[1].set_ylabel('$x^*$')
+        ax[1].set_xlim([-3,3])
+        ax[1].set_title('Bifurcation diagram')
+        ax[1].plot([r,r],[-3,3],'--')
+
+        
+        x_plot=np.linspace(-3,3)
+        f=saddle_node_bfc_rhs(0,x_plot,r)
+        ax[2].plot(x_plot,f)
+        ax[2].set_xlabel('$x$')
+        ax[2].set_ylabel('$f$')
+        ax[2].set_ylim([-2,2])
+        ax[2].plot([u0,u0],[-2,2],'--')
+
+        ax[2].set_title('Phase portrait')
+
+        x_arrows = np.linspace(-1.8, 1.8, 6)
+        f_arrows = r * x_arrows - x_arrows**2
+
+        for xa, fa in zip(x_arrows, f_arrows):
+            if abs(fa) &lt; 1e-3:
+                continue
+            direction = np.sign(fa)
+            ax[2].arrow(
+                xa, 0,
+                0.12 * direction, 0,
+                head_width=0.2,
+                head_length=0.28,
+                fc='k', ec='k',
+                length_includes_head=True
+            )
+        
+                
+app = App(app_ui, server)</code></pre>
+<p>An app for exploring behaviour of the transcritical bifurcation.</p>
+<!--
+For a transcritical bifurcation
+
+$$
 \frac{\partial f}{\partial x}_{(x^*,r_c)}=0, \quad  \frac{\partial f}{\partial r}_{(x^*,r_c)}=0
-\]</span></p>
-<p>and the leading order terms are given by</p>
-<p><span class="math display">\[
-\dot{x}=
-\frac{1}{2}(x-x^*)^2\frac{\partial^2 f}{\partial x^2}_{(x^*,r_c)} +(r-r_c)(x-x^*)\frac{\partial^2 f}{\partial r \partial x}_{(x^*,r_c)}
-\]</span></p>
+$$
+
+and the leading order terms are given by
+
+$$
+\dot{x}= 
+\frac{1}{2}(x-x^*)^2\frac{\partial^2 f}{\partial x^2}_{(x^*,r_c)} +(r-r_c)(x-x^*)\frac{\partial^2 f}{\partial r \partial x}_{(x^*,r_c)} 
+$$
+-->
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.4</strong></span> Sketch the bifurcation diagram for</p>
 <p><span class="math display">\[
 \dot{x}=rx+x^2.
 \]</span></p>
 </div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.5</strong></span> Consider the ODE</p>
+<p><span class="math display">\[
+\dot{x}=r\ln x + x-1.
+\]</span></p>
+<ol type="1">
+<li>Show that <span class="math inline">\(x^*=1\)</span> is a fixed point.</li>
+<li>Make a change of variables <span class="math inline">\(u=x-1\)</span> in order to analyse perturbations about the fixed point.</li>
+<li>Use a Taylor expansion to show that this system can be approximated by the transcritical normal form. Hence deduce that the bifurcation vaue is <span class="math inline">\(r=-1\)</span>.</li>
+<li>Show that the system can be reduced to the normal form <span class="math display">\[
+\dot{X}=RX-X^2
+\]</span> by making an appropriate change of variables.</li>
+</ol>
+</div>
 </section>
 <section id="pitchfork" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="pitchfork"><span class="header-section-number">3.4</span> Pitchfork</h2>
 <p>Pitchfork bifurcations often arise in situations with symmetry. Typically, two or more fixed points appear/disappear together.</p>
-<section id="supercritical" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="supercritical"><span class="header-section-number">3.4.1</span> Supercritical</h3>
-<p>The normal form of the supercritical bifurcation is <span class="math display">\[
+<section id="supercritical-pitchfork" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="supercritical-pitchfork"><span class="header-section-number">3.4.1</span> Supercritical pitchfork</h3>
+<p>The normal form of the supercritical pitchfork bifurcation is <span class="math display">\[
 \dot{x}=rx-x^3,
 \]</span></p>
-<div id="23fae319" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>r_vec<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>,<span class="fl">0.0</span>,<span class="fl">1.0</span>]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>,sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span>ax.flatten()</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,r_i <span class="kw">in</span> <span class="bu">enumerate</span>(r_vec):</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>r_i<span class="op">*</span>x<span class="op">-</span>x<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    ax[i].plot(x,f)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    r<span class="op">=</span>r_i</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>     <span class="co"># ---- fixed points ----</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    fixed_points <span class="op">=</span> [<span class="fl">0.0</span>]</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        fixed_points <span class="op">+=</span> [np.sqrt(r), <span class="op">-</span>np.sqrt(r)]</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x_fp <span class="kw">in</span> fixed_points:</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> r <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> x_fp<span class="op">**</span><span class="dv">2</span>   <span class="co"># derivative at fixed point</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> df <span class="op">&lt;</span> <span class="dv">0</span>:   <span class="co"># stable</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:        <span class="co"># unstable</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markerfacecolor<span class="op">=</span><span class="st">'white'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    ax[i].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    ax[i].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    ax[i].set_title(<span class="ss">f"r = </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    ax[i].set_ylim([<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>])</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    x_arrows <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1.8</span>, <span class="fl">1.8</span>, <span class="dv">6</span>)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    f_arrows <span class="op">=</span> r <span class="op">*</span> x_arrows <span class="op">-</span> x_arrows<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xa, fa <span class="kw">in</span> <span class="bu">zip</span>(x_arrows, f_arrows):</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(fa) <span class="op">&lt;</span> <span class="fl">1e-3</span>:</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        direction <span class="op">=</span> np.sign(fa)</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        ax[i].arrow(</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>            xa, <span class="dv">0</span>,</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.12</span> <span class="op">*</span> direction, <span class="dv">0</span>,</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>            head_width<span class="op">=</span><span class="fl">0.08</span>,</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>            head_length<span class="op">=</span><span class="fl">0.08</span>,</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>            fc<span class="op">=</span><span class="st">'k'</span>, ec<span class="op">=</span><span class="st">'k'</span>,</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>            length_includes_head<span class="op">=</span><span class="va">True</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    fig.supxlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    fig.supylabel(<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">$'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Bifurcations_files/figure-html/cell-6-output-1.png" width="611" height="457" class="figure-img"></p>
-</figure>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.6</strong></span> Identify the fixed points and determine their linear stability</p>
 </div>
-</div>
-</div>
-<div id="e3bbf644" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">400</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed points</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> np.zeros_like(r)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>x_plus <span class="op">=</span> np.full_like(r, np.nan)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>x_minus <span class="op">=</span> np.full_like(r, np.nan)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> r <span class="op">&gt;=</span> <span class="dv">0</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>x_plus[mask] <span class="op">=</span> np.sqrt(r[mask])</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>x_minus[mask] <span class="op">=</span> <span class="op">-</span>np.sqrt(r[mask])</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># unstable branch x = 0 for r &gt; 0</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&gt;</span> <span class="dv">0</span>], x0[r <span class="op">&gt;</span> <span class="dv">0</span>], <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branch x = 0 for r &lt; 0</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&lt;</span> <span class="dv">0</span>], x0[r <span class="op">&lt;</span> <span class="dv">0</span>], <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branches ±sqrt(r)</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_plus, <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_minus, <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"$r$"</span>)</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"$x*$"</span>)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Bifurcations_files/figure-html/cell-7-output-1.png" width="565" height="468" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="subcritical" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="subcritical"><span class="header-section-number">3.4.2</span> Subcritical</h3>
-<p><span class="math display">\[
-\dot{x}=rx+x^3,
+<div id="Solution*-3" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The fixed points satisfy <span class="math display">\[
+rx^*-{x^*}^3=0
+\]</span><p></p>
+<p>Hence <span class="math inline">\(x^*\)</span> is a fixed point. Other fixed points satisfy <span class="math display">\[
+r-{x^*}^2=0
 \]</span></p>
-<div id="bed0200c" class="cell" data-execution_count="7">
+<p>Hence there is a pair of fixed points given by <span class="math display">\[
+x^*= \pm \sqrt{r},
+\]</span> defined for <span class="math inline">\(r&gt;0\)</span>.</p>
+<p>For <span class="math display">\[
+f(x,r)=rx-x^3
+\]</span> differentiation yields <span class="math display">\[
+f'(x)=r-3x^2.
+\]</span></p>
+<p>At <span class="math inline">\(x^*=0\)</span></p>
+<p><span class="math display">\[
+f'(0)=r.
+\]</span></p>
+<p>For <span class="math inline">\(r&lt;0\)</span>, <span class="math inline">\(x^*=0\)</span> is linearly stable. For <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(x^*=0\)</span> is linearly unstable. There is a bifurcation at <span class="math inline">\(r=0\)</span>.</p>
+<p>At <span class="math inline">\(x^*= \pm \sqrt{r}\)</span></p>
+<p><span class="math display">\[
+f'(\pm \sqrt{r})=r-3r=-2r.
+\]</span></p>
+<p>Hence when real, non-trivial fixed points exist <span class="math inline">\(r&gt;0\)</span> they are linearly stable.</p>
+<p>At <span class="math inline">\(r=0\)</span> the fixed points coalesce and the fixed point is half stable.</p>
+</div></details>
+</div>
+<p>In <a href="#fig-supcritf" class="quarto-xref">Figure&nbsp;<span>3.5</span></a> we plot <span class="math inline">\(f\)</span> for three different values of <span class="math inline">\(r\)</span>. For <span class="math inline">\(r&lt;0\)</span> it is clear that <span class="math inline">\(x^*=0\)</span> is a uniquye fixed point and that it is linearly stable. For <span class="math inline">\(r&gt;0\)</span> <span class="math inline">\(f\)</span> is a cubic with three real roots. Note that the non-zero roots are linearly stable and symmetrically distributed about the origin. We refer to a system with two linearly stable fixd points as being <em>bistable</em>.</p>
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -759,16 +991,16 @@ f'(x^*)=2\pm \sqrt{-r}.
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span>ax.flatten()</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,r_i <span class="kw">in</span> <span class="bu">enumerate</span>(r_vec):</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>r_i<span class="op">*</span>x<span class="op">+</span>x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>r_i<span class="op">*</span>x<span class="op">-</span>x<span class="op">**</span><span class="dv">3</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    ax[i].plot(x,f)</span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    r<span class="op">=</span>r_i</span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>     <span class="co"># ---- fixed points ----</span></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    fixed_points <span class="op">=</span> [<span class="fl">0.0</span>]</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        fixed_points <span class="op">+=</span> [np.sqrt(<span class="op">-</span>r), <span class="op">-</span>np.sqrt(<span class="op">-</span>r)]</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        fixed_points <span class="op">+=</span> [np.sqrt(r), <span class="op">-</span>np.sqrt(r)]</span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x_fp <span class="kw">in</span> fixed_points:</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> r <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> x_fp<span class="op">**</span><span class="dv">2</span>   <span class="co"># derivative at fixed point</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> r <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> x_fp<span class="op">**</span><span class="dv">2</span>   <span class="co"># derivative at fixed point</span></span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> df <span class="op">&lt;</span> <span class="dv">0</span>:   <span class="co"># stable</span></span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
@@ -781,7 +1013,7 @@ f'(x^*)=2\pm \sqrt{-r}.
 <span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    ax[i].set_ylim([<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>])</span>
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    x_arrows <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1.8</span>, <span class="fl">1.8</span>, <span class="dv">6</span>)</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    f_arrows <span class="op">=</span> r <span class="op">*</span> x_arrows <span class="op">+</span> x_arrows<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    f_arrows <span class="op">=</span> r <span class="op">*</span> x_arrows <span class="op">-</span> x_arrows<span class="op">**</span><span class="dv">3</span></span>
 <span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xa, fa <span class="kw">in</span> <span class="bu">zip</span>(x_arrows, f_arrows):</span>
 <span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(fa) <span class="op">&lt;</span> <span class="fl">1e-3</span>:</span>
@@ -797,15 +1029,28 @@ f'(x^*)=2\pm \sqrt{-r}.
 <span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    fig.supxlabel(<span class="st">'$x$'</span>)</span>
 <span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    fig.supylabel(<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">$'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-supcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-supcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="24bd517d" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Bifurcations_files/figure-html/cell-8-output-1.png" width="611" height="457" class="figure-img"></p>
+<p><img src="Bifurcations_files/figure-html/cell-6-output-1.png" width="611" height="457" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="e630e2d2" class="cell" data-execution_count="8">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-supcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.5
+</figcaption>
+</figure>
+</div>
+<p>In <a href="#fig-supcritbfc" class="quarto-xref">Figure&nbsp;<span>3.6</span></a> we plot a bifurcation diagram for the supercritical pitchfork. Note that when <span class="math inline">\(r&lt;0\)</span> there is a single fixed point that is linearly stable. For <span class="math inline">\(r&gt;0\)</span> there are three fixed points.</p>
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -817,9 +1062,9 @@ f'(x^*)=2\pm \sqrt{-r}.
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>x_plus <span class="op">=</span> np.full_like(r, np.nan)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>x_minus <span class="op">=</span> np.full_like(r, np.nan)</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> <span class="op">-</span>r <span class="op">&gt;=</span> <span class="dv">0</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>x_plus[mask] <span class="op">=</span> np.sqrt(<span class="op">-</span>r[mask])</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>x_minus[mask] <span class="op">=</span> <span class="op">-</span>np.sqrt(<span class="op">-</span>r[mask])</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> r <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>x_plus[mask] <span class="op">=</span> np.sqrt(r[mask])</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>x_minus[mask] <span class="op">=</span> <span class="op">-</span>np.sqrt(r[mask])</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
@@ -830,8 +1075,8 @@ f'(x^*)=2\pm \sqrt{-r}.
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&lt;</span> <span class="dv">0</span>], x0[r <span class="op">&lt;</span> <span class="dv">0</span>], <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branches ±sqrt(r)</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_plus, <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_minus, <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_plus, <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_minus, <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
@@ -842,6 +1087,274 @@ f'(x^*)=2\pm \sqrt{-r}.
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-supcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-supcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="a8bced37" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bifurcations_files/figure-html/cell-7-output-1.png" width="565" height="468" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-supcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.6
+</figcaption>
+</figure>
+</div>
+<p>With the app below you can explore how the value of the parameter value <span class="math inline">\(r\)</span> affects system dynamics for the supercritical pitchfork bifurcation.</p>
+<p>The app computes solutions to <span class="math display">\[
+\dot{x}=rx-x^3, \quad x(0)=x_0, \quad t \in[0,T].
+\]</span></p>
+<ol type="1">
+<li>Show that in the case where <span class="math inline">\(r&gt;0\)</span> the initial conditions control which of the stable fixed points the system finds.</li>
+</ol>
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-transcrit
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="u0",label="x_0 (Init. Cond.)",min=-3.0,max=3.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T (Time)",min=0.1,max=60.0,value=20.0,step=1.0),
+    ui.input_slider(id="r",label="r",min=-2.0,max=2.0,value=0.1,step=0.1),
+    ui.output_plot("plot"),
+
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(3,1,figsize=(12, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        r=float(input.r())
+        u0=float(input.u0())
+        T=int(input.T())
+    
+        
+        # Define rhs of bfc ODE 
+        def super_pitchfork_bfc_rhs(t,y,r):
+          rhs=r*y-y**3
+          return rhs
+        def stop_event(t, y,r):
+            return np.abs(y[0]-10)          # trigger when y[0] == 0
+
+        
+        def ODESol(rhs,y_0,T,r):
+            #y=np.zeros_like(t,dtype=float)
+            init_cond=y_0
+
+            stop_event.terminal = True   # STOP integration
+            stop_event.direction = 1   # only trigger when crossing downward
+
+            sol1 = solve_ivp(rhs,t_span=(0, T),y0=[init_cond],
+                events=stop_event,args=(r,)
+            )
+            return sol1
+            
+        # Define discretised t domain
+        # define initial conditions
+        init_cond=u0
+        
+        ax[0].set_xlabel('$t$')
+        ax[0].set_ylabel('$x(t)$')
+
+        plt.grid()
+        
+        # Compute numerical solution of ODEs
+        sol1 = ODESol(super_pitchfork_bfc_rhs,init_cond,T,r)
+        
+        ax[0].plot(sol1.t,sol1.y[0])
+        ax[0].set_xlabel('$t$')
+        ax[0].set_ylabel('$x$')
+        ax[0].set_ylim([-2.5,2.5])
+        ax[0].set_title('Numerical solution')
+
+        
+        r_values = np.linspace(-2.0, 2.0, 1000)  # range of r values
+        r_values2 = np.linspace(0.0, 2.0, 1000)  # range of r values
+
+        
+        x_1=np.zeros_like(r_values)
+        x_2=np.sqrt(r_values2)
+
+        ax[1].plot(r_values,x_1,'k')
+
+        ax[1].plot(r_values2,x_2,'k--',r_values2,-x_2,'k--')
+
+        ax[1].set_xlabel('$r$')
+        ax[1].set_ylabel('$x^*$')
+        ax[1].set_xlim([-3,3])
+        ax[1].set_title('Bifurcation diagram')
+        ax[1].plot([r,r],[-3,3],'--')
+
+        
+        x_plot=np.linspace(-3,3)
+        f=super_pitchfork_bfc_rhs(0,x_plot,r)
+        ax[2].plot(x_plot,f)
+        ax[2].set_xlabel('$x$')
+        ax[2].set_ylabel('$f$')
+        ax[2].set_ylim([-2,2])
+        ax[2].plot([u0,u0],[-2,2],'--')
+
+        ax[2].set_title('Phase portrait')
+
+        x_arrows = np.linspace(-1.8, 1.8, 6)
+        f_arrows = r * x_arrows - x_arrows**3
+
+        for xa, fa in zip(x_arrows, f_arrows):
+            if abs(fa) &lt; 1e-3:
+                continue
+            direction = np.sign(fa)
+            ax[2].arrow(
+                xa, 0,
+                0.12 * direction, 0,
+                head_width=0.2,
+                head_length=0.28,
+                fc='k', ec='k',
+                length_includes_head=True
+            )
+        
+                
+app = App(app_ui, server)</code></pre>
+<p>An app for exploring behaviour of the supercritical pitchfork bifurcation.</p>
+</section>
+<section id="subcritical-pitchfork" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="subcritical-pitchfork"><span class="header-section-number">3.4.2</span> Subcritical pitchfork</h3>
+<p><span class="math display">\[
+\dot{x}=rx+x^3,
+\]</span></p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>r_vec<span class="op">=</span>[<span class="op">-</span><span class="fl">1.0</span>,<span class="fl">0.0</span>,<span class="fl">1.0</span>]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>,sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span>ax.flatten()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,r_i <span class="kw">in</span> <span class="bu">enumerate</span>(r_vec):</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>r_i<span class="op">*</span>x<span class="op">+</span>x<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    ax[i].plot(x,f)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    r<span class="op">=</span>r_i</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>     <span class="co"># ---- fixed points ----</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    fixed_points <span class="op">=</span> [<span class="fl">0.0</span>]</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        fixed_points <span class="op">+=</span> [np.sqrt(<span class="op">-</span>r), <span class="op">-</span>np.sqrt(<span class="op">-</span>r)]</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x_fp <span class="kw">in</span> fixed_points:</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> r <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> x_fp<span class="op">**</span><span class="dv">2</span>   <span class="co"># derivative at fixed point</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> df <span class="op">&lt;</span> <span class="dv">0</span>:   <span class="co"># stable</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:        <span class="co"># unstable</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>            ax[i].plot(x_fp, <span class="dv">0</span>, <span class="st">'ko'</span>, markerfacecolor<span class="op">=</span><span class="st">'white'</span>, markersize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    ax[i].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    ax[i].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    ax[i].set_title(<span class="ss">f"r = </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    ax[i].set_ylim([<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>])</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    x_arrows <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1.8</span>, <span class="fl">1.8</span>, <span class="dv">6</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    f_arrows <span class="op">=</span> r <span class="op">*</span> x_arrows <span class="op">+</span> x_arrows<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xa, fa <span class="kw">in</span> <span class="bu">zip</span>(x_arrows, f_arrows):</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">abs</span>(fa) <span class="op">&lt;</span> <span class="fl">1e-3</span>:</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        direction <span class="op">=</span> np.sign(fa)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>        ax[i].arrow(</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>            xa, <span class="dv">0</span>,</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.12</span> <span class="op">*</span> direction, <span class="dv">0</span>,</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>            head_width<span class="op">=</span><span class="fl">0.08</span>,</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>            head_length<span class="op">=</span><span class="fl">0.08</span>,</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>            fc<span class="op">=</span><span class="st">'k'</span>, ec<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>            length_includes_head<span class="op">=</span><span class="va">True</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    fig.supxlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    fig.supylabel(<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">$'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-subcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="11bfb5a9" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bifurcations_files/figure-html/cell-8-output-1.png" width="611" height="457" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.7
+</figcaption>
+</figure>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">400</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fixed points</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> np.zeros_like(r)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>x_plus <span class="op">=</span> np.full_like(r, np.nan)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>x_minus <span class="op">=</span> np.full_like(r, np.nan)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> <span class="op">-</span>r <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>x_plus[mask] <span class="op">=</span> np.sqrt(<span class="op">-</span>r[mask])</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>x_minus[mask] <span class="op">=</span> <span class="op">-</span>np.sqrt(<span class="op">-</span>r[mask])</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># unstable branch x = 0 for r &gt; 0</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&gt;</span> <span class="dv">0</span>], x0[r <span class="op">&gt;</span> <span class="dv">0</span>], <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branch x = 0 for r &lt; 0</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>ax.plot(r[r <span class="op">&lt;</span> <span class="dv">0</span>], x0[r <span class="op">&lt;</span> <span class="dv">0</span>], <span class="st">'k-'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co"># stable branches ±sqrt(r)</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_plus, <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>ax.plot(r, x_minus, <span class="st">'k--'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'gray'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"$r$"</span>)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"$x*$"</span>)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-subcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="9688ffe5" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -850,399 +1363,527 @@ f'(x^*)=2\pm \sqrt{-r}.
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="application-the-spruce-budworm-model" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="application-the-spruce-budworm-model"><span class="header-section-number">3.5</span> Application: the spruce budworm model</h2>
-<p>The spruce budworm is a destructive and widely distributed forest defoliator in North America. Massive outbreaks occur periodically and can destroy large quantities of valuable spruce and fir. To understand the outbreak behaviour and develop and management strategies, a series of mathematical models have been developed, beginning with <span class="citation" data-cites="ludwig1978qualitative">Ludwig et al. (<a href="#ref-ludwig1978qualitative" role="doc-biblioref">1978</a>)</span>. The goal of the models is to explain the qualitative pattern of sudden outbreaks and then a sudden collapse.</p>
-<section id="model-development" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="model-development"><span class="header-section-number">3.5.1</span> Model development</h3>
-<p>Letting <span class="math inline">\(N(t)\)</span> represent the population size at time <span class="math inline">\(t\)</span>, it is assumed that budworm exhibits logistic growth and is subject to predation at rate <span class="math inline">\(p(N)\)</span>. A governing ordinary differential equation is given by <span id="eq-sprucebudworm"><span class="math display">\[
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.8
+</figcaption>
+</figure>
+</div>
+<!--
+## Application: the spruce budworm model
+The spruce budworm is a destructive and widely distributed forest defoliator in North America. Massive outbreaks occur periodically and can destroy large quantities of valuable spruce and fir. To understand the outbreak behaviour and develop and management strategies, a series of mathematical models have been developed, beginning with @ludwig1978qualitative. The goal of the models is to explain the qualitative pattern of sudden outbreaks and then a sudden collapse.
+
+### Model development
+Letting $N(t)$ represent the population size at time $t$, it is assumed that budworm exhibits  logistic growth and is subject to  predation at rate $p(N)$.
+ A governing ordinary differential equation is given by
+$$
 \frac{dN }{dt}= r_B N\left(1-\frac{N}{K_B}\right)-p(N),
-\tag{3.1}\]</span></span> where <span class="math display">\[
+$${#eq-sprucebudworm}
+where 
+$$
 p(N) =\frac{B N^2}{A^2 +N^2},
-\]</span> <span class="math inline">\(r_B\)</span> is the linear growth rate, <span class="math inline">\(K_B\)</span> is the carrying capacity, <span class="math inline">\(B\)</span> is the maximum rate of predation and <span class="math inline">\(A\)</span> is a measure of budworm population where predation switches on (specifically, <span class="math inline">\(A\)</span> represents the budworm density at which predation is half its maximum value).</p>
-<p>It is informative to graph the predation term <span class="math display">\[
+$$
+$r_B$ is the linear growth rate, $K_B$ is the carrying capacity, $B$ is the maximum rate of predation and $A$ is a measure of budworm population where predation switches on (specifically, $A$ represents the budworm density at which predation is half its maximum value).
+
+
+It is informative to graph  the predation term
+$$
 p(N) =\frac{B N^2}{A^2 +N^2},
-\]</span> and annotate the parameters <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
-<p>There is a root at <span class="math inline">\(N=0\)</span>. In the limit <span class="math inline">\(N\rightarrow \infty\)</span>, <span class="math inline">\(p \rightarrow B\)</span>. Note that <span class="math inline">\(N=A\)</span>, <span class="math inline">\(p=A/2\)</span>. The derivative is <span class="math display">\[
+$$
+and annotate the parameters $A$ and $B$.
+
+There is a root at $N=0$.
+In the limit $N\rightarrow \infty$, $p \rightarrow B$.
+Note that $N=A$, $p=A/2$.
+The derivative is
+$$
 p'(N)=\frac{2BN}{A^2+N^2} - \frac{2BN^3}{(A^2+N^2)^2} =  \frac{2BA^2N}{(A^2+N^2)^2}
-\]</span> Thus there is a turning point at <span class="math inline">\(N=0\)</span> and <span class="math inline">\(p'&gt;0 \forall N&gt;0\)</span>.</p>
-</section>
-<section id="nondimensionalisation" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="nondimensionalisation"><span class="header-section-number">3.5.2</span> Nondimensionalisation</h3>
-<p>Introducing the (as yet unspecified) dimensional scalings <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span>, the model is nondimensionalised as follows</p>
-<p><span class="math display">\[
+$$
+Thus there is a turning point at $N=0$ and $p'>0 \forall N>0$.
+
+
+### Nondimensionalisation
+
+Introducing the (as yet unspecified) dimensional scalings $\tilde{N}$ and $\tilde{T}$, the model is nondimensionalised as follows
+
+$$
 n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}.
-\]</span></p>
-<p>Changing variables in <a href="#eq-sprucebudworm" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> yields</p>
-<p><span class="math display">\[
+$$
+
+Changing  variables in @eq-sprucebudworm yields
+
+$$
 \frac{\tilde{N}}{\tilde{T}}\frac{d n }{d\tau}= r_B \tilde{N}n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N}^2n^2}{A^2+\tilde{N}^2 n^2}.
-\]</span></p>
-<p>After some tidying</p>
-<p><span class="math display">\[
+$$
+
+After some tidying
+
+$$
 \frac{dn }{d\tau}= r_B\tilde{T} n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N} \tilde{T}}{A^2}\frac{n^2}{1+\frac{\tilde{N}^2}{A^2}n^2}.
-\]</span></p>
-<p>A natural scale for cell density in the model is given by the parameter <span class="math inline">\(A\)</span>, as it determines the density of budworm at which predation is half its maximal value. Hence we choose the scaling on the budworm density <span class="math display">\[
+$$
+
+
+A natural scale for cell density in the model is given by the parameter $A$, as it determines the density of budworm at which predation is half its maximal value. Hence we choose the scaling on the budworm density
+$$
 \tilde{N}=A.
-\]</span> Similarly, a natural time scale for the model is given by<br>
-<span class="math display">\[
+$$ 
+Similarly, a natural time scale for the model is given by  
+$$
 \tilde{T}=A/B.
-\]</span></p>
-<p>Substituting for <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span> yields <span id="eq-budwormnondim"><span class="math display">\[
+$$
+
+
+Substituting for $\tilde{N}$ and $\tilde{T}$ yields
+$$
 \frac{dn }{d\tau}= rn\left(1-\frac{n}{q}\right)-\frac{n^2}{1+n^2} = H(n),
-\tag{3.2}\]</span></span> where we define the nondimensional parameters <span class="math display">\[
+$${#eq-budwormnondim}
+where we define the nondimensional parameters
+$$
 r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
-\]</span></p>
-<p>Note that <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> has two nondimensional parameters and all variables are dimensionless. See <a href="#fig-sprucebudworm-rhs" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> for a plot of right-hand side of equation <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>. What kind of behaviours do you expect to see from the model?</p>
-<div id="cell-fig-sprucebudworm-rhs" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="fl">1.1</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>N_0<span class="op">=</span><span class="fl">0.1</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span><span class="dv">12</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">0.22</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span><span class="fl">0.42</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span><span class="fl">0.72</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>n_vec<span class="op">=</span>np.linspace(<span class="dv">0</span>,N_max,<span class="dv">100</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model(x,t,r,q):</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  rhs<span class="op">=</span>r<span class="op">*</span>x<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>q) <span class="op">-</span> x<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> rhs</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model_f(x,t,r,q):</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  f<span class="op">=</span>r<span class="op">*</span>x<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>q) </span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> f  </span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model_g(x,t,r,q):</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  g<span class="op">=</span>x<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> g  </span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>rhs1<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_1,q)</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>rhs2<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_2,q)</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>rhs3<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_3,q)</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>)</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>ax.plot(n_vec, rhs1,n_vec, rhs2,n_vec, rhs3)</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$N$'</span>)</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$H(N)$'</span>)</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_1),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3)])</span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-sprucebudworm-rhs" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sprucebudworm-rhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Bifurcations_files/figure-html/fig-sprucebudworm-rhs-output-1.png" width="601" height="429" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-rhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: RHS of spr. budworm model
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="numerical-solutions" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="numerical-solutions"><span class="header-section-number">3.5.3</span> Numerical solutions</h3>
-<p>In <a href="#fig-sprucebudworm-numsol" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> we plot some numerical solutions of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> at different values of the parameter <span class="math inline">\(r\)</span>.</p>
-<p>Numerical solutions of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> indicate that there is a single stable steady state when <span class="math inline">\(r\)</span> is both small and large but for intermediate values of <span class="math inline">\(r\)</span> there are two stable steady states.</p>
-<p>Our goal is to analyse the model and understand why different parameter values yield these strikingly different model behaviours.</p>
-<div id="cell-fig-sprucebudworm-numsol" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define time</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">101</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Numerically solve the ODE for differnet parameter values</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>sol1 <span class="op">=</span> odeint(rhssprucebudworm_model, N_0, t, args<span class="op">=</span>(r_1, q))</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>sol2 <span class="op">=</span> odeint(rhssprucebudworm_model, N_0, t, args<span class="op">=</span>(r_2, q))</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>sol3 <span class="op">=</span> odeint(rhssprucebudworm_model, N_0, t, args<span class="op">=</span>(r_3, q))</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot results</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>fig, ax<span class="op">=</span> plt.subplots()</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>ax.plot(t, sol1, <span class="st">'b'</span>, label<span class="op">=</span><span class="st">'r='</span> <span class="op">+</span><span class="bu">str</span>(r_1))</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>ax.plot(t, sol2, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2))</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>ax.plot(t, sol3, <span class="st">'m'</span>, label<span class="op">=</span><span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3))</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$N$'</span>)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-sprucebudworm-numsol" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sprucebudworm-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Bifurcations_files/figure-html/fig-sprucebudworm-numsol-output-1.png" width="585" height="429" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: Numerical solution of spr. budworm model
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="steady-state-analysis" class="level3" data-number="3.5.4">
-<h3 data-number="3.5.4" class="anchored" data-anchor-id="steady-state-analysis"><span class="header-section-number">3.5.4</span> Steady state analysis</h3>
-<p>Letting <span class="math inline">\(n^*\)</span> represent steady states of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> yields <span class="math display">\[
+$$
+
+Note that @eq-budwormnondim has two nondimensional parameters and all variables are dimensionless.  See @fig-sprucebudworm-rhs for a plot of right-hand side of equation @eq-budwormnondim. What kind of behaviours do you expect to see from the model? 
+
+
+:::
+
+::: {#fb3b1cf7 .cell execution_count=9}
+``` {.python .cell-code code-fold="true"}
+#| label: fig-sprucebudworm-rhs
+#| fig-cap: "RHS of spr. budworm model"
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy
+from scipy.integrate import odeint
+
+N_max=1.1
+N_0=0.1
+q=12
+r_1=0.22
+r_2=0.42
+r_3=0.72
+
+n_vec=np.linspace(0,N_max,100)
+
+def rhssprucebudworm_model(x,t,r,q):
+
+  rhs=r*x*(1-x/q) - x**2/(1+x**2)
+  return rhs
+def rhssprucebudworm_model_f(x,t,r,q):
+
+  f=r*x*(1-x/q) 
+  return f  
+def rhssprucebudworm_model_g(x,t,r,q):
+
+  g=x**2/(1+x**2)
+  return g  
+
+rhs1=rhssprucebudworm_model(n_vec,0,r_1,q)
+rhs2=rhssprucebudworm_model(n_vec,0,r_2,q)
+rhs3=rhssprucebudworm_model(n_vec,0,r_3,q)
+
+fig, ax = plt.subplots(1)
+
+ax.plot(n_vec, rhs1,n_vec, rhs2,n_vec, rhs3)
+plt.xlabel('$N$')
+plt.ylabel('$H(N)$')
+plt.legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
+plt.grid(True)
+plt.show()
+```
+
+::: {.cell-output .cell-output-display}
+![](Bifurcations_files/figure-html/cell-10-output-1.png){width=601 height=429}
+:::
+:::
+
+
+:::
+
+### Numerical solutions
+In @fig-sprucebudworm-numsol we plot some numerical solutions of @eq-budwormnondim at different values of the parameter $r$. 
+
+Numerical solutions of @eq-budwormnondim  indicate that there is a single stable steady state when $r$ is both small and large but for intermediate values of $r$ there are two stable steady states. 
+
+Our goal is to analyse the model and understand why different parameter values yield these strikingly different model behaviours.
+
+
+
+
+:::
+
+::: {#2975a89e .cell execution_count=10}
+``` {.python .cell-code code-fold="true"}
+#| label: fig-sprucebudworm-numsol
+#| fig-cap: "Numerical solution of spr. budworm model"
+
+# Define time
+t = np.linspace(0, 100, 101)
+
+# Numerically solve the ODE for differnet parameter values
+sol1 = odeint(rhssprucebudworm_model, N_0, t, args=(r_1, q))
+sol2 = odeint(rhssprucebudworm_model, N_0, t, args=(r_2, q))
+sol3 = odeint(rhssprucebudworm_model, N_0, t, args=(r_3, q))
+
+
+# plot results
+fig, ax= plt.subplots()
+ax.plot(t, sol1, 'b', label='r=' +str(r_1))
+ax.plot(t, sol2, 'r', label='r='+str(r_2))
+ax.plot(t, sol3, 'm', label='r='+str(r_3))
+
+plt.legend(loc='best')
+plt.xlabel('$t$')
+plt.ylabel('$N$')
+
+plt.grid()
+plt.show()
+```
+
+::: {.cell-output .cell-output-display}
+![](Bifurcations_files/figure-html/cell-11-output-1.png){width=585 height=429}
+:::
+:::
+
+
+:::
+
+
+### Steady state analysis
+Letting $n^*$ represent steady states of @eq-budwormnondim yields
+$$
 rn^*(1-\frac{n^*}{q})- \frac{n^*{^2}}{1+n^*{^2}}=0.
-\]</span> Hence either <span class="math display">\[
+$$
+Hence either 
+$$
 n^*=0,
-\]</span> or <span class="math inline">\(n^*\)</span> satisfies the cubic equation <span class="math display">\[
+$$ 
+or $n^*$ satisfies the cubic equation
+$$
 r\left(1-\frac{n^*}{q}\right)- \frac{n^*}{1+n^*{^2}}=0.
-\]</span></p>
-<p>Explicit solutions to such a cubic can be immediately written down but they are cumbersome to work with. We proceed using a graphical/qualitative approach.</p>
-<p>Define <span id="eq-sprucebudwormfgn"><span class="math display">\[
+$$
+
+Explicit solutions to such a cubic can be immediately written down but they are cumbersome to work with.  We proceed using a graphical/qualitative approach.
+
+Define
+$$
 f(n^*)=r\left(1-\frac{n^*}{q}\right) \ \ \textrm{and} \ \ g(n^*)=\frac{n^*}{1+n^*{^2}}.
-\tag{3.3}\]</span></span></p>
-<p>Roots occur for values of <span class="math inline">\(n^*\)</span> that satisfy <span class="math inline">\(f=g\)</span>.</p>
-<p>In <a href="#fig-sprucebudworm-rhsfg" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> (a) we fix the parameter <span class="math inline">\(q=10\)</span> and consider model behaviour as a function of the parameter <span class="math inline">\(r\)</span>. When <span class="math inline">\(r\gg1\)</span> there is a nonzero steady-state corresponding to <span class="math inline">\(n^*\gg 1\)</span>. When <span class="math inline">\(r\ll1\)</span> there is a nonzero steady-state corresponding to <span class="math inline">\(n^*\ll 1\)</span>. In the intermediate case there can be three intersection points.</p>
-<p>We can use the curve sketching techniques form Tutorial Sheet 1 to sketch <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>.</p>
-<p><span class="math inline">\(f\)</span> is linear. There is a root at <span class="math inline">\(n^*=q\)</span>. The derivative is <span class="math inline">\(-r/q\)</span>. <span class="math inline">\(f(0)\)</span>=r. <span class="math inline">\(g\)</span> has a unique root at <span class="math inline">\(n^*=0\)</span>. The derivative is <span class="math display">\[
+$${#eq-sprucebudwormfgn}
+
+Roots occur for values of $n^*$ that satisfy $f=g$. 
+
+In @fig-sprucebudworm-rhsfg (a) we fix the parameter $q=10$ and consider model behaviour as a function of the parameter $r$. 
+When $r\gg1$ there is a nonzero steady-state corresponding to $n^*\gg 1$. 
+When   $r\ll1$ there is a nonzero steady-state corresponding to $n^*\ll 1$. 
+In the intermediate case there can be three intersection points.
+
+We can use the curve sketching techniques form Tutorial Sheet 1 to sketch $f$ and $g$.
+
+$f$ is linear.
+There is  a root at $n^*=q$.
+The derivative is $-r/q$.
+$f(0)$=r.
+$g$ has a unique root at $n^*=0$.
+The derivative is
+$$
 g'=\frac{1-n{^*}^2}{(1+n^*)^2}.
-\]</span> There is a turning point at <span class="math inline">\(n^*=1\)</span>. Here <span class="math inline">\(g=1/2\)</span>. As <span class="math inline">\(n^*\rightarrow \infty\)</span>, <span class="math inline">\(g\rightarrow 0\)</span>. <span class="math inline">\(f'(0)=1\)</span>.</p>
-</section>
-<section id="linear-stability-analysis" class="level3" data-number="3.5.5">
-<h3 data-number="3.5.5" class="anchored" data-anchor-id="linear-stability-analysis"><span class="header-section-number">3.5.5</span> Linear stability analysis</h3>
-<p>The linear stability of the model is determined by the quantity <span class="math display">\[
+$$
+There is a turning point at $n^*=1$. Here $g=1/2$.
+As $n^*\rightarrow \infty$, $g\rightarrow 0$.
+$f'(0)=1$.
+
+### Linear stability analysis
+
+The linear stability of the model is determined by the quantity
+$$
 H'(n)=r(1-\frac{2n}{q})-\frac{2{n}}{1+{n}^2} +\frac{2{n}^3}{(1+{n}^2)^2}.
-\]</span></p>
-<p>Hence at the steady state <span class="math inline">\(n^*=0\)</span> <span class="math display">\[
+$$
+
+Hence at the steady state $n^*=0$ 
+$$
 H'(0)=r
-\]</span> and the steady state is linearly unstable.</p>
-<p>Given the nonzero steady states have not been calculated explicitly, we proceed using graphical analysis of stability. In <a href="#fig-sprucebudworm-rhsfg" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> (b) we plot the right-hand side of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> against <span class="math inline">\(n\)</span> and examine the cases of large, small and intermediate <span class="math inline">\(r\)</span> for a given value of <span class="math inline">\(q\)</span>.</p>
-<p>When <span class="math inline">\(r\)</span> is both large and small the nonzero steady state is stable (the derivative at the roots is negative). In the case where three biologically relevant roots exist, the intermediate root is unstable.</p>
-<div id="cell-fig-sprucebudworm-rhsfg" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial condition</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>N_0<span class="op">=</span><span class="fl">0.1</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model parameters</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span><span class="dv">12</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">0.2</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span><span class="fl">0.5</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span><span class="fl">0.8</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Discretise n</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="dv">13</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>n_vec<span class="op">=</span>np.linspace(<span class="dv">0</span>,N_max,<span class="dv">100</span>)</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute f and g</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model_f(x,t,r,q):</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  f<span class="op">=</span>r<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>q) </span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> f  </span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model_g(x,t,r,q):</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  g<span class="op">=</span>x<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> g  </span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute f for different values of r and g</span></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>f_1<span class="op">=</span>rhssprucebudworm_model_f(n_vec,<span class="dv">0</span>,r_1,q)</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>f_2<span class="op">=</span>rhssprucebudworm_model_f(n_vec,<span class="dv">0</span>,r_2,q)</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>f_3<span class="op">=</span>rhssprucebudworm_model_f(n_vec,<span class="dv">0</span>,r_3,q)</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>g<span class="op">=</span>rhssprucebudworm_model_g(n_vec,<span class="dv">0</span>,r_1,q)</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute H for different values of r</span></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>h_1<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_1,q)</span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>h_2<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_2,q)</span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>h_3<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_3,q)</span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(n_vec, f_1,n_vec, f_2,n_vec, f_3,n_vec,g)</span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$n$'</span>)</span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$f,g$'</span>)</span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">True</span>)</span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend([<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_1),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3)])</span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(n_vec, h_1,n_vec, h_2,n_vec, h_3)</span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$n$'</span>)</span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$H$'</span>)</span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">True</span>)</span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend([<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_1),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3)])</span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-sprucebudworm-rhsfg" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sprucebudworm-rhsfg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Bifurcations_files/figure-html/fig-sprucebudworm-rhsfg-output-1.png" width="659" height="468" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-rhsfg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.3: RHS of spr. budworm model
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="bifurcation-analysis" class="level3" data-number="3.5.6">
-<h3 data-number="3.5.6" class="anchored" data-anchor-id="bifurcation-analysis"><span class="header-section-number">3.5.6</span> Bifurcation analysis</h3>
-<p>The goal is to identify boundaries of <span class="math inline">\(rq\)</span> parameter space where the stability changes occur and/or the number of steady states changes.</p>
-<p>We can define points in <span class="math inline">\(rq\)</span> parameter space where bifurcations arise by seeking values of <span class="math inline">\(n^*\)</span> that satisfy <span class="math display">\[
+$$
+and the steady state is linearly unstable.
+
+Given the  nonzero steady states have not been calculated explicitly, we proceed using graphical analysis of stability. In @fig-sprucebudworm-rhsfg  (b) we plot the right-hand side of @eq-budwormnondim against $n$ and examine the cases of large, small and intermediate $r$ for a given value of $q$. 
+
+When $r$ is both large and small the nonzero steady state is stable (the derivative at the roots is negative). 
+In the case where three biologically relevant roots exist, the intermediate root is unstable.
+
+:::
+
+::: {#60c410f8 .cell execution_count=11}
+``` {.python .cell-code code-fold="true"}
+#| label: fig-sprucebudworm-rhsfg
+#| fig-cap: "RHS of spr. budworm model"
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy
+from scipy.integrate import odeint
+
+# Define initial condition
+N_0=0.1
+
+# Define model parameters
+q=12
+r_1=0.2
+r_2=0.5
+r_3=0.8
+
+# Discretise n
+N_max=13
+n_vec=np.linspace(0,N_max,100)
+
+# Function to compute f and g
+def rhssprucebudworm_model_f(x,t,r,q):
+
+  f=r*(1-x/q) 
+  return f  
+def rhssprucebudworm_model_g(x,t,r,q):
+
+  g=x/(1+x**2)
+  return g  
+
+# Compute f for different values of r and g
+f_1=rhssprucebudworm_model_f(n_vec,0,r_1,q)
+f_2=rhssprucebudworm_model_f(n_vec,0,r_2,q)
+f_3=rhssprucebudworm_model_f(n_vec,0,r_3,q)
+g=rhssprucebudworm_model_g(n_vec,0,r_1,q)
+
+
+# Compute H for different values of r
+h_1=rhssprucebudworm_model(n_vec,0,r_1,q)
+h_2=rhssprucebudworm_model(n_vec,0,r_2,q)
+h_3=rhssprucebudworm_model(n_vec,0,r_3,q)
+
+
+# Plot results
+fig, ax = plt.subplots(1,2)
+
+ax[0].plot(n_vec, f_1,n_vec, f_2,n_vec, f_3,n_vec,g)
+ax[0].set_xlabel('$n$')
+ax[0].set_ylabel('$f,g$')
+ax[0].grid(True)
+ax[0].legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
+ax[1].plot(n_vec, h_1,n_vec, h_2,n_vec, h_3)
+ax[1].set_xlabel('$n$')
+ax[1].set_ylabel('$H$')
+ax[1].grid(True)
+ax[1].legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
+plt.tight_layout()
+plt.show()
+```
+
+::: {.cell-output .cell-output-display}
+![](Bifurcations_files/figure-html/cell-12-output-1.png){width=659 height=468}
+:::
+:::
+
+
+:::
+
+
+
+
+### Bifurcation analysis
+The goal is to identify boundaries of $rq$ parameter space where the stability changes occur and/or the number of steady states changes.
+
+We can define points in $rq$ parameter space where bifurcations arise by seeking values of $n^*$ that satisfy
+$$
 f(n^*)= g(n^*) \ \ \ \  f'(n^*)= g'(n^*).
-\]</span></p>
-<p>The first of these equations yields <span id="eq-rqeqn1"><span class="math display">\[
+$$
+
+The first of these equations yields
+$$
   r(1-\frac{n^*}{q}) = \frac{n^*}{1+n{^*}^{2}},
-\tag{3.4}\]</span></span> and the latter yields <span id="eq-rqeqn2"><span class="math display">\[
--\frac{r}{q}=\frac{1}{1+n{^*}^{2}}-\frac{2n{^*}^{2}}{(1+n{^*})^2} = \frac{1-n{^*}^{2}}{(1+n{^*}^{2})^2}.
-\tag{3.5}\]</span></span></p>
-<p>Hence <span class="math display">\[
+$$ {#eq-rqeqn1}
+and the latter yields
+$$
+ -\frac{r}{q}=\frac{1}{1+n{^*}^{2}}-\frac{2n{^*}^{2}}{(1+n{^*})^2} = \frac{1-n{^*}^{2}}{(1+n{^*}^{2})^2}.
+$${#eq-rqeqn2}
+  
+
+Hence
+$$
    \frac{r}{q}= \frac{n{^*}^{2}-1}{(1+n{^*}^{2})^2}.
-\]</span></p>
-<p>Substituting for <span class="math inline">\(r/q\)</span> in the first equation yields <span class="math display">\[
+$$
+
+Substituting for $r/q$ in the first equation yields
+$$
 r-\frac{n{^*}^{2}-1}{(1+n{^*}^{2})^2}n^*=\frac{n^*}{1+n{^*}^{2}},
-\]</span> which can be written in the form <span class="math display">\[
+$$
+which can be written in the form
+$$
 r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}.
-\]</span> Substituting for <span class="math inline">\(r\)</span> in <a href="#eq-rqeqn1" class="quarto-xref">Equation&nbsp;<span>3.4</span></a> yields <span class="math display">\[
+$$
+Substituting for $r$ in @eq-rqeqn1 yields
+$$
 \frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\frac{n^*}{q}+\frac{n^*}{1+n{^*}^2}
-\]</span> which, after some algebra, yields <span id="eq-sprucebudwormqpara"><span class="math display">\[
+$$
+which, after some algebra, yields
+$$
 q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
-\tag{3.6}\]</span></span> Hence a set of points that define bifurcations where three steady states transform to a single steady state are given in parametric form in <span class="math inline">\(qr\)</span> parameter space by <span class="math display">\[
-\left(\frac{2n{^*}^3}{n{^*}^{2}-1},\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\right) \ \ \ \ \ \ \ n^*&gt;1.
-\]</span></p>
-<div id="cell-fig-sprucebudworm-rq" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute bifurcation values of r and q as a function of n_star</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Computerq(x):</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  q_n_star<span class="op">=</span><span class="dv">2</span><span class="op">*</span>x<span class="op">**</span><span class="dv">3</span><span class="op">/</span>(x<span class="op">**</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  r_n_star<span class="op">=</span><span class="dv">2</span><span class="op">*</span>x<span class="op">**</span><span class="dv">3</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span>  r_n_star,q_n_star</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define different domains of n</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>n_s_1<span class="op">=</span>np.linspace(<span class="dv">1</span>,np.sqrt(<span class="dv">3</span>),<span class="dv">100</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>n_s_2<span class="op">=</span>np.linspace(np.sqrt(<span class="dv">3</span>),<span class="dv">200</span>,<span class="dv">100</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute r and q</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>r_1,q_1<span class="op">=</span>Computerq(n_s_1)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>r_2,q_2<span class="op">=</span>Computerq(n_s_2)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>ax.plot(q_1, r_1,q_2, r_2)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$q$'</span>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$r$'</span>)</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlim([<span class="dv">0</span>, <span class="dv">100</span>])</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-sprucebudworm-rq" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sprucebudworm-rq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Bifurcations_files/figure-html/fig-sprucebudworm-rq-output-1.png" width="602" height="429" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-rq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.4: Bifurcations in the rq plane
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>By varying values of <span class="math inline">\(n^*\)</span> in <a href="#fig-sprucebudworm-rq" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> we plot a region of instability. Note for example that <span class="math inline">\(q\rightarrow \infty\)</span> as <span class="math inline">\(n^*\rightarrow 1\)</span> and as <span class="math inline">\(n^*\rightarrow \infty\)</span>. Note also that in these limits <span class="math inline">\(r\)</span> must take the value 1/2 and 0, respectively.</p>
-<p>We can show that the cusp in <a href="#fig-sprucebudworm-rq" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> is given by <span class="math display">\[
+$$ {#eq-sprucebudwormqpara}
+Hence a set of points that define bifurcations where three steady states transform to a single steady state are given in parametric form in $qr$ parameter space by
+$$
+\left(\frac{2n{^*}^3}{n{^*}^{2}-1},\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\right) \ \ \ \ \ \ \ n^*>1.
+$$
+
+
+:::
+
+::: {#cell-fig-sprucebudworm-rq .cell execution_count=12}
+``` {.python .cell-code code-fold="true"}
+# Function to compute bifurcation values of r and q as a function of n_star
+def Computerq(x):
+  q_n_star=2*x**3/(x**2-1)
+  r_n_star=2*x**3/(1+x**2)**2
+  return  r_n_star,q_n_star
+
+# Define different domains of n
+n_s_1=np.linspace(1,np.sqrt(3),100)
+n_s_2=np.linspace(np.sqrt(3),200,100)
+
+# Compute r and q
+r_1,q_1=Computerq(n_s_1)
+r_2,q_2=Computerq(n_s_2)
+
+# Plot results
+fig, ax = plt.subplots(1)
+
+ax.plot(q_1, r_1,q_2, r_2)
+plt.xlabel('$q$')
+plt.ylabel('$r$')
+ax.set_xlim([0, 100])
+plt.grid(True)
+
+plt.show()
+```
+
+::: {.cell-output .cell-output-display}
+![Bifurcations in the rq plane](Bifurcations_files/figure-html/fig-sprucebudworm-rq-output-1.png){#fig-sprucebudworm-rq width=602 height=429}
+:::
+:::
+
+
+:::
+
+By varying values of $n^*$ in @fig-sprucebudworm-rq we plot a region of instability. Note for example that $q\rightarrow \infty$ as $n^*\rightarrow 1$ and as  $n^*\rightarrow \infty$. Note also that in these limits $r$ must take the value 1/2 and 0, respectively.
+
+We can show that the cusp in  @fig-sprucebudworm-rq
+is given by
+$$
 \left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
-\]</span></p>
-<p>Note that <span class="math inline">\(r\)</span> is a decreasing function of <span class="math inline">\(q\)</span> for <span class="math inline">\(1&lt;n^*&lt;\sqrt{3}\)</span> but that <span class="math inline">\(r\)</span> is an increasing function of <span class="math inline">\(n^*\)</span> for <span class="math inline">\(\sqrt{3}&lt;n^*&lt;\infty\)</span>. This can be shown by finding the turning points of <span class="math inline">\(r\)</span> w.r.t <span class="math inline">\(n^*\)</span>, i.e. Given that <span class="math display">\[
+$$
+
+Note that $r$ is a decreasing function of $q$ for $1<n^*<\sqrt{3}$ but that $r$ is an increasing function of $n^*$ for $\sqrt{3}<n^*<\infty$. This can be shown by finding the turning points of $r$ w.r.t $n^*$, i.e.
+Given that
+$$
 r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2},
-\]</span> differentiation with respect to <span class="math inline">\(n^*\)</span> yields <span class="math display">\[
+$$
+differentiation with respect to $n^*$ yields
+$$
 \frac{dr}{dn^*}=\frac{6{n^*}^2}{(1+n^*)^2} - \frac{8n{^*}^4}{(1+n^*)^3}.
-\]</span> The turning point satisfies <span class="math display">\[
+$$
+The turning point satisfies
+$$
 \frac{6{n^*}^2}{(1+n^*)^2} - \frac{8n{^*}^4}{(1+n^*)^3}=0
-\]</span> Solving for <span class="math inline">\(n^*\)</span> yields <span class="math display">\[
-6(1+{n^*}^2) - 8n{^*}^2=0
-\]</span> Hence <span class="math display">\[
+$$
+Solving for $n^*$ yields
+$$
+6(1+{n^*}^2) - 8n{^*}^2=0 
+$$
+Hence
+$$
   n^*=\sqrt{3}.
-\]</span> Thus there is a turning point that minimises <span class="math inline">\(r\)</span> at <span class="math inline">\(n^*=\sqrt{3}\)</span>.</p>
-<p>Substitution for this value of <span class="math inline">\(n^*\)</span> yields <span class="math display">\[
+$$
+Thus there is a turning point that minimises $r$ at $n^*=\sqrt{3}$.
+
+Substitution for this value of $n^*$ yields
+$$
 \left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
-\]</span> See <a href="#fig-sprucebudworm-rq" class="quarto-xref">Figure&nbsp;<span>3.4</span></a>.</p>
-</section>
-<section id="hysteresis" class="level3" data-number="3.5.7">
-<h3 data-number="3.5.7" class="anchored" data-anchor-id="hysteresis"><span class="header-section-number">3.5.7</span> Hysteresis</h3>
-<p>Finally, rearranging the steady-state equation <span class="math display">\[
+$$
+See @fig-sprucebudworm-rq.
+
+
+
+### Hysteresis 
+
+Finally, rearranging the steady-state equation 
+$$
   r(1-\frac{n^*}{q}) = \frac{n^*}{1+n{^*}^{2}},
-\]</span> we obtain <span id="eq-sprucebudwormrpara"><span class="math display">\[
+ $$
+ we obtain
+$$ 
    r = \frac{n^*}{(1+n{^*}^{2})(1-\frac{n^*}{q})}.
-\tag{3.7}\]</span></span></p>
-<p>Considering <span class="math inline">\(n^*&lt;q\)</span> we compute <span class="math inline">\(r\)</span>; plotting <span class="math inline">\(n^*\)</span> against <span class="math inline">\(r\)</span> yields the bifurcation curve presented in <a href="#fig-sprucebudworm-bfc" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>.</p>
-<div id="cell-fig-sprucebudworm-bfc" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute r as a function of n</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Computern(x,q):</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  r<span class="op">=</span>x<span class="op">/</span>((<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>q))</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span>  r</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define different domains of n for plotting </span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span><span class="dv">12</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>n_s_1<span class="op">=</span>np.linspace(<span class="dv">1</span>,np.sqrt(<span class="dv">3</span>),<span class="dv">100</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>n_s_2<span class="op">=</span>np.linspace(np.sqrt(<span class="dv">3</span>),<span class="fl">0.99</span><span class="op">*</span>q,<span class="dv">100</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>n_s_3<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.sqrt(<span class="dv">3</span>),<span class="dv">100</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate r</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span>Computern(n_s_1,q)</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span>Computern(n_s_2,q)</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span>Computern(n_s_3,q)</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plote results</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>)</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>ax.plot(r_1, n_s_1,r_2, n_s_2,r_3,n_s_3)</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$r$'</span>)</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$n^*$'</span>)</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>ax.set_xlim([<span class="dv">0</span>, <span class="dv">2</span>])</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-sprucebudworm-bfc" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sprucebudworm-bfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Bifurcations_files/figure-html/fig-sprucebudworm-bfc-output-1.png" width="601" height="429" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-bfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.5: Bifurcations in the rq plane
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>A system exhibiting hysteresis shows a response to an increases in a control parameter that is not exactly reversed when the parameter is decreased. We can show that the spruce budworm model exhibits hysteresis by considering the argument below.</p>
-<p>Suppose <span class="math inline">\(r\)</span> is initially small (<span class="math inline">\(r&lt;r_1\)</span>). There is only one steady-state and any initial condition will converge towards it.</p>
-<p>Suppose we increase the value of the parameter <span class="math inline">\(r\)</span>. There will be a critical value of <span class="math inline">\(r\)</span> (<span class="math inline">\(r=r_1\)</span>)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable steady state, it will remain there.</p>
-<p>Suppose we continue to increase <span class="math inline">\(r\)</span>. Eventually we reach critical value of <span class="math inline">\(r\)</span> (<span class="math inline">\(r=r_2\)</span>) where the first stable steady state is lost and there is again only one stable steady-state.</p>
-<p>Suppose we now decrease the parameter <span class="math inline">\(r\)</span> below the threshold <span class="math inline">\(r=r_2\)</span>. The system again enters the bistable regime but as the second solution is stable, it remains the solution.</p>
-<p>Suppose we continue to decrease <span class="math inline">\(r\)</span> until eventually <span class="math inline">\(r&lt;r_1\)</span>. We return to the case where the system has only a single stable steady state.</p>
-</section>
-</section>
-<section id="references" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="references"><span class="header-section-number">3.6</span> References</h2>
+$$ {#eq-sprucebudwormrpara}
+
+Considering $n^*<q$ we  compute $r$; plotting $n^*$ against $r$ yields the bifurcation curve presented in @fig-sprucebudworm-bfc. 
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-ludwig1978qualitative" class="csl-entry" role="listitem">
-Ludwig, Donald, Dixon D Jones, Crawford S Holling, et al. 1978. <span>“Qualitative Analysis of Insect Outbreak Systems: The Spruce Budworm and Forest.”</span> <em>Journal of Animal Ecology</em> 47 (1): 315–32.
-</div>
-</div>
+:::
+
+::: {#cell-fig-sprucebudworm-bfc .cell execution_count=13}
+``` {.python .cell-code code-fold="true"}
+# Compute r as a function of n
+def Computern(x,q):
+  r=x/((1+x**2)*(1-x/q))
+  return  r
+
+# Define different domains of n for plotting 
+q=12
+n_s_1=np.linspace(1,np.sqrt(3),100)
+n_s_2=np.linspace(np.sqrt(3),0.99*q,100)
+n_s_3=np.linspace(0,np.sqrt(3),100)
+
+
+# Evaluate r
+r_1=Computern(n_s_1,q)
+r_2=Computern(n_s_2,q)
+r_3=Computern(n_s_3,q)
+
+
+# Plote results
+fig, ax = plt.subplots(1)
+
+ax.plot(r_1, n_s_1,r_2, n_s_2,r_3,n_s_3)
+plt.xlabel('$r$')
+plt.ylabel('$n^*$')
+ax.set_xlim([0, 2])
+plt.grid(True)
+
+plt.show()
+```
+
+::: {.cell-output .cell-output-display}
+![Bifurcations in the rq plane](Bifurcations_files/figure-html/fig-sprucebudworm-bfc-output-1.png){#fig-sprucebudworm-bfc width=601 height=429}
+:::
+:::
+
+
+:::
+
+A system exhibiting hysteresis shows a response to an increases in a control parameter that is not exactly reversed when the parameter is decreased. We can show that the spruce budworm model exhibits hysteresis by considering the argument below.
+
+Suppose $r$ is initially small ($r<r_1$). There is only one steady-state and any initial condition will converge towards it. 
+
+ Suppose we increase the value of the parameter $r$. There will be a critical value of $r$ ($r=r_1$)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable steady state, it will remain there. 
+
+ Suppose we continue to increase $r$. Eventually we reach  critical value of $r$ ($r=r_2$) where the first stable steady state is lost and there is again only one stable steady-state. 
+
+ Suppose we now decrease the parameter $r$ below the threshold $r=r_2$. The system again enters the bistable regime but as the second solution is stable, it remains the solution. 
+
+ Suppose we continue to decrease $r$ until eventually $r<r_1$. We return to the case where the system has only a single stable steady state. 
+ 
+
+
+
+## References
+
+-->
+
+
+</section>
 </section>
 
 </main> <!-- /main -->
