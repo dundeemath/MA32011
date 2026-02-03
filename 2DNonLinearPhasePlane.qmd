@@ -33,11 +33,13 @@ For nonlinear problems it is usually impossible to find trajectories analyticall
 
 ::: {#exm-    }
 
-PLot a phase portrait for the system:
+Plot a phase portrait for the system:
+$$
 \begin{aligned}
 \dot{x}&=x+e^{-y}\\
 \dot{y}&=-y
 \end{aligned}
+$$
 
 Strategy:
 - fixed points and their linear stability
