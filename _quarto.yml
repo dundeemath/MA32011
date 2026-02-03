@@ -23,7 +23,7 @@ book:
     - part: "1D flows"
       chapters:
        - 1DFlows.qmd
-       #- Bifurcations.qmd
+       - Bifurcations.qmd
        #- FlowsOnCircle.qmd   
     #- part: "2D flows"
       #chapters:
