@@ -1,10 +1,4 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Corollary 1**](#Corollary-1)\Pageref{Corollary-1}
-
- [**Definition 2**](#Definition-2)\Pageref{Definition-2}
-
- [**Theorem 3**](#hartman-grobman): Hartman-Grobman\Pageref{hartman-grobman}
-
  [**Corollary 1**](1DFlows.qmd#Corollary-1)\Pageref{Corollary-1}
 
  [**Definition 2**](1DFlows.qmd#Definition-2)\Pageref{Definition-2}

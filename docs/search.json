@@ -257,55 +257,11 @@
     ]
   },
   {
-    "objectID": "PythonAppendix.html",
-    "href": "PythonAppendix.html",
-    "title": "3  Python",
-    "section": "",
-    "text": "3.1 Symbolic calculations\nSymbolic calculations ahve been performed using the Python library Sympy.\nThis library comes with tutorials.\nYou are encouraged to familiarise yourself with the syntax by working through some of the tutorial examples provided at the links above.\nMany of the calculations that we do throughout the course involve solving systems of algebraic equations",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Python</span>"
-    ]
-  },
-  {
-    "objectID": "PythonAppendix.html#numerical-solution-of-difference-equations",
-    "href": "PythonAppendix.html#numerical-solution-of-difference-equations",
-    "title": "3  Python",
-    "section": "3.2 Numerical solution of difference equations",
-    "text": "3.2 Numerical solution of difference equations\nDifference equations have been solved using a for loop. Routinse have been written to solve either single or coupled system of difference equaitons.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Python</span>"
-    ]
-  },
-  {
-    "objectID": "PythonAppendix.html#numerical-integration-of-odes",
-    "href": "PythonAppendix.html#numerical-integration-of-odes",
-    "title": "3  Python",
-    "section": "3.3 Numerical integration of ODEs",
-    "text": "3.3 Numerical integration of ODEs\nThroughout the notes systems of ODEs have been integrated using the Scipy function odeint.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Python</span>"
-    ]
-  },
-  {
-    "objectID": "PythonAppendix.html#plotting",
-    "href": "PythonAppendix.html#plotting",
-    "title": "3  Python",
-    "section": "3.4 Plotting",
-    "text": "3.4 Plotting\nLine graphs are plotted using the Python library Matplotlib.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Python</span>"
-    ]
-  },
-  {
     "objectID": "Bifurcations.html",
     "href": "Bifurcations.html",
     "title": "3  Bifurcations",
     "section": "",
-    "text": "3.1 Introduction\nThe solutions of \\[\n\\dot{x}=f(x)\n\\]\neither flow to a fixed point or go to \\(\\pm \\infty\\).\nWhat is interesting about the study of such problems? Identifying when the structure of solutions (i.e. when the number and/or stability of fixed points changes at particular parameter values). Such points are known as bifurcation points.\nAt a bifurcation point of a 1D system the eigenvalue is 0. the fixed point is not hyperbolic.\nConsider the 1D system \\[\n\\dot{x}=f(x,r)\n\\] where \\(r\\) is a parameter.\nSuppose that\nUpon Taylor expansion of \\(f\\) about \\((x^*,r_c)\\), we obtain \\[\n\\dot{x}=f(x^*,r_c)+\\frac{\\partial f}{\\partial x}_{(x^*,r_c)}(x-x^*) + \\frac{\\partial f}{\\partial r}_{(x^*,r_c)}(r-r_c)\n+ \\frac{1}{2}(x-x_c)^2\\frac{\\partial^2 f}{\\partial x^2}_{(x^*,r_c)}  + ... \\]\nAs \\(x^*\\) is a fixed point\n\\[\n\\dot{x}= \\frac{\\partial f}{\\partial r}_{(x^*,r_c)}(r-r_c)\n+ \\frac{1}{2}(x-x^*)^2\\frac{\\partial^2 f}{\\partial x^2}_{(x^*,r_c)}  +\\frac{1}{2}(r-r_c)^2\\frac{\\partial^2 f}{\\partial r^2}_{(x^*,r_c)} +(r-r_c)(x-x^*)\\frac{\\partial^2 f}{\\partial r \\partial x}_{(x^*,r_c)}  ... \\]\nClose to a bifurcation point, the stability classification will be determined by the higher order derivatives of \\(f\\) w.r.t. \\(x\\) and \\(r\\).\nIt can be shown that bifurcations of the systems \\[\n\\dot{x}=f(x,r), \\quad x(0)=x_0\n\\] can be reduced to one of three normal forms:",
+    "text": "3.1 Introduction\nThe qualitative behaviour of solutions of \\[\n\\dot{x}=f(x), \\quad  x(0)=x_0\n\\]\nare limited. Solutions either flow to a fixed point, remain at a fixed point or tend to \\(\\pm \\infty\\). So what is interesting about the study of such problems?\nNow we introduce the idea of bifurcations. These arise when the structure of the solutions (i.e. the number and/or stability of fixed points) changes at particular parameter values.\nAt a bifurcation point of a 1D system the eigenvalue is 0. Hence the fixed point is not hyperbolic.\nConsider the 1D system \\[\n\\dot{x}=f(x,r)\n\\] where \\(r\\) is a parameter.\nSuppose that\nUpon Taylor expansion of \\(f\\) about \\((x^*,r_c)\\), we obtain \\[\n\\dot{x}=f(x^*,r_c)+\\frac{\\partial f}{\\partial x}_{(x^*,r_c)}(x-x^*) + \\frac{\\partial f}{\\partial r}_{(x^*,r_c)}(r-r_c)\n+ \\frac{1}{2}(x-x_c)^2\\frac{\\partial^2 f}{\\partial x^2}_{(x^*,r_c)}  + ... \\]\nAs \\(x^*\\) is a fixed point\n\\[\n\\dot{x}= \\frac{\\partial f}{\\partial r}_{(x^*,r_c)}(r-r_c)\n+ \\frac{1}{2}(x-x^*)^2\\frac{\\partial^2 f}{\\partial x^2}_{(x^*,r_c)}  +\\frac{1}{2}(r-r_c)^2\\frac{\\partial^2 f}{\\partial r^2}_{(x^*,r_c)} +(r-r_c)(x-x^*)\\frac{\\partial^2 f}{\\partial r \\partial x}_{(x^*,r_c)}  ... \\]\nClose to a bifurcation point, the stability classification will be determined by the higher order derivatives of \\(f\\) w.r.t. \\(x\\) and \\(r\\).\nIt can be shown that bifurcations of the systems \\[\n\\dot{x}=f(x,r), \\quad x(0)=x_0\n\\] can be reduced to one of three normal forms:",
     "crumbs": [
       "1D flows",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bifurcations</span>"
@@ -353,6 +309,50 @@
     "crumbs": [
       "1D flows",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bifurcations</span>"
+    ]
+  },
+  {
+    "objectID": "PythonAppendix.html",
+    "href": "PythonAppendix.html",
+    "title": "4  Python",
+    "section": "",
+    "text": "4.1 Symbolic calculations\nSymbolic calculations ahve been performed using the Python library Sympy.\nThis library comes with tutorials.\nYou are encouraged to familiarise yourself with the syntax by working through some of the tutorial examples provided at the links above.\nMany of the calculations that we do throughout the course involve solving systems of algebraic equations",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python</span>"
+    ]
+  },
+  {
+    "objectID": "PythonAppendix.html#numerical-solution-of-difference-equations",
+    "href": "PythonAppendix.html#numerical-solution-of-difference-equations",
+    "title": "4  Python",
+    "section": "4.2 Numerical solution of difference equations",
+    "text": "4.2 Numerical solution of difference equations\nDifference equations have been solved using a for loop. Routinse have been written to solve either single or coupled system of difference equaitons.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python</span>"
+    ]
+  },
+  {
+    "objectID": "PythonAppendix.html#numerical-integration-of-odes",
+    "href": "PythonAppendix.html#numerical-integration-of-odes",
+    "title": "4  Python",
+    "section": "4.3 Numerical integration of ODEs",
+    "text": "4.3 Numerical integration of ODEs\nThroughout the notes systems of ODEs have been integrated using the Scipy function odeint.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python</span>"
+    ]
+  },
+  {
+    "objectID": "PythonAppendix.html#plotting",
+    "href": "PythonAppendix.html#plotting",
+    "title": "4  Python",
+    "section": "4.4 Plotting",
+    "text": "4.4 Plotting\nLine graphs are plotted using the Python library Matplotlib.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python</span>"
     ]
   }
 ]
