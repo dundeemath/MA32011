@@ -945,9 +945,9 @@ def server(input, output, session):
         x_1=np.zeros_like(r_values)
         x_2=np.sqrt(r_values2)
 
-        ax[1].plot(r_values[r_values<0],x_1[r_values<0],'k',r_values[r_values>0],x_1[r_values>0],'k--')
+        ax[1].plot(r_values,x_1,'k')
 
-        ax[1].plot(r_values2,x_2,'k',r_values2,-x_2,'k')
+        ax[1].plot(r_values2,x_2,'k--',r_values2,-x_2,'k--')
 
         ax[1].set_xlabel('$r$')
         ax[1].set_ylabel('$x^*$')
