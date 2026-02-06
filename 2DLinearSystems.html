@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Python – MA32011</title>
+<title>4&nbsp; Linear systems – MA32011</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,6 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./PythonAppendix.html" rel="next">
 <link href="./Bifurcations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -70,7 +106,19 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Conjecture {
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -82,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Corollary {
+.Conjecture {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -94,24 +142,41 @@ ul.task-list li input[type="checkbox"] {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
 .Proof {
   --color1: #c0c0c0;
   --color2: #808080;
 }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -124,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./PythonAppendix.html">Appendices</a></li><li class="breadcrumb-item"><a href="./PythonAppendix.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2DLinearSystems.html">2D flows</a></li><li class="breadcrumb-item"><a href="./2DLinearSystems.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -191,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">2D flows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -199,8 +264,29 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+  <a href="./2DLinearSystems.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Chaotic dynamics</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -215,19 +301,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#symbolic-calculations" id="toc-symbolic-calculations" class="nav-link active" data-scroll-target="#symbolic-calculations"><span class="header-section-number">4.1</span> Symbolic calculations</a></li>
-  <li><a href="#numerical-solution-of-difference-equations" id="toc-numerical-solution-of-difference-equations" class="nav-link" data-scroll-target="#numerical-solution-of-difference-equations"><span class="header-section-number">4.2</span> Numerical solution of difference equations</a></li>
-  <li><a href="#numerical-integration-of-odes" id="toc-numerical-integration-of-odes" class="nav-link" data-scroll-target="#numerical-integration-of-odes"><span class="header-section-number">4.3</span> Numerical integration of ODEs</a></li>
-  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting"><span class="header-section-number">4.4</span> Plotting</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a></li>
+  <li><a href="#general-solution" id="toc-general-solution" class="nav-link" data-scroll-target="#general-solution"><span class="header-section-number">4.2</span> General solution</a></li>
+  <li><a href="#an-example-problem-introducing-phase-portraits-and-stability" id="toc-an-example-problem-introducing-phase-portraits-and-stability" class="nav-link" data-scroll-target="#an-example-problem-introducing-phase-portraits-and-stability"><span class="header-section-number">4.3</span> An example problem introducing phase portraits and stability</a></li>
+  <li><a href="#classification-of-linear-systems" id="toc-classification-of-linear-systems" class="nav-link" data-scroll-target="#classification-of-linear-systems"><span class="header-section-number">4.4</span> Classification of linear systems</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.5</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./PythonAppendix.html">Appendices</a></li><li class="breadcrumb-item"><a href="./PythonAppendix.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2DLinearSystems.html">2D flows</a></li><li class="breadcrumb-item"><a href="./2DLinearSystems.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></h1>
 </div>
 
 
@@ -244,24 +331,167 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="symbolic-calculations" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="symbolic-calculations"><span class="header-section-number">4.1</span> Symbolic calculations</h2>
-<p>Symbolic calculations ahve been performed using the Python library <a href="https://docs.sympy.org/latest/index.html">Sympy</a>.</p>
-<p>This library comes with <a href="https://docs.sympy.org/latest/tutorials/index.html#tutorials">tutorials</a>.</p>
-<p>You are encouraged to familiarise yourself with the syntax by working through some of the tutorial examples provided at the links above.</p>
-<p>Many of the calculations that we do throughout the course involve solving systems of algebraic equations</p>
+<section id="introduction" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1</span> Introduction</h2>
+<p>A 2D linear system has two dependent variables with coupled dynamics. You will have met this system before in the Differential Equations module.</p>
+<p>Consider <span class="math display">\[
+\begin{aligned}
+\dot{x} &amp;=ax+by \\
+\dot{y}&amp;=cx+dy
+\end{aligned}
+\]</span></p>
+<p>In matrix form <span class="math display">\[
+\dot{\mathbf{x}}=A\mathbf{x}
+\]</span> where <span class="math display">\[
+A=
+\begin{pmatrix}
+a &amp; b \\
+c &amp; d
+\end{pmatrix}
+\]</span> and <span class="math display">\[
+\mathbf{x}(t)=\begin{pmatrix}
+x(t)  \\ y(t)
+\end{pmatrix}
+\]</span></p>
+<p>It is straightforward to show that if <span class="math inline">\(\mathbf{x}_1(t)\)</span> and <span class="math inline">\(\mathbf{x}_2(t)\)</span> are solutions, the linear sum <span class="math display">\[
+c_1\mathbf{x}_1(t) +  c_2 \mathbf{x}_2(t),
+\]</span> where <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are arbitrary constants, is itself a solution. Moreover, the zero vector is a fixed point.</p>
 </section>
-<section id="numerical-solution-of-difference-equations" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="numerical-solution-of-difference-equations"><span class="header-section-number">4.2</span> Numerical solution of difference equations</h2>
-<p>Difference equations have been solved using a for loop. Routinse have been written to solve either single or coupled system of difference equaitons.</p>
+<section id="general-solution" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="general-solution"><span class="header-section-number">4.2</span> General solution</h2>
+<p>Seeking a solution of <span class="quarto-unresolved-ref">?eq-linearsystem2d</span> of the form</p>
+<p><span class="math display">\[
+\mathbf{w}=\mathbf{v}e^{\lambda t}
+\]</span></p>
+<p>one obtains the characteristic equation</p>
+<p><span class="math display">\[
+\lambda^2 -\lambda \mathrm{tr}(A)+\det(A)=0,
+\]</span> which has solutions</p>
+<p><span class="math display">\[
+\lambda = \frac{\mathrm{tr}{A}\pm \sqrt{\mathrm{tr}{A}^2-4\det{A}}}{2}.
+\]</span></p>
+<p>Given distinct eigenvalues, the general solution is <span class="math display">\[
+\mathbf{x}(t)=C_1\mathbf{v}_1e^{\lambda_1 t}+C_2\mathbf{v}_2 e^{\lambda_2 t}.
+\]</span></p>
+<p>The behaviour of the solutions of a 2D linear system of ODEs can be classified given the knowledge of the eigenvectors/eigenvalues.</p>
 </section>
-<section id="numerical-integration-of-odes" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="numerical-integration-of-odes"><span class="header-section-number">4.3</span> Numerical integration of ODEs</h2>
-<p>Throughout the notes systems of ODEs have been integrated using the <a href="https://scipython.com">Scipy</a> function <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html">odeint</a>.</p>
+<section id="an-example-problem-introducing-phase-portraits-and-stability" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="an-example-problem-introducing-phase-portraits-and-stability"><span class="header-section-number">4.3</span> An example problem introducing phase portraits and stability</h2>
+<p>Let’s consider a decoupled 2D problem given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot{x}=ax \\
+\dot{y}=-y,
+\end{aligned}
+\]</span> where <span class="math inline">\(a \in \Re\)</span>. We will use this system to introduce some important concepts regarding phase portraits and stability.</p>
+<p>The solution is <span class="math display">\[
+x(t)=x_0e^{at}, \quad y(t)=y_0e^{-t}.
+\]</span></p>
+<div id="79285bab" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x_0_vec<span class="op">=</span>[<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>y_0_vec<span class="op">=</span>[<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>t<span class="op">=</span>np.linspace(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">1000</span>,dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ind<span class="op">=</span><span class="dv">5</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots(<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span>ax.flatten()</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>a_vec<span class="op">=</span>np.array([<span class="op">-</span><span class="fl">1.5</span>,<span class="op">-</span><span class="fl">1.0</span>,<span class="op">-</span><span class="fl">0.5</span>,<span class="fl">0.0</span>,<span class="fl">0.5</span>,<span class="fl">1.5</span>])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>a_vec<span class="op">=</span>a_vec.astype(<span class="bu">float</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>k<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> a_vec:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x_0 <span class="kw">in</span> x_0_vec:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> y_0 <span class="kw">in</span> y_0_vec:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            sol_x<span class="op">=</span>x_0<span class="op">*</span>np.exp(a<span class="op">*</span>t)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            sol_y<span class="op">=</span>y_0<span class="op">*</span>np.exp(<span class="op">-</span>t)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            sol_x_rev<span class="op">=</span>x_0<span class="op">*</span>np.exp(a<span class="op">*</span>t<span class="op">*-</span><span class="dv">1</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            sol_y_rev<span class="op">=</span>y_0<span class="op">*</span>np.exp(<span class="op">-</span>t<span class="op">*-</span><span class="dv">1</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            ax[k].plot(sol_x,sol_y,<span class="st">'k'</span>,sol_x_rev,sol_y_rev,<span class="st">'k'</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            ax[k].annotate(<span class="st">''</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            xy<span class="op">=</span>(sol_x[ind], sol_y[ind]),        <span class="co"># arrow head</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            xytext<span class="op">=</span>(sol_x[ind<span class="op">-</span><span class="dv">2</span>], sol_y[ind<span class="op">-</span><span class="dv">2</span>]),  <span class="co"># arrow tail</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            arrowstyle<span class="op">=</span><span class="st">'-&gt;'</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            color<span class="op">=</span><span class="st">'black'</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>            ha<span class="op">=</span><span class="st">'center'</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    ax[k].set_xlim([<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>])</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    ax[k].set_ylim([<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>])</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    ax[k].set_title(<span class="st">'$a = $'</span> <span class="op">+</span> <span class="bu">str</span>(a))</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ax[k].grid()</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>[np.pi]</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Arrow start</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    x0<span class="op">=</span>[<span class="fl">0.0</span>,<span class="fl">2.0</span><span class="op">*</span>np.pi,<span class="fl">0.0</span>,<span class="op">-</span><span class="fl">2.0</span><span class="op">*</span>np.pi]</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    y0 <span class="op">=</span> [<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    k<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2DLinearSystems_files/figure-html/cell-2-output-1.png" width="662" height="468" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Discuss: stable node, star node, line of fixed points, saddle with stable and unstable manifold.</p>
+<p>Stability: attracting, globally attracting, Laipunov stable, neutrally stable, asymptotically stable, unstable.</p>
 </section>
-<section id="plotting" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="plotting"><span class="header-section-number">4.4</span> Plotting</h2>
-<p>Line graphs are plotted using the Python library <a href="https://matplotlib.org">Matplotlib</a>.</p>
+<section id="classification-of-linear-systems" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="classification-of-linear-systems"><span class="header-section-number">4.4</span> Classification of linear systems</h2>
+<p>Whilst a complete classification of the linear stability of a steady state can be obtained by explicitly calculating the eigenvalues, in many cases it is sufficient to deduce whether or not a steady state is stable or unstable. This can be achieved by calculating the determinant and trace of the Jacobian matrix (<span class="math inline">\(\det(A)\)</span> and <span class="math inline">\(\mathrm{tr}(A)\)</span>, respectively) and referring to <a href="#fig-tdplane" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>.</p>
+<div id="fig-tdplane" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tdplane-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="TDPlane.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tdplane-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Stability in the trace detemrinant plane.
+</figcaption>
+</figure>
+</div>
+<p>The different cases can be categorised as follows:</p>
+<ul>
+<li><p><span class="math inline">\(\det(A)&lt;0\)</span> There is one positive and one negative real eigenvalue. Hence the steady state is a saddle which is unstable.</p></li>
+<li><p><span class="math inline">\(\det(A)&gt;0\)</span> The steady state can be either stable or unstable, depending on <span class="math inline">\(\mathrm{tr}(A)\)</span> (and the real part of the eigenvalues).</p>
+<ul>
+<li>If <span class="math inline">\(\mathrm{tr}(A)&gt;0\)</span>, the steady state is unstable.
+<ul>
+<li>If <span class="math inline">\(\mathrm{tr}(A)^2&gt;4 \det(A)\)</span>, it is an unstable node.</li>
+<li>If <span class="math inline">\(\mathrm{tr}(A)^2&lt;4 \det(A)\)</span> it is an unstable spiral.</li>
+</ul></li>
+<li>If <span class="math inline">\(\mathrm{tr}(A)&lt;0\)</span>, the steady state is stable.
+<ul>
+<li>If <span class="math inline">\(\mathrm{tr}(A)^2&gt;4 \det(A)\)</span>, it is an stable node.</li>
+<li>If <span class="math inline">\(\mathrm{tr}(A)^2&lt;4 \det(A)\)</span>, it is an stable spiral.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>These different cases can be distinguished in the trace-determinant plane plotted in <a href="#fig-tdplane" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>.</p>
+<p>The condition<span class="math inline">\(\det(A)&gt;0\)</span> excludes the case that the eigenvalues are real but have opposite signs (i.e.&nbsp;it cannot be a saddle point).</p>
+<p>The condition <span class="math inline">\(\mathrm{tr}(A)&gt;0\)</span> implies that the real part of both eigenvalues are positive (i.e.&nbsp;the steady state is unstable).</p>
+<p>The condition <span class="math inline">\(\mathrm{tr}(A)^2&lt;4 \det(A)\)</span> implies that the eigenvalues are complex. Hence <span class="math display">\[
+\lambda_{\pm}=\mu\pm i\omega \ \ \
+\]</span> and the solution of the system can be written <span class="math display">\[
+e^{\lambda t} = e^{(\mu+i\omega) t} = e^{\mu t}e^{i\omega t}.
+\]</span> For <span class="math inline">\(\mu&gt;0\)</span> the magnitude of the perturbation grows but it oscillates about the steady state. Hence the steady state is an unstable spiral.</p>
+<p>Degenerate node</p>
+</section>
+<section id="references" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="references"><span class="header-section-number">4.5</span> References</h2>
 
 
 </section>
@@ -673,6 +903,9 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./PythonAppendix.html" class="pagination-link" aria-label="Python">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -111,23 +111,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Corollary {
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Conjecture {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.Lemma {
+.Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Conjecture {
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -135,21 +147,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #d999d3;
   --color2: #a01793;
 }
-.Proof {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
 }
 </style>
 
@@ -428,7 +428,7 @@ f'(x^*)=\pm 2\sqrt{-r}.
 <div id="fig-fsaddlenode" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fsaddlenode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="b3b49d4f" class="cell" data-execution_count="1">
+<div id="3d11cc19" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -484,7 +484,7 @@ Figure&nbsp;3.1
 <div id="fig-saddlenodebfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-saddlenodebfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="b68c88d0" class="cell" data-execution_count="2">
+<div id="f3a97f6c" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -613,7 +613,7 @@ app = App(app_ui, server)</code></pre>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.2</strong></span> Consider the following ODE: <span class="math display">\[
 \dot{x}=1+rx+x^2, \quad x(0)=x_0.
-\]</span></p>
+\]</span> in the case <span class="math inline">\(r \in \Re^+\)</span>.</p>
 <ol type="1">
 <li>Sketch the bifurcation diagram.</li>
 <li>Show that upon introducing rescaled variables, the ODE can be written in the normal form <span class="math display">\[
@@ -706,7 +706,7 @@ i.e. the right-hand side is linear in $r$ and quadratic in $x$.
 <div id="fig-transcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="7a145ab0" class="cell" data-execution_count="3">
+<div id="c2af36c5" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -765,7 +765,7 @@ Figure&nbsp;3.3
 <div id="fig-transcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="63329501" class="cell" data-execution_count="4">
+<div id="4da8eafe" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1033,7 +1033,7 @@ f'(\pm \sqrt{r})=r-3r=-2r.
 <div id="fig-supcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="abeb2dd7" class="cell" data-execution_count="5">
+<div id="81b2ffba" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1091,7 +1091,7 @@ Figure&nbsp;3.5
 <div id="fig-supcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="39baba22" class="cell" data-execution_count="6">
+<div id="bba66690" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1297,7 +1297,7 @@ app = App(app_ui, server)</code></pre>
 <div id="fig-subcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="b21b3105" class="cell" data-execution_count="7">
+<div id="76c3972a" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1354,7 +1354,7 @@ Figure&nbsp;3.7
 <div id="fig-subcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="b7412bf2" class="cell" data-execution_count="8">
+<div id="9011f9e9" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1447,7 +1447,7 @@ Note that @eq-budwormnondim has two nondimensional parameters and all variables 
 
 :::
 
-::: {#c23e7737 .cell execution_count=9}
+::: {#c1a2c375 .cell execution_count=9}
 ``` {.python .cell-code code-fold="true"}
 #| label: fig-sprucebudworm-rhs
 #| fig-cap: "RHS of spr. budworm model"
@@ -1512,7 +1512,7 @@ Our goal is to analyse the model and understand why different parameter values y
 
 :::
 
-::: {#0acd54b6 .cell execution_count=10}
+::: {#0621fd59 .cell execution_count=10}
 ``` {.python .cell-code code-fold="true"}
 #| label: fig-sprucebudworm-numsol
 #| fig-cap: "Numerical solution of spr. budworm model"
@@ -1612,7 +1612,7 @@ In the case where three biologically relevant roots exist, the intermediate root
 
 :::
 
-::: {#a9077234 .cell execution_count=11}
+::: {#95230768 .cell execution_count=11}
 ``` {.python .cell-code code-fold="true"}
 #| label: fig-sprucebudworm-rhsfg
 #| fig-cap: "RHS of spr. budworm model"
