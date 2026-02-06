@@ -323,6 +323,7 @@ Consider the following ODE:
 $$
 \dot{x}=1+rx+x^2, \quad x(0)=x_0.
 $$
+in the case $r \in \Re^+$.
 
 1. Sketch the bifurcation diagram.
 2. Show that upon introducing rescaled variables, the ODE can be written in the normal form
