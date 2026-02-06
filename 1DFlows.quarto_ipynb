@@ -53,7 +53,7 @@
         "\n",
         "::: {#fig-ODEqual}"
       ],
-      "id": "20d7c478"
+      "id": "144cb227"
     },
     {
       "cell_type": "code",
@@ -95,7 +95,7 @@
         "  \n",
         "plt.show()"
       ],
-      "id": "e6aba6d7",
+      "id": "18bd3160",
       "execution_count": null,
       "outputs": []
     },
@@ -163,7 +163,7 @@
         "\n",
         "::: {#fig-fpcalc}"
       ],
-      "id": "71c66709"
+      "id": "e2fc534c"
     },
     {
       "cell_type": "code",
@@ -209,7 +209,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "f6701775",
+      "id": "1b453054",
       "execution_count": null,
       "outputs": []
     },
@@ -350,7 +350,7 @@
         "In @fig-logisticgrowthmodel we present numerical solutions of equation   using different initial conditions. Note the limiting behaviour of solutions as $t\\rightarrow \\infty$. In @fig-logisticgrowthmodel it is clear that even though some solutions are initialised at $N_0=0.1$, much closer to $N^*=0$ than $N^*=K$, they tend to the limit $N=K$. \n",
         " Why do solutions not tend to $N^*=0$?"
       ],
-      "id": "f684bb5f"
+      "id": "db33b26a"
     },
     {
       "cell_type": "code",
@@ -483,7 +483,7 @@
         "We can qualitatively describe model solutions by considering the arrow along the $n$ axis. \n",
         "Suppose we consider an initial condition with $0<n_0<1$. Using the graph of $H(n)$, $dn/d\\tau$ is positive, hence $n$ increases as a function of time until $n(\\tau)\\rightarrow 1$. "
       ],
-      "id": "6eba0d53"
+      "id": "df3d37ae"
     },
     {
       "cell_type": "code",
@@ -649,7 +649,7 @@
         "\n",
         ":::\n"
       ],
-      "id": "1ead8be8"
+      "id": "0b21914a"
     }
   ],
   "metadata": {
