@@ -42,7 +42,7 @@ $$
 
 Close to a bifurcation point, the stability classification will be determined by the higher order derivatives of $f$ w.r.t. $x$ and $r$.
 
-It can be shown that bifurcations of the systems
+It can be shown that generic bifurcations of the system
 $$
 \dot{x}=f(x,r), \quad x(0)=x_0
 $$
@@ -1102,7 +1102,7 @@ plt.show()
 ```
 :::
 
-<!--
+
 ## Application: the spruce budworm model
 The spruce budworm is a destructive and widely distributed forest defoliator in North America. Massive outbreaks occur periodically and can destroy large quantities of valuable spruce and fir. To understand the outbreak behaviour and develop and management strategies, a series of mathematical models have been developed, beginning with @ludwig1978qualitative. The goal of the models is to explain the qualitative pattern of sudden outbreaks and then a sudden collapse.
 
@@ -1178,12 +1178,9 @@ $$
 Note that @eq-budwormnondim has two nondimensional parameters and all variables are dimensionless.  See @fig-sprucebudworm-rhs for a plot of right-hand side of equation @eq-budwormnondim. What kind of behaviours do you expect to see from the model? 
 
 
-:::
+::: {#fig-sprucebudworm-rhs}
 ```{python}
 #| code-fold: true
-
-
-#| label: fig-sprucebudworm-rhs
 #| fig-cap: "RHS of spr. budworm model"
 import numpy as np
 import matplotlib.pyplot as plt
@@ -1238,12 +1235,9 @@ Our goal is to analyse the model and understand why different parameter values y
 
 
 
-:::
-
+::: {#fig-sprucebudworm-numsol}
 ```{python}
 #| code-fold: true
-
-#| label: fig-sprucebudworm-numsol
 #| fig-cap: "Numerical solution of spr. budworm model"
 
 # Define time
@@ -1333,11 +1327,10 @@ Given the  nonzero steady states have not been calculated explicitly, we proceed
 When $r$ is both large and small the nonzero steady state is stable (the derivative at the roots is negative). 
 In the case where three biologically relevant roots exist, the intermediate root is unstable.
 
-:::
+:::{#fig-sprucebudworm-rhsfg}
+
 ```{python}
 #| code-fold: true
-
-#| label: fig-sprucebudworm-rhsfg
 #| fig-cap: "RHS of spr. budworm model"
 import numpy as np
 import matplotlib.pyplot as plt
@@ -1447,10 +1440,10 @@ $$
 $$
 
 
-:::
+:::{#fig-sprucebudworm-rq
+}
 ```{python}
 #| code-fold: true
-#| label: fig-sprucebudworm-rq
 #| fig-cap: "Bifurcations in the rq plane"
 
 # Function to compute bifurcation values of r and q as a function of n_star
@@ -1534,10 +1527,10 @@ $$ {#eq-sprucebudwormrpara}
 Considering $n^*<q$ we  compute $r$; plotting $n^*$ against $r$ yields the bifurcation curve presented in @fig-sprucebudworm-bfc. 
 
 
-:::
+:::{#fig-sprucebudworm-bfc}
+
 ```{python}
 #| code-fold: true
-#| label: fig-sprucebudworm-bfc
 #| fig-cap: "Bifurcations in the rq plane"
 
 # Compute r as a function of n
@@ -1589,4 +1582,4 @@ Suppose $r$ is initially small ($r<r_1$). There is only one steady-state and any
 
 ## References
 
--->
+

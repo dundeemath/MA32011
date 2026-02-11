@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "f5586774",
+   "id": "b58d1f6b",
    "metadata": {},
    "source": [
     "---\n",
@@ -49,7 +49,7 @@
     "\n",
     "Close to a bifurcation point, the stability classification will be determined by the higher order derivatives of $f$ w.r.t. $x$ and $r$.\n",
     "\n",
-    "It can be shown that bifurcations of the systems\n",
+    "It can be shown that generic bifurcations of the system\n",
     "$$\n",
     "\\dot{x}=f(x,r), \\quad x(0)=x_0\n",
     "$$\n",
@@ -103,7 +103,7 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "97c6caa2",
+   "id": "57b095ca",
    "metadata": {},
    "outputs": [
     {
@@ -177,7 +177,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "6eb1adbb",
+   "id": "f8a45230",
    "metadata": {},
    "source": [
     ":::\n",
@@ -191,7 +191,7 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "faa586e8",
+   "id": "0a4f56e9",
    "metadata": {},
    "outputs": [
     {
@@ -251,7 +251,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5b788ac9",
+   "id": "7267ec27",
    "metadata": {},
    "source": [
     ":::\n",
@@ -443,7 +443,7 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "f4229bf9",
+   "id": "3e7f1f84",
    "metadata": {},
    "outputs": [
     {
@@ -520,7 +520,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "2fee6a9e",
+   "id": "541cb8b2",
    "metadata": {},
    "source": [
     ":::\n",
@@ -535,7 +535,7 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "e5e753ad",
+   "id": "d713c72e",
    "metadata": {},
    "outputs": [
     {
@@ -599,7 +599,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "6df4ed13",
+   "id": "db4b25a7",
    "metadata": {},
    "source": [
     ":::\n",
@@ -866,7 +866,7 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "d5db0ed1",
+   "id": "6e4200b3",
    "metadata": {},
    "outputs": [
     {
@@ -941,7 +941,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "55dd049f",
+   "id": "cb5676c6",
    "metadata": {},
    "source": [
     ":::\n",
@@ -955,7 +955,7 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "24a08318",
+   "id": "aaad6064",
    "metadata": {},
    "outputs": [
     {
@@ -1018,7 +1018,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "03b07b8c",
+   "id": "fe9e0470",
    "metadata": {},
    "source": [
     ":::\n",
@@ -1176,7 +1176,7 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "4552ba48",
+   "id": "7a39f974",
    "metadata": {},
    "outputs": [
     {
@@ -1250,7 +1250,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d7d88582",
+   "id": "1b1be941",
    "metadata": {},
    "source": [
     ":::\n",
@@ -1262,7 +1262,7 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "b7f6044f",
+   "id": "d4022898",
    "metadata": {},
    "outputs": [
     {
@@ -1325,12 +1325,12 @@
   },
   {
    "cell_type": "markdown",
-   "id": "3e15e451",
+   "id": "584f8ab4",
    "metadata": {},
    "source": [
     ":::\n",
     "\n",
-    "<!--\n",
+    "\n",
     "## Application: the spruce budworm model\n",
     "The spruce budworm is a destructive and widely distributed forest defoliator in North America. Massive outbreaks occur periodically and can destroy large quantities of valuable spruce and fir. To understand the outbreak behaviour and develop and management strategies, a series of mathematical models have been developed, beginning with @ludwig1978qualitative. The goal of the models is to explain the qualitative pattern of sudden outbreaks and then a sudden collapse.\n",
     "\n",
@@ -1406,13 +1406,13 @@
     "Note that @eq-budwormnondim has two nondimensional parameters and all variables are dimensionless.  See @fig-sprucebudworm-rhs for a plot of right-hand side of equation @eq-budwormnondim. What kind of behaviours do you expect to see from the model? \n",
     "\n",
     "\n",
-    ":::"
+    "::: {#fig-sprucebudworm-rhs}"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "cf6689b9",
+   "id": "f5aaeea3",
    "metadata": {},
    "outputs": [
     {
@@ -1433,9 +1433,6 @@
    ],
    "source": [
     "#| code-fold: true\n",
-    "\n",
-    "\n",
-    "#| label: fig-sprucebudworm-rhs\n",
     "#| fig-cap: \"RHS of spr. budworm model\"\n",
     "import numpy as np\n",
     "import matplotlib.pyplot as plt\n",
@@ -1480,7 +1477,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "84b41098",
+   "id": "851aae12",
    "metadata": {},
    "source": [
     ":::\n",
@@ -1495,13 +1492,13 @@
     "\n",
     "\n",
     "\n",
-    ":::"
+    "::: {#fig-sprucebudworm-numsol}"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 10,
-   "id": "1b97498b",
+   "id": "4d3ec656",
    "metadata": {},
    "outputs": [
     {
@@ -1522,8 +1519,6 @@
    ],
    "source": [
     "#| code-fold: true\n",
-    "\n",
-    "#| label: fig-sprucebudworm-numsol\n",
     "#| fig-cap: \"Numerical solution of spr. budworm model\"\n",
     "\n",
     "# Define time\n",
@@ -1551,7 +1546,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "270127d8",
+   "id": "1d8ff80e",
    "metadata": {},
    "source": [
     ":::\n",
@@ -1618,13 +1613,13 @@
     "When $r$ is both large and small the nonzero steady state is stable (the derivative at the roots is negative). \n",
     "In the case where three biologically relevant roots exist, the intermediate root is unstable.\n",
     "\n",
-    ":::"
+    ":::{#fig-sprucebudworm-rhsfg}"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 11,
-   "id": "4fbaa920",
+   "id": "ceb47f7b",
    "metadata": {},
    "outputs": [
     {
@@ -1645,8 +1640,6 @@
    ],
    "source": [
     "#| code-fold: true\n",
-    "\n",
-    "#| label: fig-sprucebudworm-rhsfg\n",
     "#| fig-cap: \"RHS of spr. budworm model\"\n",
     "import numpy as np\n",
     "import matplotlib.pyplot as plt\n",
@@ -1708,7 +1701,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "f0f9de73",
+   "id": "c4286e15",
    "metadata": {},
    "source": [
     ":::\n",
@@ -1761,20 +1754,21 @@
     "$$\n",
     "\n",
     "\n",
-    ":::"
+    ":::{#fig-sprucebudworm-rq\n",
+    "}"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 12,
-   "id": "fig-sprucebudworm-rq",
+   "id": "24f79498",
    "metadata": {},
    "outputs": [
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/var/folders/m_/vc0kz_0x6ls5n4qnksq052jw0000gp/T/ipykernel_86145/1365770302.py:3: RuntimeWarning:\n",
+      "/var/folders/m_/vc0kz_0x6ls5n4qnksq052jw0000gp/T/ipykernel_88375/1365770302.py:3: RuntimeWarning:\n",
       "\n",
       "divide by zero encountered in divide\n",
       "\n"
@@ -1798,8 +1792,7 @@
    ],
    "source": [
     "#| code-fold: true\n",
-    "#| label: fig-sprucebudworm-rq\n",
-    "#| fig-cap: Bifurcations in the rq plane\n",
+    "#| fig-cap: \"Bifurcations in the rq plane\"\n",
     "\n",
     "# Function to compute bifurcation values of r and q as a function of n_star\n",
     "def Computerq(x):\n",
@@ -1829,7 +1822,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "cb0284cf",
+   "id": "610f5919",
    "metadata": {},
    "source": [
     ":::\n",
@@ -1887,13 +1880,13 @@
     "Considering $n^*<q$ we  compute $r$; plotting $n^*$ against $r$ yields the bifurcation curve presented in @fig-sprucebudworm-bfc. \n",
     "\n",
     "\n",
-    ":::"
+    ":::{#fig-sprucebudworm-bfc}"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 13,
-   "id": "fig-sprucebudworm-bfc",
+   "id": "84761713",
    "metadata": {},
    "outputs": [
     {
@@ -1914,8 +1907,7 @@
    ],
    "source": [
     "#| code-fold: true\n",
-    "#| label: fig-sprucebudworm-bfc\n",
-    "#| fig-cap: Bifurcations in the rq plane\n",
+    "#| fig-cap: \"Bifurcations in the rq plane\"\n",
     "\n",
     "# Compute r as a function of n\n",
     "def Computern(x,q):\n",
@@ -1949,7 +1941,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "306eccc1",
+   "id": "94f0ea7a",
    "metadata": {},
    "source": [
     ":::\n",
@@ -1969,9 +1961,7 @@
     "\n",
     "\n",
     "\n",
-    "## References\n",
-    "\n",
-    "-->"
+    "## References\n"
    ]
   }
  ],
