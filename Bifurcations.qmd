@@ -46,7 +46,7 @@ It can be shown that bifurcations of the systems
 $$
 \dot{x}=f(x,r), \quad x(0)=x_0
 $$
-can be reduced to one of three *normal forms*:
+can be reduced to one of three generic *normal forms*:
 
 - saddle node bifurcations
 - transcritical bifurcations
@@ -1102,13 +1102,12 @@ plt.show()
 ```
 :::
 
-<!--
+
 ## Application: the spruce budworm model
 The spruce budworm is a destructive and widely distributed forest defoliator in North America. Massive outbreaks occur periodically and can destroy large quantities of valuable spruce and fir. To understand the outbreak behaviour and develop and management strategies, a series of mathematical models have been developed, beginning with @ludwig1978qualitative. The goal of the models is to explain the qualitative pattern of sudden outbreaks and then a sudden collapse.
 
 ### Model development
-Letting $N(t)$ represent the population size at time $t$, it is assumed that budworm exhibits  logistic growth and is subject to  predation at rate $p(N)$.
- A governing ordinary differential equation is given by
+Letting $N(t)$ represent the population size at time $t$, it is assumed that budworm exhibits  logistic growth and is subject to  predation at rate $p(N)$. A governing ordinary differential equation is given by
 $$
 \frac{dN }{dt}= r_B N\left(1-\frac{N}{K_B}\right)-p(N),
 $${#eq-sprucebudworm}
@@ -1155,7 +1154,6 @@ $$
 \frac{dn }{d\tau}= r_B\tilde{T} n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N} \tilde{T}}{A^2}\frac{n^2}{1+\frac{\tilde{N}^2}{A^2}n^2}.
 $$
 
-
 A natural scale for cell density in the model is given by the parameter $A$, as it determines the density of budworm at which predation is half its maximal value. Hence we choose the scaling on the budworm density
 $$
 \tilde{N}=A.
@@ -1178,12 +1176,9 @@ $$
 Note that @eq-budwormnondim has two nondimensional parameters and all variables are dimensionless.  See @fig-sprucebudworm-rhs for a plot of right-hand side of equation @eq-budwormnondim. What kind of behaviours do you expect to see from the model? 
 
 
-:::
+::: {#fig-sprucebudworm-rhs}
 ```{python}
 #| code-fold: true
-
-
-#| label: fig-sprucebudworm-rhs
 #| fig-cap: "RHS of spr. budworm model"
 import numpy as np
 import matplotlib.pyplot as plt
@@ -1238,12 +1233,10 @@ Our goal is to analyse the model and understand why different parameter values y
 
 
 
-:::
+::: {#fig-sprucebudworm-numsol}
 
 ```{python}
 #| code-fold: true
-
-#| label: fig-sprucebudworm-numsol
 #| fig-cap: "Numerical solution of spr. budworm model"
 
 # Define time
@@ -1333,11 +1326,9 @@ Given the  nonzero steady states have not been calculated explicitly, we proceed
 When $r$ is both large and small the nonzero steady state is stable (the derivative at the roots is negative). 
 In the case where three biologically relevant roots exist, the intermediate root is unstable.
 
-:::
+::: {#fig-sprucebudworm-rhsfg}
 ```{python}
 #| code-fold: true
-
-#| label: fig-sprucebudworm-rhsfg
 #| fig-cap: "RHS of spr. budworm model"
 import numpy as np
 import matplotlib.pyplot as plt
@@ -1447,10 +1438,9 @@ $$
 $$
 
 
-:::
+::: {#fig-sprucebudworm-rq}
 ```{python}
 #| code-fold: true
-#| label: fig-sprucebudworm-rq
 #| fig-cap: "Bifurcations in the rq plane"
 
 # Function to compute bifurcation values of r and q as a function of n_star
@@ -1534,10 +1524,9 @@ $$ {#eq-sprucebudwormrpara}
 Considering $n^*<q$ we  compute $r$; plotting $n^*$ against $r$ yields the bifurcation curve presented in @fig-sprucebudworm-bfc. 
 
 
-:::
+::: {#fig-sprucebudworm-bfc}
 ```{python}
 #| code-fold: true
-#| label: fig-sprucebudworm-bfc
 #| fig-cap: "Bifurcations in the rq plane"
 
 # Compute r as a function of n
@@ -1589,4 +1578,5 @@ Suppose $r$ is initially small ($r<r_1$). There is only one steady-state and any
 
 ## References
 
--->
+
+
