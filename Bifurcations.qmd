@@ -1143,6 +1143,7 @@ $$
 n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}.
 $$
 
+
 Changing  variables in @eq-sprucebudworm yields
 
 $$
@@ -1166,6 +1167,7 @@ $$
 $$
 
 
+
 Substituting for $\tilde{N}$ and $\tilde{T}$ yields
 $$
 \frac{dn }{d\tau}= rn\left(1-\frac{n}{q}\right)-\frac{n^2}{1+n^2} = H(n),
@@ -1175,17 +1177,18 @@ $$
 r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
 $$
 
+
 Note that @eq-budwormnondim has two nondimensional parameters and all variables are dimensionless.  See @fig-sprucebudworm-rhs for a plot of right-hand side of equation @eq-budwormnondim. What kind of behaviours do you expect to see from the model? 
 
 
-::: {#fig-sprucebudworm-rhs}
+:::{#fig-sprucebudworm-rhs}
 ```{python}
 #| code-fold: true
-#| fig-cap: "RHS of spr. budworm model"
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
 from scipy.integrate import odeint
+
 
 N_max=1.1
 N_0=0.1
@@ -1213,17 +1216,22 @@ rhs1=rhssprucebudworm_model(n_vec,0,r_1,q)
 rhs2=rhssprucebudworm_model(n_vec,0,r_2,q)
 rhs3=rhssprucebudworm_model(n_vec,0,r_3,q)
 
-fig, ax = plt.subplots(1)
+
+fig, ax = plt.subplots()
 
 ax.plot(n_vec, rhs1,n_vec, rhs2,n_vec, rhs3)
-plt.xlabel('$N$')
-plt.ylabel('$H(N)$')
-plt.legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
-plt.grid(True)
+
+ax.set_xlabel('$N$')
+ax.set_ylabel('$H(N)$')
+fig.legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
+ax.grid(True)
 plt.show()
 ```
-
+Rhs of the spruce budworm model.
 :::
+
+
+
 
 ### Numerical solutions
 In @fig-sprucebudworm-numsol we plot some numerical solutions of @eq-budwormnondim at different values of the parameter $r$. 
@@ -1238,8 +1246,6 @@ Our goal is to analyse the model and understand why different parameter values y
 ::: {#fig-sprucebudworm-numsol}
 ```{python}
 #| code-fold: true
-#| fig-cap: "Numerical solution of spr. budworm model"
-
 # Define time
 t = np.linspace(0, 100, 101)
 
@@ -1262,8 +1268,10 @@ plt.ylabel('$N$')
 plt.grid()
 plt.show()
 ```
-
+Numerical solution of spr. budworm model.
 :::
+
+
 
 
 ### Steady state analysis
@@ -1322,6 +1330,7 @@ H'(0)=r
 $$
 and the steady state is linearly unstable.
 
+
 Given the  nonzero steady states have not been calculated explicitly, we proceed using graphical analysis of stability. In @fig-sprucebudworm-rhsfg  (b) we plot the right-hand side of @eq-budwormnondim against $n$ and examine the cases of large, small and intermediate $r$ for a given value of $q$. 
 
 When $r$ is both large and small the nonzero steady state is stable (the derivative at the roots is negative). 
@@ -1331,7 +1340,6 @@ In the case where three biologically relevant roots exist, the intermediate root
 
 ```{python}
 #| code-fold: true
-#| fig-cap: "RHS of spr. budworm model"
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
@@ -1390,6 +1398,7 @@ plt.tight_layout()
 plt.show()
 ```
 
+RHS of spr. budworm model.
 :::
 
 
@@ -1412,6 +1421,7 @@ $$
  -\frac{r}{q}=\frac{1}{1+n{^*}^{2}}-\frac{2n{^*}^{2}}{(1+n{^*})^2} = \frac{1-n{^*}^{2}}{(1+n{^*}^{2})^2}.
 $${#eq-rqeqn2}
   
+
 
 Hence
 $$
@@ -1444,7 +1454,6 @@ $$
 }
 ```{python}
 #| code-fold: true
-#| fig-cap: "Bifurcations in the rq plane"
 
 # Function to compute bifurcation values of r and q as a function of n_star
 def Computerq(x):
@@ -1472,6 +1481,7 @@ plt.grid(True)
 plt.show()
 ```
 
+Bifurcations in the rq plane.
 :::
 
 By varying values of $n^*$ in @fig-sprucebudworm-rq we plot a region of instability. Note for example that $q\rightarrow \infty$ as $n^*\rightarrow 1$ and as  $n^*\rightarrow \infty$. Note also that in these limits $r$ must take the value 1/2 and 0, respectively.
@@ -1481,6 +1491,7 @@ is given by
 $$
 \left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
 $$
+
 
 Note that $r$ is a decreasing function of $q$ for $1<n^*<\sqrt{3}$ but that $r$ is an increasing function of $n^*$ for $\sqrt{3}<n^*<\infty$. This can be shown by finding the turning points of $r$ w.r.t $n^*$, i.e.
 Given that
@@ -1531,8 +1542,7 @@ Considering $n^*<q$ we  compute $r$; plotting $n^*$ against $r$ yields the bifur
 
 ```{python}
 #| code-fold: true
-#| fig-cap: "Bifurcations in the rq plane"
-
+#| 
 # Compute r as a function of n
 def Computern(x,q):
   r=x/((1+x**2)*(1-x/q))
@@ -1563,6 +1573,7 @@ plt.grid(True)
 plt.show()
 ```
 
+Bifurcations in the rq plane.
 :::
 
 A system exhibiting hysteresis shows a response to an increases in a control parameter that is not exactly reversed when the parameter is decreased. We can show that the spruce budworm model exhibits hysteresis by considering the argument below.
