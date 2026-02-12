@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -115,27 +135,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Theorem {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
 }
-.Lemma {
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -143,13 +159,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 </style>
 
@@ -293,6 +313,17 @@ window.Quarto = {
   <li><a href="#supercritical-pitchfork" id="toc-supercritical-pitchfork" class="nav-link" data-scroll-target="#supercritical-pitchfork"><span class="header-section-number">3.4.1</span> Supercritical pitchfork</a></li>
   <li><a href="#subcritical-pitchfork" id="toc-subcritical-pitchfork" class="nav-link" data-scroll-target="#subcritical-pitchfork"><span class="header-section-number">3.4.2</span> Subcritical pitchfork</a></li>
   </ul></li>
+  <li><a href="#application-the-spruce-budworm-model" id="toc-application-the-spruce-budworm-model" class="nav-link" data-scroll-target="#application-the-spruce-budworm-model"><span class="header-section-number">3.5</span> Application: the spruce budworm model</a>
+  <ul class="collapse">
+  <li><a href="#model-development" id="toc-model-development" class="nav-link" data-scroll-target="#model-development"><span class="header-section-number">3.5.1</span> Model development</a></li>
+  <li><a href="#nondimensionalisation" id="toc-nondimensionalisation" class="nav-link" data-scroll-target="#nondimensionalisation"><span class="header-section-number">3.5.2</span> Nondimensionalisation</a></li>
+  <li><a href="#numerical-solutions" id="toc-numerical-solutions" class="nav-link" data-scroll-target="#numerical-solutions"><span class="header-section-number">3.5.3</span> Numerical solutions</a></li>
+  <li><a href="#steady-state-analysis" id="toc-steady-state-analysis" class="nav-link" data-scroll-target="#steady-state-analysis"><span class="header-section-number">3.5.4</span> Steady state analysis</a></li>
+  <li><a href="#linear-stability-analysis" id="toc-linear-stability-analysis" class="nav-link" data-scroll-target="#linear-stability-analysis"><span class="header-section-number">3.5.5</span> Linear stability analysis</a></li>
+  <li><a href="#bifurcation-analysis" id="toc-bifurcation-analysis" class="nav-link" data-scroll-target="#bifurcation-analysis"><span class="header-section-number">3.5.6</span> Bifurcation analysis</a></li>
+  <li><a href="#hysteresis" id="toc-hysteresis" class="nav-link" data-scroll-target="#hysteresis"><span class="header-section-number">3.5.7</span> Hysteresis</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3.6</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -342,7 +373,7 @@ window.Quarto = {
 \dot{x}= \frac{\partial f}{\partial r}_{(x^*,r_c)}(r-r_c)
 + \frac{1}{2}(x-x^*)^2\frac{\partial^2 f}{\partial x^2}_{(x^*,r_c)}  +\frac{1}{2}(r-r_c)^2\frac{\partial^2 f}{\partial r^2}_{(x^*,r_c)} +(r-r_c)(x-x^*)\frac{\partial^2 f}{\partial r \partial x}_{(x^*,r_c)}  ... \]</span></p>
 <p>Close to a bifurcation point, the stability classification will be determined by the higher order derivatives of <span class="math inline">\(f\)</span> w.r.t. <span class="math inline">\(x\)</span> and <span class="math inline">\(r\)</span>.</p>
-<p>It can be shown that bifurcations of the systems <span class="math display">\[
+<p>It can be shown that generic bifurcations of the system <span class="math display">\[
 \dot{x}=f(x,r), \quad x(0)=x_0
 \]</span> can be reduced to one of three <em>normal forms</em>:</p>
 <ul>
@@ -428,7 +459,7 @@ f'(x^*)=\pm 2\sqrt{-r}.
 <div id="fig-fsaddlenode" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fsaddlenode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="c585cae9" class="cell" data-execution_count="1">
+<div id="f5278d86" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -484,7 +515,7 @@ Figure&nbsp;3.1
 <div id="fig-saddlenodebfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-saddlenodebfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="81597d57" class="cell" data-execution_count="2">
+<div id="e9c56790" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -706,7 +737,7 @@ i.e. the right-hand side is linear in $r$ and quadratic in $x$.
 <div id="fig-transcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="4f4a883c" class="cell" data-execution_count="3">
+<div id="476d5053" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -765,7 +796,7 @@ Figure&nbsp;3.3
 <div id="fig-transcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="8569bb13" class="cell" data-execution_count="4">
+<div id="98ef7232" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1033,7 +1064,7 @@ f'(\pm \sqrt{r})=r-3r=-2r.
 <div id="fig-supcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="6c3a7df1" class="cell" data-execution_count="5">
+<div id="57228e6f" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1091,7 +1122,7 @@ Figure&nbsp;3.5
 <div id="fig-supcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="9e325d54" class="cell" data-execution_count="6">
+<div id="1344b0bc" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1297,7 +1328,7 @@ app = App(app_ui, server)</code></pre>
 <div id="fig-subcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="0181280e" class="cell" data-execution_count="7">
+<div id="dc8ef731" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1354,7 +1385,7 @@ Figure&nbsp;3.7
 <div id="fig-subcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="3f7c99bb" class="cell" data-execution_count="8">
+<div id="93574782" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1369,521 +1400,434 @@ Figure&nbsp;3.8
 </figcaption>
 </figure>
 </div>
-<!--
-## Application: the spruce budworm model
-The spruce budworm is a destructive and widely distributed forest defoliator in North America. Massive outbreaks occur periodically and can destroy large quantities of valuable spruce and fir. To understand the outbreak behaviour and develop and management strategies, a series of mathematical models have been developed, beginning with @ludwig1978qualitative. The goal of the models is to explain the qualitative pattern of sudden outbreaks and then a sudden collapse.
-
-### Model development
-Letting $N(t)$ represent the population size at time $t$, it is assumed that budworm exhibits  logistic growth and is subject to  predation at rate $p(N)$.
- A governing ordinary differential equation is given by
-$$
-\frac{dN }{dt}= r_B N\left(1-\frac{N}{K_B}\right)-p(N),
-$${#eq-sprucebudworm}
-where 
-$$
-p(N) =\frac{B N^2}{A^2 +N^2},
-$$
-$r_B$ is the linear growth rate, $K_B$ is the carrying capacity, $B$ is the maximum rate of predation and $A$ is a measure of budworm population where predation switches on (specifically, $A$ represents the budworm density at which predation is half its maximum value).
-
-
-It is informative to graph  the predation term
-$$
-p(N) =\frac{B N^2}{A^2 +N^2},
-$$
-and annotate the parameters $A$ and $B$.
-
-There is a root at $N=0$.
-In the limit $N\rightarrow \infty$, $p \rightarrow B$.
-Note that $N=A$, $p=A/2$.
-The derivative is
-$$
-p'(N)=\frac{2BN}{A^2+N^2} - \frac{2BN^3}{(A^2+N^2)^2} =  \frac{2BA^2N}{(A^2+N^2)^2}
-$$
-Thus there is a turning point at $N=0$ and $p'>0 \forall N>0$.
-
-
-### Nondimensionalisation
-
-Introducing the (as yet unspecified) dimensional scalings $\tilde{N}$ and $\tilde{T}$, the model is nondimensionalised as follows
-
-$$
-n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}.
-$$
-
-Changing  variables in @eq-sprucebudworm yields
-
-$$
-\frac{\tilde{N}}{\tilde{T}}\frac{d n }{d\tau}= r_B \tilde{N}n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N}^2n^2}{A^2+\tilde{N}^2 n^2}.
-$$
-
-After some tidying
-
-$$
-\frac{dn }{d\tau}= r_B\tilde{T} n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N} \tilde{T}}{A^2}\frac{n^2}{1+\frac{\tilde{N}^2}{A^2}n^2}.
-$$
-
-
-A natural scale for cell density in the model is given by the parameter $A$, as it determines the density of budworm at which predation is half its maximal value. Hence we choose the scaling on the budworm density
-$$
-\tilde{N}=A.
-$$ 
-Similarly, a natural time scale for the model is given by  
-$$
-\tilde{T}=A/B.
-$$
-
-
-Substituting for $\tilde{N}$ and $\tilde{T}$ yields
-$$
-\frac{dn }{d\tau}= rn\left(1-\frac{n}{q}\right)-\frac{n^2}{1+n^2} = H(n),
-$${#eq-budwormnondim}
-where we define the nondimensional parameters
-$$
-r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
-$$
-
-Note that @eq-budwormnondim has two nondimensional parameters and all variables are dimensionless.  See @fig-sprucebudworm-rhs for a plot of right-hand side of equation @eq-budwormnondim. What kind of behaviours do you expect to see from the model? 
-
-
-:::
-
-::: {#2b492523 .cell execution_count=9}
-``` {.python .cell-code code-fold="true"}
-#| label: fig-sprucebudworm-rhs
-#| fig-cap: "RHS of spr. budworm model"
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy
-from scipy.integrate import odeint
-
-N_max=1.1
-N_0=0.1
-q=12
-r_1=0.22
-r_2=0.42
-r_3=0.72
-
-n_vec=np.linspace(0,N_max,100)
-
-def rhssprucebudworm_model(x,t,r,q):
-
-  rhs=r*x*(1-x/q) - x**2/(1+x**2)
-  return rhs
-def rhssprucebudworm_model_f(x,t,r,q):
-
-  f=r*x*(1-x/q) 
-  return f  
-def rhssprucebudworm_model_g(x,t,r,q):
-
-  g=x**2/(1+x**2)
-  return g  
-
-rhs1=rhssprucebudworm_model(n_vec,0,r_1,q)
-rhs2=rhssprucebudworm_model(n_vec,0,r_2,q)
-rhs3=rhssprucebudworm_model(n_vec,0,r_3,q)
-
-fig, ax = plt.subplots(1)
-
-ax.plot(n_vec, rhs1,n_vec, rhs2,n_vec, rhs3)
-plt.xlabel('$N$')
-plt.ylabel('$H(N)$')
-plt.legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
-plt.grid(True)
-plt.show()
-```
-
-::: {.cell-output .cell-output-display}
-![](Bifurcations_files/figure-html/cell-10-output-1.png){width=601 height=429}
-:::
-:::
-
-
-:::
-
-### Numerical solutions
-In @fig-sprucebudworm-numsol we plot some numerical solutions of @eq-budwormnondim at different values of the parameter $r$. 
-
-Numerical solutions of @eq-budwormnondim  indicate that there is a single stable steady state when $r$ is both small and large but for intermediate values of $r$ there are two stable steady states. 
-
-Our goal is to analyse the model and understand why different parameter values yield these strikingly different model behaviours.
-
-
-
-
-:::
-
-::: {#26618a33 .cell execution_count=10}
-``` {.python .cell-code code-fold="true"}
-#| label: fig-sprucebudworm-numsol
-#| fig-cap: "Numerical solution of spr. budworm model"
-
-# Define time
-t = np.linspace(0, 100, 101)
-
-# Numerically solve the ODE for differnet parameter values
-sol1 = odeint(rhssprucebudworm_model, N_0, t, args=(r_1, q))
-sol2 = odeint(rhssprucebudworm_model, N_0, t, args=(r_2, q))
-sol3 = odeint(rhssprucebudworm_model, N_0, t, args=(r_3, q))
-
-
-# plot results
-fig, ax= plt.subplots()
-ax.plot(t, sol1, 'b', label='r=' +str(r_1))
-ax.plot(t, sol2, 'r', label='r='+str(r_2))
-ax.plot(t, sol3, 'm', label='r='+str(r_3))
-
-plt.legend(loc='best')
-plt.xlabel('$t$')
-plt.ylabel('$N$')
-
-plt.grid()
-plt.show()
-```
-
-::: {.cell-output .cell-output-display}
-![](Bifurcations_files/figure-html/cell-11-output-1.png){width=585 height=429}
-:::
-:::
-
-
-:::
-
-
-### Steady state analysis
-Letting $n^*$ represent steady states of @eq-budwormnondim yields
-$$
-rn^*(1-\frac{n^*}{q})- \frac{n^*{^2}}{1+n^*{^2}}=0.
-$$
-Hence either 
-$$
-n^*=0,
-$$ 
-or $n^*$ satisfies the cubic equation
-$$
-r\left(1-\frac{n^*}{q}\right)- \frac{n^*}{1+n^*{^2}}=0.
-$$
-
-Explicit solutions to such a cubic can be immediately written down but they are cumbersome to work with.  We proceed using a graphical/qualitative approach.
-
-Define
-$$
-f(n^*)=r\left(1-\frac{n^*}{q}\right) \ \ \textrm{and} \ \ g(n^*)=\frac{n^*}{1+n^*{^2}}.
-$${#eq-sprucebudwormfgn}
-
-Roots occur for values of $n^*$ that satisfy $f=g$. 
-
-In @fig-sprucebudworm-rhsfg (a) we fix the parameter $q=10$ and consider model behaviour as a function of the parameter $r$. 
-When $r\gg1$ there is a nonzero steady-state corresponding to $n^*\gg 1$. 
-When   $r\ll1$ there is a nonzero steady-state corresponding to $n^*\ll 1$. 
-In the intermediate case there can be three intersection points.
-
-We can use the curve sketching techniques form Tutorial Sheet 1 to sketch $f$ and $g$.
-
-$f$ is linear.
-There is  a root at $n^*=q$.
-The derivative is $-r/q$.
-$f(0)$=r.
-$g$ has a unique root at $n^*=0$.
-The derivative is
-$$
-g'=\frac{1-n{^*}^2}{(1+n^*)^2}.
-$$
-There is a turning point at $n^*=1$. Here $g=1/2$.
-As $n^*\rightarrow \infty$, $g\rightarrow 0$.
-$f'(0)=1$.
-
-### Linear stability analysis
-
-The linear stability of the model is determined by the quantity
-$$
-H'(n)=r(1-\frac{2n}{q})-\frac{2{n}}{1+{n}^2} +\frac{2{n}^3}{(1+{n}^2)^2}.
-$$
-
-Hence at the steady state $n^*=0$ 
-$$
-H'(0)=r
-$$
-and the steady state is linearly unstable.
-
-Given the  nonzero steady states have not been calculated explicitly, we proceed using graphical analysis of stability. In @fig-sprucebudworm-rhsfg  (b) we plot the right-hand side of @eq-budwormnondim against $n$ and examine the cases of large, small and intermediate $r$ for a given value of $q$. 
-
-When $r$ is both large and small the nonzero steady state is stable (the derivative at the roots is negative). 
-In the case where three biologically relevant roots exist, the intermediate root is unstable.
-
-:::
-
-::: {#788e6d27 .cell execution_count=11}
-``` {.python .cell-code code-fold="true"}
-#| label: fig-sprucebudworm-rhsfg
-#| fig-cap: "RHS of spr. budworm model"
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy
-from scipy.integrate import odeint
-
-# Define initial condition
-N_0=0.1
-
-# Define model parameters
-q=12
-r_1=0.2
-r_2=0.5
-r_3=0.8
-
-# Discretise n
-N_max=13
-n_vec=np.linspace(0,N_max,100)
-
-# Function to compute f and g
-def rhssprucebudworm_model_f(x,t,r,q):
-
-  f=r*(1-x/q) 
-  return f  
-def rhssprucebudworm_model_g(x,t,r,q):
-
-  g=x/(1+x**2)
-  return g  
-
-# Compute f for different values of r and g
-f_1=rhssprucebudworm_model_f(n_vec,0,r_1,q)
-f_2=rhssprucebudworm_model_f(n_vec,0,r_2,q)
-f_3=rhssprucebudworm_model_f(n_vec,0,r_3,q)
-g=rhssprucebudworm_model_g(n_vec,0,r_1,q)
-
-
-# Compute H for different values of r
-h_1=rhssprucebudworm_model(n_vec,0,r_1,q)
-h_2=rhssprucebudworm_model(n_vec,0,r_2,q)
-h_3=rhssprucebudworm_model(n_vec,0,r_3,q)
-
-
-# Plot results
-fig, ax = plt.subplots(1,2)
-
-ax[0].plot(n_vec, f_1,n_vec, f_2,n_vec, f_3,n_vec,g)
-ax[0].set_xlabel('$n$')
-ax[0].set_ylabel('$f,g$')
-ax[0].grid(True)
-ax[0].legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
-ax[1].plot(n_vec, h_1,n_vec, h_2,n_vec, h_3)
-ax[1].set_xlabel('$n$')
-ax[1].set_ylabel('$H$')
-ax[1].grid(True)
-ax[1].legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
-plt.tight_layout()
-plt.show()
-```
-
-::: {.cell-output .cell-output-display}
-![](Bifurcations_files/figure-html/cell-12-output-1.png){width=659 height=468}
-:::
-:::
-
-
-:::
-
-
-
-
-### Bifurcation analysis
-The goal is to identify boundaries of $rq$ parameter space where the stability changes occur and/or the number of steady states changes.
-
-We can define points in $rq$ parameter space where bifurcations arise by seeking values of $n^*$ that satisfy
-$$
-f(n^*)= g(n^*) \ \ \ \  f'(n^*)= g'(n^*).
-$$
-
-The first of these equations yields
-$$
-  r(1-\frac{n^*}{q}) = \frac{n^*}{1+n{^*}^{2}},
-$$ {#eq-rqeqn1}
-and the latter yields
-$$
- -\frac{r}{q}=\frac{1}{1+n{^*}^{2}}-\frac{2n{^*}^{2}}{(1+n{^*})^2} = \frac{1-n{^*}^{2}}{(1+n{^*}^{2})^2}.
-$${#eq-rqeqn2}
-  
-
-Hence
-$$
-   \frac{r}{q}= \frac{n{^*}^{2}-1}{(1+n{^*}^{2})^2}.
-$$
-
-Substituting for $r/q$ in the first equation yields
-$$
-r-\frac{n{^*}^{2}-1}{(1+n{^*}^{2})^2}n^*=\frac{n^*}{1+n{^*}^{2}},
-$$
-which can be written in the form
-$$
-r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}.
-$$
-Substituting for $r$ in @eq-rqeqn1 yields
-$$
-\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\frac{n^*}{q}+\frac{n^*}{1+n{^*}^2}
-$$
-which, after some algebra, yields
-$$
-q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
-$$ {#eq-sprucebudwormqpara}
-Hence a set of points that define bifurcations where three steady states transform to a single steady state are given in parametric form in $qr$ parameter space by
-$$
-\left(\frac{2n{^*}^3}{n{^*}^{2}-1},\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\right) \ \ \ \ \ \ \ n^*>1.
-$$
-
-
-:::
-
-::: {#cell-fig-sprucebudworm-rq .cell execution_count=12}
-``` {.python .cell-code code-fold="true"}
-# Function to compute bifurcation values of r and q as a function of n_star
-def Computerq(x):
-  q_n_star=2*x**3/(x**2-1)
-  r_n_star=2*x**3/(1+x**2)**2
-  return  r_n_star,q_n_star
-
-# Define different domains of n
-n_s_1=np.linspace(1,np.sqrt(3),100)
-n_s_2=np.linspace(np.sqrt(3),200,100)
-
-# Compute r and q
-r_1,q_1=Computerq(n_s_1)
-r_2,q_2=Computerq(n_s_2)
-
-# Plot results
-fig, ax = plt.subplots(1)
-
-ax.plot(q_1, r_1,q_2, r_2)
-plt.xlabel('$q$')
-plt.ylabel('$r$')
-ax.set_xlim([0, 100])
-plt.grid(True)
-
-plt.show()
-```
-
-::: {.cell-output .cell-output-display}
-![Bifurcations in the rq plane](Bifurcations_files/figure-html/fig-sprucebudworm-rq-output-1.png){#fig-sprucebudworm-rq width=602 height=429}
-:::
-:::
-
-
-:::
-
-By varying values of $n^*$ in @fig-sprucebudworm-rq we plot a region of instability. Note for example that $q\rightarrow \infty$ as $n^*\rightarrow 1$ and as  $n^*\rightarrow \infty$. Note also that in these limits $r$ must take the value 1/2 and 0, respectively.
-
-We can show that the cusp in  @fig-sprucebudworm-rq
-is given by
-$$
-\left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
-$$
-
-Note that $r$ is a decreasing function of $q$ for $1<n^*<\sqrt{3}$ but that $r$ is an increasing function of $n^*$ for $\sqrt{3}<n^*<\infty$. This can be shown by finding the turning points of $r$ w.r.t $n^*$, i.e.
-Given that
-$$
-r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2},
-$$
-differentiation with respect to $n^*$ yields
-$$
-\frac{dr}{dn^*}=\frac{6{n^*}^2}{(1+n^*)^2} - \frac{8n{^*}^4}{(1+n^*)^3}.
-$$
-The turning point satisfies
-$$
-\frac{6{n^*}^2}{(1+n^*)^2} - \frac{8n{^*}^4}{(1+n^*)^3}=0
-$$
-Solving for $n^*$ yields
-$$
-6(1+{n^*}^2) - 8n{^*}^2=0 
-$$
-Hence
-$$
-  n^*=\sqrt{3}.
-$$
-Thus there is a turning point that minimises $r$ at $n^*=\sqrt{3}$.
-
-Substitution for this value of $n^*$ yields
-$$
-\left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
-$$
-See @fig-sprucebudworm-rq.
-
-
-
-### Hysteresis 
-
-Finally, rearranging the steady-state equation 
-$$
-  r(1-\frac{n^*}{q}) = \frac{n^*}{1+n{^*}^{2}},
- $$
- we obtain
-$$ 
-   r = \frac{n^*}{(1+n{^*}^{2})(1-\frac{n^*}{q})}.
-$$ {#eq-sprucebudwormrpara}
-
-Considering $n^*<q$ we  compute $r$; plotting $n^*$ against $r$ yields the bifurcation curve presented in @fig-sprucebudworm-bfc. 
-
-
-:::
-
-::: {#cell-fig-sprucebudworm-bfc .cell execution_count=13}
-``` {.python .cell-code code-fold="true"}
-# Compute r as a function of n
-def Computern(x,q):
-  r=x/((1+x**2)*(1-x/q))
-  return  r
-
-# Define different domains of n for plotting 
-q=12
-n_s_1=np.linspace(1,np.sqrt(3),100)
-n_s_2=np.linspace(np.sqrt(3),0.99*q,100)
-n_s_3=np.linspace(0,np.sqrt(3),100)
-
-
-# Evaluate r
-r_1=Computern(n_s_1,q)
-r_2=Computern(n_s_2,q)
-r_3=Computern(n_s_3,q)
-
-
-# Plote results
-fig, ax = plt.subplots(1)
-
-ax.plot(r_1, n_s_1,r_2, n_s_2,r_3,n_s_3)
-plt.xlabel('$r$')
-plt.ylabel('$n^*$')
-ax.set_xlim([0, 2])
-plt.grid(True)
-
-plt.show()
-```
-
-::: {.cell-output .cell-output-display}
-![Bifurcations in the rq plane](Bifurcations_files/figure-html/fig-sprucebudworm-bfc-output-1.png){#fig-sprucebudworm-bfc width=601 height=429}
-:::
-:::
-
-
-:::
-
-A system exhibiting hysteresis shows a response to an increases in a control parameter that is not exactly reversed when the parameter is decreased. We can show that the spruce budworm model exhibits hysteresis by considering the argument below.
-
-Suppose $r$ is initially small ($r<r_1$). There is only one steady-state and any initial condition will converge towards it. 
-
- Suppose we increase the value of the parameter $r$. There will be a critical value of $r$ ($r=r_1$)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable steady state, it will remain there. 
-
- Suppose we continue to increase $r$. Eventually we reach  critical value of $r$ ($r=r_2$) where the first stable steady state is lost and there is again only one stable steady-state. 
-
- Suppose we now decrease the parameter $r$ below the threshold $r=r_2$. The system again enters the bistable regime but as the second solution is stable, it remains the solution. 
-
- Suppose we continue to decrease $r$ until eventually $r<r_1$. We return to the case where the system has only a single stable steady state. 
- 
-
-
-
-## References
-
--->
-
-
 </section>
+</section>
+<section id="application-the-spruce-budworm-model" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="application-the-spruce-budworm-model"><span class="header-section-number">3.5</span> Application: the spruce budworm model</h2>
+<p>The spruce budworm is a destructive and widely distributed forest defoliator in North America. Massive outbreaks occur periodically and can destroy large quantities of valuable spruce and fir. To understand the outbreak behaviour and develop and management strategies, a series of mathematical models have been developed, beginning with <span class="citation" data-cites="ludwig1978qualitative">Ludwig et al. (<a href="#ref-ludwig1978qualitative" role="doc-biblioref">1978</a>)</span>. The goal of the models is to explain the qualitative pattern of sudden outbreaks and then a sudden collapse.</p>
+<section id="model-development" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="model-development"><span class="header-section-number">3.5.1</span> Model development</h3>
+<p>Letting <span class="math inline">\(N(t)\)</span> represent the population size at time <span class="math inline">\(t\)</span>, it is assumed that budworm exhibits logistic growth and is subject to predation at rate <span class="math inline">\(p(N)\)</span>. A governing ordinary differential equation is given by <span id="eq-sprucebudworm"><span class="math display">\[
+\frac{dN }{dt}= r_B N\left(1-\frac{N}{K_B}\right)-p(N),
+\tag{3.2}\]</span></span> where <span class="math display">\[
+p(N) =\frac{B N^2}{A^2 +N^2},
+\]</span> <span class="math inline">\(r_B\)</span> is the linear growth rate, <span class="math inline">\(K_B\)</span> is the carrying capacity, <span class="math inline">\(B\)</span> is the maximum rate of predation and <span class="math inline">\(A\)</span> is a measure of budworm population where predation switches on (specifically, <span class="math inline">\(A\)</span> represents the budworm density at which predation is half its maximum value).</p>
+<p>It is informative to graph the predation term <span class="math display">\[
+p(N) =\frac{B N^2}{A^2 +N^2},
+\]</span> and annotate the parameters <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
+<p>There is a root at <span class="math inline">\(N=0\)</span>. In the limit <span class="math inline">\(N\rightarrow \infty\)</span>, <span class="math inline">\(p \rightarrow B\)</span>. Note that <span class="math inline">\(N=A\)</span>, <span class="math inline">\(p=A/2\)</span>. The derivative is <span class="math display">\[
+p'(N)=\frac{2BN}{A^2+N^2} - \frac{2BN^3}{(A^2+N^2)^2} =  \frac{2BA^2N}{(A^2+N^2)^2}
+\]</span> Thus there is a turning point at <span class="math inline">\(N=0\)</span> and <span class="math inline">\(p'&gt;0 \forall N&gt;0\)</span>.</p>
+</section>
+<section id="nondimensionalisation" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="nondimensionalisation"><span class="header-section-number">3.5.2</span> Nondimensionalisation</h3>
+<p>Introducing the (as yet unspecified) dimensional scalings <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span>, the model is nondimensionalised as follows</p>
+<p><span class="math display">\[
+n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}.
+\]</span></p>
+<p>Changing variables in <a href="#eq-sprucebudworm" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> yields</p>
+<p><span class="math display">\[
+\frac{\tilde{N}}{\tilde{T}}\frac{d n }{d\tau}= r_B \tilde{N}n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N}^2n^2}{A^2+\tilde{N}^2 n^2}.
+\]</span></p>
+<p>After some tidying</p>
+<p><span class="math display">\[
+\frac{dn }{d\tau}= r_B\tilde{T} n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N} \tilde{T}}{A^2}\frac{n^2}{1+\frac{\tilde{N}^2}{A^2}n^2}.
+\]</span></p>
+<p>A natural scale for cell density in the model is given by the parameter <span class="math inline">\(A\)</span>, as it determines the density of budworm at which predation is half its maximal value. Hence we choose the scaling on the budworm density <span class="math display">\[
+\tilde{N}=A.
+\]</span> Similarly, a natural time scale for the model is given by<br>
+<span class="math display">\[
+\tilde{T}=A/B.
+\]</span></p>
+<p>Substituting for <span class="math inline">\(\tilde{N}\)</span> and <span class="math inline">\(\tilde{T}\)</span> yields <span id="eq-budwormnondim"><span class="math display">\[
+\frac{dn }{d\tau}= rn\left(1-\frac{n}{q}\right)-\frac{n^2}{1+n^2} = H(n),
+\tag{3.3}\]</span></span> where we define the nondimensional parameters <span class="math display">\[
+r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
+\]</span></p>
+<p>Note that <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> has two nondimensional parameters and all variables are dimensionless. See <a href="#fig-sprucebudworm-rhs" class="quarto-xref">Figure&nbsp;<span>3.9</span></a> for a plot of right-hand side of equation <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>. What kind of behaviours do you expect to see from the model?</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="fl">1.1</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>N_0<span class="op">=</span><span class="fl">0.1</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span><span class="dv">12</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">0.22</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span><span class="fl">0.42</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span><span class="fl">0.72</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>n_vec<span class="op">=</span>np.linspace(<span class="dv">0</span>,N_max,<span class="dv">100</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model(x,t,r,q):</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  rhs<span class="op">=</span>r<span class="op">*</span>x<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>q) <span class="op">-</span> x<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> rhs</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model_f(x,t,r,q):</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  f<span class="op">=</span>r<span class="op">*</span>x<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>q) </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> f  </span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model_g(x,t,r,q):</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  g<span class="op">=</span>x<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> g  </span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>rhs1<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_1,q)</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>rhs2<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_2,q)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>rhs3<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_3,q)</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>ax.plot(n_vec, rhs1,n_vec, rhs2,n_vec, rhs3)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$N$'</span>)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$H(N)$'</span>)</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>fig.legend([<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_1),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3)])</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-sprucebudworm-rhs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sprucebudworm-rhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="b86622cf" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bifurcations_files/figure-html/cell-10-output-1.png" width="662" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-rhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.9: Rhs of the spruce budworm model.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="numerical-solutions" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="numerical-solutions"><span class="header-section-number">3.5.3</span> Numerical solutions</h3>
+<p>In <a href="#fig-sprucebudworm-numsol" class="quarto-xref">Figure&nbsp;<span>3.10</span></a> we plot some numerical solutions of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> at different values of the parameter <span class="math inline">\(r\)</span>.</p>
+<p>Numerical solutions of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> indicate that there is a single stable steady state when <span class="math inline">\(r\)</span> is both small and large but for intermediate values of <span class="math inline">\(r\)</span> there are two stable steady states.</p>
+<p>Our goal is to analyse the model and understand why different parameter values yield these strikingly different model behaviours.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define time</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">101</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Numerically solve the ODE for differnet parameter values</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>sol1 <span class="op">=</span> odeint(rhssprucebudworm_model, N_0, t, args<span class="op">=</span>(r_1, q))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>sol2 <span class="op">=</span> odeint(rhssprucebudworm_model, N_0, t, args<span class="op">=</span>(r_2, q))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>sol3 <span class="op">=</span> odeint(rhssprucebudworm_model, N_0, t, args<span class="op">=</span>(r_3, q))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot results</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>fig, ax<span class="op">=</span> plt.subplots()</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>ax.plot(t, sol1, <span class="st">'b'</span>, label<span class="op">=</span><span class="st">'r='</span> <span class="op">+</span><span class="bu">str</span>(r_1))</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>ax.plot(t, sol2, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2))</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>ax.plot(t, sol3, <span class="st">'m'</span>, label<span class="op">=</span><span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$N$'</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-sprucebudworm-numsol" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sprucebudworm-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="322416d6" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bifurcations_files/figure-html/cell-11-output-1.png" width="585" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.10: Numerical solution of spr. budworm model.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="steady-state-analysis" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="steady-state-analysis"><span class="header-section-number">3.5.4</span> Steady state analysis</h3>
+<p>Letting <span class="math inline">\(n^*\)</span> represent steady states of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> yields <span class="math display">\[
+rn^*(1-\frac{n^*}{q})- \frac{n^*{^2}}{1+n^*{^2}}=0.
+\]</span> Hence either <span class="math display">\[
+n^*=0,
+\]</span> or <span class="math inline">\(n^*\)</span> satisfies the cubic equation <span class="math display">\[
+r\left(1-\frac{n^*}{q}\right)- \frac{n^*}{1+n^*{^2}}=0.
+\]</span></p>
+<p>Explicit solutions to such a cubic can be immediately written down but they are cumbersome to work with. We proceed using a graphical/qualitative approach.</p>
+<p>Define <span id="eq-sprucebudwormfgn"><span class="math display">\[
+f(n^*)=r\left(1-\frac{n^*}{q}\right) \ \ \textrm{and} \ \ g(n^*)=\frac{n^*}{1+n^*{^2}}.
+\tag{3.4}\]</span></span></p>
+<p>Roots occur for values of <span class="math inline">\(n^*\)</span> that satisfy <span class="math inline">\(f=g\)</span>.</p>
+<p>In <a href="#fig-sprucebudworm-rhsfg" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> (a) we fix the parameter <span class="math inline">\(q=10\)</span> and consider model behaviour as a function of the parameter <span class="math inline">\(r\)</span>. When <span class="math inline">\(r\gg1\)</span> there is a nonzero steady-state corresponding to <span class="math inline">\(n^*\gg 1\)</span>. When <span class="math inline">\(r\ll1\)</span> there is a nonzero steady-state corresponding to <span class="math inline">\(n^*\ll 1\)</span>. In the intermediate case there can be three intersection points.</p>
+<p>We can use the curve sketching techniques form Tutorial Sheet 1 to sketch <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>.</p>
+<p><span class="math inline">\(f\)</span> is linear. There is a root at <span class="math inline">\(n^*=q\)</span>. The derivative is <span class="math inline">\(-r/q\)</span>. <span class="math inline">\(f(0)\)</span>=r. <span class="math inline">\(g\)</span> has a unique root at <span class="math inline">\(n^*=0\)</span>. The derivative is <span class="math display">\[
+g'=\frac{1-n{^*}^2}{(1+n^*)^2}.
+\]</span> There is a turning point at <span class="math inline">\(n^*=1\)</span>. Here <span class="math inline">\(g=1/2\)</span>. As <span class="math inline">\(n^*\rightarrow \infty\)</span>, <span class="math inline">\(g\rightarrow 0\)</span>. <span class="math inline">\(f'(0)=1\)</span>.</p>
+</section>
+<section id="linear-stability-analysis" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="linear-stability-analysis"><span class="header-section-number">3.5.5</span> Linear stability analysis</h3>
+<p>The linear stability of the model is determined by the quantity <span class="math display">\[
+H'(n)=r(1-\frac{2n}{q})-\frac{2{n}}{1+{n}^2} +\frac{2{n}^3}{(1+{n}^2)^2}.
+\]</span></p>
+<p>Hence at the steady state <span class="math inline">\(n^*=0\)</span> <span class="math display">\[
+H'(0)=r
+\]</span> and the steady state is linearly unstable.</p>
+<p>Given the nonzero steady states have not been calculated explicitly, we proceed using graphical analysis of stability. In <a href="#fig-sprucebudworm-rhsfg" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> (b) we plot the right-hand side of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> against <span class="math inline">\(n\)</span> and examine the cases of large, small and intermediate <span class="math inline">\(r\)</span> for a given value of <span class="math inline">\(q\)</span>.</p>
+<p>When <span class="math inline">\(r\)</span> is both large and small the nonzero steady state is stable (the derivative at the roots is negative). In the case where three biologically relevant roots exist, the intermediate root is unstable.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial condition</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>N_0<span class="op">=</span><span class="fl">0.1</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model parameters</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span><span class="dv">12</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">0.2</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span><span class="fl">0.8</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Discretise n</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="dv">13</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>n_vec<span class="op">=</span>np.linspace(<span class="dv">0</span>,N_max,<span class="dv">100</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute f and g</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model_f(x,t,r,q):</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  f<span class="op">=</span>r<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>q) </span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> f  </span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rhssprucebudworm_model_g(x,t,r,q):</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  g<span class="op">=</span>x<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> g  </span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute f for different values of r and g</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>f_1<span class="op">=</span>rhssprucebudworm_model_f(n_vec,<span class="dv">0</span>,r_1,q)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>f_2<span class="op">=</span>rhssprucebudworm_model_f(n_vec,<span class="dv">0</span>,r_2,q)</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>f_3<span class="op">=</span>rhssprucebudworm_model_f(n_vec,<span class="dv">0</span>,r_3,q)</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>g<span class="op">=</span>rhssprucebudworm_model_g(n_vec,<span class="dv">0</span>,r_1,q)</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute H for different values of r</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>h_1<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_1,q)</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>h_2<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_2,q)</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>h_3<span class="op">=</span>rhssprucebudworm_model(n_vec,<span class="dv">0</span>,r_3,q)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(n_vec, f_1,n_vec, f_2,n_vec, f_3,n_vec,g)</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$n$'</span>)</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$f,g$'</span>)</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">True</span>)</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend([<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_1),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3)])</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(n_vec, h_1,n_vec, h_2,n_vec, h_3)</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$n$'</span>)</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$H$'</span>)</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">True</span>)</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend([<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_1),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_2),<span class="st">'r='</span><span class="op">+</span><span class="bu">str</span>(r_3)])</span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-sprucebudworm-rhsfg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sprucebudworm-rhsfg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="11b6cbe2" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bifurcations_files/figure-html/cell-12-output-1.png" width="659" height="468" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-rhsfg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.11: RHS of spr. budworm model.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="bifurcation-analysis" class="level3" data-number="3.5.6">
+<h3 data-number="3.5.6" class="anchored" data-anchor-id="bifurcation-analysis"><span class="header-section-number">3.5.6</span> Bifurcation analysis</h3>
+<p>The goal is to identify boundaries of <span class="math inline">\(rq\)</span> parameter space where the stability changes occur and/or the number of steady states changes.</p>
+<p>We can define points in <span class="math inline">\(rq\)</span> parameter space where bifurcations arise by seeking values of <span class="math inline">\(n^*\)</span> that satisfy <span class="math display">\[
+f(n^*)= g(n^*) \ \ \ \  f'(n^*)= g'(n^*).
+\]</span></p>
+<p>The first of these equations yields <span id="eq-rqeqn1"><span class="math display">\[
+  r(1-\frac{n^*}{q}) = \frac{n^*}{1+n{^*}^{2}},
+\tag{3.5}\]</span></span> and the latter yields <span id="eq-rqeqn2"><span class="math display">\[
+-\frac{r}{q}=\frac{1}{1+n{^*}^{2}}-\frac{2n{^*}^{2}}{(1+n{^*})^2} = \frac{1-n{^*}^{2}}{(1+n{^*}^{2})^2}.
+\tag{3.6}\]</span></span></p>
+<p>Hence <span class="math display">\[
+   \frac{r}{q}= \frac{n{^*}^{2}-1}{(1+n{^*}^{2})^2}.
+\]</span></p>
+<p>Substituting for <span class="math inline">\(r/q\)</span> in the first equation yields <span class="math display">\[
+r-\frac{n{^*}^{2}-1}{(1+n{^*}^{2})^2}n^*=\frac{n^*}{1+n{^*}^{2}},
+\]</span> which can be written in the form <span class="math display">\[
+r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}.
+\]</span> Substituting for <span class="math inline">\(r\)</span> in <a href="#eq-rqeqn1" class="quarto-xref">Equation&nbsp;<span>3.5</span></a> yields <span class="math display">\[
+\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\frac{n^*}{q}+\frac{n^*}{1+n{^*}^2}
+\]</span> which, after some algebra, yields <span id="eq-sprucebudwormqpara"><span class="math display">\[
+q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
+\tag{3.7}\]</span></span> Hence a set of points that define bifurcations where three steady states transform to a single steady state are given in parametric form in <span class="math inline">\(qr\)</span> parameter space by <span class="math display">\[
+\left(\frac{2n{^*}^3}{n{^*}^{2}-1},\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\right) \ \ \ \ \ \ \ n^*&gt;1.
+\]</span></p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to compute bifurcation values of r and q as a function of n_star</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Computerq(x):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  q_n_star<span class="op">=</span><span class="dv">2</span><span class="op">*</span>x<span class="op">**</span><span class="dv">3</span><span class="op">/</span>(x<span class="op">**</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  r_n_star<span class="op">=</span><span class="dv">2</span><span class="op">*</span>x<span class="op">**</span><span class="dv">3</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span>  r_n_star,q_n_star</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define different domains of n</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>n_s_1<span class="op">=</span>np.linspace(<span class="dv">1</span>,np.sqrt(<span class="dv">3</span>),<span class="dv">100</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>n_s_2<span class="op">=</span>np.linspace(np.sqrt(<span class="dv">3</span>),<span class="dv">200</span>,<span class="dv">100</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute r and q</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>r_1,q_1<span class="op">=</span>Computerq(n_s_1)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>r_2,q_2<span class="op">=</span>Computerq(n_s_2)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>ax.plot(q_1, r_1,q_2, r_2)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$q$'</span>)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$r$'</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlim([<span class="dv">0</span>, <span class="dv">100</span>])</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-sprucebudworm-rq" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sprucebudworm-rq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="27bcf127" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bifurcations_files/figure-html/cell-13-output-1.png" width="602" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-rq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.12: Bifurcations in the rq plane.
+</figcaption>
+</figure>
+</div>
+<p>By varying values of <span class="math inline">\(n^*\)</span> in <a href="#fig-sprucebudworm-rq" class="quarto-xref">Figure&nbsp;<span>3.12</span></a> we plot a region of instability. Note for example that <span class="math inline">\(q\rightarrow \infty\)</span> as <span class="math inline">\(n^*\rightarrow 1\)</span> and as <span class="math inline">\(n^*\rightarrow \infty\)</span>. Note also that in these limits <span class="math inline">\(r\)</span> must take the value 1/2 and 0, respectively.</p>
+<p>We can show that the cusp in <a href="#fig-sprucebudworm-rq" class="quarto-xref">Figure&nbsp;<span>3.12</span></a> is given by <span class="math display">\[
+\left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
+\]</span></p>
+<p>Note that <span class="math inline">\(r\)</span> is a decreasing function of <span class="math inline">\(q\)</span> for <span class="math inline">\(1&lt;n^*&lt;\sqrt{3}\)</span> but that <span class="math inline">\(r\)</span> is an increasing function of <span class="math inline">\(n^*\)</span> for <span class="math inline">\(\sqrt{3}&lt;n^*&lt;\infty\)</span>. This can be shown by finding the turning points of <span class="math inline">\(r\)</span> w.r.t <span class="math inline">\(n^*\)</span>, i.e. Given that <span class="math display">\[
+r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2},
+\]</span> differentiation with respect to <span class="math inline">\(n^*\)</span> yields <span class="math display">\[
+\frac{dr}{dn^*}=\frac{6{n^*}^2}{(1+n^*)^2} - \frac{8n{^*}^4}{(1+n^*)^3}.
+\]</span> The turning point satisfies <span class="math display">\[
+\frac{6{n^*}^2}{(1+n^*)^2} - \frac{8n{^*}^4}{(1+n^*)^3}=0
+\]</span> Solving for <span class="math inline">\(n^*\)</span> yields <span class="math display">\[
+6(1+{n^*}^2) - 8n{^*}^2=0
+\]</span> Hence <span class="math display">\[
+  n^*=\sqrt{3}.
+\]</span> Thus there is a turning point that minimises <span class="math inline">\(r\)</span> at <span class="math inline">\(n^*=\sqrt{3}\)</span>.</p>
+<p>Substitution for this value of <span class="math inline">\(n^*\)</span> yields <span class="math display">\[
+\left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
+\]</span> See <a href="#fig-sprucebudworm-rq" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>.</p>
+</section>
+<section id="hysteresis" class="level3" data-number="3.5.7">
+<h3 data-number="3.5.7" class="anchored" data-anchor-id="hysteresis"><span class="header-section-number">3.5.7</span> Hysteresis</h3>
+<p>Finally, rearranging the steady-state equation <span class="math display">\[
+  r(1-\frac{n^*}{q}) = \frac{n^*}{1+n{^*}^{2}},
+\]</span> we obtain <span id="eq-sprucebudwormrpara"><span class="math display">\[
+   r = \frac{n^*}{(1+n{^*}^{2})(1-\frac{n^*}{q})}.
+\tag{3.8}\]</span></span></p>
+<p>Considering <span class="math inline">\(n^*&lt;q\)</span> we compute <span class="math inline">\(r\)</span>; plotting <span class="math inline">\(n^*\)</span> against <span class="math inline">\(r\)</span> yields the bifurcation curve presented in <a href="#fig-sprucebudworm-bfc" class="quarto-xref">Figure&nbsp;<span>3.13</span></a>.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute r as a function of n</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Computern(x,q):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  r<span class="op">=</span>x<span class="op">/</span>((<span class="dv">1</span><span class="op">+</span>x<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>x<span class="op">/</span>q))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span>  r</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define different domains of n for plotting </span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span><span class="dv">12</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>n_s_1<span class="op">=</span>np.linspace(<span class="dv">1</span>,np.sqrt(<span class="dv">3</span>),<span class="dv">100</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>n_s_2<span class="op">=</span>np.linspace(np.sqrt(<span class="dv">3</span>),<span class="fl">0.99</span><span class="op">*</span>q,<span class="dv">100</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>n_s_3<span class="op">=</span>np.linspace(<span class="dv">0</span>,np.sqrt(<span class="dv">3</span>),<span class="dv">100</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate r</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span>Computern(n_s_1,q)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span>Computern(n_s_2,q)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span>Computern(n_s_3,q)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plote results</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>ax.plot(r_1, n_s_1,r_2, n_s_2,r_3,n_s_3)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$r$'</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$n^*$'</span>)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>ax.set_xlim([<span class="dv">0</span>, <span class="dv">2</span>])</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-sprucebudworm-bfc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sprucebudworm-bfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="d5052f0b" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bifurcations_files/figure-html/cell-14-output-1.png" width="601" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sprucebudworm-bfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.13: Bifurcations in the rq plane.
+</figcaption>
+</figure>
+</div>
+<p>A system exhibiting hysteresis shows a response to an increases in a control parameter that is not exactly reversed when the parameter is decreased. We can show that the spruce budworm model exhibits hysteresis by considering the argument below.</p>
+<p>Suppose <span class="math inline">\(r\)</span> is initially small (<span class="math inline">\(r&lt;r_1\)</span>). There is only one steady-state and any initial condition will converge towards it.</p>
+<p>Suppose we increase the value of the parameter <span class="math inline">\(r\)</span>. There will be a critical value of <span class="math inline">\(r\)</span> (<span class="math inline">\(r=r_1\)</span>)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable steady state, it will remain there.</p>
+<p>Suppose we continue to increase <span class="math inline">\(r\)</span>. Eventually we reach critical value of <span class="math inline">\(r\)</span> (<span class="math inline">\(r=r_2\)</span>) where the first stable steady state is lost and there is again only one stable steady-state.</p>
+<p>Suppose we now decrease the parameter <span class="math inline">\(r\)</span> below the threshold <span class="math inline">\(r=r_2\)</span>. The system again enters the bistable regime but as the second solution is stable, it remains the solution.</p>
+<p>Suppose we continue to decrease <span class="math inline">\(r\)</span> until eventually <span class="math inline">\(r&lt;r_1\)</span>. We return to the case where the system has only a single stable steady state.</p>
+</section>
+</section>
+<section id="references" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="references"><span class="header-section-number">3.6</span> References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-ludwig1978qualitative" class="csl-entry" role="listitem">
+Ludwig, Donald, Dixon D Jones, Crawford S Holling, et al. 1978. <span>“Qualitative Analysis of Insect Outbreak Systems: The Spruce Budworm and Forest.”</span> <em>Journal of Animal Ecology</em> 47 (1): 315–32.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
