@@ -993,13 +993,15 @@ An app for exploring behaviour of the supercritical pitchfork bifurcation.
 
 ### Subcritical pitchfork
 
+In the case of a subcritical pitchform the governing equation is
 $$
 \dot{x}=rx+x^3,
 $$
+with $r\in R$. As this case is very similar to the supercritical pitchfork working out the algebraic details is left as an exercise. In @fig-subcritbfc note that for $r<0$ there are three fixed points. This time the nontrivial points are linearly unstable whilst $x^*=0$ is linearly stable. For $r>0$ there is a single fixed point that is linearly unstable. At $r=0$ there is a single non-hyperblic fixed point at which $f'(0)=0$. This is unstable. See @subcritbfc for bifurcation diagram.
 
 
 
-::: {#fig-subcritbfc}
+::: {#fig-subcritf}
 ```{python}
 #| code-fold: true
 
@@ -1056,7 +1058,7 @@ for i,r_i in enumerate(r_vec):
 :::
 
 
-::: {#fig-subcritf}
+::: {#fig-subcritbfc}
 ```{python}
 #| code-fold: true
 
@@ -1190,7 +1192,7 @@ import scipy
 from scipy.integrate import odeint
 
 
-N_max=1.1
+N_max=12.1
 N_0=0.1
 q=12
 r_1=0.22
@@ -1236,7 +1238,7 @@ Rhs of the spruce budworm model.
 ### Numerical solutions
 In @fig-sprucebudworm-numsol we plot some numerical solutions of @eq-budwormnondim at different values of the parameter $r$. 
 
-Numerical solutions of @eq-budwormnondim  indicate that there is a single stable steady state when $r$ is both small and large but for intermediate values of $r$ there are two stable steady states. 
+Numerical solutions of @eq-budwormnondim  indicate that there is a single stable fixed point when $r$ is both small and large but for intermediate values of $r$ there are two stable fixed points. 
 
 Our goal is to analyse the model and understand why different parameter values yield these strikingly different model behaviours.
 
@@ -1274,8 +1276,8 @@ Numerical solution of spr. budworm model.
 
 
 
-### Steady state analysis
-Letting $n^*$ represent steady states of @eq-budwormnondim yields
+### Fixed point analysis
+Letting $n^*$ represent fixed points of @eq-budwormnondim yields
 $$
 rn^*(1-\frac{n^*}{q})- \frac{n^*{^2}}{1+n^*{^2}}=0.
 $$
@@ -1324,17 +1326,19 @@ $$
 H'(n)=r(1-\frac{2n}{q})-\frac{2{n}}{1+{n}^2} +\frac{2{n}^3}{(1+{n}^2)^2}.
 $$
 
-Hence at the steady state $n^*=0$ 
+Hence at the fixed point $n^*=0$ 
 $$
 H'(0)=r
 $$
-and the steady state is linearly unstable.
+and the fixed point is linearly unstable.
 
 
-Given the  nonzero steady states have not been calculated explicitly, we proceed using graphical analysis of stability. In @fig-sprucebudworm-rhsfg  (b) we plot the right-hand side of @eq-budwormnondim against $n$ and examine the cases of large, small and intermediate $r$ for a given value of $q$. 
+Given the  nonzero fixed points have not been calculated explicitly, we proceed using graphical analysis of stability. In @fig-sprucebudworm-rhsfg  (b) we plot the right-hand side of @eq-budwormnondim against $n$ and examine the cases of large, small and intermediate $r$ for a given value of $q$. 
 
-When $r$ is both large and small the nonzero steady state is stable (the derivative at the roots is negative). 
+When $r$ is both large and small the nonzero fixed point is stable (the derivative at the roots is negative). 
 In the case where three biologically relevant roots exist, the intermediate root is unstable.
+
+
 
 :::{#fig-sprucebudworm-rhsfg}
 
@@ -1405,7 +1409,9 @@ RHS of spr. budworm model.
 
 
 ### Bifurcation analysis
-The goal is to identify boundaries of $rq$ parameter space where the stability changes occur and/or the number of steady states changes.
+The goal is to identify boundaries of $rq$ parameter space where the stability changes occur and/or the number of fixed points changes.
+
+At the transitions between different qualitative regimes pairs of fixed points can appear/disappear at critical values of $r$. In these cases one of the fixed points is linearly stable and the other linerly unstable. Hence these are saddle-node bifurcations.
 
 We can define points in $rq$ parameter space where bifurcations arise by seeking values of $n^*$ that satisfy
 $$
@@ -1444,7 +1450,7 @@ which, after some algebra, yields
 $$
 q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
 $$ {#eq-sprucebudwormqpara}
-Hence a set of points that define bifurcations where three steady states transform to a single steady state are given in parametric form in $qr$ parameter space by
+Hence a set of points that define bifurcations where three fixed points transform to a single fixed point are given in parametric form in $qr$ parameter space by
 $$
 \left(\frac{2n{^*}^3}{n{^*}^{2}-1},\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\right) \ \ \ \ \ \ \ n^*>1.
 $$
@@ -1580,13 +1586,13 @@ A system exhibiting hysteresis shows a response to an increases in a control par
 
 Suppose $r$ is initially small ($r<r_1$). There is only one steady-state and any initial condition will converge towards it. 
 
- Suppose we increase the value of the parameter $r$. There will be a critical value of $r$ ($r=r_1$)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable steady state, it will remain there. 
+ Suppose we increase the value of the parameter $r$. There will be a critical value of $r$ ($r=r_1$)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable fixed point, it will remain there. 
 
- Suppose we continue to increase $r$. Eventually we reach  critical value of $r$ ($r=r_2$) where the first stable steady state is lost and there is again only one stable steady-state. 
+ Suppose we continue to increase $r$. Eventually we reach  critical value of $r$ ($r=r_2$) where the first stable fixed point is lost and there is again only one stable steady-state. 
 
  Suppose we now decrease the parameter $r$ below the threshold $r=r_2$. The system again enters the bistable regime but as the second solution is stable, it remains the solution. 
 
- Suppose we continue to decrease $r$ until eventually $r<r_1$. We return to the case where the system has only a single stable steady state. 
+ Suppose we continue to decrease $r$ until eventually $r<r_1$. We return to the case where the system has only a single stable fixed point. 
  
 
 
