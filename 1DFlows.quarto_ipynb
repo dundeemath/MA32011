@@ -12,7 +12,7 @@
         "\n",
         "Here we consider ODE models with a single dependent variable that are first order in time.\n",
         "\n",
-        "Let $x=x(t)$.\n",
+        "Let $x=x(t)$ and consider the ODE\n",
         "$$\n",
         "\\dot{x}=f(x).\n",
         "$$ {#eq-fp1d}\n",
@@ -21,7 +21,7 @@
         "\n",
         "## Geometric\n",
         "\n",
-        "For many problem an explicit solution can either not be constructed or is not of practical use.\n",
+        "For many problems an explicit solution can either not be constructed or is not of practical use.\n",
         "\n",
         "::: {#exm-    }\n",
         "\n",
@@ -47,13 +47,13 @@
         "\n",
         "Instead let's use a graphical method. In @fig-ODEqual we sketch a graph of $f$, the right-hand side of the ODE. The arrows depict the vector field. Hence when $f>0$, $\\dot{x}>0$ and the solution increases. In contrast, when $f<0$, $\\dot{x}<0$ and the solution decreases.\n",
         "\n",
-        "Note that $f>0  \\ \\forall \\ 0<x<\\pi$. Hence for initial condition $x_0=\\pi/4$, $\\dot{x}_{t=0}>0$. The solution will increase until it reaches $\\pi$. At $x=\\pi$, $f=0$.\n",
+        "Note that $f>0  \\ \\forall \\ 0<x<\\pi$. Hence for the initial condition $x_0=\\pi/4$, $\\dot{x}_{t=0}>0$. The solution will increase until it reaches $\\pi$. At $x=\\pi$, $f=0$.\n",
         "\n",
         "\n",
         "\n",
         "::: {#fig-ODEqual}"
       ],
-      "id": "9acff71d"
+      "id": "4e606e20"
     },
     {
       "cell_type": "code",
@@ -95,7 +95,7 @@
         "  \n",
         "plt.show()"
       ],
-      "id": "571965b1",
+      "id": "f4e25254",
       "execution_count": null,
       "outputs": []
     },
@@ -163,7 +163,7 @@
         "\n",
         "::: {#fig-fpcalc}"
       ],
-      "id": "3db71f08"
+      "id": "48782519"
     },
     {
       "cell_type": "code",
@@ -187,12 +187,12 @@
         "\n",
         "\n",
         "# Arrow target (arrow head)\n",
-        "x=[-1.0, -1.0, 1.0, 1.0]\n",
-        "y=[0.0, 0.0,0.0,0.0]\n",
+        "x=[-1.0, -1.0, 2.0]\n",
+        "y=[0.0, 0.0,0.0]\n",
         "\n",
         "# Arrow start\n",
-        "x0=[-2.0,2.0,0.0,2.0]\n",
-        "y0 = [0.0,0.0,0.0,0.0]\n",
+        "x0=[-2.0,1.0,1.0]\n",
+        "y0 = [0.0,0.0,0.0]\n",
         "\n",
         "\n",
         "for x_i,y_i,x0_i,y0_i in zip(x,y,x0,y0):\n",
@@ -209,7 +209,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "40462ac5",
+      "id": "f1e2c28f",
       "execution_count": null,
       "outputs": []
     },
@@ -240,7 +240,7 @@
         "Hence @eq-fp1d  transforms to\n",
         "$$\n",
         "\\dot{\\hat{x}} = f(x^*+\\hat{x}(t)).\n",
-        "$$\n",
+        "$$ {#eq-1DODEpert}\n",
         "\n",
         "####  Taylor expansion and a linear system\n",
         "\n",
@@ -258,9 +258,9 @@
         "$$\n",
         "with solution\n",
         "$$\n",
-        "\\hat{x}(t)=  \\eta e^{f'(x^*) t}\n",
+        "\\hat{x}(t)=  \\eta e^{f'(x^*) t}.\n",
         "$$\n",
-        "where $\\eta$ is some initial perturbation about the steady-state.\n",
+        "Here $\\eta$ is an initial perturbation about the steady-state that is determined by initial conditions.\n",
         "\n",
         "#### A condition for linear stability\n",
         "When $f'(x^*)>0$ the perturbation grows exponentially fast and the steady-state is linearly  unstable.\n",
@@ -304,20 +304,35 @@
         "$$\n",
         "can be interpreted as an eigenvalue of the linearised problem\n",
         "$$\n",
-        "\\dot{\\hat{x}}=\\lambda \\hat{x}.\n",
+        "\\dot{\\hat{x}}=\\lambda \\hat{x},\n",
         "$$\n",
         "where\n",
         "$$\n",
         "\\lambda = f'(x^*).\n",
         "$$\n",
         "\n",
-        "A fixed point is said to be hyperbolic when the eigenvalues of its linearisation are nonzero.\n",
+        "::: {.Definition}\n",
+        "A fixed point is said to be *hyperbolic* when the eigenvalues of its linearisation are nonzero.\n",
+        ":::\n",
         "\n",
-        "The  Hartman-Grobman theorem states that if a system has a hyperbolic FP, the classification of the nonlinear system is determined by the linear classification.\n",
+        "::: {.Theorem}\n",
+        "# Hartman-Grobman \n",
+        "\n",
+        "If a system has a hyperbolic FP, the classification of the nonlinear system at the fixed point is determined by the linear classification.\n",
+        "\n",
+        ":::\n",
         "\n",
         "If a fixed point is non-hypberbolic,  it's classification requires consideration of higher order terms.\n",
         "\n",
+        "::: {#exm-    }\n",
         "\n",
+        "Apply the Hartman Grobman theorem to the classification of the problem\n",
+        "\n",
+        "$$\n",
+        "\\dot{x}=-x^3.\n",
+        "$$\n",
+        "\n",
+        ":::\n",
         "\n",
         "\n",
         "## Case study: population dynamics\n",
@@ -335,7 +350,7 @@
         "In @fig-logisticgrowthmodel we present numerical solutions of equation   using different initial conditions. Note the limiting behaviour of solutions as $t\\rightarrow \\infty$. In @fig-logisticgrowthmodel it is clear that even though some solutions are initialised at $N_0=0.1$, much closer to $N^*=0$ than $N^*=K$, they tend to the limit $N=K$. \n",
         " Why do solutions not tend to $N^*=0$?"
       ],
-      "id": "24eefa91"
+      "id": "1b507e7b"
     },
     {
       "cell_type": "code",
@@ -468,7 +483,7 @@
         "We can qualitatively describe model solutions by considering the arrow along the $n$ axis. \n",
         "Suppose we consider an initial condition with $0<n_0<1$. Using the graph of $H(n)$, $dn/d\\tau$ is positive, hence $n$ increases as a function of time until $n(\\tau)\\rightarrow 1$. "
       ],
-      "id": "3f3fa558"
+      "id": "24a3f3f9"
     },
     {
       "cell_type": "code",
@@ -545,9 +560,17 @@
         "\n",
         "## Impossibility of oscillations\n",
         "\n",
+        "\n",
+        " In 1D flows with well behaved $f$, the range of permissible qualitiative behaviours is limited by the geometry of the line. Solutions must have one of the following behaviours:\n",
+        " \n",
+        "- tend towards a stable fixed point\n",
+        "- move away from an unstable fixed point\n",
+        "- stay at a fixed point for all time\n",
+        "- tend to $\\pm \\infty$\n",
+        "\n",
         "Oscillatory solutions to @eq-genODE are impossible, i.e. first order autonomous ODEs (with one dependent variable) cannot oscillate.\n",
         "\n",
-        "This can be argued using geometrical constraints of dynamics on the line. \n",
+        "This can be argued using geometrical constraints of dynamics on the line.\n",
         "\n",
         "\n",
         "::: {#exm-    }\n",
@@ -626,7 +649,7 @@
         "\n",
         ":::\n"
       ],
-      "id": "9a3d0ff7"
+      "id": "0351a649"
     }
   ],
   "metadata": {
