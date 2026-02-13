@@ -131,27 +131,11 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
 .Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Corollary {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -163,6 +147,18 @@ div.csl-indent {
   --color1: #c0c0c0;
   --color2: #808080;
 }
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Proof {
   --color1: #c0c0c0;
   --color2: #808080;
@@ -170,6 +166,10 @@ div.csl-indent {
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 </style>
 
@@ -318,7 +318,7 @@ window.Quarto = {
   <li><a href="#model-development" id="toc-model-development" class="nav-link" data-scroll-target="#model-development"><span class="header-section-number">3.5.1</span> Model development</a></li>
   <li><a href="#nondimensionalisation" id="toc-nondimensionalisation" class="nav-link" data-scroll-target="#nondimensionalisation"><span class="header-section-number">3.5.2</span> Nondimensionalisation</a></li>
   <li><a href="#numerical-solutions" id="toc-numerical-solutions" class="nav-link" data-scroll-target="#numerical-solutions"><span class="header-section-number">3.5.3</span> Numerical solutions</a></li>
-  <li><a href="#steady-state-analysis" id="toc-steady-state-analysis" class="nav-link" data-scroll-target="#steady-state-analysis"><span class="header-section-number">3.5.4</span> Steady state analysis</a></li>
+  <li><a href="#fixed-point-analysis" id="toc-fixed-point-analysis" class="nav-link" data-scroll-target="#fixed-point-analysis"><span class="header-section-number">3.5.4</span> Fixed point analysis</a></li>
   <li><a href="#linear-stability-analysis" id="toc-linear-stability-analysis" class="nav-link" data-scroll-target="#linear-stability-analysis"><span class="header-section-number">3.5.5</span> Linear stability analysis</a></li>
   <li><a href="#bifurcation-analysis" id="toc-bifurcation-analysis" class="nav-link" data-scroll-target="#bifurcation-analysis"><span class="header-section-number">3.5.6</span> Bifurcation analysis</a></li>
   <li><a href="#hysteresis" id="toc-hysteresis" class="nav-link" data-scroll-target="#hysteresis"><span class="header-section-number">3.5.7</span> Hysteresis</a></li>
@@ -459,7 +459,7 @@ f'(x^*)=\pm 2\sqrt{-r}.
 <div id="fig-fsaddlenode" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fsaddlenode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="f5278d86" class="cell" data-execution_count="1">
+<div id="55100fc4" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -515,7 +515,7 @@ Figure&nbsp;3.1
 <div id="fig-saddlenodebfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-saddlenodebfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="e9c56790" class="cell" data-execution_count="2">
+<div id="aed3aefb" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -737,7 +737,7 @@ i.e. the right-hand side is linear in $r$ and quadratic in $x$.
 <div id="fig-transcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="476d5053" class="cell" data-execution_count="3">
+<div id="5ab24502" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -796,7 +796,7 @@ Figure&nbsp;3.3
 <div id="fig-transcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="98ef7232" class="cell" data-execution_count="4">
+<div id="6d8dd9bb" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1064,7 +1064,7 @@ f'(\pm \sqrt{r})=r-3r=-2r.
 <div id="fig-supcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="57228e6f" class="cell" data-execution_count="5">
+<div id="d3a6cf86" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1122,7 +1122,7 @@ Figure&nbsp;3.5
 <div id="fig-supcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="1344b0bc" class="cell" data-execution_count="6">
+<div id="09079607" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1271,9 +1271,9 @@ app = App(app_ui, server)</code></pre>
 </section>
 <section id="subcritical-pitchfork" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="subcritical-pitchfork"><span class="header-section-number">3.4.2</span> Subcritical pitchfork</h3>
-<p><span class="math display">\[
+<p>In the case of a subcritical pitchform the governing equation is <span class="math display">\[
 \dot{x}=rx+x^3,
-\]</span></p>
+\]</span> with <span class="math inline">\(r\in R\)</span>. As this case is very similar to the supercritical pitchfork working out the algebraic details is left as an exercise. In <a href="#fig-subcritbfc" class="quarto-xref">Figure&nbsp;<span>3.8</span></a> note that for <span class="math inline">\(r&lt;0\)</span> there are three fixed points. This time the nontrivial points are linearly unstable whilst <span class="math inline">\(x^*=0\)</span> is linearly stable. For <span class="math inline">\(r&gt;0\)</span> there is a single fixed point that is linearly unstable. At <span class="math inline">\(r=0\)</span> there is a single non-hyperblic fixed point at which <span class="math inline">\(f'(0)=0\)</span>. This is unstable. See <span class="citation" data-cites="subcritbfc">(<a href="#ref-subcritbfc" role="doc-biblioref"><strong>subcritbfc?</strong></a>)</span> for bifurcation diagram.</p>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1325,10 +1325,10 @@ app = App(app_ui, server)</code></pre>
 <span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    fig.supxlabel(<span class="st">'$x$'</span>)</span>
 <span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    fig.supylabel(<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">$'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-subcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-subcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="dc8ef731" class="cell" data-execution_count="7">
+<div aria-describedby="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="7e4c1776" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1338,7 +1338,7 @@ app = App(app_ui, server)</code></pre>
 </div>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.7
 </figcaption>
 </figure>
@@ -1382,10 +1382,10 @@ Figure&nbsp;3.7
 <span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-subcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-subcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="93574782" class="cell" data-execution_count="8">
+<div aria-describedby="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="baf74ad1" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1395,7 +1395,7 @@ Figure&nbsp;3.7
 </div>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.8
 </figcaption>
 </figure>
@@ -1453,7 +1453,7 @@ r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="fl">1.1</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="fl">12.1</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>N_0<span class="op">=</span><span class="fl">0.1</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>q<span class="op">=</span><span class="dv">12</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">0.22</span></span>
@@ -1493,7 +1493,7 @@ r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
 <div id="fig-sprucebudworm-rhs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="b86622cf" class="cell" data-execution_count="9">
+<div id="c23167f8" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1512,7 +1512,7 @@ Figure&nbsp;3.9: Rhs of the spruce budworm model.
 <section id="numerical-solutions" class="level3" data-number="3.5.3">
 <h3 data-number="3.5.3" class="anchored" data-anchor-id="numerical-solutions"><span class="header-section-number">3.5.3</span> Numerical solutions</h3>
 <p>In <a href="#fig-sprucebudworm-numsol" class="quarto-xref">Figure&nbsp;<span>3.10</span></a> we plot some numerical solutions of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> at different values of the parameter <span class="math inline">\(r\)</span>.</p>
-<p>Numerical solutions of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> indicate that there is a single stable steady state when <span class="math inline">\(r\)</span> is both small and large but for intermediate values of <span class="math inline">\(r\)</span> there are two stable steady states.</p>
+<p>Numerical solutions of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> indicate that there is a single stable fixed point when <span class="math inline">\(r\)</span> is both small and large but for intermediate values of <span class="math inline">\(r\)</span> there are two stable fixed points.</p>
 <p>Our goal is to analyse the model and understand why different parameter values yield these strikingly different model behaviours.</p>
 <details class="code-fold">
 <summary>Code</summary>
@@ -1541,7 +1541,7 @@ Figure&nbsp;3.9: Rhs of the spruce budworm model.
 <div id="fig-sprucebudworm-numsol" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="322416d6" class="cell" data-execution_count="10">
+<div id="d8933090" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1557,9 +1557,9 @@ Figure&nbsp;3.10: Numerical solution of spr. budworm model.
 </figure>
 </div>
 </section>
-<section id="steady-state-analysis" class="level3" data-number="3.5.4">
-<h3 data-number="3.5.4" class="anchored" data-anchor-id="steady-state-analysis"><span class="header-section-number">3.5.4</span> Steady state analysis</h3>
-<p>Letting <span class="math inline">\(n^*\)</span> represent steady states of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> yields <span class="math display">\[
+<section id="fixed-point-analysis" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="fixed-point-analysis"><span class="header-section-number">3.5.4</span> Fixed point analysis</h3>
+<p>Letting <span class="math inline">\(n^*\)</span> represent fixed points of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> yields <span class="math display">\[
 rn^*(1-\frac{n^*}{q})- \frac{n^*{^2}}{1+n^*{^2}}=0.
 \]</span> Hence either <span class="math display">\[
 n^*=0,
@@ -1582,11 +1582,11 @@ g'=\frac{1-n{^*}^2}{(1+n^*)^2}.
 <p>The linear stability of the model is determined by the quantity <span class="math display">\[
 H'(n)=r(1-\frac{2n}{q})-\frac{2{n}}{1+{n}^2} +\frac{2{n}^3}{(1+{n}^2)^2}.
 \]</span></p>
-<p>Hence at the steady state <span class="math inline">\(n^*=0\)</span> <span class="math display">\[
+<p>Hence at the fixed point <span class="math inline">\(n^*=0\)</span> <span class="math display">\[
 H'(0)=r
-\]</span> and the steady state is linearly unstable.</p>
-<p>Given the nonzero steady states have not been calculated explicitly, we proceed using graphical analysis of stability. In <a href="#fig-sprucebudworm-rhsfg" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> (b) we plot the right-hand side of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> against <span class="math inline">\(n\)</span> and examine the cases of large, small and intermediate <span class="math inline">\(r\)</span> for a given value of <span class="math inline">\(q\)</span>.</p>
-<p>When <span class="math inline">\(r\)</span> is both large and small the nonzero steady state is stable (the derivative at the roots is negative). In the case where three biologically relevant roots exist, the intermediate root is unstable.</p>
+\]</span> and the fixed point is linearly unstable.</p>
+<p>Given the nonzero fixed points have not been calculated explicitly, we proceed using graphical analysis of stability. In <a href="#fig-sprucebudworm-rhsfg" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> (b) we plot the right-hand side of <a href="#eq-budwormnondim" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> against <span class="math inline">\(n\)</span> and examine the cases of large, small and intermediate <span class="math inline">\(r\)</span> for a given value of <span class="math inline">\(q\)</span>.</p>
+<p>When <span class="math inline">\(r\)</span> is both large and small the nonzero fixed point is stable (the derivative at the roots is negative). In the case where three biologically relevant roots exist, the intermediate root is unstable.</p>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1649,7 +1649,7 @@ H'(0)=r
 <div id="fig-sprucebudworm-rhsfg" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rhsfg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="11b6cbe2" class="cell" data-execution_count="11">
+<div id="1296078f" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1667,7 +1667,8 @@ Figure&nbsp;3.11: RHS of spr. budworm model.
 </section>
 <section id="bifurcation-analysis" class="level3" data-number="3.5.6">
 <h3 data-number="3.5.6" class="anchored" data-anchor-id="bifurcation-analysis"><span class="header-section-number">3.5.6</span> Bifurcation analysis</h3>
-<p>The goal is to identify boundaries of <span class="math inline">\(rq\)</span> parameter space where the stability changes occur and/or the number of steady states changes.</p>
+<p>The goal is to identify boundaries of <span class="math inline">\(rq\)</span> parameter space where the stability changes occur and/or the number of fixed points changes.</p>
+<p>At the transitions between different qualitative regimes pairs of fixed points can appear/disappear at critical values of <span class="math inline">\(r\)</span>. In these cases one of the fixed points is linearly stable and the other linerly unstable. Hence these are saddle-node bifurcations.</p>
 <p>We can define points in <span class="math inline">\(rq\)</span> parameter space where bifurcations arise by seeking values of <span class="math inline">\(n^*\)</span> that satisfy <span class="math display">\[
 f(n^*)= g(n^*) \ \ \ \  f'(n^*)= g'(n^*).
 \]</span></p>
@@ -1687,7 +1688,7 @@ r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}.
 \frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\frac{n^*}{q}+\frac{n^*}{1+n{^*}^2}
 \]</span> which, after some algebra, yields <span id="eq-sprucebudwormqpara"><span class="math display">\[
 q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
-\tag{3.7}\]</span></span> Hence a set of points that define bifurcations where three steady states transform to a single steady state are given in parametric form in <span class="math inline">\(qr\)</span> parameter space by <span class="math display">\[
+\tag{3.7}\]</span></span> Hence a set of points that define bifurcations where three fixed points transform to a single fixed point are given in parametric form in <span class="math inline">\(qr\)</span> parameter space by <span class="math display">\[
 \left(\frac{2n{^*}^3}{n{^*}^{2}-1},\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\right) \ \ \ \ \ \ \ n^*&gt;1.
 \]</span></p>
 <details class="code-fold">
@@ -1720,7 +1721,7 @@ q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
 <div id="fig-sprucebudworm-rq" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="27bcf127" class="cell" data-execution_count="12">
+<div id="7e8aed96" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1796,7 +1797,7 @@ r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2},
 <div id="fig-sprucebudworm-bfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-bfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="d5052f0b" class="cell" data-execution_count="13">
+<div id="11e213ca" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1813,10 +1814,10 @@ Figure&nbsp;3.13: Bifurcations in the rq plane.
 </div>
 <p>A system exhibiting hysteresis shows a response to an increases in a control parameter that is not exactly reversed when the parameter is decreased. We can show that the spruce budworm model exhibits hysteresis by considering the argument below.</p>
 <p>Suppose <span class="math inline">\(r\)</span> is initially small (<span class="math inline">\(r&lt;r_1\)</span>). There is only one steady-state and any initial condition will converge towards it.</p>
-<p>Suppose we increase the value of the parameter <span class="math inline">\(r\)</span>. There will be a critical value of <span class="math inline">\(r\)</span> (<span class="math inline">\(r=r_1\)</span>)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable steady state, it will remain there.</p>
-<p>Suppose we continue to increase <span class="math inline">\(r\)</span>. Eventually we reach critical value of <span class="math inline">\(r\)</span> (<span class="math inline">\(r=r_2\)</span>) where the first stable steady state is lost and there is again only one stable steady-state.</p>
+<p>Suppose we increase the value of the parameter <span class="math inline">\(r\)</span>. There will be a critical value of <span class="math inline">\(r\)</span> (<span class="math inline">\(r=r_1\)</span>)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable fixed point, it will remain there.</p>
+<p>Suppose we continue to increase <span class="math inline">\(r\)</span>. Eventually we reach critical value of <span class="math inline">\(r\)</span> (<span class="math inline">\(r=r_2\)</span>) where the first stable fixed point is lost and there is again only one stable steady-state.</p>
 <p>Suppose we now decrease the parameter <span class="math inline">\(r\)</span> below the threshold <span class="math inline">\(r=r_2\)</span>. The system again enters the bistable regime but as the second solution is stable, it remains the solution.</p>
-<p>Suppose we continue to decrease <span class="math inline">\(r\)</span> until eventually <span class="math inline">\(r&lt;r_1\)</span>. We return to the case where the system has only a single stable steady state.</p>
+<p>Suppose we continue to decrease <span class="math inline">\(r\)</span> until eventually <span class="math inline">\(r&lt;r_1\)</span>. We return to the case where the system has only a single stable fixed point.</p>
 </section>
 </section>
 <section id="references" class="level2" data-number="3.6">
