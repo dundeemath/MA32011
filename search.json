@@ -334,47 +334,102 @@
     ]
   },
   {
+    "objectID": "2DLinearSystems.html",
+    "href": "2DLinearSystems.html",
+    "title": "4  Linear systems",
+    "section": "",
+    "text": "4.1 Introduction\nA 2D linear system has two dependent variables with coupled dynamics. You will have met this system before in the Differential Equations module.\nConsider \\[\n\\begin{aligned}\n\\dot{x} &=ax+by \\\\\n\\dot{y}&=cx+dy\n\\end{aligned}\n\\]\nIn matrix form \\[\n\\dot{\\mathbf{x}}=A\\mathbf{x}\n\\tag{4.1}\\] where \\[\nA=\n\\begin{pmatrix}\na & b \\\\\nc & d\n\\end{pmatrix}\n\\] and \\[\n\\mathbf{x}(t)=\\begin{pmatrix}\nx(t)  \\\\ y(t)\n\\end{pmatrix}\n\\]",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DLinearSystems.html#a-solution-for-linear-problems",
+    "href": "2DLinearSystems.html#a-solution-for-linear-problems",
+    "title": "4  Linear systems",
+    "section": "4.2 A solution for linear problems",
+    "text": "4.2 A solution for linear problems\n\n4.2.1 Linear superposition\nIt is straightforward to show that if \\(\\mathbf{x}_1(t)\\) and \\(\\mathbf{x}_2(t)\\) are solutions, the linear sum \\[\nc_1\\mathbf{x}_1(t) +  c_2 \\mathbf{x}_2(t),\n\\] where \\(c_1\\) and \\(c_2\\) are arbitrary constants, is itself a solution.\n\n\n4.2.2 A general solution\nSeeking a solution of Equation 4.1 of the form\n\\[\n\\mathbf{w}=\\mathbf{v}e^{\\lambda t}\n\\]\none obtains the characteristic equation\n\\[\n\\lambda^2 -\\lambda \\mathrm{tr}(A)+\\det(A)=0,\n\\] which has solutions\n\\[\n\\lambda = \\frac{\\mathrm{tr}{A}\\pm \\sqrt{\\mathrm{tr}{A}^2-4\\det{A}}}{2}.\n\\]\nGiven distinct eigenvalues, the general solution is \\[\n\\mathbf{x}(t)=C_1\\mathbf{v}_1e^{\\lambda_1 t}+C_2\\mathbf{v}_2 e^{\\lambda_2 t}.\n\\tag{4.2}\\]\nThe behaviour of the solutions of a 2D linear system of ODEs can be classified given the knowledge of the eigenvectors/eigenvalues.",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DLinearSystems.html#fixed-points-and-their-stability",
+    "href": "2DLinearSystems.html#fixed-points-and-their-stability",
+    "title": "4  Linear systems",
+    "section": "4.3 Fixed points and their stability",
+    "text": "4.3 Fixed points and their stability\n### Fixed points\nFixed points of Equation 4.1 satisfy \\[\nA\\mathbf{x} = \\mathbf{0}.\n\\tag{4.3}\\]\nThe zero vector \\[\n\\mathbf{x}^*=\\mathbf{0} = \\begin{pmatrix}0 \\\\ 0 \\end{pmatrix}\n\\] is always a fixed point of Equation 4.3.\nIf \\(A\\) is invertible then the zero vector is a unique fixed point of Equation 4.1.\nIf \\(A\\) is not invertible there exists an infinite family of fixed points (line or plane).\n\n4.3.1 Stability\n\n\n4.3.2 Asymptotic stability\nGiven the general solution \\[\n\\mathbf{x}(t)=C_1\\mathbf{v}_1e^{\\lambda_1 t}+C_2\\mathbf{v}_2 e^{\\lambda_2 t},\n\\] the fixed point (0,0) is asymptotically stable if \\[\n\\Re\\{\\lambda_i\\} &lt;0 \\  \\forall \\  i.\n\\]\n\n4.3.2.1 Classification via the trace-determinant plane\nThe stability of a linear 2D system can be determined by calculating determinant and trace of A and referring to Figure 4.1.\n\n\n\n\n\n\nFigure 4.1: Stability in the trace determinant plane.\n\n\n\nThe different cases can be categorised as follows:\n\n\\(\\det(A)&lt;0\\) There is one positive and one negative real eigenvalue. Hence the fixed point is a saddle which is unstable.\n\\(\\det(A)&gt;0\\) The fixed point can be either stable or unstable, depending on \\(\\mathrm{tr}(A)\\) (and the real part of the eigenvalues).\n\nIf \\(\\mathrm{tr}(A)&gt;0\\), the fixed point is unstable.\n\nIf \\(\\mathrm{tr}(A)^2&gt;4 \\det(A)\\), it is an unstable node.\nIf \\(\\mathrm{tr}(A)^2&lt;4 \\det(A)\\) it is an unstable spiral.\n\nIf \\(\\mathrm{tr}(A)&lt;0\\), the fixed point is stable.\n\nIf \\(\\mathrm{tr}(A)^2&gt;4 \\det(A)\\), it is an stable node.\nIf \\(\\mathrm{tr}(A)^2&lt;4 \\det(A)\\), it is an stable spiral.\n\nIf \\(\\mathrm{tr}(A)=0\\) the fixed point is a centre.\n\n\nThese different cases can be distinguished in the trace-determinant plane plotted in Figure 4.1.\nNote the following:\n\nThe condition \\(\\det(A)&gt;0\\) excludes the case that the eigenvalues are real but have opposite signs (i.e. it cannot be a saddle point).\nThe condition \\(\\mathrm{tr}(A)&gt;0\\) implies that the real part of both eigenvalues are positive (i.e. the fixed point is unstable).\nThe condition \\(\\mathrm{tr}(A)^2&lt;4 \\det(A)\\) implies that the eigenvalues are complex. Hence \\[\n\\lambda_{\\pm}=\\mu\\pm i\\omega \\ \\ \\\n\\] and the solution of the system can be written \\[\ne^{\\lambda t} = e^{(\\mu+i\\omega) t} = e^{\\mu t}e^{i\\omega t}.\n\\] For \\(\\mu&gt;0\\) the magnitude of the perturbation grows but it oscillates about the fixed point. Hence the fixed point is an unstable spiral.\n\n\n\n4.3.2.2 Introducing different types of stability\nIn 2D system we need to make a more nuanced description of stability:\n\nan attracting fixed point - all trajectories that start close to a fixed point approach it as \\(t\\rightarrow \\infty\\).\nglobally attracting - all trajectories tend to the fixed point as \\(t\\rightarrow \\infty\\) ,\nLiapunov stable - all trajectories that get close to a fixed point stay close to it for all time.\nneutrally stable - a fixed point that is Liapunov stable but not attracting\nasymptotically stable - a fixed point that is Liapunov stable and attracting.\n\n\n\n4.3.2.3 Stable and unstable manifolds\nA stable manifold of a fixed point, \\(\\mathbf{x}^*\\), is a set of points such that\n\\[\n\\{ \\mathbf{s}: \\mathbf{x}(t)\\rightarrow \\ \\mathbf{x}^* \\  \\textrm{as} \\ t\\rightarrow \\infty \\ \\textrm{for} \\ \\mathbf{x}(0)=\\mathbf{s} \\}\n\\]\nAn unstable manifold of the fixed point is the set of points such that\n\\[\n\\{ \\mathbf{u}: \\mathbf{x}(t)\\rightarrow \\ \\mathbf{x}^* \\ \\textrm{as} \\ t\\rightarrow -\\infty \\ \\textrm{for} \\ \\mathbf{x}(0)=\\mathbf{u} \\}\n\\]",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DLinearSystems.html#an-example-problem-introducing-phase-portraits-and-stability",
+    "href": "2DLinearSystems.html#an-example-problem-introducing-phase-portraits-and-stability",
+    "title": "4  Linear systems",
+    "section": "4.4 An example problem introducing phase portraits and stability",
+    "text": "4.4 An example problem introducing phase portraits and stability\nLet’s consider a decoupled 2D problem given by\n\\[\n\\begin{aligned}\n\\dot{x}=ax \\\\\n\\dot{y}=-y,\n\\end{aligned}\n\\] where \\(a \\in \\Re\\). We will use this system to introduce some important concepts regarding phase portraits and stability.\nThe solution is \\[\nx(t)=x_0e^{at}, \\quad y(t)=y_0e^{-t}.\n\\]\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nx_0_vec=[-2,-1,0,1,2]\ny_0_vec=[-2,-1,0,1,2]\n\nt=np.linspace(0,20,1000,dtype=float)\n\nind=5\n\nfig,ax=plt.subplots(2,3)\nax=ax.flatten()\na_vec=np.array([-1.5,-1.0,-0.5,0.0,0.5,1.5])\na_vec=a_vec.astype(float)\n\nk=0\ntitle_vec=['a','b','c','d','e','f']\nfor a in a_vec:\n    for x_0 in x_0_vec:\n        for y_0 in y_0_vec:\n            sol_x=x_0*np.exp(a*t)\n            sol_y=y_0*np.exp(-t)\n            \n            sol_x_rev=x_0*np.exp(a*t*-1)\n            sol_y_rev=y_0*np.exp(-t*-1)\n\n            ax[k].plot(sol_x,sol_y,'k',sol_x_rev,sol_y_rev,'k')\n            ax[k].annotate('',\n            xy=(sol_x[ind], sol_y[ind]),        # arrow head\n            xytext=(sol_x[ind-2], sol_y[ind-2]),  # arrow tail\n            arrowprops=dict(\n            arrowstyle='-&gt;',\n            color='black'\n            ),\n            ha='center'\n        )\n    ax[k].set_xlim([-3,3])\n    ax[k].set_ylim([-3,3])\n    ax[k].set_title('('+title_vec[k]+')' + ': $a = $' + str(a))\n    ax[k].set_xlabel('$x$')\n    ax[k].set_ylabel('$y$')\n\n    ax[k].grid()\n    x=[np.pi]\n    y=[0.0, 0.0,0.0,0.0]\n    # Arrow start\n    x0=[0.0,2.0*np.pi,0.0,-2.0*np.pi]\n    y0 = [0.0,0.0,0.0,0.0]\n    \n    k+=1\nfig.tight_layout()\nplt.show()\n\n\n\n\n\n\n\n\nFigure 4.2\n\n\n\n\n\nThis app explores solutions of the problem \\[\n\\dot{\\mathbf{x}}=A\\mathbf{x}\n\\] where \\[\nA=\\begin{pmatrix} a & 0 \\\\ 0 & -1 \\end{pmatrix}.\n\\] Solution trajectories are sampled over a range of initial conditions. The eigenvalues are plotted in the complex plane. In this case they are real and take values \\(a\\) and -1.\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 600\n#| label: fig-transcrit\n\n\nfrom shiny import App, Inputs, Outputs, Session, render, ui\nfrom shiny import reactive\n\nimport numpy as np\nfrom pathlib import Path\nimport matplotlib.pyplot as plt\nfrom scipy.integrate import odeint\nfrom scipy.integrate import solve_ivp\n\napp_ui = ui.page_fluid(\n                     \n    ui.input_slider(id=\"r\",label=\"a\",min=-2.0,max=2.0,value=0.1,step=0.1),\n    ui.output_plot(\"plot\"),\n\n)\n\ndef server(input, output, session):\n    @output\n    @render.plot\n    def plot():\n        fig, ax = plt.subplots(3,1,figsize=(15, 5))\n        ax=ax.flatten()\n        #ax.set_ylim([-2, 2])\n        #         \n        r=float(input.r())\n    \n        \n        x_0_vec=[-2,-1,0,1,2]\n        y_0_vec=[-2,-1,0,1,2]\n\n        t=np.linspace(0,20,1000,dtype=float)\n\n        ind=5\n\n        \n        a=r\n\n        for x_0 in x_0_vec:\n            for y_0 in y_0_vec:\n                sol_x=x_0*np.exp(a*t)\n                sol_y=y_0*np.exp(-t)\n                \n                sol_x_rev=x_0*np.exp(a*t*-1)\n                sol_y_rev=y_0*np.exp(-t*-1)\n\n                ax[0].plot(sol_x,sol_y,'k',sol_x_rev,sol_y_rev,'k')\n                ax[0].annotate('',\n                xy=(sol_x[ind], sol_y[ind]),        # arrow head\n                xytext=(sol_x[ind-2], sol_y[ind-2]),  # arrow tail\n                arrowprops=dict(\n                arrowstyle='-&gt;',\n                color='black'\n                ),\n                ha='center'\n            )\n        ax[0].set_xlim([-3,3])\n        ax[0].set_ylim([-3,3])\n        ax[0].grid()\n        ax[0].set_xlabel('$x$')\n        ax[0].set_ylabel('$y$')\n\n        ax[1].plot(-1,0,'k*',a,0,'m^')\n        ax[1].plot([0,0],[-2,2])\n        ax[1].set_xlabel('$\\Re(\\lambda)$')\n        ax[1].set_ylabel('$\\Im(\\lambda)$')\n        ax[1].set_title('Eigenvalue spectrum')\n        ax[1].set_xlim([-2,2])\n\n        tr_A=r-1\n        detA=-r\n\n        tr_plot=np.linspace(-3,3,100)\n        det_plot=0.25*tr_plot**2\n        ax[2].plot(tr_A,detA,'k*')\n        ax[2].plot(tr_plot,det_plot)\n        ax[2].plot([-3,3],[0,0])\n        ax[2].plot([0,0],[-2,2],)\n        ax[2].set_xlabel('Tr')\n        ax[2].set_ylabel('Det')\n        ax[2].set_xlim([-3,3])\n        ax[2].set_ylim([-2,2])\n        ax[2].set_title('Trace-determinant plane')\n               \napp = App(app_ui, server)\nAn app for exploring qualitatively distinct dynamics in a 2D linear system.\nIn Figure 4.2 we cna make the following classifications:\n\nstable node. As \\(a&lt;1\\) the solutions decay faster along the \\(x\\) axis.\nstar node - the eigenvalues are equal.\nstable node - not \\(-1&lt;a&lt;0\\) so the solution decays faster along the \\(y\\) axis.\ninfinite family of fixed points.\nsaddle - one stable eigenvector and one unstable eigenvector.\n\n(a-c) The fixed point is globally attracting. The stable manifold is \\[\n\\{s: s\\in\\Re^2\\}.\n\\]\n\nfixed points are neutrally stable (e,f)\n\nunstable fixed point\nstable manifold \\[\n  \\{(x,y): x=0, \\ \\forall y \\}.\n\\]\nunstable manifold \\[\n  \\{(x,y): y=0 \\ \\forall x \\}.\n\\]",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DLinearSystems.html#jordan-form",
+    "href": "2DLinearSystems.html#jordan-form",
+    "title": "4  Linear systems",
+    "section": "4.5 Jordan form",
+    "text": "4.5 Jordan form\nConsider the system of linear ODEs given by \\[\n\\dot{\\mathbf{x}}=A\\mathbf{x}, \\quad \\mathbf{x}(0)=\\mathbf{x}_0,\n\\] where \\(A\\) is a \\(n\\times n\\) matrix.\nConsider a change of coordinates such that \\[\n\\mathbf{x}=P\\mathbf{y}\n\\] where \\(P\\) is an \\(n\\times n\\) invertible matrix (\\(\\det{P}\\neq 0\\)). Then\n\\[\n\\dot{\\mathbf{x}}=A\\mathbf{x}\n\\] implies \\[\n\\dot{y}=P^{-1}\\dot{x}=P^{-1}A\\mathbf{x} =  P^{-1}AP\\mathbf{y}=\\Gamma y\n\\] where \\[\n\\Gamma= P^{-1}AP,\n\\] and the initial condition transforms to\n\\[\n\\mathbf{y}_0=P^{-1}\\mathbf{x}_0.\n\\]\nIn these new coordinates the solution is \\[\n\\mathbf{y}(t)=e^{t\\Gamma}\\mathbf{y}_0.\n\\] Transforming back to original coordinates \\[\n\\mathbf{x}(t)=P y(t)= P e^{t\\Gamma}\\mathbf{y}_0= P e^{t\\Gamma}P^{-1}\\mathbf{x}_0.\n\\]\nWith a particular of the matrix \\(P\\), the linear dynamical system can be transformed such that solution components evolve independently.\nSuppose that \\(A\\) has \\(n\\) distinct eigenvalues (\\(\\lambda_1\\),\\(\\lambda_2\\),…,\\(\\lambda_n\\)) with associated eigenvectors \\(\\mathbf{e}_i\\). Let \\(P\\) be the matrix with eigenvectors as columns, i.e. \\[\nP=[\\mathbf{e}_1,\\mathbf{e}_2,...,\\mathbf{e}_n]\n\\] Hence \\(\\Gamma=P^{-1}AP\\) is a diagonal matrix with eigenvalues along the diagonal axis. The component solution has the form \\[\ny_{i}(t)=y_{0i}e^{\\lambda_i t}.\n\\]",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Linear systems</span>"
+    ]
+  },
+  {
     "objectID": "PythonAppendix.html",
     "href": "PythonAppendix.html",
-    "title": "4  Python",
+    "title": "5  Python",
     "section": "",
-    "text": "4.1 Symbolic calculations\nSymbolic calculations ahve been performed using the Python library Sympy.\nThis library comes with tutorials.\nYou are encouraged to familiarise yourself with the syntax by working through some of the tutorial examples provided at the links above.\nMany of the calculations that we do throughout the course involve solving systems of algebraic equations",
+    "text": "5.1 Symbolic calculations\nSymbolic calculations ahve been performed using the Python library Sympy.\nThis library comes with tutorials.\nYou are encouraged to familiarise yourself with the syntax by working through some of the tutorial examples provided at the links above.\nMany of the calculations that we do throughout the course involve solving systems of algebraic equations",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Python</span>"
     ]
   },
   {
     "objectID": "PythonAppendix.html#numerical-solution-of-difference-equations",
     "href": "PythonAppendix.html#numerical-solution-of-difference-equations",
-    "title": "4  Python",
-    "section": "4.2 Numerical solution of difference equations",
-    "text": "4.2 Numerical solution of difference equations\nDifference equations have been solved using a for loop. Routinse have been written to solve either single or coupled system of difference equaitons.",
+    "title": "5  Python",
+    "section": "5.2 Numerical solution of difference equations",
+    "text": "5.2 Numerical solution of difference equations\nDifference equations have been solved using a for loop. Routinse have been written to solve either single or coupled system of difference equaitons.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Python</span>"
     ]
   },
   {
     "objectID": "PythonAppendix.html#numerical-integration-of-odes",
     "href": "PythonAppendix.html#numerical-integration-of-odes",
-    "title": "4  Python",
-    "section": "4.3 Numerical integration of ODEs",
-    "text": "4.3 Numerical integration of ODEs\nThroughout the notes systems of ODEs have been integrated using the Scipy function odeint.",
+    "title": "5  Python",
+    "section": "5.3 Numerical integration of ODEs",
+    "text": "5.3 Numerical integration of ODEs\nThroughout the notes systems of ODEs have been integrated using the Scipy function odeint.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Python</span>"
     ]
   },
   {
     "objectID": "PythonAppendix.html#plotting",
     "href": "PythonAppendix.html#plotting",
-    "title": "4  Python",
-    "section": "4.4 Plotting",
-    "text": "4.4 Plotting\nLine graphs are plotted using the Python library Matplotlib.",
+    "title": "5  Python",
+    "section": "5.4 Plotting",
+    "text": "5.4 Plotting\nLine graphs are plotted using the Python library Matplotlib.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Python</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Python</span>"
     ]
   }
 ]

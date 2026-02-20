@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./PythonAppendix.html" rel="next">
+<link href="./2DLinearSystems.html" rel="next">
 <link href="./1DFlows.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -131,43 +131,43 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Theorem {
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .Feature {
   --color1: #c0c0c0;
   --color2: #808080;
+}
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
 .Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -281,7 +281,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">2D flows</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -289,8 +289,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./2DLinearSystems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -459,7 +476,7 @@ f'(x^*)=\pm 2\sqrt{-r}.
 <div id="fig-fsaddlenode" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fsaddlenode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="55100fc4" class="cell" data-execution_count="1">
+<div id="77f2f7c7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -515,7 +532,7 @@ Figure&nbsp;3.1
 <div id="fig-saddlenodebfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-saddlenodebfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="aed3aefb" class="cell" data-execution_count="2">
+<div id="71d8bf72" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -737,7 +754,7 @@ i.e. the right-hand side is linear in $r$ and quadratic in $x$.
 <div id="fig-transcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="5ab24502" class="cell" data-execution_count="3">
+<div id="605956c4" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -796,7 +813,7 @@ Figure&nbsp;3.3
 <div id="fig-transcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="6d8dd9bb" class="cell" data-execution_count="4">
+<div id="5edaaeba" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1064,7 +1081,7 @@ f'(\pm \sqrt{r})=r-3r=-2r.
 <div id="fig-supcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="d3a6cf86" class="cell" data-execution_count="5">
+<div id="fa6a2e4c" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1122,7 +1139,7 @@ Figure&nbsp;3.5
 <div id="fig-supcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="09079607" class="cell" data-execution_count="6">
+<div id="05c3a5ee" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1328,7 +1345,7 @@ app = App(app_ui, server)</code></pre>
 <div id="fig-subcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="7e4c1776" class="cell" data-execution_count="7">
+<div id="9801d5f0" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1385,7 +1402,7 @@ Figure&nbsp;3.7
 <div id="fig-subcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="baf74ad1" class="cell" data-execution_count="8">
+<div id="7a609572" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1493,7 +1510,7 @@ r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
 <div id="fig-sprucebudworm-rhs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="c23167f8" class="cell" data-execution_count="9">
+<div id="f187d39e" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1541,7 +1558,7 @@ Figure&nbsp;3.9: Rhs of the spruce budworm model.
 <div id="fig-sprucebudworm-numsol" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="d8933090" class="cell" data-execution_count="10">
+<div id="15db8fd8" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1649,7 +1666,7 @@ H'(0)=r
 <div id="fig-sprucebudworm-rhsfg" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rhsfg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="1296078f" class="cell" data-execution_count="11">
+<div id="671bf674" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1721,7 +1738,7 @@ q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
 <div id="fig-sprucebudworm-rq" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="7e8aed96" class="cell" data-execution_count="12">
+<div id="09c0cea7" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1797,7 +1814,7 @@ r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2},
 <div id="fig-sprucebudworm-bfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-bfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="11e213ca" class="cell" data-execution_count="13">
+<div id="0c4d0fb0" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2238,8 +2255,8 @@ Ludwig, Donald, Dixon D Jones, Crawford S Holling, et al. 1978. <span>“Qualita
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./PythonAppendix.html" class="pagination-link" aria-label="Python">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./2DLinearSystems.html" class="pagination-link" aria-label="Linear systems">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
