@@ -80,29 +80,25 @@ ul.task-list li input[type="checkbox"] {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Solution {
+.Proof {
   --color1: #c0c0c0;
   --color2: #808080;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Proof {
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Theorem {
   --color1: #948bde;
@@ -112,9 +108,13 @@ ul.task-list li input[type="checkbox"] {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 </style>
 
@@ -224,22 +224,39 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">2D flows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2DLinearSystems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Chaotic dynamics</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
       </ul>

@@ -19,7 +19,7 @@ $$
 In matrix form
 $$
 \dot{\mathbf{x}}=A\mathbf{x}
-$$
+$${#eq-linearsystem2d}
 where
 $$
 A=
@@ -35,14 +35,19 @@ x(t)  \\ y(t)
 \end{pmatrix}
 $$
 
+
+
+## A solution for linear problems
+
+### Linear superposition
 It is straightforward to show that if $\mathbf{x}_1(t)$ and $\mathbf{x}_2(t)$ are solutions, the linear sum
 $$
  c_1\mathbf{x}_1(t) +  c_2 \mathbf{x}_2(t),
 $$
-where $c_1$ and $c_2$ are arbitrary constants, is itself a solution. Moreover, the zero vector is a fixed point.
+where $c_1$ and $c_2$ are arbitrary constants, is itself a solution. 
 
 
-## General solution
+### A general solution
 
 Seeking a solution of @eq-linearsystem2d of the form 
 
@@ -64,9 +69,113 @@ $$
 Given distinct eigenvalues, the general solution is
 $$
 \mathbf{x}(t)=C_1\mathbf{v}_1e^{\lambda_1 t}+C_2\mathbf{v}_2 e^{\lambda_2 t}.
-$$
+$$ {#eq-gensol}
 
 The behaviour of the solutions of a 2D  linear system of ODEs can be classified given the knowledge of the eigenvectors/eigenvalues.
+
+
+
+## Fixed points and their stability
+
+### Fixed points 
+
+Fixed points of @eq-linearsystem2d satisfy
+$$
+A\mathbf{x} = \mathbf{0}.
+$${#eq-linearsystem2dfp}
+
+The zero vector
+$$
+\mathbf{x}^*=\mathbf{0} = \begin{pmatrix}0 \\ 0 \end{pmatrix}
+$$
+is always a fixed point of @eq-linearsystem2dfp.
+
+If $A$ is invertible then the zero vector
+is a unique fixed point of @eq-linearsystem2d.
+
+If $A$ is not invertible there exists an infinite family of fixed points (line or plane).
+
+### Stability
+ 
+
+### Asymptotic stability
+
+Given the general solution
+$$
+\mathbf{x}(t)=C_1\mathbf{v}_1e^{\lambda_1 t}+C_2\mathbf{v}_2 e^{\lambda_2 t},
+$$
+the fixed point (0,0) is *asymptotically* stable if
+$$
+\Re\{\lambda_i\} <0 \  \forall \  i.
+$$
+
+#### Classification via the trace-determinant plane
+
+The stability of a linear 2D system can be determined by calculating determinant and trace of A and referring to @fig-tdplane. 
+
+
+![Stability in the trace determinant plane.](TDPlane.png){#fig-tdplane}
+
+The different cases can be categorised as follows:
+
+*  $\det(A)<0$
+There is one positive and one negative real eigenvalue. Hence the fixed point is a saddle which is unstable.
+* $\det(A)>0$
+ The fixed point can be either stable or unstable, depending on $\mathrm{tr}(A)$ (and the real part of the eigenvalues).
+
+    + If $\mathrm{tr}(A)>0$,  the fixed point is unstable.  
+        - If  $\mathrm{tr}(A)^2>4 \det(A)$, it is an unstable node.
+        - If  $\mathrm{tr}(A)^2<4 \det(A)$ it is an unstable spiral.
+    +  If $\mathrm{tr}(A)<0$, the fixed point is stable.
+        - If  $\mathrm{tr}(A)^2>4 \det(A)$, it is an stable node.
+        - If  $\mathrm{tr}(A)^2<4 \det(A)$, it is an stable spiral.
+    + If $\mathrm{tr}(A)=0$ the fixed point is a centre.
+
+These different cases can be distinguished in the trace-determinant plane plotted in @fig-tdplane.
+
+Note the following:
+
+- The condition $\det(A)>0$ excludes the  case that the eigenvalues are real but have opposite signs (i.e. it cannot be a saddle point).
+
+- The condition $\mathrm{tr}(A)>0$ implies that the real part of both eigenvalues are positive (i.e.  the fixed point is unstable).
+
+- The condition $\mathrm{tr}(A)^2<4 \det(A)$ implies that the eigenvalues are complex. Hence 
+$$
+\lambda_{\pm}=\mu\pm i\omega \ \ \ 
+$$
+and the solution of the system can be written
+$$
+e^{\lambda t} = e^{(\mu+i\omega) t} = e^{\mu t}e^{i\omega t}. 
+$$
+For $\mu>0$ the magnitude of the perturbation grows but it oscillates about the fixed point. Hence the fixed point is an unstable spiral.
+
+
+
+####  Introducing different types of stability
+
+In 2D system we need to make a more nuanced description of stability:
+
+- an *attracting* fixed point - all trajectories that start close to a fixed point approach it as $t\rightarrow \infty$.
+- *globally attracting* - all trajectories tend to the fixed point as $t\rightarrow \infty$ , 
+- *Liapunov stable* - all trajectories that get close to a fixed point stay close to it for all time.
+-  *neutrally stable* - a fixed point that is Liapunov stable but not attracting
+-  *asymptotically stable* - a fixed point that is Liapunov stable and attracting.
+
+#### Stable and unstable manifolds
+
+A *stable manifold* of a fixed point, $\mathbf{x}^*$, is a set of points such that
+
+$$
+\{ \mathbf{s}: \mathbf{x}(t)\rightarrow \ \mathbf{x}^* \  \textrm{as} \ t\rightarrow \infty \ \textrm{for} \ \mathbf{x}(0)=\mathbf{s} \}
+$$
+
+An *unstable manifold* of the fixed point is the set of points such that
+
+$$
+\{ \mathbf{u}: \mathbf{x}(t)\rightarrow \ \mathbf{x}^* \ \textrm{as} \ t\rightarrow -\infty \ \textrm{for} \ \mathbf{x}(0)=\mathbf{u} \}
+$$
+
+
 
 ## An example problem introducing phase portraits and stability 
 
@@ -87,6 +196,8 @@ x(t)=x_0e^{at}, \quad y(t)=y_0e^{-t}.
 $$
 
 ```{python}
+#| code-fold: True
+#| label: fig-2dlinearex
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -103,6 +214,7 @@ a_vec=np.array([-1.5,-1.0,-0.5,0.0,0.5,1.5])
 a_vec=a_vec.astype(float)
 
 k=0
+title_vec=['a','b','c','d','e','f']
 for a in a_vec:
     for x_0 in x_0_vec:
         for y_0 in y_0_vec:
@@ -124,16 +236,16 @@ for a in a_vec:
         )
     ax[k].set_xlim([-3,3])
     ax[k].set_ylim([-3,3])
-    ax[k].set_title('$a = $' + str(a))
+    ax[k].set_title('('+title_vec[k]+')' + ': $a = $' + str(a))
+    ax[k].set_xlabel('$x$')
+    ax[k].set_ylabel('$y$')
+
     ax[k].grid()
     x=[np.pi]
     y=[0.0, 0.0,0.0,0.0]
     # Arrow start
     x0=[0.0,2.0*np.pi,0.0,-2.0*np.pi]
     y0 = [0.0,0.0,0.0,0.0]
-
-
-
     
     k+=1
 fig.tight_layout()
@@ -142,56 +254,188 @@ plt.show()
 ```
 
 
-Discuss: stable node, star node, line of fixed points, saddle with stable and unstable manifold.
+::: {.content-visible when-format="html"}
 
-Stability: attracting, globally attracting, Laipunov stable, neutrally stable, asymptotically stable, unstable.
-
-
-
-## Classification of linear systems
-
-Whilst a complete classification of the linear stability of a steady state can be obtained by explicitly calculating the eigenvalues, in many cases it is sufficient to deduce whether or not a steady state is stable or unstable. This can be achieved by calculating the determinant and trace of the Jacobian matrix ($\det(A)$ and  $\mathrm{tr}(A)$, respectively) and referring to @fig-tdplane. 
-
-
-![Stability in the trace detemrinant plane.](TDPlane.png){#fig-tdplane}
-
-The different cases can be categorised as follows:
-
-*  $\det(A)<0$
-There is one positive and one negative real eigenvalue. Hence the steady state is a saddle which is unstable.
-* $\det(A)>0$
- The steady state can be either stable or unstable, depending on $\mathrm{tr}(A)$ (and the real part of the eigenvalues).
-
-    + If $\mathrm{tr}(A)>0$,  the steady state is unstable.  
-        - If  $\mathrm{tr}(A)^2>4 \det(A)$, it is an unstable node.
-        - If  $\mathrm{tr}(A)^2<4 \det(A)$ it is an unstable spiral.
-    +  If $\mathrm{tr}(A)<0$, the steady state is stable.
-        - If  $\mathrm{tr}(A)^2>4 \det(A)$, it is an stable node.
-        - If  $\mathrm{tr}(A)^2<4 \det(A)$, it is an stable spiral.
-
-These different cases can be distinguished in the trace-determinant plane plotted in @fig-tdplane.
-
-
-The condition$\det(A)>0$ excludes the  case that the eigenvalues are real but have opposite signs (i.e. it cannot be a saddle point).
-
-The condition $\mathrm{tr}(A)>0$ implies that the real part of both eigenvalues are positive (i.e.  the steady state is unstable).
-
-The condition $\mathrm{tr}(A)^2<4 \det(A)$ implies that the eigenvalues are complex. Hence 
+This app explores solutions of the problem
 $$
-\lambda_{\pm}=\mu\pm i\omega \ \ \ 
+\dot{\mathbf{x}}=A\mathbf{x}
 $$
-and the solution of the system can be written
+where
 $$
-e^{\lambda t} = e^{(\mu+i\omega) t} = e^{\mu t}e^{i\omega t}. 
+A=\begin{pmatrix} a & 0 \\ 0 & -1 \end{pmatrix}.
 $$
-For $\mu>0$ the magnitude of the perturbation grows but it oscillates about the steady state. Hence the steady state is an unstable spiral.
+Solution trajectories are sampled over a range of initial conditions.
+The eigenvalues are plotted in the complex plane. In this case they are real and take values $a$ and -1.
+
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 600
+#| label: fig-transcrit
 
 
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
 
-Degenerate node
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
+
+app_ui = ui.page_fluid(
+                     
+    ui.input_slider(id="r",label="a",min=-2.0,max=2.0,value=0.1,step=0.1),
+    ui.output_plot("plot"),
+
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(3,1,figsize=(15, 5))
+        ax=ax.flatten()
+        #ax.set_ylim([-2, 2])
+        #         
+        r=float(input.r())
+    
+        
+        x_0_vec=[-2,-1,0,1,2]
+        y_0_vec=[-2,-1,0,1,2]
+
+        t=np.linspace(0,20,1000,dtype=float)
+
+        ind=5
+
+        
+        a=r
+
+        for x_0 in x_0_vec:
+            for y_0 in y_0_vec:
+                sol_x=x_0*np.exp(a*t)
+                sol_y=y_0*np.exp(-t)
+                
+                sol_x_rev=x_0*np.exp(a*t*-1)
+                sol_y_rev=y_0*np.exp(-t*-1)
+
+                ax[0].plot(sol_x,sol_y,'k',sol_x_rev,sol_y_rev,'k')
+                ax[0].annotate('',
+                xy=(sol_x[ind], sol_y[ind]),        # arrow head
+                xytext=(sol_x[ind-2], sol_y[ind-2]),  # arrow tail
+                arrowprops=dict(
+                arrowstyle='->',
+                color='black'
+                ),
+                ha='center'
+            )
+        ax[0].set_xlim([-3,3])
+        ax[0].set_ylim([-3,3])
+        ax[0].grid()
+        ax[0].set_xlabel('$x$')
+        ax[0].set_ylabel('$y$')
+
+        ax[1].plot(-1,0,'k*',a,0,'m^')
+        ax[1].plot([0,0],[-2,2])
+        ax[1].set_xlabel('$\Re(\lambda)$')
+        ax[1].set_ylabel('$\Im(\lambda)$')
+        ax[1].set_title('Eigenvalue spectrum')
+        ax[1].set_xlim([-2,2])
+
+        tr_A=r-1
+        detA=-r
+
+        tr_plot=np.linspace(-3,3,100)
+        det_plot=0.25*tr_plot**2
+        ax[2].plot(tr_A,detA,'k*')
+        ax[2].plot(tr_plot,det_plot)
+        ax[2].plot([-3,3],[0,0])
+        ax[2].plot([0,0],[-2,2],)
+        ax[2].set_xlabel('Tr')
+        ax[2].set_ylabel('Det')
+        ax[2].set_xlim([-3,3])
+        ax[2].set_ylim([-2,2])
+        ax[2].set_title('Trace-determinant plane')
+               
+app = App(app_ui, server)
+```
+
+An app for exploring qualitatively distinct dynamics in a 2D linear system.
+:::
+
+In @fig-2dlinearex we cna make the following classifications:
+
+(a) stable node. As $a<1$ the solutions decay faster along the $x$ axis. 
+(b) star node - the eigenvalues are equal.
+(c) stable node - not $-1<a<0$ so the solution decays faster along the $y$ axis.
+(d) infinite family of fixed points.
+(e) saddle - one stable eigenvector and one unstable eigenvector.
 
 
+(a-c) The fixed point is globally attracting. The stable manifold is 
+$$
+\{s: s\in\Re^2\}.
+$$
+
+(d) fixed points are neutrally stable
+(e,f) 
+    - unstable fixed point
+    - stable manifold
+    $$
+        \{(x,y): x=0, \ \forall y \}.
+    $$
+    - unstable manifold
+    $$
+        \{(x,y): y=0 \ \forall x \}.
+    $$
 
 
+## Jordan form
+Consider the system of linear ODEs given by
+$$
+\dot{\mathbf{x}}=A\mathbf{x}, \quad \mathbf{x}(0)=\mathbf{x}_0,
+$$
+where $A$ is a $n\times n$ matrix.
 
-## References
+Consider a change of coordinates such that
+$$
+\mathbf{x}=P\mathbf{y}
+$$
+where $P$ is an $n\times n$ invertible matrix ($\det{P}\neq 0$). Then 
+
+$$
+\dot{\mathbf{x}}=A\mathbf{x}
+$$
+implies
+$$
+\dot{y}=P^{-1}\dot{x}=P^{-1}A\mathbf{x} =  P^{-1}AP\mathbf{y}=\Gamma y
+$$
+where
+$$
+\Gamma= P^{-1}AP,
+$$
+and the initial condition transforms to
+
+$$
+\mathbf{y}_0=P^{-1}\mathbf{x}_0.
+$$
+
+In these new coordinates the solution is
+$$
+\mathbf{y}(t)=e^{t\Gamma}\mathbf{y}_0.
+$$
+Transforming back to original coordinates
+$$
+\mathbf{x}(t)=P y(t)= P e^{t\Gamma}\mathbf{y}_0= P e^{t\Gamma}P^{-1}\mathbf{x}_0.
+$$
+
+With a particular of the matrix $P$, the linear dynamical system can be transformed such that solution components evolve independently.
+
+Suppose that $A$ has $n$ distinct eigenvalues ($\lambda_1$,$\lambda_2$,...,$\lambda_n$) with associated eigenvectors $\mathbf{e}_i$. Let $P$ be the matrix with eigenvectors as columns, i.e.
+$$
+P=[\mathbf{e}_1,\mathbf{e}_2,...,\mathbf{e}_n]
+$$
+Hence $\Gamma=P^{-1}AP$ is a diagonal matrix with eigenvalues along the diagonal axis. The component solution has the form
+$$
+y_{i}(t)=y_{0i}e^{\lambda_i t}.
+$$
+
