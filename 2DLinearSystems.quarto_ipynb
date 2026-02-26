@@ -83,7 +83,8 @@
         "\n",
         "## Fixed points and their stability\n",
         "\n",
-        "### Fixed points \n",
+        "### Fixed points\n",
+        "\n",
         "\n",
         "Fixed points of @eq-linearsystem2d satisfy\n",
         "$$\n",
@@ -201,7 +202,7 @@
         "x(t)=x_0e^{at}, \\quad y(t)=y_0e^{-t}.\n",
         "$$"
       ],
-      "id": "fe536b04"
+      "id": "b55009b0"
     },
     {
       "cell_type": "code",
@@ -444,9 +445,7 @@
         "\\mathbf{x}(t)=P y(t)= P e^{t\\Gamma}\\mathbf{y}_0= P e^{t\\Gamma}P^{-1}\\mathbf{x}_0.\n",
         "$$\n",
         "\n",
-        "With a particular of the matrix $P$, the linear dynamical system can be transformed such that solution components evolve independently.\n",
-        "\n",
-        "Suppose that $A$ has $n$ distinct eigenvalues ($\\lambda_1$,$\\lambda_2$,...,$\\lambda_n$) with associated eigenvectors $\\mathbf{e}_i$. Let $P$ be the matrix with eigenvectors as columns, i.e.\n",
+        "Suppose that $A$ has $n$ distinct eigenvalues ($\\lambda_1$,$\\lambda_2$,...,$\\lambda_n$) with associated eigenvectors ($\\mathbf{e}_1$,$\\mathbf{e}_2$,...,$\\mathbf{e}_n$). Let $P$ be the matrix with eigenvectors as columns, i.e.\n",
         "$$\n",
         "P=[\\mathbf{e}_1,\\mathbf{e}_2,...,\\mathbf{e}_n]\n",
         "$$\n",
@@ -455,7 +454,7 @@
         "y_{i}(t)=y_{0i}e^{\\lambda_i t}.\n",
         "$$\n"
       ],
-      "id": "c013e080"
+      "id": "46d955a9"
     }
   ],
   "metadata": {
@@ -463,7 +462,7 @@
       "name": "python3",
       "language": "python",
       "display_name": "Python 3 (ipykernel)",
-      "path": "/Users/pmurray/anaconda3/share/jupyter/kernels/python3"
+      "path": "/Users/pmurray/Library/Python/3.9/share/jupyter/kernels/python3"
     }
   },
   "nbformat": 4,

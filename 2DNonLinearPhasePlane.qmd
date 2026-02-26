@@ -5,20 +5,23 @@ format: html
 
 ## Introduction
 
+
+Consider the system of nonlinear ODEs given by
 $$
 \begin{aligned}
-\dot{x}&=f_1(x,y)\\
-\dot{y}&=f_2(x,y)\\
+\dot{x}&=f(x,y),\\
+\dot{y}&=g(x,y),
 \end{aligned}
-$$
+$${#eq-twovariablfegen} 
+where $f$ and $g$ are smooth functions of $x$ and $y$.
 
 In vector form
 $$
 \dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})
 $$
-where $\mathbf{x}=(x,y)^T$ and $\mathbf{f}=(f_1,f_2)^T$.
+where $\mathbf{x}=(x,y)^T$ and $\mathbf{f}=(f,g)^T$.
 
-Here $\mathbf{x}$ represents a point in the phase plane, $\dot{\mathbf{x}}$ represents the velocity. By flowing along the vector field, a phase point traces out a solution $\mathbf{x}(t)$. As each point in the place can be an initial condition, the plane is filled with trajectories.
+Here $\mathbf{x}$ represents a point in the phase plane, $\dot{\mathbf{x}}$ represents the velocity. By *flowing* along the vector field, a *phase point* traces out a *trajectory* $\mathbf{x}(t)$. As each point in the plane can be an initial condition, the plane is filled with trajectories.
 
 ## Existence, uniqueness and topological consequences
 
@@ -28,7 +31,6 @@ $$
 \dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}), \quad \mathbf{x}(0)=\mathbf{x}_0,
 $$
  Suppose that $\mathbf{f}$ is continuous and that all partial derivatives exist and are continuous in some open connected set $D\subset \mathbf R ^n$. For $\mathbf{x}_0 \in D$, the IVP has a unique solution in some time interval $t \in (\tau,\tau)$.
-$$
 :::
 
 ::: {.Corollary}
@@ -48,7 +50,7 @@ In 2D, trajectories initialised inside a closed orbit remain trapped inside it f
 ### Fixed points 
 
 
- $(x^*,y^*)$ is defined to be a fixed point of @eq-twovariablfegen if 
+$(x^*,y^*)$ is defined to be a fixed point of @eq-twovariablfegen if 
 
 $$
 f(x^*,y^*)=g(x^*,y^*)=0.
@@ -57,6 +59,7 @@ $$
 Hence, by definition, the time derivatives of $x(t)$ and $y(t)$ are both zero at $(x^*,y^*)$. As was the case for single species models, fixed points are obtained by solving algebraic equations.
 
 ### Linear stability analysis
+
 Suppose that $(x^*,y^*)$ is a fixed point of equations @eq-twovariablfegen.
 
 We consider a change of dependent variables such that
@@ -72,7 +75,7 @@ Rewriting equation @eq-twovariablfegen in the transformed variables yields
 $$
 \begin{aligned}
 \frac{d\hat{x}}{dt}&=f(x^*+\hat{x},y^*+\hat{y}),  \nonumber \\
-\frac{d\hat{v}}{dt}&=g(x^*+\hat{x},y^*+\hat{y}).
+\frac{d\hat{y}}{dt}&=g(x^*+\hat{x},y^*+\hat{y}).
 \end{aligned}
 $$ {#eq-twovariablfegentrans}
 
@@ -80,12 +83,12 @@ Making Taylor expansions about $(x^*,y^*)$ yields the linearised equations
 
 $$
 \begin{aligned}
-\frac{d\hat{x}}{dt}=\frac{\partial f}{\partial x}_{|(x^*,y^*)} \hat{x} +  \frac{\partial f}{\partial y}_{|(x^*,y^*)}  \hat{v} + h.o.t, \nonumber\\
-\frac{d\hat{v}}{dt}=\frac{\partial g}{\partial x}_{|(x^*,y^*)}  \hat{x} +  \frac{\partial g}{\partial y}_{|(x^*,y^*)}  \hat{v} + h.o.t. \nonumber
+\frac{d\hat{x}}{dt}=\frac{\partial f}{\partial x}_{|(x^*,y^*)} \hat{x} +  \frac{\partial f}{\partial y}_{|(x^*,y^*)}  \hat{y} + h.o.t, \nonumber\\
+\frac{d\hat{y}}{dt}=\frac{\partial g}{\partial x}_{|(x^*,y^*)}  \hat{x} +  \frac{\partial g}{\partial y}_{|(x^*,y^*)}  \hat{y} + h.o.t. \nonumber
 \end{aligned}
 $$ {#eq-twovariablfegenlin}
 
-In matrix form
+Defining
 $$
 \mathbf{w}=\left
 (\begin{array}{r}
@@ -94,7 +97,7 @@ $$
 \end{array}\right),
 $$
 
-yields the system of ODEs 
+yields the matrix form
 
 $$
 \frac{d \mathbf{w}}{dt}= A \mathbf{w},
@@ -127,6 +130,8 @@ For nonlinear problems it is usually impossible to find trajectories analyticall
 - the vector field
 - nullclines
 
+We can often sketch solutions in the phase plane using the above information.
+
 ::: {#exm-    }
 
 Plot a phase portrait for the system:
@@ -152,7 +157,7 @@ Strategy:
 
 ::: {.Definition}
 
-A fixed point of an $n^{th}$ order system is hyperbolic if all the eigenvalues of the linear system lie off the imaginary axis (i.e. $\Re (\lambda_i)\neq 0 \forall i).   
+A fixed point of an $n^{th}$ order system is hyperbolic if all the eigenvalues of the linear system lie off the imaginary axis (i.e. $\Re(\lambda_i) \ \neq  \ 0 \\forall i$).   
 
 :::
 
@@ -176,11 +181,13 @@ A phase portrait is structurally stable if its topology cannot be changed by an 
 
 ::: {#exm-    }
 Consider the system
+$$
 \begin{aligned}
 \dot{x} & =-y+ax(x^2+y^2)\\
 \dot{y} & =x+ay(x^2+y^2)
 \end{aligned}
-where $a\in\Re$. Show that the lienarised system incorrectly predicts that the origin is a centre. By transforming to polar coordinates show that the system is actually either a stable/unspiral for $a\neq 0$.
+$$
+where $a\in\Re$. Show that the linearised system incorrectly predicts that the origin is a centre. By transforming to polar coordinates show that the system is actually either a stable/unspiral for $a\neq 0$.
 
 :::
 
@@ -222,7 +229,7 @@ $$
 \rho=\frac{r_2}{r_1}, \ \ \ a_{12}=b_{12}\frac{K_2}{K_1}, \ \ \  a_{21}=b_{21}\frac{K_1}{K_2}. 
 $$
 
-### fixed points
+### Fixed points
 
 The fixed points of @eq-competitionnondim are identified in the usual manner, i.e. by seeking $({n_1}^*,{n_2}^*)$  such that 
 
@@ -400,6 +407,7 @@ See @fig-comp-numsol-phplane for phase portraits of three of the four cases that
 ```{python}
 #| label: fig-compete-numsol
 #| fig-cap: "Numerical solutions of competition model"
+#| code-fold: True
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
@@ -446,6 +454,7 @@ plt.show()
 ```{python}
 #| label: fig-comp-numsol-phplane
 #| fig-cap: "Numerical solution of the competition model"
+#| code-fold: True
 
 # Phase plane for the competition model 
 import numpy as np
@@ -566,8 +575,11 @@ Consider a particle of mass 1 moving in double well potential
 $$
 V(x)=-\frac{1}{2}x^2+\frac{1}{4}x^4.
 $$
-Find and classify all the fixed points for the system. Plot the phase portrait and provide an interpretatio n for the results.
+
+The equation of motion is
+$$
+m\ddot{x}=-\frac{dV}{dx}.
+$$
+Find and classify all the fixed points for the system. Plot the phase portrait and provide an interpretation for the results.
 :::
 
-
-## References
