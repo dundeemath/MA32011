@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./PythonAppendix.html" rel="next">
+<link href="./2DNonLinearPhasePlane.html" rel="next">
 <link href="./Bifurcations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -115,6 +115,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
@@ -123,19 +127,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 .Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Proof {
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -143,13 +147,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 </style>
 
@@ -273,6 +273,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear systems</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2DNonLinearPhasePlane.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">2D nonlinear systems</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -287,7 +293,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -374,7 +380,7 @@ c_1\mathbf{x}_1(t) +  c_2 \mathbf{x}_2(t),
 </section>
 <section id="a-general-solution" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="a-general-solution"><span class="header-section-number">4.2.2</span> A general solution</h3>
-<p>Seeking a solution of <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> of the form</p>
+<p>Seeking a solution of <a href="2DNonLinearPhasePlane.html#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> of the form</p>
 <p><span class="math display">\[
 \mathbf{w}=\mathbf{v}e^{\lambda t}
 \]</span></p>
@@ -395,13 +401,13 @@ c_1\mathbf{x}_1(t) +  c_2 \mathbf{x}_2(t),
 <h2 data-number="4.3" class="anchored" data-anchor-id="fixed-points-and-their-stability"><span class="header-section-number">4.3</span> Fixed points and their stability</h2>
 <section id="fixed-points" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">4.3.1</span> Fixed points</h3>
-<p>Fixed points of <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> satisfy <span id="eq-linearsystem2dfp"><span class="math display">\[
+<p>Fixed points of <a href="2DNonLinearPhasePlane.html#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> satisfy <span id="eq-linearsystem2dfp"><span class="math display">\[
 A\mathbf{x} = \mathbf{0}.
 \tag{4.3}\]</span></span></p>
 <p>The zero vector <span class="math display">\[
 \mathbf{x}^*=\mathbf{0} = \begin{pmatrix}0 \\ 0 \end{pmatrix}
 \]</span> is always a fixed point of <a href="#eq-linearsystem2dfp" class="quarto-xref">Equation&nbsp;<span>4.3</span></a>.</p>
-<p>If <span class="math inline">\(A\)</span> is invertible then the zero vector is a unique fixed point of <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>.</p>
+<p>If <span class="math inline">\(A\)</span> is invertible then the zero vector is a unique fixed point of <a href="2DNonLinearPhasePlane.html#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>.</p>
 <p>If <span class="math inline">\(A\)</span> is not invertible there exists an infinite family of fixed points (line or plane).</p>
 </section>
 <section id="stability" class="level3" data-number="4.3.2">
@@ -550,7 +556,7 @@ x(t)=x_0e^{at}, \quad y(t)=y_0e^{-t}.
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-2dlinearex" class="quarto-float quarto-figure quarto-figure-center anchored" height="467" width="660">
+<div id="fig-2dlinearex" class="quarto-float quarto-figure quarto-figure-center anchored" width="660" height="467">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2dlinearex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="2DLinearSystems_files/figure-html/fig-2dlinearex-output-1.png" id="fig-2dlinearex" width="660" height="467" class="figure-img">
@@ -1123,8 +1129,8 @@ y_{i}(t)=y_{0i}e^{\lambda_i t}.
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./PythonAppendix.html" class="pagination-link" aria-label="Python">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Python</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./2DNonLinearPhasePlane.html" class="pagination-link" aria-label="2D nonlinear systems">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">2D nonlinear systems</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

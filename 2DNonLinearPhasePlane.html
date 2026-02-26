@@ -106,13 +106,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
 .Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Corollary {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
 }
 .Conjecture {
   --color1: #948bde;
@@ -122,29 +134,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Lemma {
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
 }
 .Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 </style>
 
@@ -315,13 +315,12 @@ window.Quarto = {
   <li><a href="#competition" id="toc-competition" class="nav-link" data-scroll-target="#competition"><span class="header-section-number">5.6</span> Competition</a>
   <ul class="collapse">
   <li><a href="#nondimensionalisation" id="toc-nondimensionalisation" class="nav-link" data-scroll-target="#nondimensionalisation"><span class="header-section-number">5.6.1</span> Nondimensionalisation</a></li>
-  <li><a href="#fixed-points-1" id="toc-fixed-points-1" class="nav-link" data-scroll-target="#fixed-points-1"><span class="header-section-number">5.6.2</span> fixed points</a></li>
+  <li><a href="#fixed-points-1" id="toc-fixed-points-1" class="nav-link" data-scroll-target="#fixed-points-1"><span class="header-section-number">5.6.2</span> Fixed points</a></li>
   <li><a href="#nullclines" id="toc-nullclines" class="nav-link" data-scroll-target="#nullclines"><span class="header-section-number">5.6.3</span> Nullclines</a></li>
   <li><a href="#linear-stability" id="toc-linear-stability" class="nav-link" data-scroll-target="#linear-stability"><span class="header-section-number">5.6.4</span> Linear stability</a></li>
   <li><a href="#phase-portrait" id="toc-phase-portrait" class="nav-link" data-scroll-target="#phase-portrait"><span class="header-section-number">5.6.5</span> Phase portrait</a></li>
   <li><a href="#insight" id="toc-insight" class="nav-link" data-scroll-target="#insight"><span class="header-section-number">5.6.6</span> Insight</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5.7</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -349,23 +348,23 @@ window.Quarto = {
 
 <section id="introduction" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">5.1</span> Introduction</h2>
-<p><span class="math display">\[
+<p>Consider the system of nonlinear ODEs given by <span id="eq-twovariablfegen"><span class="math display">\[
 \begin{aligned}
-\dot{x}&amp;=f_1(x,y)\\
-\dot{y}&amp;=f_2(x,y)\\
+\dot{x}&amp;=f(x,y),\\
+\dot{y}&amp;=g(x,y),
 \end{aligned}
-\]</span></p>
+\tag{5.1}\]</span></span> where <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are smooth functions of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <p>In vector form <span class="math display">\[
 \dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})
-\]</span> where <span class="math inline">\(\mathbf{x}=(x,y)^T\)</span> and <span class="math inline">\(\mathbf{f}=(f_1,f_2)^T\)</span>.</p>
-<p>Here <span class="math inline">\(\mathbf{x}\)</span> represents a point in the phase plane, <span class="math inline">\(\dot{\mathbf{x}}\)</span> represents the velocity. By flowing along the vector field, a phase point traces out a solution <span class="math inline">\(\mathbf{x}(t)\)</span>. As each point in the place can be an initial condition, the plane is filled with trajectories.</p>
+\]</span> where <span class="math inline">\(\mathbf{x}=(x,y)^T\)</span> and <span class="math inline">\(\mathbf{f}=(f,g)^T\)</span>.</p>
+<p>Here <span class="math inline">\(\mathbf{x}\)</span> represents a point in the phase plane, <span class="math inline">\(\dot{\mathbf{x}}\)</span> represents the velocity. By <em>flowing</em> along the vector field, a <em>phase point</em> traces out a <em>trajectory</em> <span class="math inline">\(\mathbf{x}(t)\)</span>. As each point in the plane can be an initial condition, the plane is filled with trajectories.</p>
 </section>
 <section id="existence-uniqueness-and-topological-consequences" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="existence-uniqueness-and-topological-consequences"><span class="header-section-number">5.2</span> Existence, uniqueness and topological consequences</h2>
 <div id="Theorem-1" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 1</strong></summary><div>Consider the initial value problem <span class="math display">\[
 \dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}), \quad \mathbf{x}(0)=\mathbf{x}_0,
-\]</span> Suppose that <span class="math inline">\(\mathbf{f}\)</span> is continuous and that all partial derivatives exist and are continuous in some open connected set <span class="math inline">\(D\subset \mathbf R ^n\)</span>. For <span class="math inline">\(\mathbf{x}_0 \in D\)</span>, the IVP has a unique solution in some time interval <span class="math inline">\(t \in (\tau,\tau)\)</span>. $$<p></p>
+\]</span> Suppose that <span class="math inline">\(\mathbf{f}\)</span> is continuous and that all partial derivatives exist and are continuous in some open connected set <span class="math inline">\(D\subset \mathbf R ^n\)</span>. For <span class="math inline">\(\mathbf{x}_0 \in D\)</span>, the IVP has a unique solution in some time interval <span class="math inline">\(t \in (\tau,\tau)\)</span>.<p></p>
 </div></details>
 </div>
 <div id="Corollary-2" class="Corollary">
@@ -381,7 +380,7 @@ window.Quarto = {
 <h2 data-number="5.3" class="anchored" data-anchor-id="fixed-points-and-linearisation"><span class="header-section-number">5.3</span> Fixed points and linearisation</h2>
 <section id="fixed-points" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">5.3.1</span> Fixed points</h3>
-<p><span class="math inline">\((x^*,y^*)\)</span> is defined to be a fixed point of <span class="quarto-unresolved-ref">?eq-twovariablfegen</span> if</p>
+<p><span class="math inline">\((x^*,y^*)\)</span> is defined to be a fixed point of <a href="#eq-twovariablfegen" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> if</p>
 <p><span class="math display">\[
 f(x^*,y^*)=g(x^*,y^*)=0.
 \]</span></p>
@@ -389,38 +388,38 @@ f(x^*,y^*)=g(x^*,y^*)=0.
 </section>
 <section id="linear-stability-analysis" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="linear-stability-analysis"><span class="header-section-number">5.3.2</span> Linear stability analysis</h3>
-<p>Suppose that <span class="math inline">\((x^*,y^*)\)</span> is a fixed point of equations <span class="quarto-unresolved-ref">?eq-twovariablfegen</span>.</p>
+<p>Suppose that <span class="math inline">\((x^*,y^*)\)</span> is a fixed point of equations <a href="#eq-twovariablfegen" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>.</p>
 <p>We consider a change of dependent variables such that</p>
 <p><span class="math display">\[
 x(t)=x^*+ \hat{x}(t)  \  \  \textrm{and} \ \ y(t)=y^*+\hat{y}(t),
 \]</span></p>
 <p>where <span class="math inline">\(\hat{x}(t)\)</span> and <span class="math inline">\(\hat{y}(t)\)</span> are perturbations about the fixed point.</p>
-<p>Rewriting equation <span class="quarto-unresolved-ref">?eq-twovariablfegen</span> in the transformed variables yields</p>
+<p>Rewriting equation <a href="#eq-twovariablfegen" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> in the transformed variables yields</p>
 <p><span id="eq-twovariablfegentrans"><span class="math display">\[
 \begin{aligned}
 \frac{d\hat{x}}{dt}&amp;=f(x^*+\hat{x},y^*+\hat{y}),  \nonumber \\
-\frac{d\hat{v}}{dt}&amp;=g(x^*+\hat{x},y^*+\hat{y}).
+\frac{d\hat{y}}{dt}&amp;=g(x^*+\hat{x},y^*+\hat{y}).
 \end{aligned}
-\tag{5.1}\]</span></span></p>
+\tag{5.2}\]</span></span></p>
 <p>Making Taylor expansions about <span class="math inline">\((x^*,y^*)\)</span> yields the linearised equations</p>
 <p><span id="eq-twovariablfegenlin"><span class="math display">\[
 \begin{aligned}
-\frac{d\hat{x}}{dt}=\frac{\partial f}{\partial x}_{|(x^*,y^*)} \hat{x} +  \frac{\partial f}{\partial y}_{|(x^*,y^*)}  \hat{v} + h.o.t, \nonumber\\
-\frac{d\hat{v}}{dt}=\frac{\partial g}{\partial x}_{|(x^*,y^*)}  \hat{x} +  \frac{\partial g}{\partial y}_{|(x^*,y^*)}  \hat{v} + h.o.t. \nonumber
+\frac{d\hat{x}}{dt}=\frac{\partial f}{\partial x}_{|(x^*,y^*)} \hat{x} +  \frac{\partial f}{\partial y}_{|(x^*,y^*)}  \hat{y} + h.o.t, \nonumber\\
+\frac{d\hat{y}}{dt}=\frac{\partial g}{\partial x}_{|(x^*,y^*)}  \hat{x} +  \frac{\partial g}{\partial y}_{|(x^*,y^*)}  \hat{y} + h.o.t. \nonumber
 \end{aligned}
-\tag{5.2}\]</span></span></p>
-<p>In matrix form <span class="math display">\[
+\tag{5.3}\]</span></span></p>
+<p>Defining <span class="math display">\[
 \mathbf{w}=\left
 (\begin{array}{r}
 \hat{x} \\
 \hat{y}
 \end{array}\right),
 \]</span></p>
-<p>yields the system of ODEs</p>
+<p>yields the matrix form</p>
 <p><span id="eq-linearsystem2d"><span class="math display">\[
 \frac{d \mathbf{w}}{dt}= A \mathbf{w},
 + h.o.t
-\tag{5.3}\]</span></span></p>
+\tag{5.4}\]</span></span></p>
 <p>where the matrix <span class="math inline">\(A\)</span>, known as the Jacobian matrix, takes the form</p>
 <p><span class="math display">\[
 A=\left(\begin{array}{rr}
@@ -428,7 +427,7 @@ A=\left(\begin{array}{rr}
 \]</span></p>
 <p>In the neighbourhood of fixed points, we expect the higher order terms to become vanishingly small. If we are willing to neglect the higher order terms then close to the fixed points we can describe the dynamics the dynamics using the linearised system <span id="eq-linearsystem2dhmm"><span class="math display">\[
 \frac{d \mathbf{w}}{dt}= A \mathbf{w},
-\tag{5.4}\]</span></span></p>
+\tag{5.5}\]</span></span></p>
 </section>
 </section>
 <section id="phase-portraits" class="level2" data-number="5.4">
@@ -442,6 +441,7 @@ A=\left(\begin{array}{rr}
 <li>the vector field</li>
 <li>nullclines</li>
 </ul>
+<p>We can often sketch solutions in the phase plane using the above information.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.1</strong></span> Plot a phase portrait for the system: <span class="math display">\[
 \begin{aligned}
@@ -455,7 +455,7 @@ A=\left(\begin{array}{rr}
 <section id="neglecting-nonlinear-terms" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="neglecting-nonlinear-terms"><span class="header-section-number">5.5</span> Neglecting nonlinear terms?</h2>
 <div id="Definition-4" class="Definition">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 4</strong></summary><div>A fixed point of an <span class="math inline">\(n^{th}\)</span> order system is hyperbolic if all the eigenvalues of the linear system lie off the imaginary axis (i.e.&nbsp;$(_i) i).<p></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 4</strong></summary><div>A fixed point of an <span class="math inline">\(n^{th}\)</span> order system is hyperbolic if all the eigenvalues of the linear system lie off the imaginary axis (i.e.&nbsp;<span class="math inline">\(\Re(\lambda_i) \ \neq  \ 0 \\forall i\)</span>).<p></p>
 </div></details>
 </div>
 <div id="Theorem-5" class="Theorem">
@@ -469,13 +469,12 @@ A=\left(\begin{array}{rr}
 </div></details>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.2</strong></span> &nbsp;</p>
-Consider the system
-<span class="math display">\[\begin{aligned}
+<p><span class="theorem-title"><strong>Example 5.2</strong></span> Consider the system <span class="math display">\[
+\begin{aligned}
 \dot{x} &amp; =-y+ax(x^2+y^2)\\
 \dot{y} &amp; =x+ay(x^2+y^2)
-\end{aligned}\]</span>
-<p>where <span class="math inline">\(a\in\Re\)</span>. Show that the lienarised system incorrectly predicts that the origin is a centre. By transforming to polar coordinates show that the system is actually either a stable/unspiral for <span class="math inline">\(a\neq 0\)</span>.</p>
+\end{aligned}
+\]</span> where <span class="math inline">\(a\in\Re\)</span>. Show that the linearised system incorrectly predicts that the origin is a centre. By transforming to polar coordinates show that the system is actually either a stable/unspiral for <span class="math inline">\(a\neq 0\)</span>.</p>
 </div>
 </section>
 <section id="competition" class="level2" data-number="5.6">
@@ -498,15 +497,15 @@ n_1=\frac{N_1}{K_1} \ \ n_2=\frac{N_2}{K_2} \ \ \tau=\frac{t}{\frac{1}{r_1}},
 \frac{d n_1}{d\tau} &amp;= n_1\left(1- n_1-a_{12}n_2\right) = f(n_1,n_2), \nonumber \\
 \frac{d n_2}{d\tau} &amp;= \rho n_2\left(1-n_2-a_{21}n_1\right) =g(n_1,n_2),
 \end{aligned}
-\tag{5.5}\]</span></span></p>
+\tag{5.6}\]</span></span></p>
 <p>where</p>
 <p><span class="math display">\[
 \rho=\frac{r_2}{r_1}, \ \ \ a_{12}=b_{12}\frac{K_2}{K_1}, \ \ \  a_{21}=b_{21}\frac{K_1}{K_2}.
 \]</span></p>
 </section>
 <section id="fixed-points-1" class="level3" data-number="5.6.2">
-<h3 data-number="5.6.2" class="anchored" data-anchor-id="fixed-points-1"><span class="header-section-number">5.6.2</span> fixed points</h3>
-<p>The fixed points of <a href="#eq-competitionnondim" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> are identified in the usual manner, i.e.&nbsp;by seeking <span class="math inline">\(({n_1}^*,{n_2}^*)\)</span> such that</p>
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="fixed-points-1"><span class="header-section-number">5.6.2</span> Fixed points</h3>
+<p>The fixed points of <a href="#eq-competitionnondim" class="quarto-xref">Equation&nbsp;<span>5.6</span></a> are identified in the usual manner, i.e.&nbsp;by seeking <span class="math inline">\(({n_1}^*,{n_2}^*)\)</span> such that</p>
 <p><span class="math display">\[
 f({n_1}^*,{n_2}^*)=g({n_1}^*,{n_2}^*)=0.
 \]</span></p>
@@ -535,7 +534,7 @@ n_2^*=\frac{1-a_{21}}{1-a_{12}a_{21}}
 </section>
 <section id="nullclines" class="level3" data-number="5.6.3">
 <h3 data-number="5.6.3" class="anchored" data-anchor-id="nullclines"><span class="header-section-number">5.6.3</span> Nullclines</h3>
-<p>The nullclines for <a href="#eq-competitionnondim" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> are straight lines given by</p>
+<p>The nullclines for <a href="#eq-competitionnondim" class="quarto-xref">Equation&nbsp;<span>5.6</span></a> are straight lines given by</p>
 <p><span class="math display">\[
 n_1=0 \ \ \ \ \ n_2=\frac{1-n_1}{a_{12}},
 \]</span></p>
@@ -616,6 +615,8 @@ a_{12}-1  &amp; -a_{12}(1-a_{12})\\ -\rho a_{21}(1-a_{21}) &amp;\rho(a_{21}-1)\e
 <h3 data-number="5.6.5" class="anchored" data-anchor-id="phase-portrait"><span class="header-section-number">5.6.5</span> Phase portrait</h3>
 <p>See <a href="#fig-comp-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> for phase portraits of three of the four cases that we have considered. It is expected that you can sketch phase portraits. Key details to consider are the fixed points and their linear stability. You should also sketch the nullclines and depict the sign of the derivatives in the phase plane on either side of the nullclines. You should also sketch one or more sample trajectories.</p>
 <div id="cell-fig-compete-numsol" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
@@ -657,6 +658,7 @@ a_{12}-1  &amp; -a_{12}(1-a_{12})\\ -\rho a_{21}(1-a_{21}) &amp;\rho(a_{21}-1)\e
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'t'</span>)</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div id="fig-compete-numsol" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -671,6 +673,8 @@ Figure&nbsp;5.1: Numerical solutions of competition model
 </div>
 </div>
 <div id="cell-fig-comp-numsol-phplane" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase plane for the competition model </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -765,11 +769,12 @@ Figure&nbsp;5.1: Numerical solutions of competition model
 <span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
 <span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div id="fig-comp-numsol-phplane" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-comp-numsol-phplane-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="2DNonLinearPhasePlane_files/figure-html/fig-comp-numsol-phplane-output-1.png" width="662" height="470" class="figure-img">
+<img src="2DNonLinearPhasePlane_files/figure-html/fig-comp-numsol-phplane-output-1.png" width="661" height="468" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comp-numsol-phplane-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.2: Numerical solution of the competition model
@@ -794,14 +799,14 @@ Figure&nbsp;5.2: Numerical solution of the competition model
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.3</strong></span> Consider a particle of mass 1 moving in double well potential <span class="math display">\[
 V(x)=-\frac{1}{2}x^2+\frac{1}{4}x^4.
-\]</span> Find and classify all the fixed points for the system. Plot the phase portrait and provide an interpretatio n for the results.</p>
+\]</span></p>
+<p>The equation of motion is <span class="math display">\[
+m\ddot{x}=-\frac{dV}{dx}.
+\]</span> Find and classify all the fixed points for the system. Plot the phase portrait and provide an interpretation for the results.</p>
 </div>
-</section>
-</section>
-<section id="references" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="references"><span class="header-section-number">5.7</span> References</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
