@@ -53,7 +53,7 @@
         "\n",
         "::: {#fig-ODEqual}"
       ],
-      "id": "4e606e20"
+      "id": "35ee767e"
     },
     {
       "cell_type": "code",
@@ -95,7 +95,7 @@
         "  \n",
         "plt.show()"
       ],
-      "id": "f4e25254",
+      "id": "917ef7ab",
       "execution_count": null,
       "outputs": []
     },
@@ -163,7 +163,7 @@
         "\n",
         "::: {#fig-fpcalc}"
       ],
-      "id": "48782519"
+      "id": "8d1f38f2"
     },
     {
       "cell_type": "code",
@@ -209,7 +209,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "f1e2c28f",
+      "id": "02d37245",
       "execution_count": null,
       "outputs": []
     },
@@ -350,7 +350,7 @@
         "In @fig-logisticgrowthmodel we present numerical solutions of equation   using different initial conditions. Note the limiting behaviour of solutions as $t\\rightarrow \\infty$. In @fig-logisticgrowthmodel it is clear that even though some solutions are initialised at $N_0=0.1$, much closer to $N^*=0$ than $N^*=K$, they tend to the limit $N=K$. \n",
         " Why do solutions not tend to $N^*=0$?"
       ],
-      "id": "1b507e7b"
+      "id": "3d65098f"
     },
     {
       "cell_type": "code",
@@ -483,7 +483,7 @@
         "We can qualitatively describe model solutions by considering the arrow along the $n$ axis. \n",
         "Suppose we consider an initial condition with $0<n_0<1$. Using the graph of $H(n)$, $dn/d\\tau$ is positive, hence $n$ increases as a function of time until $n(\\tau)\\rightarrow 1$. "
       ],
-      "id": "24a3f3f9"
+      "id": "c9544c1e"
     },
     {
       "cell_type": "code",
@@ -649,7 +649,7 @@
         "\n",
         ":::\n"
       ],
-      "id": "0351a649"
+      "id": "f64b4100"
     }
   ],
   "metadata": {
@@ -657,7 +657,7 @@
       "name": "python3",
       "language": "python",
       "display_name": "Python 3 (ipykernel)",
-      "path": "/Users/pmurray/anaconda3/share/jupyter/kernels/python3"
+      "path": "/Users/pmurray/Library/Python/3.9/share/jupyter/kernels/python3"
     }
   },
   "nbformat": 4,

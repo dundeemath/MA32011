@@ -77,7 +77,8 @@ The behaviour of the solutions of a 2D  linear system of ODEs can be classified 
 
 ## Fixed points and their stability
 
-### Fixed points 
+### Fixed points
+
 
 Fixed points of @eq-linearsystem2d satisfy
 $$
@@ -428,9 +429,7 @@ $$
 \mathbf{x}(t)=P y(t)= P e^{t\Gamma}\mathbf{y}_0= P e^{t\Gamma}P^{-1}\mathbf{x}_0.
 $$
 
-With a particular of the matrix $P$, the linear dynamical system can be transformed such that solution components evolve independently.
-
-Suppose that $A$ has $n$ distinct eigenvalues ($\lambda_1$,$\lambda_2$,...,$\lambda_n$) with associated eigenvectors $\mathbf{e}_i$. Let $P$ be the matrix with eigenvectors as columns, i.e.
+Suppose that $A$ has $n$ distinct eigenvalues ($\lambda_1$,$\lambda_2$,...,$\lambda_n$) with associated eigenvectors ($\mathbf{e}_1$,$\mathbf{e}_2$,...,$\mathbf{e}_n$). Let $P$ be the matrix with eigenvectors as columns, i.e.
 $$
 P=[\mathbf{e}_1,\mathbf{e}_2,...,\mathbf{e}_n]
 $$

@@ -98,7 +98,7 @@
         "\n",
         "::: {#fig-fsaddlenode}"
       ],
-      "id": "6a3ac244"
+      "id": "523ee7d0"
     },
     {
       "cell_type": "code",
@@ -155,7 +155,7 @@
         "    fig.supxlabel('$x$')\n",
         "    fig.supylabel('$\\dot{x}$')"
       ],
-      "id": "37d6cc91",
+      "id": "0763968b",
       "execution_count": null,
       "outputs": []
     },
@@ -170,7 +170,7 @@
         "\n",
         ":::{#fig-saddlenodebfc}"
       ],
-      "id": "a4e682a8"
+      "id": "db4c9ef4"
     },
     {
       "cell_type": "code",
@@ -213,7 +213,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "id": "db0707e5",
+      "id": "bd7fe743",
       "execution_count": null,
       "outputs": []
     },
@@ -406,7 +406,7 @@
         "\n",
         "::: {#fig-transcritf}"
       ],
-      "id": "b9aafb5e"
+      "id": "b67ca1cc"
     },
     {
       "cell_type": "code",
@@ -466,7 +466,7 @@
         "    fig.supxlabel('$x$')\n",
         "    fig.supylabel('$\\dot{x}$')"
       ],
-      "id": "f1b8eef8",
+      "id": "1d11b5cb",
       "execution_count": null,
       "outputs": []
     },
@@ -482,7 +482,7 @@
         "\n",
         "::: {#fig-transcritbfc}"
       ],
-      "id": "f680a2ae"
+      "id": "49ee8a7d"
     },
     {
       "cell_type": "code",
@@ -529,7 +529,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "id": "f366ed74",
+      "id": "68de6f9c",
       "execution_count": null,
       "outputs": []
     },
@@ -797,7 +797,7 @@
         "\n",
         "::: {#fig-supcritf}"
       ],
-      "id": "aaab378d"
+      "id": "3b627531"
     },
     {
       "cell_type": "code",
@@ -855,7 +855,7 @@
         "    fig.supxlabel('$x$')\n",
         "    fig.supylabel('$\\dot{x}$')"
       ],
-      "id": "73a77985",
+      "id": "b54f9e7f",
       "execution_count": null,
       "outputs": []
     },
@@ -870,7 +870,7 @@
         "\n",
         "::: {#fig-supcritbfc}"
       ],
-      "id": "81928314"
+      "id": "2ae56bd1"
     },
     {
       "cell_type": "code",
@@ -916,7 +916,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "id": "0d3ff732",
+      "id": "8024650a",
       "execution_count": null,
       "outputs": []
     },
@@ -1077,7 +1077,7 @@
         "\n",
         "::: {#fig-subcritf}"
       ],
-      "id": "b27badd4"
+      "id": "f137a17b"
     },
     {
       "cell_type": "code",
@@ -1134,7 +1134,7 @@
         "    fig.supxlabel('$x$')\n",
         "    fig.supylabel('$\\dot{x}$')"
       ],
-      "id": "470fb4ff",
+      "id": "5c344c77",
       "execution_count": null,
       "outputs": []
     },
@@ -1147,7 +1147,7 @@
         "\n",
         "::: {#fig-subcritbfc}"
       ],
-      "id": "6240f2ac"
+      "id": "f20698a9"
     },
     {
       "cell_type": "code",
@@ -1193,7 +1193,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "id": "72ab197e",
+      "id": "a378592a",
       "execution_count": null,
       "outputs": []
     },
@@ -1284,7 +1284,7 @@
         "\n",
         ":::{#fig-sprucebudworm-rhs}"
       ],
-      "id": "fec89182"
+      "id": "c7d85006"
     },
     {
       "cell_type": "code",
@@ -1334,7 +1334,7 @@
         "ax.grid(True)\n",
         "plt.show()"
       ],
-      "id": "3de42c8b",
+      "id": "9f8d3b65",
       "execution_count": null,
       "outputs": []
     },
@@ -1360,7 +1360,7 @@
         "\n",
         "::: {#fig-sprucebudworm-numsol}"
       ],
-      "id": "c6183ea5"
+      "id": "5d272fba"
     },
     {
       "cell_type": "code",
@@ -1389,7 +1389,7 @@
         "plt.grid()\n",
         "plt.show()"
       ],
-      "id": "123ae683",
+      "id": "3e53239e",
       "execution_count": null,
       "outputs": []
     },
@@ -1469,7 +1469,7 @@
         "\n",
         ":::{#fig-sprucebudworm-rhsfg}"
       ],
-      "id": "8b45eef1"
+      "id": "d0e453ce"
     },
     {
       "cell_type": "code",
@@ -1533,7 +1533,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "10eafedf",
+      "id": "bf050a49",
       "execution_count": null,
       "outputs": []
     },
@@ -1598,7 +1598,7 @@
         ":::{#fig-sprucebudworm-rq\n",
         "}"
       ],
-      "id": "25a15a10"
+      "id": "d49c392f"
     },
     {
       "cell_type": "code",
@@ -1631,7 +1631,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "bd740128",
+      "id": "f5a9624f",
       "execution_count": null,
       "outputs": []
     },
@@ -1698,7 +1698,7 @@
         "\n",
         ":::{#fig-sprucebudworm-bfc}"
       ],
-      "id": "656791d1"
+      "id": "b78020a6"
     },
     {
       "cell_type": "code",
@@ -1735,7 +1735,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "13414f95",
+      "id": "78b47e26",
       "execution_count": null,
       "outputs": []
     },
@@ -1763,7 +1763,7 @@
         "\n",
         "## References\n"
       ],
-      "id": "156d9c1a"
+      "id": "78e273b9"
     }
   ],
   "metadata": {
@@ -1771,7 +1771,7 @@
       "name": "python3",
       "language": "python",
       "display_name": "Python 3 (ipykernel)",
-      "path": "/Users/pmurray/anaconda3/share/jupyter/kernels/python3"
+      "path": "/Users/pmurray/Library/Python/3.9/share/jupyter/kernels/python3"
     }
   },
   "nbformat": 4,

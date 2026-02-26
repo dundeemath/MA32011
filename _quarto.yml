@@ -24,7 +24,7 @@ book:
     - part: "2D flows"
       chapters:
        - 2DLinearSystems.qmd 
-       #- 2DNonLinearPhasePlane.qmd 
+       - 2DNonLinearPhasePlane.qmd 
        #- LimitCycles.qmd
        #- 2DBifurcations.qmd
 

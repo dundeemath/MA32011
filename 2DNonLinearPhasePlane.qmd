@@ -7,8 +7,8 @@ format: html
 
 $$
 \begin{aligned}
-\dot{x}_1&=f_1(x_1,x_2)\\
-\dot{x}_2&=f_2(x_1,x_2)\\
+\dot{x}&=f_1(x,y)\\
+\dot{y}&=f_2(x,y)\\
 \end{aligned}
 $$
 
@@ -16,14 +16,110 @@ In vector form
 $$
 \dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})
 $$
-where $\mathbf{x}=(x_1,x_2)^T$ and $\mathbf{f}=(f_1,f_2)^T$.
+where $\mathbf{x}=(x,y)^T$ and $\mathbf{f}=(f_1,f_2)^T$.
 
 Here $\mathbf{x}$ represents a point in the phase plane, $\dot{\mathbf{x}}$ represents the velocity. By flowing along the vector field, a phase point traces out a solution $\mathbf{x}(t)$. As each point in the place can be an initial condition, the plane is filled with trajectories.
+
+## Existence, uniqueness and topological consequences
+
+::: {.Theorem}
+Consider the initial value problem
+$$
+\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}), \quad \mathbf{x}(0)=\mathbf{x}_0,
+$$
+ Suppose that $\mathbf{f}$ is continuous and that all partial derivatives exist and are continuous in some open connected set $D\subset \mathbf R ^n$. For $\mathbf{x}_0 \in D$, the IVP has a unique solution in some time interval $t \in (\tau,\tau)$.
+$$
+:::
+
+::: {.Corollary}
+
+Different trajectories never intersect.
+:::
+
+::: {.Corollary}
+
+In 2D, trajectories initialised inside a closed orbit remain trapped inside it for all time.
+:::
+
+
+
+## Fixed points and linearisation
+
+### Fixed points 
+
+
+ $(x^*,y^*)$ is defined to be a fixed point of @eq-twovariablfegen if 
+
+$$
+f(x^*,y^*)=g(x^*,y^*)=0.
+$$
+
+Hence, by definition, the time derivatives of $x(t)$ and $y(t)$ are both zero at $(x^*,y^*)$. As was the case for single species models, fixed points are obtained by solving algebraic equations.
+
+### Linear stability analysis
+Suppose that $(x^*,y^*)$ is a fixed point of equations @eq-twovariablfegen.
+
+We consider a change of dependent variables such that
+
+$$
+x(t)=x^*+ \hat{x}(t)  \  \  \textrm{and} \ \ y(t)=y^*+\hat{y}(t),
+$$
+
+where $\hat{x}(t)$ and $\hat{y}(t)$ are perturbations about the fixed point.
+
+Rewriting equation @eq-twovariablfegen in the transformed variables yields
+ 
+$$
+\begin{aligned}
+\frac{d\hat{x}}{dt}&=f(x^*+\hat{x},y^*+\hat{y}),  \nonumber \\
+\frac{d\hat{v}}{dt}&=g(x^*+\hat{x},y^*+\hat{y}).
+\end{aligned}
+$$ {#eq-twovariablfegentrans}
+
+Making Taylor expansions about $(x^*,y^*)$ yields the linearised equations
+
+$$
+\begin{aligned}
+\frac{d\hat{x}}{dt}=\frac{\partial f}{\partial x}_{|(x^*,y^*)} \hat{x} +  \frac{\partial f}{\partial y}_{|(x^*,y^*)}  \hat{v} + h.o.t, \nonumber\\
+\frac{d\hat{v}}{dt}=\frac{\partial g}{\partial x}_{|(x^*,y^*)}  \hat{x} +  \frac{\partial g}{\partial y}_{|(x^*,y^*)}  \hat{v} + h.o.t. \nonumber
+\end{aligned}
+$$ {#eq-twovariablfegenlin}
+
+In matrix form
+$$
+\mathbf{w}=\left
+(\begin{array}{r}
+\hat{x} \\ 
+\hat{y} 
+\end{array}\right),
+$$
+
+yields the system of ODEs 
+
+$$
+\frac{d \mathbf{w}}{dt}= A \mathbf{w},
++ h.o.t
+$$ {#eq-linearsystem2d}
+
+where the matrix $A$, known as the Jacobian matrix,  takes the form
+
+$$
+A=\left(\begin{array}{rr}
+\frac{\partial f}{\partial x}&\frac{\partial f}{\partial y} \\ \frac{\partial g}{\partial x}&\frac{\partial g}{\partial y} \end{array}\right)_{(x^*,y^*)}. \qquad
+$$
+
+In the neighbourhood of fixed points, we expect the higher order terms to become vanishingly small. If we are willing to neglect the higher order terms then close to the fixed points we can describe the dynamics the dynamics using the linearised system
+$$
+\frac{d \mathbf{w}}{dt}= A \mathbf{w},
+$$ {#eq-linearsystem2dhmm}
+
+
 
 ## Phase portraits
 
 
 For nonlinear problems it is usually impossible to find trajectories analytically. Instead, our goal is to describe the qualitative behaviour of trajectories.  Some important features of phase portraits are:
+
 - fixed points
 - close orbits
 - behaviour of trajectories close to fixed points
@@ -50,97 +146,6 @@ Strategy:
 
 
 
-## Existence, uniqueness and topological consequences
-
-::: {.Theorem}
-Consider the initial value problem
-$$
-\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}), \quad \mathbf{x}(0)=\mathbf{x}_0,
-$$
- Suppose that $\mathbf{f}$ is continuous and that all partial derivatives exist and are continuous in some open connected set $D\subset \mathbf R ^n$. For $\mathbf{x}_0 \in D$, the IVP has a unique solution in some time interval $t \in (\tau,\tau)$.
-$$
-:::
-
-::: {.Corollary}
-
-Different trajectories never intersect.
-:::
-
-::: {.Corollary}
-
-In 2D, trajectories initialised inside a closed orbit remain trapped inside it for all time.
-:::
-
-
-## Fixed points and linearisation
-
-### Steady states 
-
-
- $(u^*,v^*)$ is defined to be a steady state of @eq-twovariablfegen if 
-
-$$
-f(u^*,v^*)=g(u^*,v^*)=0.
-$$
-
-Hence, by definition, the time derivatives of $u(t)$ and $v(t)$ are both zero at $(u^*,v^*)$. As was the case for single species models, steady states are obtained by solving algebraic equations.
-
-### Linear stability analysis
-Suppose that $(u^*,v^*)$ is a steady state of equations @eq-twovariablfegen.
-
-We consider a change of dependent variables such that
-
-$$
-u(t)=u^*+ \hat{u}(t)  \  \  \textrm{and} \ \ v(t)=v^*+\hat{v}(t),
-$$
-
-where $\hat{u}(t)$ and $\hat{v}(t)$ are perturbations about the steady state.
-
-Rewriting equation @eq-twovariablfegen in the transformed variables yields
- 
-$$
-\begin{aligned}
-\frac{d\hat{u}}{dt}&=f(u^*+\hat{u},v^*+\hat{v}),  \nonumber \\
-\frac{d\hat{v}}{dt}&=g(u^*+\hat{u},v^*+\hat{v}).
-\end{aligned}
-$$ {#eq-twovariablfegentrans}
-
-Making Taylor expansions about $(u^*,v^*)$ yields the linearised equations
-
-$$
-\begin{aligned}
-\frac{d\hat{u}}{dt}=\frac{\partial f}{\partial u}_{|(u^*,v^*)} \hat{u} +  \frac{\partial f}{\partial v}_{|(u^*,v^*)}  \hat{v} + h.o.t, \nonumber\\
-\frac{d\hat{v}}{dt}=\frac{\partial g}{\partial u}_{|(u^*,v^*)}  \hat{u} +  \frac{\partial g}{\partial v}_{|(u^*,v^*)}  \hat{v} + h.o.t. \nonumber
-\end{aligned}
-$$ {#eq-twovariablfegenlin}
-
-In matrix form
-$$
-\mathbf{w}=\left
-(\begin{array}{r}
-\hat{u} \\ 
-\hat{v} 
-\end{array}\right),
-$$
-
-yields the system of ODEs 
-
-$$
-\frac{d \mathbf{w}}{dt}= A \mathbf{w},
-+ h.o.t
-$$ {#eq-linearsystem2d}
-
-where the matrix $A$, known as the Jacobian matrix,  takes the form
-
-$$
-A=\left(\begin{array}{rr}
-\frac{\partial f}{\partial u}&\frac{\partial f}{\partial v} \\ \frac{\partial g}{\partial u}&\frac{\partial g}{\partial v} \end{array}\right)_{(u^*,v^*)}. \qquad
-$$
-
-In the neighbourhood of fixed points, we expect the higher order terms to become vanishingly small. If we are willing to neglect the higher order terms then close to the fixed points we can describe the dynamics the dynamics using the linearised system
-$$
-\frac{d \mathbf{w}}{dt}= A \mathbf{w},
-$$ {#eq-linearsystem2dhmm}
 
 ## Neglecting nonlinear terms?
 
@@ -217,16 +222,16 @@ $$
 \rho=\frac{r_2}{r_1}, \ \ \ a_{12}=b_{12}\frac{K_2}{K_1}, \ \ \  a_{21}=b_{21}\frac{K_1}{K_2}. 
 $$
 
-### Steady states
+### fixed points
 
-The steady states of @eq-competitionnondim are identified in the usual manner, i.e. by seeking $({n_1}^*,{n_2}^*)$  such that 
+The fixed points of @eq-competitionnondim are identified in the usual manner, i.e. by seeking $({n_1}^*,{n_2}^*)$  such that 
 
 $$
 f({n_1}^*,{n_2}^*)=g({n_1}^*,{n_2}^*)=0.
 $$
 
 
-The steady state equations are
+The fixed point equations are
 $$
  {n_1}^*\left(1- {n_1}^*-a_{12}{n_2}^*\right)=0 \ \ \ \ {n_2}^*\left(1-{n_2}^*-a_{21}{n_1}^*\right)=0.
 $$
@@ -247,7 +252,7 @@ $$
 
 Now consider $n_2^*=\frac{1}{a_{12}}(1-n_1^*)$ with $n_1^*\neq0$.
 
-Substitution in the second steady state equation yields
+Substitution in the second fixed point equation yields
 $$
 \frac{1}{a_{12}}(1-n_1^*) \left(1- \frac{1}{a_{12}}(1-n_1^*) -a_{21}{n_1}^*\right)
 $$
@@ -255,7 +260,7 @@ Hence either $n_1^*=1$ or
 $$
 \left(1- \frac{1}{a_{12}}(1-n_1^*) -a_{21}{n_1}^*\right)=0 \implies n_1^*=\frac{1-a_{12}}{1-a_{12}a_{21}}.
 $$
-In the case where $n_1^*=1$, we find that $n_2^*=0$. Hence the steady state is (1,0).
+In the case where $n_1^*=1$, we find that $n_2^*=0$. Hence the fixed point is (1,0).
 
 In the case where 
 $$
@@ -265,7 +270,7 @@ we find that
 $$
 n_2^*=\frac{1-a_{21}}{1-a_{12}a_{21}}
 $$
-Hence the steady state is
+Hence the fixed point is
 $$
 \left(\frac{1-a_{12}}{1-a_{12}a_{21}},\frac{1-a_{21}}{1-a_{12}a_{21}}\right).
 $$
@@ -284,19 +289,19 @@ $$
  n_2=0 \ \  \ \  \ n_2= 1-a_{21}n_1.
 $$
  
-Note that the steady states $(0,0)$, $(1,0)$ and $(0,1)$ are always biologically relevant (i.e. independently of the parameter values for $a_{12}$ and $a_{21}$). 
+Note that the fixed points $(0,0)$, $(1,0)$ and $(0,1)$ are always biologically relevant (i.e. independently of the parameter values for $a_{12}$ and $a_{21}$). 
  
-However, the coexistence steady state is  only biologically relevant if the nullclines intersect in the positive quadrant and this occurs only in certain regions of the model's parameter space. 
+However, the coexistence fixed point is  only biologically relevant if the nullclines intersect in the positive quadrant and this occurs only in certain regions of the model's parameter space. 
  
-In the  cases where $a_{12},a_{21}<1$ and $a_{12},a_{21}>1$ there is a coexistence steady state (i.e. the nullclines intersect in the positive quadrant). 
+In the  cases where $a_{12},a_{21}<1$ and $a_{12},a_{21}>1$ there is a coexistence fixed point (i.e. the nullclines intersect in the positive quadrant). 
  
-However, if $a_{21}<1$ and $a_{12}>1$ or  $a_{12}<1$ and $a_{21}>1$ there is not a biologically relevant, coexistence steady state (i.e. the nullclines do not intersect in the positive quadrant).  
+However, if $a_{21}<1$ and $a_{12}>1$ or  $a_{12}<1$ and $a_{21}>1$ there is not a biologically relevant, coexistence fixed point (i.e. the nullclines do not intersect in the positive quadrant).  
  
 Hence there are are four qualitatively different types of solution to consider.
 
 ### Linear stability
 
-The linear stability of the different steady states is determined by calculating the Jacobian matrix 
+The linear stability of the different fixed points is determined by calculating the Jacobian matrix 
 
 $$
 A=\left(\begin{array}{rr}
@@ -330,7 +335,7 @@ Hence if $a_{21}<1$, $\det{A}<0$ and (1,0) is a saddle point and thus unstable (
  
 If  $a_{21}>1$,  $\det{A}>0$ and $\mathrm{tr}{A}<0$. Hence  (1,0) is a stable node. 
   
-Hence the parameter $a_{21}$, which describes how strongly Population 1 inhibits the growth rate of Population 2, determines whether or not the steady state representing extinction of Population 2 but not Population 1 is stable or not.
+Hence the parameter $a_{21}$, which describes how strongly Population 1 inhibits the growth rate of Population 2, determines whether or not the fixed point representing extinction of Population 2 but not Population 1 is stable or not.
 
 At (0,1)
 
@@ -339,14 +344,14 @@ A=\left(\begin{array}{rr}
 1-a_{12}& 0\\  -\rho a_{21} & -\rho \end{array}\right). 
 $$
 
-In this case if $a_{12}<1$, $\det{A}<0$ and (0,1) is a saddle point. If  $a_{12}>1$,  $\det{A}>0$ and $\mathrm{tr}{A}<0$ and (0,1) is a stable node. Hence the parameter $a_{12}$, which describes how strongly Population 2 inhibits the growth rate of Population 1, determines whether or not the steady state representing extinction of Population 1 but not Population 2 is stable or not.
+In this case if $a_{12}<1$, $\det{A}<0$ and (0,1) is a saddle point. If  $a_{12}>1$,  $\det{A}>0$ and $\mathrm{tr}{A}<0$ and (0,1) is a stable node. Hence the parameter $a_{12}$, which describes how strongly Population 2 inhibits the growth rate of Population 1, determines whether or not the fixed point representing extinction of Population 1 but not Population 2 is stable or not.
 
-At the coexistence steady state, recall the steady state is
+At the coexistence fixed point, recall the fixed point is
 
 $$
 \left(\frac{1-a_{12}}{1-a_{12}a_{21}},\frac{1-a_{21}}{1-a_{12}a_{21}}\right).
 $$
- Note that this steady state is only biologically relevant in the cases $a_{21}<1, a_{12}<1$ or $a_{21}>1, a_{12}>1$.  Evaluating the Jacobian yields
+ Note that this fixed point is only biologically relevant in the cases $a_{21}<1, a_{12}<1$ or $a_{21}>1, a_{12}>1$.  Evaluating the Jacobian yields
 $$
 A=\frac{1}{1-a_{12}a_{21}}\left(\begin{array}{rr}
 a_{12}-1  & -a_{12}(1-a_{12})\\ -\rho a_{21}(1-a_{21}) &\rho(a_{21}-1)\end{array}\right). 
@@ -378,7 +383,7 @@ $$
 \mathrm{tr}{A}= \rho(-) + (-)<0.
 $$
 
-Therefore the coexistence steady state is a stable node or spiral.
+Therefore the coexistence fixed point is a stable node or spiral.
 
 
 In the case where $a_{21}>1$ and $a_{12}>1$
@@ -387,10 +392,10 @@ $$
 \det{A} = \rho(+)(+)(-)<0 .
 $$
 
-Hence the coexistence steady state is a saddle.
+Hence the coexistence fixed point is a saddle.
 
 ### Phase portrait
-See @fig-comp-numsol-phplane for phase portraits of three of the four cases that we have considered. It is expected that you can sketch phase portraits. Key details to consider are the steady states and their linear stability. You should also sketch the nullclines and depict the sign of the derivatives in the phase plane on either side of the nullclines. You should also sketch one or more sample trajectories.
+See @fig-comp-numsol-phplane for phase portraits of three of the four cases that we have considered. It is expected that you can sketch phase portraits. Key details to consider are the fixed points and their linear stability. You should also sketch the nullclines and depict the sign of the derivatives in the phase plane on either side of the nullclines. You should also sketch one or more sample trajectories.
 
 ```{python}
 #| label: fig-compete-numsol
@@ -544,15 +549,15 @@ plt.show()
 The model therefore has four qualitatively different behaviours that are described as follows:
 Consider the case where $a_{21}>1$. This represents the case of Population 1 strongly competing with Population 2.
 
-*  If $a_{12}>1$,  Population 2 also strongly competes with Population 1. In this case, there are four biologically relevant steady states, two of which are stable (1,0) and (0,1). The coexistence steady state is a saddle and thus unstable. 
+*  If $a_{12}>1$,  Population 2 also strongly competes with Population 1. In this case, there are four biologically relevant fixed points, two of which are stable (1,0) and (0,1). The coexistence fixed point is a saddle and thus unstable. 
 The model is bistable and the initial conditions determine whether solutions end up at (1,0) or (0,1) (see @fig-comp-numsol-phplane). 
 The biological interpretation of this solution is that one species will always win and completely outcompete the other. Even if the two populations are equal ($K_1=K_2$ and $a_{21}=a_{12}>1$), one species will always win and the other will become extinct.
-* If $a_{12}<1$, Population 2 weakly competes with Population 1. There is no coexistence steady state and the only stable steady state is (1,0). Hence Population 1 always wins and Population 2 always becomes extinct.
+* If $a_{12}<1$, Population 2 weakly competes with Population 1. There is no coexistence fixed point and the only stable fixed point is (1,0). Hence Population 1 always wins and Population 2 always becomes extinct.
 
 Now consider the case where $a_{21}<1$. This represents the case of Population 1 weakly competing with Population 2.
 
-* If $a_{12}>1$,  Population 2 strongly competes with Population 1. There is nonexistence steady state and the only stable steady state is (0,1). Hence Population 2 always wins and Population 1 always becomes extinct.
-* If $a_{12}<1$, Population 2 also weakly competes with Population 1. The coexistence steady state is stable and the  steady states (1,0) and (0,1) are unstable. 
+* If $a_{12}>1$,  Population 2 strongly competes with Population 1. There is nonexistence fixed point and the only stable fixed point is (0,1). Hence Population 2 always wins and Population 1 always becomes extinct.
+* If $a_{12}<1$, Population 2 also weakly competes with Population 1. The coexistence fixed point is stable and the  fixed points (1,0) and (0,1) are unstable. 
 
 
 ::: {#exm-    }
