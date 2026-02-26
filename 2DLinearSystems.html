@@ -111,29 +111,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 .Conjecture {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
 }
 .DONE {
   --color1: #cce7b1;
@@ -143,13 +127,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Proof {
   --color1: #c0c0c0;
   --color2: #808080;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 </style>
 
@@ -310,8 +310,9 @@ window.Quarto = {
   </ul></li>
   <li><a href="#fixed-points-and-their-stability" id="toc-fixed-points-and-their-stability" class="nav-link" data-scroll-target="#fixed-points-and-their-stability"><span class="header-section-number">4.3</span> Fixed points and their stability</a>
   <ul class="collapse">
-  <li><a href="#stability" id="toc-stability" class="nav-link" data-scroll-target="#stability"><span class="header-section-number">4.3.1</span> Stability</a></li>
-  <li><a href="#asymptotic-stability" id="toc-asymptotic-stability" class="nav-link" data-scroll-target="#asymptotic-stability"><span class="header-section-number">4.3.2</span> Asymptotic stability</a></li>
+  <li><a href="#fixed-points" id="toc-fixed-points" class="nav-link" data-scroll-target="#fixed-points"><span class="header-section-number">4.3.1</span> Fixed points</a></li>
+  <li><a href="#stability" id="toc-stability" class="nav-link" data-scroll-target="#stability"><span class="header-section-number">4.3.2</span> Stability</a></li>
+  <li><a href="#asymptotic-stability" id="toc-asymptotic-stability" class="nav-link" data-scroll-target="#asymptotic-stability"><span class="header-section-number">4.3.3</span> Asymptotic stability</a></li>
   </ul></li>
   <li><a href="#an-example-problem-introducing-phase-portraits-and-stability" id="toc-an-example-problem-introducing-phase-portraits-and-stability" class="nav-link" data-scroll-target="#an-example-problem-introducing-phase-portraits-and-stability"><span class="header-section-number">4.4</span> An example problem introducing phase portraits and stability</a></li>
   <li><a href="#jordan-form" id="toc-jordan-form" class="nav-link" data-scroll-target="#jordan-form"><span class="header-section-number">4.5</span> Jordan form</a></li>
@@ -392,7 +393,8 @@ c_1\mathbf{x}_1(t) +  c_2 \mathbf{x}_2(t),
 </section>
 <section id="fixed-points-and-their-stability" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="fixed-points-and-their-stability"><span class="header-section-number">4.3</span> Fixed points and their stability</h2>
-<p>###&nbsp;Fixed points</p>
+<section id="fixed-points" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">4.3.1</span> Fixed points</h3>
 <p>Fixed points of <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> satisfy <span id="eq-linearsystem2dfp"><span class="math display">\[
 A\mathbf{x} = \mathbf{0}.
 \tag{4.3}\]</span></span></p>
@@ -401,18 +403,19 @@ A\mathbf{x} = \mathbf{0}.
 \]</span> is always a fixed point of <a href="#eq-linearsystem2dfp" class="quarto-xref">Equation&nbsp;<span>4.3</span></a>.</p>
 <p>If <span class="math inline">\(A\)</span> is invertible then the zero vector is a unique fixed point of <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>.</p>
 <p>If <span class="math inline">\(A\)</span> is not invertible there exists an infinite family of fixed points (line or plane).</p>
-<section id="stability" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="stability"><span class="header-section-number">4.3.1</span> Stability</h3>
 </section>
-<section id="asymptotic-stability" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="asymptotic-stability"><span class="header-section-number">4.3.2</span> Asymptotic stability</h3>
+<section id="stability" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="stability"><span class="header-section-number">4.3.2</span> Stability</h3>
+</section>
+<section id="asymptotic-stability" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="asymptotic-stability"><span class="header-section-number">4.3.3</span> Asymptotic stability</h3>
 <p>Given the general solution <span class="math display">\[
 \mathbf{x}(t)=C_1\mathbf{v}_1e^{\lambda_1 t}+C_2\mathbf{v}_2 e^{\lambda_2 t},
 \]</span> the fixed point (0,0) is <em>asymptotically</em> stable if <span class="math display">\[
 \Re\{\lambda_i\} &lt;0 \  \forall \  i.
 \]</span></p>
-<section id="classification-via-the-trace-determinant-plane" class="level4" data-number="4.3.2.1">
-<h4 data-number="4.3.2.1" class="anchored" data-anchor-id="classification-via-the-trace-determinant-plane"><span class="header-section-number">4.3.2.1</span> Classification via the trace-determinant plane</h4>
+<section id="classification-via-the-trace-determinant-plane" class="level4" data-number="4.3.3.1">
+<h4 data-number="4.3.3.1" class="anchored" data-anchor-id="classification-via-the-trace-determinant-plane"><span class="header-section-number">4.3.3.1</span> Classification via the trace-determinant plane</h4>
 <p>The stability of a linear 2D system can be determined by calculating determinant and trace of A and referring to <a href="#fig-tdplane" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>.</p>
 <div id="fig-tdplane" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -454,8 +457,8 @@ e^{\lambda t} = e^{(\mu+i\omega) t} = e^{\mu t}e^{i\omega t}.
 \]</span> For <span class="math inline">\(\mu&gt;0\)</span> the magnitude of the perturbation grows but it oscillates about the fixed point. Hence the fixed point is an unstable spiral.</p></li>
 </ul>
 </section>
-<section id="introducing-different-types-of-stability" class="level4" data-number="4.3.2.2">
-<h4 data-number="4.3.2.2" class="anchored" data-anchor-id="introducing-different-types-of-stability"><span class="header-section-number">4.3.2.2</span> Introducing different types of stability</h4>
+<section id="introducing-different-types-of-stability" class="level4" data-number="4.3.3.2">
+<h4 data-number="4.3.3.2" class="anchored" data-anchor-id="introducing-different-types-of-stability"><span class="header-section-number">4.3.3.2</span> Introducing different types of stability</h4>
 <p>In 2D system we need to make a more nuanced description of stability:</p>
 <ul>
 <li>an <em>attracting</em> fixed point - all trajectories that start close to a fixed point approach it as <span class="math inline">\(t\rightarrow \infty\)</span>.</li>
@@ -465,8 +468,8 @@ e^{\lambda t} = e^{(\mu+i\omega) t} = e^{\mu t}e^{i\omega t}.
 <li><em>asymptotically stable</em> - a fixed point that is Liapunov stable and attracting.</li>
 </ul>
 </section>
-<section id="stable-and-unstable-manifolds" class="level4" data-number="4.3.2.3">
-<h4 data-number="4.3.2.3" class="anchored" data-anchor-id="stable-and-unstable-manifolds"><span class="header-section-number">4.3.2.3</span> Stable and unstable manifolds</h4>
+<section id="stable-and-unstable-manifolds" class="level4" data-number="4.3.3.3">
+<h4 data-number="4.3.3.3" class="anchored" data-anchor-id="stable-and-unstable-manifolds"><span class="header-section-number">4.3.3.3</span> Stable and unstable manifolds</h4>
 <p>A <em>stable manifold</em> of a fixed point, <span class="math inline">\(\mathbf{x}^*\)</span>, is a set of points such that</p>
 <p><span class="math display">\[
 \{ \mathbf{s}: \mathbf{x}(t)\rightarrow \ \mathbf{x}^* \  \textrm{as} \ t\rightarrow \infty \ \textrm{for} \ \mathbf{x}(0)=\mathbf{s} \}
@@ -704,8 +707,7 @@ app = App(app_ui, server)</code></pre>
 \]</span> Transforming back to original coordinates <span class="math display">\[
 \mathbf{x}(t)=P y(t)= P e^{t\Gamma}\mathbf{y}_0= P e^{t\Gamma}P^{-1}\mathbf{x}_0.
 \]</span></p>
-<p>With a particular of the matrix <span class="math inline">\(P\)</span>, the linear dynamical system can be transformed such that solution components evolve independently.</p>
-<p>Suppose that <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> distinct eigenvalues (<span class="math inline">\(\lambda_1\)</span>,<span class="math inline">\(\lambda_2\)</span>,…,<span class="math inline">\(\lambda_n\)</span>) with associated eigenvectors <span class="math inline">\(\mathbf{e}_i\)</span>. Let <span class="math inline">\(P\)</span> be the matrix with eigenvectors as columns, i.e. <span class="math display">\[
+<p>Suppose that <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> distinct eigenvalues (<span class="math inline">\(\lambda_1\)</span>,<span class="math inline">\(\lambda_2\)</span>,…,<span class="math inline">\(\lambda_n\)</span>) with associated eigenvectors (<span class="math inline">\(\mathbf{e}_1\)</span>,<span class="math inline">\(\mathbf{e}_2\)</span>,…,<span class="math inline">\(\mathbf{e}_n\)</span>). Let <span class="math inline">\(P\)</span> be the matrix with eigenvectors as columns, i.e. <span class="math display">\[
 P=[\mathbf{e}_1,\mathbf{e}_2,...,\mathbf{e}_n]
 \]</span> Hence <span class="math inline">\(\Gamma=P^{-1}AP\)</span> is a diagonal matrix with eigenvalues along the diagonal axis. The component solution has the form <span class="math display">\[
 y_{i}(t)=y_{0i}e^{\lambda_i t}.
