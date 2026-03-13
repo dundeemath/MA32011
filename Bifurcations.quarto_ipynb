@@ -98,7 +98,7 @@
         "\n",
         "::: {#fig-fsaddlenode}"
       ],
-      "id": "523ee7d0"
+      "id": "d3fdf847"
     },
     {
       "cell_type": "code",
@@ -155,7 +155,7 @@
         "    fig.supxlabel('$x$')\n",
         "    fig.supylabel('$\\dot{x}$')"
       ],
-      "id": "0763968b",
+      "id": "21d95efa",
       "execution_count": null,
       "outputs": []
     },
@@ -170,7 +170,7 @@
         "\n",
         ":::{#fig-saddlenodebfc}"
       ],
-      "id": "db4c9ef4"
+      "id": "90590b64"
     },
     {
       "cell_type": "code",
@@ -213,7 +213,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "id": "bd7fe743",
+      "id": "233fabdb",
       "execution_count": null,
       "outputs": []
     },
@@ -406,7 +406,7 @@
         "\n",
         "::: {#fig-transcritf}"
       ],
-      "id": "b67ca1cc"
+      "id": "f6d6cbf3"
     },
     {
       "cell_type": "code",
@@ -466,7 +466,7 @@
         "    fig.supxlabel('$x$')\n",
         "    fig.supylabel('$\\dot{x}$')"
       ],
-      "id": "1d11b5cb",
+      "id": "3e4705b3",
       "execution_count": null,
       "outputs": []
     },
@@ -482,7 +482,7 @@
         "\n",
         "::: {#fig-transcritbfc}"
       ],
-      "id": "49ee8a7d"
+      "id": "94eccae9"
     },
     {
       "cell_type": "code",
@@ -529,7 +529,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "id": "68de6f9c",
+      "id": "e467779d",
       "execution_count": null,
       "outputs": []
     },
@@ -797,7 +797,7 @@
         "\n",
         "::: {#fig-supcritf}"
       ],
-      "id": "3b627531"
+      "id": "c2ff1e25"
     },
     {
       "cell_type": "code",
@@ -855,7 +855,7 @@
         "    fig.supxlabel('$x$')\n",
         "    fig.supylabel('$\\dot{x}$')"
       ],
-      "id": "b54f9e7f",
+      "id": "d227032f",
       "execution_count": null,
       "outputs": []
     },
@@ -870,7 +870,7 @@
         "\n",
         "::: {#fig-supcritbfc}"
       ],
-      "id": "2ae56bd1"
+      "id": "7bf04972"
     },
     {
       "cell_type": "code",
@@ -916,7 +916,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "id": "8024650a",
+      "id": "b156c5d2",
       "execution_count": null,
       "outputs": []
     },
@@ -1077,7 +1077,7 @@
         "\n",
         "::: {#fig-subcritf}"
       ],
-      "id": "f137a17b"
+      "id": "a3fc8345"
     },
     {
       "cell_type": "code",
@@ -1134,7 +1134,7 @@
         "    fig.supxlabel('$x$')\n",
         "    fig.supylabel('$\\dot{x}$')"
       ],
-      "id": "5c344c77",
+      "id": "244feed1",
       "execution_count": null,
       "outputs": []
     },
@@ -1147,7 +1147,7 @@
         "\n",
         "::: {#fig-subcritbfc}"
       ],
-      "id": "f20698a9"
+      "id": "ff118682"
     },
     {
       "cell_type": "code",
@@ -1193,7 +1193,7 @@
         "plt.tight_layout()\n",
         "plt.show()\n"
       ],
-      "id": "a378592a",
+      "id": "c3f3a686",
       "execution_count": null,
       "outputs": []
     },
@@ -1284,7 +1284,7 @@
         "\n",
         ":::{#fig-sprucebudworm-rhs}"
       ],
-      "id": "c7d85006"
+      "id": "09c73c73"
     },
     {
       "cell_type": "code",
@@ -1334,7 +1334,7 @@
         "ax.grid(True)\n",
         "plt.show()"
       ],
-      "id": "9f8d3b65",
+      "id": "a787c1a3",
       "execution_count": null,
       "outputs": []
     },
@@ -1360,7 +1360,7 @@
         "\n",
         "::: {#fig-sprucebudworm-numsol}"
       ],
-      "id": "5d272fba"
+      "id": "22b90f5c"
     },
     {
       "cell_type": "code",
@@ -1389,7 +1389,7 @@
         "plt.grid()\n",
         "plt.show()"
       ],
-      "id": "3e53239e",
+      "id": "e22171fd",
       "execution_count": null,
       "outputs": []
     },
@@ -1469,7 +1469,7 @@
         "\n",
         ":::{#fig-sprucebudworm-rhsfg}"
       ],
-      "id": "d0e453ce"
+      "id": "64eeb218"
     },
     {
       "cell_type": "code",
@@ -1533,7 +1533,7 @@
         "plt.tight_layout()\n",
         "plt.show()"
       ],
-      "id": "bf050a49",
+      "id": "a3b87a93",
       "execution_count": null,
       "outputs": []
     },
@@ -1598,7 +1598,7 @@
         ":::{#fig-sprucebudworm-rq\n",
         "}"
       ],
-      "id": "d49c392f"
+      "id": "98175152"
     },
     {
       "cell_type": "code",
@@ -1631,7 +1631,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "f5a9624f",
+      "id": "bc099481",
       "execution_count": null,
       "outputs": []
     },
@@ -1698,7 +1698,7 @@
         "\n",
         ":::{#fig-sprucebudworm-bfc}"
       ],
-      "id": "b78020a6"
+      "id": "386a2818"
     },
     {
       "cell_type": "code",
@@ -1735,7 +1735,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "78b47e26",
+      "id": "60d5911c",
       "execution_count": null,
       "outputs": []
     },
@@ -1763,7 +1763,7 @@
         "\n",
         "## References\n"
       ],
-      "id": "78e273b9"
+      "id": "a28bae9c"
     }
   ],
   "metadata": {

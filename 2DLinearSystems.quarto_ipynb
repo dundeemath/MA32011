@@ -202,7 +202,7 @@
         "x(t)=x_0e^{at}, \\quad y(t)=y_0e^{-t}.\n",
         "$$"
       ],
-      "id": "b55009b0"
+      "id": "f56b7f50"
     },
     {
       "cell_type": "code",
@@ -454,7 +454,7 @@
         "y_{i}(t)=y_{0i}e^{\\lambda_i t}.\n",
         "$$\n"
       ],
-      "id": "46d955a9"
+      "id": "49964fdc"
     }
   ],
   "metadata": {
