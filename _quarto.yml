@@ -29,7 +29,7 @@ book:
       chapters:
        - 2DLinearSystems.qmd 
        - 2DNonLinearPhasePlane.qmd 
-       #- LimitCycles.qmd
+       - LimitCycles.qmd
        #- 2DBifurcations.qmd
 
     #- part: "Chaotic dynamics"
