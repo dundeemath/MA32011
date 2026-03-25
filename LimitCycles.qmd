@@ -12,14 +12,14 @@ $$
 A closed orbit is a period $T$ solution such that
 $$
 \begin{aligned}
-x(t+T)=x(t) \ \forall t.
-x(t+s)\neq x(t) \ 0<s<T.
+x(t+T)=x(t) \quad \forall t.
+x(t+s)\neq x(t) \quad 0<s<T.
 \end{aligned}
 $$
 
 A limit cycle is an isolated closed orbit of a dynamical system. 
 
-Limit cycles are important solutions of dynamical systems throughout biological and physical systems (e.g. harmonic oscillator, circadian rhythms).
+Limit cycles are important solutions of dynamical systems arising throughout biological and physical systems (e.g. harmonic oscillator, circadian rhythms).
 
 ## Examples
 
@@ -49,7 +49,7 @@ $$
 $$
 where $\mu\geq 0$.
 
-The nonlinear term acts as a positive damping term for $|x|>1$ and negative damping term for $|x|<1$. See @fig-compete-numsol for  numerical solutions that show limit cycle solutions in two limiting cases: $\mu\ll 1$ and $\mu\gg 1$.
+The nonlinear term acts as a positive damping term for $|x|>1$ and negative damping term for $|x|<1$. See @fig-compete-numsol for numerical solutions that show limit cycle solutions in two limiting cases: $\mu \ll 1$ and $\mu\gg 1$.
 
 ```{python}
 #| label: fig-compete-numsol
@@ -102,8 +102,8 @@ plt.show()
 ```  
 
 Some questions these numerical solutions pose:
-- can we prove limit cycles exist or do not exist for a given dynamical system.
-- what type of bifurcations do limit cycle solutions occur at?
+- Can we prove that limit cycles exist or do not exist for a given dynamical system?
+-  what type of bifurcations do limit cycle solutions occur?
 
 ## Ruling out closed orbits
 
@@ -118,10 +118,11 @@ $$
 for some continuously differentiable, single valued scalar function, $V$.
 
 ::: {.Theorem}
-Closed orbits are impossible in gradient systems.
+Closed orbits cannot exist in gradient systems.
+
 :::
 
-::: {#exm-    }
+::: {#exm-gradient}
 Show that the system
 $$
 \begin{aligned}
@@ -151,7 +152,7 @@ $$
 Suppose a limit cycle exists with period $T>0$.
 Compute 
 $$
-\Delta E = \int_0^T \dot{E}
+\Delta E = \int_0^T \dot{E}dt
 $$
 and show that there is a contradiction.
 :::
@@ -181,12 +182,12 @@ plt.show()
 
 ```
 
-### Liapunov functions
+### Lyapunov functions
 
-Even for systems that are not mechanical, we can try to construct an energy-like *Liapunov* function that decreases along trajectories. If a Liapunov function exists, closed orbits are impossible.
+Even for systems that are not mechanical, we can try to construct an energy-like *Lyapunov* function that decreases along trajectories. If a Lyapunov function exists, closed orbits are impossible.
 
 ::: {.Theorem}
- Consider a system $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$. Suppose that we can find a Liapunov function, i.e. a continuously differentiable real valued function that satisfies:
+ Consider a system $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$. Suppose that we can find a Lyapunov function, i.e. a continuously differentiable real valued function that satisfies:
 
  - $V(x)>0 \forall \  x \ \neq \  x^*$
  - $\dot{V}<0  \ \forall \ x \ \neq \ x^*$
@@ -195,7 +196,7 @@ Even for systems that are not mechanical, we can try to construct an energy-like
 :::
 
 ::: {#exm-    }
-By constructing a Liapunov function, show that the system
+By constructing a Lyapunov function, show that the system
 $$
 \begin{aligned}
 \dot{x} & =-x+4y\\
@@ -231,7 +232,7 @@ plt.show()
 
 ```
 
-Note: there is not a systematic technique to find Liapunov functions and most systems cannot be written in gradient form.
+Note: there is not a systematic technique to find Lyapunov functions and most systems cannot be written in gradient form.
 
 
 ### Dulac's criterion
@@ -241,7 +242,7 @@ A third method relies on Green's theorem in the plane.
 ::: {.Theorem}
 Dulac's criterion
 
-Consider a 2D system $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$. Let $\mathbf{f}$ be a continuously differentiable vector field on a simply connected subset $D$ of the plane. If there exists a continuously differentiable  real-valued function $g$ such that $\nabla. (g\dot{\mathbf{x}})$ has one sign throughout $D$, there are no closed orbits in $D$.
+Consider a 2D system $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$. Let $\mathbf{f}$ be a continuously differentiable vector field on a simply connected subset $D$ of the plane. If there exists a continuously differentiable  real-valued function $g$ such that $\nabla \cdot (g\dot{\mathbf{x}})$ has one sign throughout $D$, there are no closed orbits in $D$.
 
 :::
 
@@ -257,7 +258,7 @@ has no closed orbits in the positive quadrant.
 
 :::
 
-## Poincare-Bendixson theorem
+## Poincaré-Bendixson theorem
 
 For particular 2D systems it is also possible to prove the existence of closed orbits. Suppose we can construct a confined set that contains an  unstable isolated fixed point. The long time solution must be a periodic orbit.
 
@@ -266,7 +267,7 @@ For particular 2D systems it is also possible to prove the existence of closed o
 Suppose that 
 
 1. $D$ is a closed subset of the plane.
-2. $\dot{\mathbf{x}}=\mathbf{f}(\mathbf(x))$ is a continuously differentiable vector field on an open subset containing $D$.
+2. $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$ is a continuously differentiable vector field on an open subset containing $D$.
 3. The fixed point in $D$ is unstable.
 4. There exists a trajectory $C$ that is confined in $D$.
 
@@ -289,7 +290,7 @@ where $\mu \in \Re$. Show that there is a closed orbit for $\mu$ sufficiently sm
 
 ::: {.Corollary}
 
-Chaotic solutions cannot exist in systems of two ODEs.
+Chaotic solutions cannot exist in autonomous systems of two ODEs.
 :::
 
 ## The Brusselator
@@ -386,7 +387,7 @@ init_cond=[0.5,0.5]
 # Integrate ODEs
 sol1 = odeint(rhs_bruss_model, init_cond,t)
 
-# Plotmresults
+# Plot results
 x=sol1[:,0]
 y=sol1[:,1]
 
@@ -398,10 +399,10 @@ plt.grid()
 plt.show()
 ```  
 
-### Applying the Poincaire-Bendixson theorem
+### Applying the Poincaré-Bendixson theorem
 
-Recall  that the Poincaire-Bendixson theorem can be used to prove the existence of limit cycle solutions in a case where a bounding set encloses a single unstable fixed point. 
-Hence given the case of the Brusselator with $b>a^2+1$, the identification of a bounding set will allow application of  the Poincaire-Bendixson theorem and hence prove the existence of limit cycle solutions.
+Recall  that the Poincaré-Bendixson theorem can be used to prove the existence of limit cycle solutions in a case where a bounding set encloses a single unstable fixed point. 
+Hence given the case of the Brusselator with $b>a^2+1$, the identification of a bounding set will allow application of  the Poincaré-Bendixson theorem and hence prove the existence of limit cycle solutions.
 
 We begin by defining the nullclines of the system. The $x$ nullcline is given by
  
@@ -431,7 +432,7 @@ from scipy.integrate import odeint
 # Discretise x for plotting nullclines
 x_vec=np.linspace(0.01,6,100)
 
-# COmpute quantities needed for pahse plane
+# Compute quantities needed for phase plane
 def ComputeBrusselatorSol(a,b,x_vec):
     t = np.linspace(0, 10, 1000)
 
@@ -518,7 +519,7 @@ and
 $$
 \left(\frac{a}{1+b},0\right).
 $$
- respectively. We choose $\delta>a$. The outward normal to the line segment AB is $\mathbf{n}=[0,-1]$. To show that the trajectories point inwards along AB, we compute
+respectively. We choose $\delta>a$. The outward normal to the line segment AB is $\mathbf{n}=[0,-1]$. To show that the trajectories point inwards along AB, we compute
  
 $$
 \mathbf{n}.\left[\frac{dx}{dt},\frac{dy}{dt}\right] = -\frac{dy}{dt}.
@@ -660,7 +661,7 @@ plt.grid()
 plt.show()
 ```   
 
-Hence at all points on the closed loop ABCDEA trajectories point inwards (see @fig-bruss-numsol-phplane-confinedset). Hence ABDCEA is a confined set and the Poincaire-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure @fig-bruss-numsol-phplane. 
+Hence at all points on the closed loop ABCDEA trajectories point inwards (see @fig-bruss-numsol-phplane-confinedset). Hence ABDCEA is a confined set and the Poincaré-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure @fig-bruss-numsol-phplane. 
 
 
 
@@ -732,9 +733,9 @@ $$
 respectively.
 Above the cubic $\dot{x}>0$ and in the right half-plane $\dot{y}<0$.
 
-It can be show that the system posesses a confined set. Hence by application of Poincaire Bendixson theorem it must have a limit cycle solution.
+It can be shown that the system posesses a confined set. Hence by application of Poincaré Bendixson theorem it must have a limit cycle solution.
 
-To describe the limit cycle we perform a fast/slow timescale analysis. On the slow time scale the trajectory is approximaqtely on the cubic nullcline, i.e.
+To describe the limit cycle we perform a fast/slow timescale analysis. On the slow time scale the trajectory is approximately on the cubic nullcline, i.e.
 $$
 y\sim F(x).
 $$
@@ -832,11 +833,11 @@ $$
 $$
 Hence $x$ rapidly changes and $y$ is approximately constant.
 
-The limit cycle can then be describe by a closed loop ABCDA.
+The limit cycle can then be represented by the closed loop ABCDA.
 
 AB  is a fast segment of the trajectory. Here $\dot{x}<0$. $x$ rapidly decreases until it collides with the left-most branch of the cubic nullcline whilst $y$ is approximately constant. 
 
-On BC the traejctory is on the left branch of the cubic nullcline. As $\dot{y}>0$, $y$ increases on a.] slow timescale until the trajectory reaches the local maximum of the cubic nullcline (C). 
+On BC the trajectory is on the left branch of the cubic nullcline. As $\dot{y}>0$, $y$ increases on a slow timescale until the trajectory reaches the local maximum of the cubic nullcline (C). 
 
 CD is again a fast part of the trajectory. Now $\dot{x}>0$. $x$ rapidly increases until the trajectory reaches the right-most branch of the cubic nullcline with $y$ approximately constant. 
 
@@ -871,7 +872,7 @@ $$
 
 Similar arguments can be used to show that the time spent on the segment DA is equal to that spent on BC. Hence the period of the limit cycle is approximately
 $$
-T~sim T_{BC}+T_{DA}\sim 3-2\ln 2.
+T\sim T_{BC}+T_{DA}\sim 3-2\ln 2.
 $$
 
 
@@ -881,7 +882,7 @@ $$
 
 ## Excitable systems
 
-Excitable system can be thought of as being perturbed limit cycles. Consider a variant of the Van Der Pol oscillator given by
+Excitable systems can be thought of as being perturbed limit cycles. Consider a variant of the Van Der Pol oscillator given by
 $$
 \dot{y}=-x+a
 \epsilon \dot{x}=y- F(x)
@@ -900,7 +901,7 @@ However, for $a>1$,  $F'(a)<0$  and this fixed point is linearly stable.
 
 The $x$ and $y$ nullclines are given by
 $$
-x=a \quad and \quad  y=F(x),
+x=a \quad \textrm{and} \quad  y=F(x),
 $$
 respectively.
 
@@ -908,9 +909,9 @@ To consider an excitable trajectory we again consider a fast-slow timescale anal
 
 Consider a trajectory initialised at $A(0,F(a))$. Using the nullclines, $\dot{x}<0$. As the phase point is not on cubic nullcline, $\dot{x}<0$. Hence $x$ rapidly decreases until the trajectory collides with the $x$ nullcline. On this segment of the trajectory $y=F(a)$. 
 
-When the trajectory is on the cubic nullcline, i.e. $y=F(x)$, the system evolves on a slow time scale. However, $\dot{y}>0$ and $y$ increases until the trajecotyr reaches the local maximum of the cubic nullcline. her ethe trajectory switched to the fast timescale as $\dot{x}\gg 1$, with $x$ increasing until the trajectory intersects the right-most branch of the cubic nullcline. The system follows the slow dynamics until it reaches the linearly stable fixed point.
+When the trajectory is on the cubic nullcline, i.e. $y=F(x)$, the system evolves on a slow time scale. However, $\dot{y}>0$ and $y$ increases until the trajectory reaches the local maximum of the cubic nullcline. At this point the trajectory switches to the fast timescale as $\dot{x}\gg 1$, with $x$ increasing until the trajectory intersects the right-most branch of the cubic nullcline. The system then follows the slow dynamics until it reaches the linearly stable fixed point.
 
-This fixed point is stable to small perturbations. However, a large enough perturbation results in an *excitable* trajectory. the stimulus needed to. excite the system is known as the *threshold* stimulus. The time needed can be estimated using a similar technique use dto estimate the oscillator period in the case of the relaxation oscillator.
+This fixed point is stable to small perturbations. However, a large enough perturbation results in an *excitable* trajectory. the stimulus needed to excite the system is known as the *threshold* stimulus. The time needed can be estimated using a similar technique used to estimate the oscillator period in the case of the relaxation oscillator.
 
 In the 1950s British Scientists Hodgkin and Huxley published Nobel prize winning work in which they discovered the fundamental principles that describe how electrical signals propagate in neurons. As part of their study they formulated a system of ODEs that could explain their experimental observations, a system that can be approximated by the above model. When a neuron is in a resting state (i.e. at a stable fixed point) it is stable to small perturbations. However, upon receiving a stimulus of large enough magnitude the neuron fires (becomes excited) and undergoes a large excursion in its electrical activity (i.e. an excitable trajectory).
 
@@ -953,8 +954,8 @@ app_ui = ui.page_fluid(
     ui.input_slider(id="eps",label="epsilon ",min=0.0001,max=1.0,value=0.005,step=0.0001),
     ui.input_slider(id="a",label="a",min=-2.0,max=2.0,value=1.2,step=0.01),
     ui.input_slider(id="T",label="T",min=10.0,max=100.0,value=20.1,step=0.1),
-    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=-1.1,step=0.1),
-    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=-2.1,step=0.1),
+    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=-1.1,step=0.01),
+    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=-2.1,step=0.01),
     ui.output_plot("plot"),
 )
 
@@ -969,7 +970,7 @@ def server(input, output, session):
         a=float(input.a())
         T=int(input.T())
         x_0=float(input.x_0())
-        y_0=int(input.y_0())
+        y_0=float(input.y_0())
 
         def F(x):
           F=x*(x**2/3.0-1.0)
