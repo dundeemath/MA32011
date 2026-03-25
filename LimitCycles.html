@@ -111,25 +111,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
 .Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Proof {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Conjecture {
   --color1: #948bde;
@@ -139,17 +143,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Corollary {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 </style>
 
@@ -492,7 +492,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \Delta E = \int_0^T \dot{E}
 \]</span> and show that there is a contradiction.</p>
 </div>
-<div id="7a573df6" class="cell" data-execution_count="2">
+<div id="cef8d244" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -544,7 +544,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \end{aligned}
 \]</span> has no closed orbits.</p>
 </div>
-<div id="4e713f7b" class="cell" data-execution_count="3">
+<div id="e9ac7af7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1182,8 +1182,8 @@ app_ui = ui.page_fluid(
     ui.input_slider(id="eps",label="epsilon ",min=0.0001,max=1.0,value=0.005,step=0.0001),
     ui.input_slider(id="a",label="a",min=-2.0,max=2.0,value=1.2,step=0.01),
     ui.input_slider(id="T",label="T",min=10.0,max=100.0,value=20.1,step=0.1),
-    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=-1.1,step=0.1),
-    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=-2.1,step=0.1),
+    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=-1.1,step=0.01),
+    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=-2.1,step=0.01),
     ui.output_plot("plot"),
 )
 
