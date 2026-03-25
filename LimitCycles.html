@@ -77,6 +77,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.10.7/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -106,10 +111,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 .Theorem {
   --color1: #948bde;
   --color2: #584eab;
@@ -117,6 +118,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 .Lemma {
   --color1: #948bde;
   --color2: #584eab;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Proof {
   --color1: #c0c0c0;
@@ -126,19 +131,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #cce7b1;
   --color2: #86b754;
 }
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Solution {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Conjecture {
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -324,7 +329,7 @@ window.Quarto = {
   <li><a href="#poincare-bendixson-theorem" id="toc-poincare-bendixson-theorem" class="nav-link" data-scroll-target="#poincare-bendixson-theorem"><span class="header-section-number">6.4</span> Poincare-Bendixson theorem</a></li>
   <li><a href="#the-brusselator" id="toc-the-brusselator" class="nav-link" data-scroll-target="#the-brusselator"><span class="header-section-number">6.5</span> The Brusselator</a>
   <ul class="collapse">
-  <li><a href="#steady-states-analysis" id="toc-steady-states-analysis" class="nav-link" data-scroll-target="#steady-states-analysis"><span class="header-section-number">6.5.1</span> Steady states analysis</a></li>
+  <li><a href="#fixed-point-analysis" id="toc-fixed-point-analysis" class="nav-link" data-scroll-target="#fixed-point-analysis"><span class="header-section-number">6.5.1</span> Fixed point analysis</a></li>
   <li><a href="#linear-stability-analysis" id="toc-linear-stability-analysis" class="nav-link" data-scroll-target="#linear-stability-analysis"><span class="header-section-number">6.5.2</span> Linear stability analysis</a></li>
   <li><a href="#applying-the-poincaire-bendixson-theorem" id="toc-applying-the-poincaire-bendixson-theorem" class="nav-link" data-scroll-target="#applying-the-poincaire-bendixson-theorem"><span class="header-section-number">6.5.3</span> Applying the Poincaire-Bendixson theorem</a></li>
   </ul></li>
@@ -487,7 +492,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \Delta E = \int_0^T \dot{E}
 \]</span> and show that there is a contradiction.</p>
 </div>
-<div id="9586e07e" class="cell" data-execution_count="2">
+<div id="7a573df6" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -539,7 +544,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \end{aligned}
 \]</span> has no closed orbits.</p>
 </div>
-<div id="6c60f908" class="cell" data-execution_count="3">
+<div id="4e713f7b" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -625,9 +630,9 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \frac{d y}{d \tau} &amp;= bx-x^2y = g(x,y),
 \end{aligned}
 \tag{6.1}\]</span></span></p>
-<section id="steady-states-analysis" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="steady-states-analysis"><span class="header-section-number">6.5.1</span> Steady states analysis</h3>
-<p>Seeking steady states <span class="math inline">\((x^*,y^*)\)</span> of equations <a href="#eq-brussnondim" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> such that <span class="math display">\[
+<section id="fixed-point-analysis" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="fixed-point-analysis"><span class="header-section-number">6.5.1</span> Fixed point analysis</h3>
+<p>Seeking fixed points <span class="math inline">\((x^*,y^*)\)</span> of <a href="#eq-brussnondim" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> such that <span class="math display">\[
 f(x^*,y^*)=g(x^*,y^*)=0
 \]</span> yields</p>
 <p><span class="math display">\[
@@ -655,8 +660,8 @@ b-1&amp;a^2\\ -b &amp;-a^2\end{array}\right).
 <p>Hence <span class="math inline">\((a,b/a)\)</span> is not a saddle. The trace of the Jacobian is <span class="math display">\[
 \mathrm{tr} A=b-1-a^2.
 \]</span></p>
-<p>Hence if <span class="math inline">\(b&gt;1+a^2\)</span> the trace is positive and, referring to <a href="2DLinearSystems.html#fig-tdplane" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>, the steady state is linearly unstable. Otherwise, the steady state is linearly stable.</p>
-<p>In <a href="#fig-bruss-numsol" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> we numerically solve <a href="#eq-brussnondim" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> in the case of oscillatory solutions. Note that when the steady state is unstable, the numerical solution indicates that the system has limit cycle solutions. A valid question to ask is whether one can prove that this is the case.</p>
+<p>Hence if <span class="math inline">\(b&gt;1+a^2\)</span> the trace is positive and, referring to <a href="2DLinearSystems.html#fig-tdplane" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>, the fixed point is linearly unstable. Otherwise, the fixed point is linearly stable.</p>
+<p>In <a href="#fig-bruss-numsol" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> we numerically solve <a href="#eq-brussnondim" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> in the case of oscillatory solutions. Note that when the fixed point is unstable, the numerical solution indicates that the system has limit cycle solutions. A valid question to ask is whether one can prove that this is the case.</p>
 <div id="cell-fig-bruss-numsol" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
@@ -716,7 +721,7 @@ Figure&nbsp;6.2: Numerical solutions of the Brusselator model
 </section>
 <section id="applying-the-poincaire-bendixson-theorem" class="level3" data-number="6.5.3">
 <h3 data-number="6.5.3" class="anchored" data-anchor-id="applying-the-poincaire-bendixson-theorem"><span class="header-section-number">6.5.3</span> Applying the Poincaire-Bendixson theorem</h3>
-<p>Recall that the Poincaire-Bendixson theorem can be used to prove the existence of limit cycle solutions in a case where a bounding set encloses a single unstable steady state. Hence given the case of the Brusselator with <span class="math inline">\(b&gt;a^2+1\)</span>, the identification of a bounding set will allow application of the Poincaire-Bendixson theorem and hence prove the existence of limit cycle solutions.</p>
+<p>Recall that the Poincaire-Bendixson theorem can be used to prove the existence of limit cycle solutions in a case where a bounding set encloses a single unstable fixed point. Hence given the case of the Brusselator with <span class="math inline">\(b&gt;a^2+1\)</span>, the identification of a bounding set will allow application of the Poincaire-Bendixson theorem and hence prove the existence of limit cycle solutions.</p>
 <p>We begin by defining the nullclines of the system. The <span class="math inline">\(x\)</span> nullcline is given by</p>
 <p><span class="math display">\[
 y=\frac{1+b}{x}-\frac{a}{x^2}.
@@ -725,7 +730,7 @@ y=\frac{1+b}{x}-\frac{a}{x^2}.
 <p><span class="math display">\[
 y=\frac{b}{x} \ \ \ \textrm{and} \ \ \ x=0.
 \]</span></p>
-<p>In the positive quadrant, this nullcline has a single root at <span class="math inline">\(a/(1+b)\)</span>, tends to 0 as <span class="math inline">\(x\rightarrow \infty\)</span> and has a maximum at <span class="math inline">\(x=2a/(1+b)\)</span>.</p>
+<p>In the positive quadrant, the <span class="math inline">\(x\)</span> nullcline has a single root at <span class="math inline">\(a/(1+b)\)</span>, tends to 0 as <span class="math inline">\(x\rightarrow \infty\)</span> and has a maximum at <span class="math inline">\(x=2a/(1+b)\)</span>.</p>
 <div id="cell-fig-bruss-numsol-phplane" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
@@ -958,7 +963,7 @@ Figure&nbsp;6.4: Numerical solution of the Brusselator.
 </div>
 </div>
 </div>
-<p>Hence at all points on the closed loop ABCDEA trajectories point inwards (see <a href="#fig-bruss-numsol-phplane-confinedset" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>). Hence ABDCEA is a confined set and the Poincaire-Bendixson theorem states that the system exhibits limit cycle solutions when the steady state is unstable. This is precisely the behaviour that we see numerically in Figure <a href="#fig-bruss-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p>
+<p>Hence at all points on the closed loop ABCDEA trajectories point inwards (see <a href="#fig-bruss-numsol-phplane-confinedset" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>). Hence ABDCEA is a confined set and the Poincaire-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure <a href="#fig-bruss-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p>
 </section>
 </section>
 </section>
@@ -966,15 +971,299 @@ Figure&nbsp;6.4: Numerical solution of the Brusselator.
 <h2 data-number="6.6" class="anchored" data-anchor-id="relaxation-oscillators"><span class="header-section-number">6.6</span> Relaxation oscillators</h2>
 <p>Consider the van Der Pol equation <span class="math display">\[
 \ddot{x}+\mu(x^2-1)\dot{x}+x=0
-\]</span> in the limiting case <span class="math inline">\(\mu\gg1\)</span>. Here the nonlinear term is large.</p>
+\]</span> in the limiting case <span class="math inline">\(\mu\gg1\)</span>. Here the nonlinear term is large and the system possesses <em>relaxation oscillations</em> characterised by fast transitions that toggle between distinct states.</p>
+<p>To study the limit <span class="math inline">\(\mu\gg1\)</span> we make a <em>Lienard</em> transformation by defining a new variable <span class="math display">\[
+w=\dot{x}+\mu(\frac{1}{3}x^2-x).
+\]</span> Then the second order ODE can be written as the system <span class="math display">\[
+\dot{w}=-x
+\dot{x}=w-\mu F(x)
+\]</span> where <span class="math display">\[
+F(x)=x(\frac{1}{3}x^2-1).
+\]</span></p>
+<p>If we rescale variable such that <span class="math display">\[
+w=\mu y \quad \tau=\frac{t}{\mu}
+\]</span> the system can be written as <span class="math display">\[
+\dot{y}=-x
+\epsilon \dot{x}=y- F(x)
+\]</span> where <span class="math display">\[
+\epsilon = \frac{1}{\mu^2} \ll 1.
+\]</span></p>
+<p>Fixed points satisfy <span class="math display">\[
+x^*=0 \quad y^*=F(x^*).
+\]</span> Hence <span class="math inline">\((0,0)\)</span> is a unique fixed point. To perform linear stability, The Jacobian matrix is <span class="math display">\[
+A=\begin{pmatrix}
+-\frac{1}{\epsilon}F'(x) &amp; \frac{1}{\epsilon} \\
+-1 &amp; 0
+\end{pmatrix}.
+\]</span> Evaluating at the fixed point <span class="math display">\[
+A_{(0,0)}=\begin{pmatrix}
+-\frac{1}{\epsilon}F'(0) &amp; \frac{1}{\epsilon} \\
+-1 &amp; 0
+\end{pmatrix} =\begin{pmatrix}
+\frac{1}{\epsilon} &amp; \frac{1}{\epsilon} \\
+-1 &amp; 0
+\end{pmatrix}.
+\]</span> As the trace and determinant is positive, the fixed point is linearly unstable.</p>
+<p>The <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> nullclines are given by <span class="math display">\[
+y=F(x) \quad \textrm{and} x=0,
+\]</span> respectively. Above the cubic <span class="math inline">\(\dot{x}&gt;0\)</span> and in the right half-plane <span class="math inline">\(\dot{y}&lt;0\)</span>.</p>
+<p>It can be show that the system posesses a confined set. Hence by application of Poincaire Bendixson theorem it must have a limit cycle solution.</p>
+<p>To describe the limit cycle we perform a fast/slow timescale analysis. On the slow time scale the trajectory is approximaqtely on the cubic nullcline, i.e. <span class="math display">\[
+y\sim F(x).
+\]</span> The system dynamics are described by <span class="math display">\[
+\dot{y}=-x.
+\]</span> Hence <span class="math display">\[
+\dot{x}(x^2-1)=-x.
+\]</span></p>
+<div id="cell-fig-vdpexc-numsol" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> odeint</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model parameters</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> F(x):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  F<span class="op">=</span>x<span class="op">*</span>(x<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="fl">3.0</span><span class="op">-</span><span class="fl">1.0</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> F</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Define rhs of ODEs</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tran_vdp_model(z,t,eps):</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  x<span class="op">=</span>z[<span class="dv">0</span>]</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  y<span class="op">=</span>z[<span class="dv">1</span>]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  rhs<span class="op">=</span>np.zeros_like(z)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  xdot<span class="op">=</span><span class="dv">1</span><span class="op">/</span>eps<span class="op">*</span>(y<span class="op">-</span>F(x))</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  ydot<span class="op">=-</span>x</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  rhs[<span class="dv">0</span>]<span class="op">=</span>xdot</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  rhs[<span class="dv">1</span>]<span class="op">=</span>ydot</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> rhs</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Define discretised time domain</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">1000</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Define IC</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>init_cond<span class="op">=</span>[<span class="fl">0.5</span>,<span class="fl">0.5</span>]</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>eps<span class="op">=</span><span class="fl">0.05</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Numerically integrate ODes</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>sol1 <span class="op">=</span> odeint(tran_vdp_model, init_cond,t,args<span class="op">=</span>(eps,))</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co"># PLot results</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>sol1[:,<span class="dv">0</span>]</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>sol1[:,<span class="dv">1</span>]</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>x_vec<span class="op">=</span>np.linspace(<span class="op">-</span><span class="fl">2.5</span>,<span class="fl">2.5</span>)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>fig, ax<span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(t, x, <span class="st">'b'</span>,t,y,<span class="st">'r'</span>)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend([<span class="st">'$x$'</span>,<span class="st">'$y$'</span>],loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlim([<span class="dv">0</span>,<span class="dv">10</span>])</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(x, y, <span class="st">'b'</span>)</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(x_vec,F(x_vec),<span class="st">'r'</span>,[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>],<span class="st">'k'</span>)</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co">#ax[1].legend(['$x$','$\dot{x}$'],loc='best')</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$y$'</span>)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>textstr<span class="op">=</span>[<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">&gt;0$'</span>,<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{x}</span><span class="st">&lt;0$'</span>,<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{y}</span><span class="st">&gt;0$'</span>,<span class="st">'$</span><span class="er">\</span><span class="st">dot</span><span class="sc">{y}</span><span class="st">&lt;0$'</span>]</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>x_cord<span class="op">=</span>[<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="op">-</span><span class="fl">1.0</span>,<span class="fl">1.0</span>]</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>y_cord<span class="op">=</span>[<span class="fl">2.0</span>,<span class="op">-</span><span class="fl">2.0</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>]</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(textstr)):</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  ax[<span class="dv">1</span>].text(</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    x_cord[i],y_cord[i], textstr[i],</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    fontsize<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>    verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">"round"</span>, facecolor<span class="op">=</span><span class="st">"white"</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-vdpexc-numsol" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vdpexc-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="LimitCycles_files/figure-html/fig-vdpexc-numsol-output-1.png" width="582" height="429" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vdpexc-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.5: Numerical solutions of transformed VdP model. Here <span class="math inline">\(\epsilon=0.05\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>On the fast timescale the trajectory does not sit on the cubic nullcline, i.e.&nbsp; <span class="math display">\[
+y\neq F(x).
+\]</span> In this case <span class="math display">\[
+\dot{x}=\frac{1}{\epsilon}(y-(F(x)))\gg 1.
+\]</span> Hence <span class="math inline">\(x\)</span> rapidly changes and <span class="math inline">\(y\)</span> is approximately constant.</p>
+<p>The limit cycle can then be describe by a closed loop ABCDA.</p>
+<p>AB is a fast segment of the trajectory. Here <span class="math inline">\(\dot{x}&lt;0\)</span>. <span class="math inline">\(x\)</span> rapidly decreases until it collides with the left-most branch of the cubic nullcline whilst <span class="math inline">\(y\)</span> is approximately constant.</p>
+<p>On BC the traejctory is on the left branch of the cubic nullcline. As <span class="math inline">\(\dot{y}&gt;0\)</span>, <span class="math inline">\(y\)</span> increases on a.] slow timescale until the trajectory reaches the local maximum of the cubic nullcline (C).</p>
+<p>CD is again a fast part of the trajectory. Now <span class="math inline">\(\dot{x}&gt;0\)</span>. <span class="math inline">\(x\)</span> rapidly increases until the trajectory reaches the right-most branch of the cubic nullcline with <span class="math inline">\(y\)</span> approximately constant.</p>
+<p>DA is again a slow segment of the trajectory. As <span class="math inline">\(\dot{y}&lt;0\)</span>, the solutions decreases in <span class="math inline">\(y\)</span> until it reaches the local minimum of the cubic nullcline (A).</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 6.6</strong></span> Show that the period of the van der Pol oscillator is <span class="math display">\[
 \mu(3-2\ln 2).
 \]</span></p>
 </div>
+<div id="Solution*-1" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The period of the limit cycle is dominated by the time spent on the slow segments BC and DA. The time spent on BC can be estimated by integrating <span class="math display">\[
+\dot{x}(x^2-1)=-x
+\]</span> from <span class="math inline">\(x=-2\)</span> up to <span class="math inline">\(x=-1\)</span>.<p></p>
+<p>Using separation of variables <span class="math display">\[
+(\frac{1}{2}x^2-\ln(|x|))_{x=-2}^{x=-1}=-T_{BC}.
+\]</span> Hence <span class="math display">\[
+T_{BC}= \frac{3}{2}-\ln 2.
+\]</span></p>
+<p>Similar arguments can be used to show that the time spent on the segment DA is equal to that spent on BC. Hence the period of the limit cycle is approximately <span class="math display">\[
+T~sim T_{BC}+T_{DA}\sim 3-2\ln 2.
+\]</span></p>
+</div></details>
+</div>
 </section>
 <section id="excitable-systems" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="excitable-systems"><span class="header-section-number">6.7</span> Excitable systems</h2>
+<p>Excitable system can be thought of as being perturbed limit cycles. Consider a variant of the Van Der Pol oscillator given by <span class="math display">\[
+\dot{y}=-x+a
+\epsilon \dot{x}=y- F(x)
+\]</span> where <span class="math inline">\(a&gt;1\)</span>, i.e.&nbsp;we have added a positive constant to the right-hand side of the <span class="math inline">\(y\)</span> equation.</p>
+<p>Using a similar approach to above, there is a fixed point at <span class="math inline">\((a,F(a))\)</span>. The Jacobian is again <span class="math display">\[
+A_{(a,F(a))}=\begin{pmatrix}
+-\frac{1}{\epsilon}F'(a) &amp; \frac{1}{\epsilon} \\
+-1 &amp; 0
+\end{pmatrix}
+\]</span> However, for <span class="math inline">\(a&gt;1\)</span>, <span class="math inline">\(F'(a)&lt;0\)</span> and this fixed point is linearly stable.</p>
+<p>The <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> nullclines are given by <span class="math display">\[
+x=a \quad and \quad  y=F(x),
+\]</span> respectively.</p>
+<p>To consider an excitable trajectory we again consider a fast-slow timescale analysis. This is valid for <span class="math inline">\(\epsilon \ll 1\)</span>.</p>
+<p>Consider a trajectory initialised at <span class="math inline">\(A(0,F(a))\)</span>. Using the nullclines, <span class="math inline">\(\dot{x}&lt;0\)</span>. As the phase point is not on cubic nullcline, <span class="math inline">\(\dot{x}&lt;0\)</span>. Hence <span class="math inline">\(x\)</span> rapidly decreases until the trajectory collides with the <span class="math inline">\(x\)</span> nullcline. On this segment of the trajectory <span class="math inline">\(y=F(a)\)</span>.</p>
+<p>When the trajectory is on the cubic nullcline, i.e.&nbsp;<span class="math inline">\(y=F(x)\)</span>, the system evolves on a slow time scale. However, <span class="math inline">\(\dot{y}&gt;0\)</span> and <span class="math inline">\(y\)</span> increases until the trajecotyr reaches the local maximum of the cubic nullcline. her ethe trajectory switched to the fast timescale as <span class="math inline">\(\dot{x}\gg 1\)</span>, with <span class="math inline">\(x\)</span> increasing until the trajectory intersects the right-most branch of the cubic nullcline. The system follows the slow dynamics until it reaches the linearly stable fixed point.</p>
+<p>This fixed point is stable to small perturbations. However, a large enough perturbation results in an <em>excitable</em> trajectory. the stimulus needed to. excite the system is known as the <em>threshold</em> stimulus. The time needed can be estimated using a similar technique use dto estimate the oscillator period in the case of the relaxation oscillator.</p>
+<p>In the 1950s British Scientists Hodgkin and Huxley published Nobel prize winning work in which they discovered the fundamental principles that describe how electrical signals propagate in neurons. As part of their study they formulated a system of ODEs that could explain their experimental observations, a system that can be approximated by the above model. When a neuron is in a resting state (i.e.&nbsp;at a stable fixed point) it is stable to small perturbations. However, upon receiving a stimulus of large enough magnitude the neuron fires (becomes excited) and undergoes a large excursion in its electrical activity (i.e.&nbsp;an excitable trajectory).</p>
+<p>With the app below you can explore numerical solutions of the excitablecycle system.</p>
+<p>The app computes solutions to <span class="math display">\[
+\begin{aligned}
+\epsilon \dot{x} &amp;= y-F(x),  \quad x(0)=x_0, \\
+\dot{y}&amp;=-x+a, \quad y(0)=y_0.
+\end{aligned}
+\]</span></p>
+<p>Exercises:</p>
+<ul>
+<li>Show that the van der Pol oscillator is retrieved in the case <span class="math inline">\(a=0\)</span>.</li>
+<li>Show that <span class="math inline">\(1&lt;a&lt;1.3\)</span> the system is excitable. Use the initial condition to explore the threshold required for an excitable trajectory.</li>
+<li>Increase the value of the <em>small</em> parameter <span class="math inline">\(\epsilon\)</span>. Can you see how the accuracy of the fast-slow time scale analysis decreases as <span class="math inline">\(\epsilon\)</span> increases?</li>
+</ul>
+<pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-saddlenode
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="eps",label="epsilon ",min=0.0001,max=1.0,value=0.005,step=0.0001),
+    ui.input_slider(id="a",label="a",min=-2.0,max=2.0,value=1.2,step=0.01),
+    ui.input_slider(id="T",label="T",min=10.0,max=100.0,value=20.1,step=0.1),
+    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=-1.1,step=0.1),
+    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=-2.1,step=0.1),
+    ui.output_plot("plot"),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(3,1,figsize=(12, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        eps=float(input.eps())
+        a=float(input.a())
+        T=int(input.T())
+        x_0=float(input.x_0())
+        y_0=int(input.y_0())
+
+        def F(x):
+          F=x*(x**2/3.0-1.0)
+          return F
+        # Define rhs of ODEs
+
+        def tran_vdp_model(z,t,eps,a):
+          x=z[0]
+          y=z[1]
+          rhs=np.zeros_like(z)
+          
+          xdot=1/eps*(y-F(x))
+          ydot=-x+a
+          
+          rhs[0]=xdot
+          rhs[1]=ydot
+          return rhs
+
+        # Define discretised time domain
+        t = np.linspace(0, T, 1000)
+        # Define IC
+        init_cond=[x_0,y_0]
+
+        # Numerically integrate ODes
+        sol1 = odeint(tran_vdp_model, init_cond,t,args=(eps,a))
+
+        # PLot results
+        x=sol1[:,0]
+        y=sol1[:,1]
+
+        x_vec=np.linspace(-3.5,3.5)
+        fig, ax=plt.subplots(1,2)
+        ax[0].plot(t, x, 'b',t,y,'r')
+        ax[0].legend(['$x$','$y$'],loc='best')
+        ax[0].set_xlabel('$t$')
+        ax[0].set_xlim([0,T])
+
+        ax[1].plot(x, y, 'b',x[0],y[0],'m*')
+        ax[1].plot(x_vec,F(x_vec),'r',[a,a],[-5,5],'k')
+        #ax[1].legend(['$x$','$\dot{x}$'],loc='best')
+        ax[1].set_xlabel('$x$')
+        ax[1].set_ylabel('$y$')
+        ax[1].set_xlim([-3,3])
+        ax[1].set_ylim([-3.5,3.5])
+
+
+        textstr=['$\dot{x}&gt;0$','$\dot{x}&lt;0$','$\dot{y}&gt;0$','$\dot{y}&lt;0$']
+
+        x_cord=[0.0,0.0,a-1.0,a+1.0]
+        y_cord=[2.0,-2.0,0.0,0.0]
+
+        for i in range(len(textstr)):
+          ax[1].text(
+            x_cord[i],y_cord[i], textstr[i],
+            fontsize=10,
+            verticalalignment='top',
+            bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+          )
+
+        fig.tight_layout()
+        plt.grid()
+        plt.show()
+        
+app = App(app_ui, server)</code></pre>
+<p>An app to explore numerical solutions of limit cycle/excitable solutions.</p>
 </section>
 <section id="references" class="level2" data-number="6.8">
 <h2 data-number="6.8" class="anchored" data-anchor-id="references"><span class="header-section-number">6.8</span> References</h2>
