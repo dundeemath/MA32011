@@ -115,15 +115,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #c0c0c0;
   --color2: #808080;
 }
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
 .Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -131,23 +135,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #d999d3;
   --color2: #a01793;
 }
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
 .Proof {
   --color1: #c0c0c0;
   --color2: #808080;
 }
 .Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -323,15 +323,15 @@ window.Quarto = {
   <li><a href="#ruling-out-closed-orbits" id="toc-ruling-out-closed-orbits" class="nav-link" data-scroll-target="#ruling-out-closed-orbits"><span class="header-section-number">6.3</span> Ruling out closed orbits</a>
   <ul class="collapse">
   <li><a href="#gradient-systems" id="toc-gradient-systems" class="nav-link" data-scroll-target="#gradient-systems"><span class="header-section-number">6.3.1</span> Gradient systems</a></li>
-  <li><a href="#liapunov-functions" id="toc-liapunov-functions" class="nav-link" data-scroll-target="#liapunov-functions"><span class="header-section-number">6.3.2</span> Liapunov functions</a></li>
+  <li><a href="#lyapunov-functions" id="toc-lyapunov-functions" class="nav-link" data-scroll-target="#lyapunov-functions"><span class="header-section-number">6.3.2</span> Lyapunov functions</a></li>
   <li><a href="#dulacs-criterion" id="toc-dulacs-criterion" class="nav-link" data-scroll-target="#dulacs-criterion"><span class="header-section-number">6.3.3</span> Dulac’s criterion</a></li>
   </ul></li>
-  <li><a href="#poincare-bendixson-theorem" id="toc-poincare-bendixson-theorem" class="nav-link" data-scroll-target="#poincare-bendixson-theorem"><span class="header-section-number">6.4</span> Poincare-Bendixson theorem</a></li>
+  <li><a href="#poincaré-bendixson-theorem" id="toc-poincaré-bendixson-theorem" class="nav-link" data-scroll-target="#poincaré-bendixson-theorem"><span class="header-section-number">6.4</span> Poincaré-Bendixson theorem</a></li>
   <li><a href="#the-brusselator" id="toc-the-brusselator" class="nav-link" data-scroll-target="#the-brusselator"><span class="header-section-number">6.5</span> The Brusselator</a>
   <ul class="collapse">
   <li><a href="#fixed-point-analysis" id="toc-fixed-point-analysis" class="nav-link" data-scroll-target="#fixed-point-analysis"><span class="header-section-number">6.5.1</span> Fixed point analysis</a></li>
   <li><a href="#linear-stability-analysis" id="toc-linear-stability-analysis" class="nav-link" data-scroll-target="#linear-stability-analysis"><span class="header-section-number">6.5.2</span> Linear stability analysis</a></li>
-  <li><a href="#applying-the-poincaire-bendixson-theorem" id="toc-applying-the-poincaire-bendixson-theorem" class="nav-link" data-scroll-target="#applying-the-poincaire-bendixson-theorem"><span class="header-section-number">6.5.3</span> Applying the Poincaire-Bendixson theorem</a></li>
+  <li><a href="#applying-the-poincaré-bendixson-theorem" id="toc-applying-the-poincaré-bendixson-theorem" class="nav-link" data-scroll-target="#applying-the-poincaré-bendixson-theorem"><span class="header-section-number">6.5.3</span> Applying the Poincaré-Bendixson theorem</a></li>
   </ul></li>
   <li><a href="#relaxation-oscillators" id="toc-relaxation-oscillators" class="nav-link" data-scroll-target="#relaxation-oscillators"><span class="header-section-number">6.6</span> Relaxation oscillators</a></li>
   <li><a href="#excitable-systems" id="toc-excitable-systems" class="nav-link" data-scroll-target="#excitable-systems"><span class="header-section-number">6.7</span> Excitable systems</a></li>
@@ -367,12 +367,12 @@ window.Quarto = {
 \]</span></p>
 <p>A closed orbit is a period <span class="math inline">\(T\)</span> solution such that <span class="math display">\[
 \begin{aligned}
-x(t+T)=x(t) \ \forall t.
-x(t+s)\neq x(t) \ 0&lt;s&lt;T.
+x(t+T)=x(t) \quad \forall t.
+x(t+s)\neq x(t) \quad 0&lt;s&lt;T.
 \end{aligned}
 \]</span></p>
 <p>A limit cycle is an isolated closed orbit of a dynamical system.</p>
-<p>Limit cycles are important solutions of dynamical systems throughout biological and physical systems (e.g.&nbsp;harmonic oscillator, circadian rhythms).</p>
+<p>Limit cycles are important solutions of dynamical systems arising throughout biological and physical systems (e.g.&nbsp;harmonic oscillator, circadian rhythms).</p>
 </section>
 <section id="examples" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="examples"><span class="header-section-number">6.2</span> Examples</h2>
@@ -394,7 +394,7 @@ x(t+s)\neq x(t) \ 0&lt;s&lt;T.
 <p>Consider the Van der Pol equation <span class="math display">\[
 \ddot{x}+\mu(x^2-1)\dot{x}+x=0
 \]</span> where <span class="math inline">\(\mu\geq 0\)</span>.</p>
-<p>The nonlinear term acts as a positive damping term for <span class="math inline">\(|x|&gt;1\)</span> and negative damping term for <span class="math inline">\(|x|&lt;1\)</span>. See <a href="#fig-compete-numsol" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> for numerical solutions that show limit cycle solutions in two limiting cases: <span class="math inline">\(\mu\ll 1\)</span> and <span class="math inline">\(\mu\gg 1\)</span>.</p>
+<p>The nonlinear term acts as a positive damping term for <span class="math inline">\(|x|&gt;1\)</span> and negative damping term for <span class="math inline">\(|x|&lt;1\)</span>. See <a href="#fig-compete-numsol" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> for numerical solutions that show limit cycle solutions in two limiting cases: <span class="math inline">\(\mu \ll 1\)</span> and <span class="math inline">\(\mu\gg 1\)</span>.</p>
 <div id="cell-fig-compete-numsol" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
@@ -456,7 +456,7 @@ Figure&nbsp;6.1: Numerical solutions of van der Pol oscillator
 </div>
 </div>
 </div>
-<p>Some questions these numerical solutions pose: - can we prove limit cycles exist or do not exist for a given dynamical system. - what type of bifurcations do limit cycle solutions occur at?</p>
+<p>Some questions these numerical solutions pose: - Can we prove that limit cycles exist or do not exist for a given dynamical system? - what type of bifurcations do limit cycle solutions occur?</p>
 </section>
 </section>
 <section id="ruling-out-closed-orbits" class="level2" data-number="6.3">
@@ -468,10 +468,10 @@ Figure&nbsp;6.1: Numerical solutions of van der Pol oscillator
 \dot{\mathbf{x}}=-\nabla V
 \]</span> for some continuously differentiable, single valued scalar function, <span class="math inline">\(V\)</span>.</p>
 <div id="Theorem-1" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 1</strong></summary><div>Closed orbits are impossible in gradient systems.<p></p>
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 1</strong></summary><div>Closed orbits cannot exist in gradient systems.<p></p>
 </div></details>
 </div>
-<div id="exm-" class="theorem example">
+<div id="exm-gradient" class="theorem example">
 <p><span class="theorem-title"><strong>Example 6.1</strong></span> Show that the system <span class="math display">\[
 \begin{aligned}
 \dot{x} &amp; =\sin y\\
@@ -489,10 +489,10 @@ Figure&nbsp;6.1: Numerical solutions of van der Pol oscillator
 <p>Hint: consider the energy function <span class="math display">\[
 E=\frac{1}{2}(x^2+\dot{x}^2).
 \]</span> Suppose a limit cycle exists with period <span class="math inline">\(T&gt;0\)</span>. Compute <span class="math display">\[
-\Delta E = \int_0^T \dot{E}
+\Delta E = \int_0^T \dot{E}dt
 \]</span> and show that there is a contradiction.</p>
 </div>
-<div id="cef8d244" class="cell" data-execution_count="2">
+<div id="4e03366d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -524,11 +524,11 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 </div>
 </div>
 </section>
-<section id="liapunov-functions" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="liapunov-functions"><span class="header-section-number">6.3.2</span> Liapunov functions</h3>
-<p>Even for systems that are not mechanical, we can try to construct an energy-like <em>Liapunov</em> function that decreases along trajectories. If a Liapunov function exists, closed orbits are impossible.</p>
+<section id="lyapunov-functions" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="lyapunov-functions"><span class="header-section-number">6.3.2</span> Lyapunov functions</h3>
+<p>Even for systems that are not mechanical, we can try to construct an energy-like <em>Lyapunov</em> function that decreases along trajectories. If a Lyapunov function exists, closed orbits are impossible.</p>
 <div id="Theorem-2" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 2</strong></summary><div>Consider a system <span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span>. Suppose that we can find a Liapunov function, i.e.&nbsp;a continuously differentiable real valued function that satisfies:<p></p>
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 2</strong></summary><div>Consider a system <span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span>. Suppose that we can find a Lyapunov function, i.e.&nbsp;a continuously differentiable real valued function that satisfies:<p></p>
 <ul>
 <li><span class="math inline">\(V(x)&gt;0 \forall \  x \ \neq \  x^*\)</span></li>
 <li><span class="math inline">\(\dot{V}&lt;0  \ \forall \ x \ \neq \ x^*\)</span></li>
@@ -537,14 +537,14 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 </div></details>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.3</strong></span> By constructing a Liapunov function, show that the system <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 6.3</strong></span> By constructing a Lyapunov function, show that the system <span class="math display">\[
 \begin{aligned}
 \dot{x} &amp; =-x+4y\\
 \dot{y} &amp;= -x-y^3.
 \end{aligned}
 \]</span> has no closed orbits.</p>
 </div>
-<div id="e9ac7af7" class="cell" data-execution_count="3">
+<div id="d9b0609c" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -575,14 +575,14 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 </div>
 </div>
 </div>
-<p>Note: there is not a systematic technique to find Liapunov functions and most systems cannot be written in gradient form.</p>
+<p>Note: there is not a systematic technique to find Lyapunov functions and most systems cannot be written in gradient form.</p>
 </section>
 <section id="dulacs-criterion" class="level3" data-number="6.3.3">
 <h3 data-number="6.3.3" class="anchored" data-anchor-id="dulacs-criterion"><span class="header-section-number">6.3.3</span> Dulac’s criterion</h3>
 <p>A third method relies on Green’s theorem in the plane.</p>
 <div id="Theorem-3" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 3</strong></summary><div>Dulac’s criterion<p></p>
-<p>Consider a 2D system <span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span>. Let <span class="math inline">\(\mathbf{f}\)</span> be a continuously differentiable vector field on a simply connected subset <span class="math inline">\(D\)</span> of the plane. If there exists a continuously differentiable real-valued function <span class="math inline">\(g\)</span> such that <span class="math inline">\(\nabla. (g\dot{\mathbf{x}})\)</span> has one sign throughout <span class="math inline">\(D\)</span>, there are no closed orbits in <span class="math inline">\(D\)</span>.</p>
+<p>Consider a 2D system <span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span>. Let <span class="math inline">\(\mathbf{f}\)</span> be a continuously differentiable vector field on a simply connected subset <span class="math inline">\(D\)</span> of the plane. If there exists a continuously differentiable real-valued function <span class="math inline">\(g\)</span> such that <span class="math inline">\(\nabla \cdot (g\dot{\mathbf{x}})\)</span> has one sign throughout <span class="math inline">\(D\)</span>, there are no closed orbits in <span class="math inline">\(D\)</span>.</p>
 </div></details>
 </div>
 <div id="exm-" class="theorem example">
@@ -595,14 +595,14 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 </div>
 </section>
 </section>
-<section id="poincare-bendixson-theorem" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="poincare-bendixson-theorem"><span class="header-section-number">6.4</span> Poincare-Bendixson theorem</h2>
+<section id="poincaré-bendixson-theorem" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="poincaré-bendixson-theorem"><span class="header-section-number">6.4</span> Poincaré-Bendixson theorem</h2>
 <p>For particular 2D systems it is also possible to prove the existence of closed orbits. Suppose we can construct a confined set that contains an unstable isolated fixed point. The long time solution must be a periodic orbit.</p>
 <div id="Theorem-4" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 4</strong></summary><div>Suppose that<p></p>
 <ol type="1">
 <li><span class="math inline">\(D\)</span> is a closed subset of the plane.</li>
-<li><span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf(x))\)</span> is a continuously differentiable vector field on an open subset containing <span class="math inline">\(D\)</span>.</li>
+<li><span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span> is a continuously differentiable vector field on an open subset containing <span class="math inline">\(D\)</span>.</li>
 <li>The fixed point in <span class="math inline">\(D\)</span> is unstable.</li>
 <li>There exists a trajectory <span class="math inline">\(C\)</span> that is confined in <span class="math inline">\(D\)</span>.</li>
 </ol>
@@ -618,7 +618,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \]</span> where <span class="math inline">\(\mu \in \Re\)</span>. Show that there is a closed orbit for <span class="math inline">\(\mu\)</span> sufficiently small.</p>
 </div>
 <div id="Corollary-5" class="Corollary">
-<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary 5</strong></summary><div>Chaotic solutions cannot exist in systems of two ODEs.<p></p>
+<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary 5</strong></summary><div>Chaotic solutions cannot exist in autonomous systems of two ODEs.<p></p>
 </div></details>
 </div>
 </section>
@@ -694,7 +694,7 @@ b-1&amp;a^2\\ -b &amp;-a^2\end{array}\right).
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Integrate ODEs</span></span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>sol1 <span class="op">=</span> odeint(rhs_bruss_model, init_cond,t)</span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotmresults</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>sol1[:,<span class="dv">0</span>]</span>
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>sol1[:,<span class="dv">1</span>]</span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
@@ -719,9 +719,9 @@ Figure&nbsp;6.2: Numerical solutions of the Brusselator model
 </div>
 </div>
 </section>
-<section id="applying-the-poincaire-bendixson-theorem" class="level3" data-number="6.5.3">
-<h3 data-number="6.5.3" class="anchored" data-anchor-id="applying-the-poincaire-bendixson-theorem"><span class="header-section-number">6.5.3</span> Applying the Poincaire-Bendixson theorem</h3>
-<p>Recall that the Poincaire-Bendixson theorem can be used to prove the existence of limit cycle solutions in a case where a bounding set encloses a single unstable fixed point. Hence given the case of the Brusselator with <span class="math inline">\(b&gt;a^2+1\)</span>, the identification of a bounding set will allow application of the Poincaire-Bendixson theorem and hence prove the existence of limit cycle solutions.</p>
+<section id="applying-the-poincaré-bendixson-theorem" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="applying-the-poincaré-bendixson-theorem"><span class="header-section-number">6.5.3</span> Applying the Poincaré-Bendixson theorem</h3>
+<p>Recall that the Poincaré-Bendixson theorem can be used to prove the existence of limit cycle solutions in a case where a bounding set encloses a single unstable fixed point. Hence given the case of the Brusselator with <span class="math inline">\(b&gt;a^2+1\)</span>, the identification of a bounding set will allow application of the Poincaré-Bendixson theorem and hence prove the existence of limit cycle solutions.</p>
 <p>We begin by defining the nullclines of the system. The <span class="math inline">\(x\)</span> nullcline is given by</p>
 <p><span class="math display">\[
 y=\frac{1+b}{x}-\frac{a}{x^2}.
@@ -743,7 +743,7 @@ y=\frac{b}{x} \ \ \ \textrm{and} \ \ \ x=0.
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Discretise x for plotting nullclines</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>x_vec<span class="op">=</span>np.linspace(<span class="fl">0.01</span>,<span class="dv">6</span>,<span class="dv">100</span>)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># COmpute quantities needed for pahse plane</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute quantities needed for phase plane</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ComputeBrusselatorSol(a,b,x_vec):</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
@@ -963,7 +963,7 @@ Figure&nbsp;6.4: Numerical solution of the Brusselator.
 </div>
 </div>
 </div>
-<p>Hence at all points on the closed loop ABCDEA trajectories point inwards (see <a href="#fig-bruss-numsol-phplane-confinedset" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>). Hence ABDCEA is a confined set and the Poincaire-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure <a href="#fig-bruss-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p>
+<p>Hence at all points on the closed loop ABCDEA trajectories point inwards (see <a href="#fig-bruss-numsol-phplane-confinedset" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>). Hence ABDCEA is a confined set and the Poincaré-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure <a href="#fig-bruss-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p>
 </section>
 </section>
 </section>
@@ -1007,8 +1007,8 @@ A_{(0,0)}=\begin{pmatrix}
 <p>The <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> nullclines are given by <span class="math display">\[
 y=F(x) \quad \textrm{and} x=0,
 \]</span> respectively. Above the cubic <span class="math inline">\(\dot{x}&gt;0\)</span> and in the right half-plane <span class="math inline">\(\dot{y}&lt;0\)</span>.</p>
-<p>It can be show that the system posesses a confined set. Hence by application of Poincaire Bendixson theorem it must have a limit cycle solution.</p>
-<p>To describe the limit cycle we perform a fast/slow timescale analysis. On the slow time scale the trajectory is approximaqtely on the cubic nullcline, i.e. <span class="math display">\[
+<p>It can be shown that the system posesses a confined set. Hence by application of Poincaré Bendixson theorem it must have a limit cycle solution.</p>
+<p>To describe the limit cycle we perform a fast/slow timescale analysis. On the slow time scale the trajectory is approximately on the cubic nullcline, i.e. <span class="math display">\[
 y\sim F(x).
 \]</span> The system dynamics are described by <span class="math display">\[
 \dot{y}=-x.
@@ -1103,9 +1103,9 @@ y\neq F(x).
 \]</span> In this case <span class="math display">\[
 \dot{x}=\frac{1}{\epsilon}(y-(F(x)))\gg 1.
 \]</span> Hence <span class="math inline">\(x\)</span> rapidly changes and <span class="math inline">\(y\)</span> is approximately constant.</p>
-<p>The limit cycle can then be describe by a closed loop ABCDA.</p>
+<p>The limit cycle can then be represented by the closed loop ABCDA.</p>
 <p>AB is a fast segment of the trajectory. Here <span class="math inline">\(\dot{x}&lt;0\)</span>. <span class="math inline">\(x\)</span> rapidly decreases until it collides with the left-most branch of the cubic nullcline whilst <span class="math inline">\(y\)</span> is approximately constant.</p>
-<p>On BC the traejctory is on the left branch of the cubic nullcline. As <span class="math inline">\(\dot{y}&gt;0\)</span>, <span class="math inline">\(y\)</span> increases on a.] slow timescale until the trajectory reaches the local maximum of the cubic nullcline (C).</p>
+<p>On BC the trajectory is on the left branch of the cubic nullcline. As <span class="math inline">\(\dot{y}&gt;0\)</span>, <span class="math inline">\(y\)</span> increases on a slow timescale until the trajectory reaches the local maximum of the cubic nullcline (C).</p>
 <p>CD is again a fast part of the trajectory. Now <span class="math inline">\(\dot{x}&gt;0\)</span>. <span class="math inline">\(x\)</span> rapidly increases until the trajectory reaches the right-most branch of the cubic nullcline with <span class="math inline">\(y\)</span> approximately constant.</p>
 <p>DA is again a slow segment of the trajectory. As <span class="math inline">\(\dot{y}&lt;0\)</span>, the solutions decreases in <span class="math inline">\(y\)</span> until it reaches the local minimum of the cubic nullcline (A).</p>
 <div id="exm-" class="theorem example">
@@ -1123,14 +1123,14 @@ y\neq F(x).
 T_{BC}= \frac{3}{2}-\ln 2.
 \]</span></p>
 <p>Similar arguments can be used to show that the time spent on the segment DA is equal to that spent on BC. Hence the period of the limit cycle is approximately <span class="math display">\[
-T~sim T_{BC}+T_{DA}\sim 3-2\ln 2.
+T\sim T_{BC}+T_{DA}\sim 3-2\ln 2.
 \]</span></p>
 </div></details>
 </div>
 </section>
 <section id="excitable-systems" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="excitable-systems"><span class="header-section-number">6.7</span> Excitable systems</h2>
-<p>Excitable system can be thought of as being perturbed limit cycles. Consider a variant of the Van Der Pol oscillator given by <span class="math display">\[
+<p>Excitable systems can be thought of as being perturbed limit cycles. Consider a variant of the Van Der Pol oscillator given by <span class="math display">\[
 \dot{y}=-x+a
 \epsilon \dot{x}=y- F(x)
 \]</span> where <span class="math inline">\(a&gt;1\)</span>, i.e.&nbsp;we have added a positive constant to the right-hand side of the <span class="math inline">\(y\)</span> equation.</p>
@@ -1141,12 +1141,12 @@ A_{(a,F(a))}=\begin{pmatrix}
 \end{pmatrix}
 \]</span> However, for <span class="math inline">\(a&gt;1\)</span>, <span class="math inline">\(F'(a)&lt;0\)</span> and this fixed point is linearly stable.</p>
 <p>The <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> nullclines are given by <span class="math display">\[
-x=a \quad and \quad  y=F(x),
+x=a \quad \textrm{and} \quad  y=F(x),
 \]</span> respectively.</p>
 <p>To consider an excitable trajectory we again consider a fast-slow timescale analysis. This is valid for <span class="math inline">\(\epsilon \ll 1\)</span>.</p>
 <p>Consider a trajectory initialised at <span class="math inline">\(A(0,F(a))\)</span>. Using the nullclines, <span class="math inline">\(\dot{x}&lt;0\)</span>. As the phase point is not on cubic nullcline, <span class="math inline">\(\dot{x}&lt;0\)</span>. Hence <span class="math inline">\(x\)</span> rapidly decreases until the trajectory collides with the <span class="math inline">\(x\)</span> nullcline. On this segment of the trajectory <span class="math inline">\(y=F(a)\)</span>.</p>
-<p>When the trajectory is on the cubic nullcline, i.e.&nbsp;<span class="math inline">\(y=F(x)\)</span>, the system evolves on a slow time scale. However, <span class="math inline">\(\dot{y}&gt;0\)</span> and <span class="math inline">\(y\)</span> increases until the trajecotyr reaches the local maximum of the cubic nullcline. her ethe trajectory switched to the fast timescale as <span class="math inline">\(\dot{x}\gg 1\)</span>, with <span class="math inline">\(x\)</span> increasing until the trajectory intersects the right-most branch of the cubic nullcline. The system follows the slow dynamics until it reaches the linearly stable fixed point.</p>
-<p>This fixed point is stable to small perturbations. However, a large enough perturbation results in an <em>excitable</em> trajectory. the stimulus needed to. excite the system is known as the <em>threshold</em> stimulus. The time needed can be estimated using a similar technique use dto estimate the oscillator period in the case of the relaxation oscillator.</p>
+<p>When the trajectory is on the cubic nullcline, i.e.&nbsp;<span class="math inline">\(y=F(x)\)</span>, the system evolves on a slow time scale. However, <span class="math inline">\(\dot{y}&gt;0\)</span> and <span class="math inline">\(y\)</span> increases until the trajectory reaches the local maximum of the cubic nullcline. At this point the trajectory switches to the fast timescale as <span class="math inline">\(\dot{x}\gg 1\)</span>, with <span class="math inline">\(x\)</span> increasing until the trajectory intersects the right-most branch of the cubic nullcline. The system then follows the slow dynamics until it reaches the linearly stable fixed point.</p>
+<p>This fixed point is stable to small perturbations. However, a large enough perturbation results in an <em>excitable</em> trajectory. the stimulus needed to excite the system is known as the <em>threshold</em> stimulus. The time needed can be estimated using a similar technique used to estimate the oscillator period in the case of the relaxation oscillator.</p>
 <p>In the 1950s British Scientists Hodgkin and Huxley published Nobel prize winning work in which they discovered the fundamental principles that describe how electrical signals propagate in neurons. As part of their study they formulated a system of ODEs that could explain their experimental observations, a system that can be approximated by the above model. When a neuron is in a resting state (i.e.&nbsp;at a stable fixed point) it is stable to small perturbations. However, upon receiving a stimulus of large enough magnitude the neuron fires (becomes excited) and undergoes a large excursion in its electrical activity (i.e.&nbsp;an excitable trajectory).</p>
 <p>With the app below you can explore numerical solutions of the excitablecycle system.</p>
 <p>The app computes solutions to <span class="math display">\[
@@ -1198,7 +1198,7 @@ def server(input, output, session):
         a=float(input.a())
         T=int(input.T())
         x_0=float(input.x_0())
-        y_0=int(input.y_0())
+        y_0=float(input.y_0())
 
         def F(x):
           F=x*(x**2/3.0-1.0)
