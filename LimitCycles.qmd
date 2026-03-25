@@ -305,9 +305,9 @@ $$ {#eq-brussnondim}
  
 
 
-### Steady states analysis
+### Fixed point analysis
 
-Seeking steady states $(x^*,y^*)$ of equations @eq-brussnondim such that 
+Seeking fixed points $(x^*,y^*)$ of @eq-brussnondim such that 
 $$
 f(x^*,y^*)=g(x^*,y^*)=0
 $$
@@ -348,9 +348,9 @@ $$
 \mathrm{tr} A=b-1-a^2.
 $$ 
   
-Hence if $b>1+a^2$ the trace is positive and, referring to @fig-tdplane, the steady state is  linearly unstable. Otherwise, the steady state is linearly stable.
+Hence if $b>1+a^2$ the trace is positive and, referring to @fig-tdplane, the fixed point is  linearly unstable. Otherwise, the fixed point is linearly stable.
 
-In @fig-bruss-numsol we numerically solve @eq-brussnondim in the case of oscillatory solutions. Note that when the steady state is unstable, the numerical solution indicates that the system has limit cycle solutions. A valid question to ask is whether one can prove that this is the case.
+In @fig-bruss-numsol we numerically solve @eq-brussnondim in the case of oscillatory solutions. Note that when the fixed point is unstable, the numerical solution indicates that the system has limit cycle solutions. A valid question to ask is whether one can prove that this is the case.
 
 
 ```{python}
@@ -400,7 +400,7 @@ plt.show()
 
 ### Applying the Poincaire-Bendixson theorem
 
-Recall  that the Poincaire-Bendixson theorem can be used to prove the existence of limit cycle solutions in a case where a bounding set encloses a single unstable steady state. 
+Recall  that the Poincaire-Bendixson theorem can be used to prove the existence of limit cycle solutions in a case where a bounding set encloses a single unstable fixed point. 
 Hence given the case of the Brusselator with $b>a^2+1$, the identification of a bounding set will allow application of  the Poincaire-Bendixson theorem and hence prove the existence of limit cycle solutions.
 
 We begin by defining the nullclines of the system. The $x$ nullcline is given by
@@ -415,7 +415,7 @@ $$
 y=\frac{b}{x} \ \ \ \textrm{and} \ \ \ x=0.
 $$
 
-In the positive quadrant, this nullcline has a  single root at $a/(1+b)$, tends to 0 as $x\rightarrow \infty$ and has a maximum at $x=2a/(1+b)$.
+In the positive quadrant, the $x$ nullcline has a  single root at $a/(1+b)$, tends to 0 as $x\rightarrow \infty$ and has a maximum at $x=2a/(1+b)$.
 
 ```{python}
 #| label: fig-bruss-numsol-phplane
@@ -660,7 +660,7 @@ plt.grid()
 plt.show()
 ```   
 
-Hence at all points on the closed loop ABCDEA trajectories point inwards (see @fig-bruss-numsol-phplane-confinedset). Hence ABDCEA is a confined set and the Poincaire-Bendixson theorem states that the system exhibits limit cycle solutions when the steady state is unstable. This is precisely the behaviour that we see numerically in Figure @fig-bruss-numsol-phplane. 
+Hence at all points on the closed loop ABCDEA trajectories point inwards (see @fig-bruss-numsol-phplane-confinedset). Hence ABDCEA is a confined set and the Poincaire-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure @fig-bruss-numsol-phplane. 
 
 
 
@@ -671,32 +671,373 @@ Consider the van Der Pol  equation
 $$
 \ddot{x}+\mu(x^2-1)\dot{x}+x=0
 $$
-in the limiting case $\mu\gg1$. Here the nonlinear term is large.
+in the limiting case $\mu\gg1$. Here the nonlinear term is large and the system possesses *relaxation oscillations* characterised by fast transitions that toggle between distinct states.
+
+To study the limit $\mu\gg1$ we make a *Lienard* transformation by defining a new variable
+$$
+w=\dot{x}+\mu(\frac{1}{3}x^2-x).
+$$
+Then the second order ODE can be written as the system
+$$
+\dot{w}=-x
+\dot{x}=w-\mu F(x)
+$$
+where
+$$
+F(x)=x(\frac{1}{3}x^2-1).
+$$
+
+If we rescale variable such that
+$$
+w=\mu y \quad \tau=\frac{t}{\mu} 
+$$
+the system can be written as
+$$
+\dot{y}=-x
+\epsilon \dot{x}=y- F(x)
+$$
+where
+$$
+\epsilon = \frac{1}{\mu^2} \ll 1.
+$$
+
+Fixed points satisfy
+$$
+x^*=0 \quad y^*=F(x^*).
+$$
+Hence $(0,0)$ is a unique fixed point. To perform linear stability, The Jacobian matrix is
+$$
+A=\begin{pmatrix}
+-\frac{1}{\epsilon}F'(x) & \frac{1}{\epsilon} \\
+-1 & 0
+\end{pmatrix}.
+$$
+Evaluating at the fixed point
+$$
+A_{(0,0)}=\begin{pmatrix}
+-\frac{1}{\epsilon}F'(0) & \frac{1}{\epsilon} \\
+-1 & 0
+\end{pmatrix} =\begin{pmatrix}
+\frac{1}{\epsilon} & \frac{1}{\epsilon} \\
+-1 & 0
+\end{pmatrix}.
+$$
+As the trace and determinant is positive, the fixed point is linearly unstable.
 
 
-::: {#exm-    }
- Show that the period of the van der Pol oscillator is
- $$
+The $x$ and $y$ nullclines are given by
+$$
+y=F(x) \quad \textrm{and} x=0,
+$$
+respectively.
+Above the cubic $\dot{x}>0$ and in the right half-plane $\dot{y}<0$.
+
+It can be show that the system posesses a confined set. Hence by application of Poincaire Bendixson theorem it must have a limit cycle solution.
+
+To describe the limit cycle we perform a fast/slow timescale analysis. On the slow time scale the trajectory is approximaqtely on the cubic nullcline, i.e.
+$$
+y\sim F(x).
+$$
+The system dynamics are described by
+$$
+\dot{y}=-x.
+$$
+Hence 
+$$
+\dot{x}(x^2-1)=-x.
+$$
+
+
+
+```{python}
+#| label: fig-vdpexc-numsol
+#| fig-cap: "Numerical solutions of transformed VdP model. Here $\\epsilon=0.05$."
+#| code-fold: True
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy
+from scipy.integrate import odeint
+
+# Define model parameters
+
+def F(x):
+  F=x*(x**2/3.0-1.0)
+  return F
+# Define rhs of ODEs
+def tran_vdp_model(z,t,eps):
+  x=z[0]
+  y=z[1]
+  rhs=np.zeros_like(z)
+  
+  xdot=1/eps*(y-F(x))
+  ydot=-x
+  
+  rhs[0]=xdot
+  rhs[1]=ydot
+  return rhs
+
+# Define discretised time domain
+t = np.linspace(0, 50, 1000)
+# Define IC
+init_cond=[0.5,0.5]
+
+eps=0.05
+# Numerically integrate ODes
+sol1 = odeint(tran_vdp_model, init_cond,t,args=(eps,))
+
+# PLot results
+x=sol1[:,0]
+y=sol1[:,1]
+
+x_vec=np.linspace(-2.5,2.5)
+fig, ax=plt.subplots(1,2)
+ax[0].plot(t, x, 'b',t,y,'r')
+ax[0].legend(['$x$','$y$'],loc='best')
+ax[0].set_xlabel('$t$')
+ax[0].set_xlim([0,10])
+
+ax[1].plot(x, y, 'b')
+ax[1].plot(x_vec,F(x_vec),'r',[0,0],[-5,5],'k')
+#ax[1].legend(['$x$','$\dot{x}$'],loc='best')
+ax[1].set_xlabel('$x$')
+ax[1].set_xlabel('$y$')
+
+
+textstr=['$\dot{x}>0$','$\dot{x}<0$','$\dot{y}>0$','$\dot{y}<0$']
+
+x_cord=[0.0,0.0,-1.0,1.0]
+y_cord=[2.0,-2.0,0.0,0.0]
+
+for i in range(len(textstr)):
+  ax[1].text(
+    x_cord[i],y_cord[i], textstr[i],
+    fontsize=10,
+    verticalalignment='top',
+    bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+  )
+
+
+plt.grid()
+plt.show()
+```  
+
+
+On the fast timescale the trajectory does not sit on the cubic nullcline, i.e. 
+$$
+y\neq F(x).
+$$
+In this case 
+$$
+\dot{x}=\frac{1}{\epsilon}(y-(F(x)))\gg 1.
+$$
+Hence $x$ rapidly changes and $y$ is approximately constant.
+
+The limit cycle can then be describe by a closed loop ABCDA.
+
+AB  is a fast segment of the trajectory. Here $\dot{x}<0$. $x$ rapidly decreases until it collides with the left-most branch of the cubic nullcline whilst $y$ is approximately constant. 
+
+On BC the traejctory is on the left branch of the cubic nullcline. As $\dot{y}>0$, $y$ increases on a.] slow timescale until the trajectory reaches the local maximum of the cubic nullcline (C). 
+
+CD is again a fast part of the trajectory. Now $\dot{x}>0$. $x$ rapidly increases until the trajectory reaches the right-most branch of the cubic nullcline with $y$ approximately constant. 
+
+DA is again a slow segment of the trajectory. As $\dot{y}<0$, the solutions decreases in $y$ until it reaches the local minimum of the cubic nullcline (A).
+
+::: {#exm-}
+
+Show that the period of the van der Pol oscillator is
+$$
 \mu(3-2\ln 2).
- $$
+$$
 
 :::
 
+
+::: {.Solution}
+ 
+The period of the limit cycle is dominated by the time spent on the slow segments BC and DA. The time spent on BC can be estimated by integrating
+$$
+\dot{x}(x^2-1)=-x
+$$
+from $x=-2$ up to $x=-1$.
+
+Using separation of variables
+$$
+(\frac{1}{2}x^2-\ln(|x|))_{x=-2}^{x=-1}=-T_{BC}.
+$$
+Hence
+$$
+T_{BC}= \frac{3}{2}-\ln 2.
+$$
+
+Similar arguments can be used to show that the time spent on the segment DA is equal to that spent on BC. Hence the period of the limit cycle is approximately
+$$
+T~sim T_{BC}+T_{DA}\sim 3-2\ln 2.
+$$
+
+
+:::
+
+
+
 ## Excitable systems
 
+Excitable system can be thought of as being perturbed limit cycles. Consider a variant of the Van Der Pol oscillator given by
+$$
+\dot{y}=-x+a
+\epsilon \dot{x}=y- F(x)
+$$
+where $a>1$, i.e. we have added a positive constant to the right-hand side of the $y$ equation.
+
+Using a similar approach to above, there is a fixed point at $(a,F(a))$. 
+The Jacobian is again 
+$$
+A_{(a,F(a))}=\begin{pmatrix}
+-\frac{1}{\epsilon}F'(a) & \frac{1}{\epsilon} \\
+-1 & 0
+\end{pmatrix}
+$$
+However, for $a>1$,  $F'(a)<0$  and this fixed point is linearly stable. 
+
+The $x$ and $y$ nullclines are given by
+$$
+x=a \quad and \quad  y=F(x),
+$$
+respectively.
+
+To consider an excitable trajectory we again consider a fast-slow timescale analysis. This is valid for $\epsilon \ll 1$.
+
+Consider a trajectory initialised at $A(0,F(a))$. Using the nullclines, $\dot{x}<0$. As the phase point is not on cubic nullcline, $\dot{x}<0$. Hence $x$ rapidly decreases until the trajectory collides with the $x$ nullcline. On this segment of the trajectory $y=F(a)$. 
+
+When the trajectory is on the cubic nullcline, i.e. $y=F(x)$, the system evolves on a slow time scale. However, $\dot{y}>0$ and $y$ increases until the trajecotyr reaches the local maximum of the cubic nullcline. her ethe trajectory switched to the fast timescale as $\dot{x}\gg 1$, with $x$ increasing until the trajectory intersects the right-most branch of the cubic nullcline. The system follows the slow dynamics until it reaches the linearly stable fixed point.
+
+This fixed point is stable to small perturbations. However, a large enough perturbation results in an *excitable* trajectory. the stimulus needed to. excite the system is known as the *threshold* stimulus. The time needed can be estimated using a similar technique use dto estimate the oscillator period in the case of the relaxation oscillator.
+
+In the 1950s British Scientists Hodgkin and Huxley published Nobel prize winning work in which they discovered the fundamental principles that describe how electrical signals propagate in neurons. As part of their study they formulated a system of ODEs that could explain their experimental observations, a system that can be approximated by the above model. When a neuron is in a resting state (i.e. at a stable fixed point) it is stable to small perturbations. However, upon receiving a stimulus of large enough magnitude the neuron fires (becomes excited) and undergoes a large excursion in its electrical activity (i.e. an excitable trajectory).
 
 
 
+::: {.content-visible when-format="html"}
+
+With the app below you can explore numerical solutions of the excitable\limit cycle system. 
+
+The app computes solutions to 
+$$
+\begin{aligned}
+\epsilon \dot{x} &= y-F(x),  \quad x(0)=x_0, \\
+\dot{y}&=-x+a, \quad y(0)=y_0.
+\end{aligned}
+$$
+
+Exercises:
+
+- Show that  the van der Pol oscillator is retrieved in the case $a=0$.
+- Show that $1<a<1.3$ the system is excitable. Use the initial condition to explore the threshold required for an excitable trajectory.
+- Increase the value of the *small* parameter $\epsilon$. Can you see how the accuracy of the fast-slow time scale analysis decreases  as $\epsilon$ increases?
+
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-saddlenode
 
 
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="eps",label="epsilon ",min=0.0001,max=1.0,value=0.005,step=0.0001),
+    ui.input_slider(id="a",label="a",min=-2.0,max=2.0,value=1.2,step=0.01),
+    ui.input_slider(id="T",label="T",min=10.0,max=100.0,value=20.1,step=0.1),
+    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=-1.1,step=0.1),
+    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=-2.1,step=0.1),
+    ui.output_plot("plot"),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(3,1,figsize=(12, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        eps=float(input.eps())
+        a=float(input.a())
+        T=int(input.T())
+        x_0=float(input.x_0())
+        y_0=int(input.y_0())
+
+        def F(x):
+          F=x*(x**2/3.0-1.0)
+          return F
+        # Define rhs of ODEs
+
+        def tran_vdp_model(z,t,eps,a):
+          x=z[0]
+          y=z[1]
+          rhs=np.zeros_like(z)
+          
+          xdot=1/eps*(y-F(x))
+          ydot=-x+a
+          
+          rhs[0]=xdot
+          rhs[1]=ydot
+          return rhs
+
+        # Define discretised time domain
+        t = np.linspace(0, T, 1000)
+        # Define IC
+        init_cond=[x_0,y_0]
+
+        # Numerically integrate ODes
+        sol1 = odeint(tran_vdp_model, init_cond,t,args=(eps,a))
+
+        # PLot results
+        x=sol1[:,0]
+        y=sol1[:,1]
+
+        x_vec=np.linspace(-3.5,3.5)
+        fig, ax=plt.subplots(1,2)
+        ax[0].plot(t, x, 'b',t,y,'r')
+        ax[0].legend(['$x$','$y$'],loc='best')
+        ax[0].set_xlabel('$t$')
+        ax[0].set_xlim([0,T])
+
+        ax[1].plot(x, y, 'b',x[0],y[0],'m*')
+        ax[1].plot(x_vec,F(x_vec),'r',[a,a],[-5,5],'k')
+        #ax[1].legend(['$x$','$\dot{x}$'],loc='best')
+        ax[1].set_xlabel('$x$')
+        ax[1].set_ylabel('$y$')
+        ax[1].set_xlim([-3,3])
+        ax[1].set_ylim([-3.5,3.5])
 
 
+        textstr=['$\dot{x}>0$','$\dot{x}<0$','$\dot{y}>0$','$\dot{y}<0$']
 
+        x_cord=[0.0,0.0,a-1.0,a+1.0]
+        y_cord=[2.0,-2.0,0.0,0.0]
 
+        for i in range(len(textstr)):
+          ax[1].text(
+            x_cord[i],y_cord[i], textstr[i],
+            fontsize=10,
+            verticalalignment='top',
+            bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+          )
 
+        fig.tight_layout()
+        plt.grid()
+        plt.show()
+        
+app = App(app_ui, server)
+```
 
-
-
+An app to explore numerical solutions of limit cycle/excitable solutions.
+:::
 
 
 ## References

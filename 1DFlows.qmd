@@ -283,6 +283,9 @@ $$
 A fixed point is said to be *hyperbolic* when the eigenvalues of its linearisation are nonzero.
 :::
 
+
+
+
 ::: {.Theorem}
 # Hartman-Grobman 
 
