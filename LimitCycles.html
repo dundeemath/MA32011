@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./PythonAppendix.html" rel="next">
+<link href="./2DBifurcations.html" rel="next">
 <link href="./2DNonLinearPhasePlane.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -111,11 +111,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.Proof {
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -123,31 +131,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
 .Feature {
   --color1: #c0c0c0;
   --color2: #808080;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
 }
 .Theorem {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Corollary {
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
-.Lemma {
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -285,6 +285,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Limit cycles in 2D systems</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2DBifurcations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -299,7 +305,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PythonAppendix.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Python</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -492,7 +498,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \Delta E = \int_0^T \dot{E}dt
 \]</span> and show that there is a contradiction.</p>
 </div>
-<div id="807fd440" class="cell" data-execution_count="2">
+<div id="0cc398cd" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -544,7 +550,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \end{aligned}
 \]</span> has no closed orbits.</p>
 </div>
-<div id="2caf39cf" class="cell" data-execution_count="3">
+<div id="11a3833c" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1684,8 +1690,8 @@ app = App(app_ui, server)</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./PythonAppendix.html" class="pagination-link" aria-label="Python">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Python</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./2DBifurcations.html" class="pagination-link" aria-label="Bifurcations in 2D systems">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bifurcations in 2D systems</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

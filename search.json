@@ -543,47 +543,113 @@
     ]
   },
   {
+    "objectID": "2DBifurcations.html",
+    "href": "2DBifurcations.html",
+    "title": "7  Bifurcations in 2D systems",
+    "section": "",
+    "text": "7.1 Introduction\nPreviously, we described bifurcations in 1D systems. In this chapter we generalise these ideas to account for the more complex behaviour of 2D systems.\nWe will find that the previous notion of a bifurcation involving the creation or annihilation of fixed points or a change in their stability still holds. However, we must generalise these ideas to account for the presence of limit cycles in 2D systems.\nConsider a system \\[\n\\begin{aligned}\n\\dot{x}=f(x,y;\\mu), \\\\\n\\dot{y}=g(x,y;\\mu),\n\\end{aligned}\n\\] where \\(\\mu\\) is a bifurcation parameter and \\(f\\) and \\(g\\) are continuously differentiable functions.",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bifurcations in 2D systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DBifurcations.html#introduction",
+    "href": "2DBifurcations.html#introduction",
+    "title": "7  Bifurcations in 2D systems",
+    "section": "",
+    "text": "Definition 1A bifurcation occurs at \\(\\mu  =\\mu_c\\) if the phase portraits for \\(\\mu &lt; \\mu_c\\) and \\(\\mu &gt; \\mu_c\\) are not topologically equivalent.",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bifurcations in 2D systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DBifurcations.html#saddle-node-transcritical-and-pitchfork-bifurcations",
+    "href": "2DBifurcations.html#saddle-node-transcritical-and-pitchfork-bifurcations",
+    "title": "7  Bifurcations in 2D systems",
+    "section": "7.2 Saddle node, transcritical and pitchfork bifurcations",
+    "text": "7.2 Saddle node, transcritical and pitchfork bifurcations\nThe bifurcations introduced in Chapter 3 (i.e. saddle node, transcritical and pitchfork) have analogues in two dimensions. Near the bifurcation the dynamics reduce to a 1D centre manifold.\n\nExample 7.1 Consider the system \\[\n\\begin{aligned}\n\\dot{x} & = \\mu - x^2 \\\\\n\\dot{y} &= -y.\n\\end{aligned}\n\\]\nSketch the phase portrait for different values of \\(\\mu\\).\n\n\nSolutionFPs at \\((\\pm\\sqrt{\\mu},0)\\) for \\(\\mu &gt;0\\).\nLet \\(\\mu&gt;0\\).\nAt \\((\\sqrt{\\mu},0)\\),the eigenvalues are \\(-2\\sqrt{\\mu}\\) and \\(-1\\). Hence it is a stable node.\nAt \\((-\\sqrt{\\mu},0)\\),the eigenvalues are \\(2\\sqrt{\\mu}\\) and \\(-1\\). Hence it is a saddle.\nAt \\(\\mu=0\\) the FPs have collided and the FP at (0,0) is half-stable.\nIt is a saddle-node bifurcation.\n\n\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 800\n#| label: fig-saddlenode\n\n\nfrom shiny import App, Inputs, Outputs, Session, render, ui\nfrom shiny import reactive\n\nimport numpy as np\nfrom pathlib import Path\nimport matplotlib.pyplot as plt\nfrom scipy.integrate import odeint\nfrom scipy.integrate import solve_ivp\n\napp_ui = ui.page_fluid(\n                 \n    ui.input_slider(id=\"mu\",label=\"mu \",min=-2.0001,max=2.0,value=0.5,step=0.01),\n    ui.input_slider(id=\"T\",label=\"T\",min=10.0,max=100.0,value=20.1,step=0.1),\n    ui.input_slider(id=\"x_0\",label=\"x_0\",min=-3.0,max=3.0,value=-1.1,step=0.01),\n    ui.input_slider(id=\"y_0\",label=\"y_0\",min=-3.0,max=3.0,value=-2.1,step=0.01),\n    ui.output_plot(\"plot\"),\n)\n\ndef server(input, output, session):\n    @output\n    @render.plot\n    def plot():\n        fig, ax = plt.subplots(1,3,figsize=(8, 4))\n        #ax.set_ylim([-2, 2])\n        #         \n        mu=float(input.mu())\n        T=int(input.T())\n        x_0=float(input.x_0())\n        y_0=float(input.y_0())\n\n        def snbfcmodel(t,z,mu):\n          x=z[0]\n          y=z[1]\n          rhs=np.zeros_like(z)\n          \n          xdot=mu-x**2\n          ydot=-y\n          \n          rhs[0]=xdot\n          rhs[1]=ydot\n          return rhs\n        def stop_event(t, z,mu):\n            return np.abs(z[0]-10)          # trigger when y[0] == 0\n\n        # Define discretised time domain\n        t = np.linspace(0, T, 1000)\n        # Define IC\n        init_cond=[x_0,y_0]\n        stop_event.terminal = True   # STOP integration\n        stop_event.direction = 1   # only trigger when crossing downward\n\n        # Numerically integrate ODes\n      \n\n        sol1 = solve_ivp(snbfcmodel,t_span=(0, T),y0=[x_0,y_0],\n                events=stop_event,args=(mu,))\n\n        \n        # PLot results\n        x=sol1.y[0,:]\n        y=sol1.y[1,:]\n        t=sol1.t\n\n        x_vec=np.linspace(-3.5,3.5)\n\n        ax[0].plot(t, x, 'b',t,y,'r')\n        ax[0].legend(['$x$','$y$'],loc='best')\n        ax[0].set_xlabel('$t$')\n        ax[0].set_xlim([0,T])\n        ax[0].set_ylim([-5,5])\n\n\n        ax[1].plot(x, y, 'b',x[0],y[0],'m*')\n        #ax[1].plot(x_vec,F(x_vec),'r',[a,a],[-5,5],'k')\n        #ax[1].legend(['$x$','$\\dot{x}$'],loc='best')\n        ax[1].set_xlabel('$x$')\n        ax[1].set_ylabel('$y$')\n        ax[1].set_xlim([-3,3])\n        ax[1].set_ylim([-3.5,3.5])\n\n        x_vec = np.linspace(-3,3,10)\n        y_vec = np.linspace(-3.5,3.5,10)\n        \n\n        X,Y = np.meshgrid(x_vec,y_vec)\n\n        U = np.zeros_like(X)\n        V = np.zeros_like(Y)\n\n        for i in range(len(x_vec)):\n            for j in range(len(y_vec)):\n                sol = snbfcmodel(0,[X[j,i],Y[j,i]],mu)\n                U[j,i] = sol[0]\n                V[j,i] = sol[1]\n        \n        ax[1].streamplot(X,Y,U,V,color='grey')\n        ax[1].plot(x,y,'b',linewidth=2)\n        ax[1].plot(x[0],y[0],'m*',markersize=10)\n        \n        ax[1].plot(x[0],y[0],'m*',markersize=10)\n\n\n        re_lam_pos=[-2*np.sqrt(mu),-1]\n        im_lam_pos=[0,0]\n\n        re_lam_neg=[2*np.sqrt(mu),-1]\n        im_lam_neg=[0,0]\n\n        if mu&gt;0:\n            ax[2].plot(re_lam_pos,im_lam_pos,'rx')\n            ax[2].plot(re_lam_neg,im_lam_neg,'k.')\n            ax[1].plot(np.sqrt(mu),0,'b.')\n            ax[1].plot(-np.sqrt(mu),0,'b.')\n\n        ax[2].set_xlim([-3,3])\n        ax[2].set_ylim([-3,3])\n        ax[2].set_xlabel('$\\Re(\\lambda)$')\n        ax[2].set_ylabel('$\\Im(\\lambda)$')\n        ax[2].set_title('Eigenvalue spectrum')\n        ax[1].set_title('Phase portrait')\n        ax[0].set_title('ODE solutions')\n\n\n\n        '''\n        textstr=['$\\dot{x}&gt;0$','$\\dot{x}&lt;0$','$\\dot{y}&gt;0$','$\\dot{y}&lt;0$']\n\n        x_cord=[0.0,0.0,a-1.0,a+1.0]\n        y_cord=[2.0,-2.0,0.0,0.0]\n\n        for i in range(len(textstr)):\n          ax[1].text(\n            x_cord[i],y_cord[i], textstr[i],\n            fontsize=10,\n            verticalalignment='top',\n            bbox=dict(boxstyle=\"round\", facecolor=\"white\", alpha=0.8)\n          )\n        '''\n\n        fig.tight_layout()\n        plt.grid()\n        plt.show()\n        \napp = App(app_ui, server)\nAn app demonstrates a saddle node bifurcation in a 2D flow.\n\nExample 7.2 Consider the system \\[\n\\begin{aligned}\n\\dot{x} & = -ax+y \\\\\n\\dot{y} &= \\frac{x^2}{1+x^2}-by.\n\\end{aligned}\n\\] where \\(a,b &gt; 0\\).\nShow that there is a saddle node bifurcation at a critical value \\(a=a_c\\).\n\n\nSolutionFPs: \\((0,0)\\) and \\[\n\\left(\\frac{1\\pm\\sqrt{1-4a^2b^2}}{2ab}, \\frac{a(1\\pm\\sqrt{1-4a^2b^2})}{2ab}\\right).\n\\]\nFPs collide when \\[\n4a^2b^2=1 \\implies a=:a_c=\\frac{1}{2b}.\n\\]\nAt the bifurcation the FP is \\((1,a)\\).\nThe Jacobian is \\[\n\\begin{pmatrix}\n-a & 1 \\\\\n\\frac{2x}{(1+x^2)^2} & -b\n\\end{pmatrix}.\n\\]\nAt (0,0) the eigenvalues are \\(-a\\) and \\(-b\\). Hence it is always a stable node (so long as we are not in the degenerate case \\(a\\neq b\\)).\nNote that \\(\\textrm{tr} A&lt;0\\). Hence linear stability will be determined by the determinant \\[\n\\det{A}=ab-\\frac{2x^*}{(1+{x^*}^2)^2}.\n\\]\nIt is messy to substitute the FPs here. Instead note the identity \\[\n\\frac{x^*}{1+{x^*}^2}= ab.\n\\]\nHence \\[\n\\det{A}=ab-\\frac{2ab}{1+{x^*}^2} = ab\\frac{{x^*}^2-1}{(1+{x^*}^2)}\n\\]\nHence for \\(x^*&gt;1\\), \\(\\det{A}&lt;0\\) and the FP is a saddle.\nFor \\(x^*&lt;1\\), \\(\\det{A}&gt;0\\) and the FP is linearly stable (it is a stable node).\nHence there a saddle node bifurcation at \\(a=a_c\\).\n\n\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 800\n#| label: fig-saddlenode\n\n\nfrom shiny import App, Inputs, Outputs, Session, render, ui\nfrom shiny import reactive\n\nimport numpy as np\nfrom pathlib import Path\nimport matplotlib.pyplot as plt\nfrom scipy.integrate import odeint\nfrom scipy.integrate import solve_ivp\n\napp_ui = ui.page_fluid(\n                 \n    ui.input_slider(id=\"a\",label=\"a\",min=0.0001,max=2.0,value=0.5,step=0.01),\n     ui.input_slider(id=\"b\",label=\"b\",min=0.0001,max=2.0,value=0.5,step=0.01),\n    ui.input_slider(id=\"T\",label=\"T\",min=10.0,max=100.0,value=20.1,step=0.1),\n    ui.input_slider(id=\"x_0\",label=\"x_0\",min=0.0,max=3.0,value=1.1,step=0.01),\n    ui.input_slider(id=\"y_0\",label=\"y_0\",min=0.0,max=3.0,value=2.1,step=0.01),\n    ui.output_plot(\"plot\"),\n)\n\ndef server(input, output, session):\n    @output\n    @render.plot\n    def plot():\n        fig, ax = plt.subplots(1,2,figsize=(8, 4))\n        #ax.set_ylim([-2, 2])\n        #         \n        a=float(input.a())\n        b=float(input.b())\n\n        T=int(input.T())\n        x_0=float(input.x_0())\n        y_0=float(input.y_0())\n\n        def griff(t,z,a,b):\n          x=z[0]\n          y=z[1]\n          rhs=np.zeros_like(z)\n          xdot = -a*x+y \n          ydot = x**2/(1+x**2)-b*y\n          \n          \n          rhs[0]=xdot\n          rhs[1]=ydot\n          return rhs\n        def stop_event(t, z,a,b):\n            return np.abs(z[0]-10)          # trigger when y[0] == 0\n\n        # Define discretised time domain\n        t = np.linspace(0, T, 1000)\n        # Define IC\n        init_cond=[x_0,y_0]\n        stop_event.terminal = True   # STOP integration\n        stop_event.direction = 1   # only trigger when crossing downward\n\n        # Numerically integrate ODes\n      \n\n        sol1 = solve_ivp(griff,t_span=(0, T),y0=[x_0,y_0],\n                events=stop_event,args=(a,b))\n\n        \n        # PLot results\n        x=sol1.y[0,:]\n        y=sol1.y[1,:]\n        t=sol1.t\n\n        x_vec=np.linspace(-3.5,3.5)\n\n        ax[0].plot(t, x, 'b',t,y,'r')\n        ax[0].legend(['$x$','$y$'],loc='best')\n        ax[0].set_xlabel('$t$')\n        ax[0].set_xlim([0,T])\n        ax[0].set_ylim([0,5])\n\n\n        ax[1].plot(x, y, 'b',x[0],y[0],'m*')\n        #ax[1].plot(x_vec,F(x_vec),'r',[a,a],[-5,5],'k')\n        #ax[1].legend(['$x$','$\\dot{x}$'],loc='best')\n        ax[1].set_xlabel('$x$')\n        ax[1].set_ylabel('$y$')\n        ax[1].set_xlim([-0.1,3])\n        ax[1].set_ylim([-0.1,3.5])\n\n        x_vec = np.linspace(0,3,10)\n        y_vec = np.linspace(0,3.5,10)\n        \n\n        X,Y = np.meshgrid(x_vec,y_vec)\n\n        U = np.zeros_like(X)\n        V = np.zeros_like(Y)\n\n        for i in range(len(x_vec)):\n            for j in range(len(y_vec)):\n                sol = griff(0,[X[j,i],Y[j,i]],a,b)\n                U[j,i] = sol[0]\n                V[j,i] = sol[1]\n        \n        ax[1].streamplot(X,Y,U,V,color='grey')\n        ax[1].plot(x,y,'b',linewidth=2)\n        ax[1].plot(x[0],y[0],'m*',markersize=10)\n\n\n        ax[1].plot(0,0,'k.')\n        if a&lt;(1.0/(2.0*b)):\n            t1=np.sqrt(1-4*a**2*b**2)\n            t2=2*a*b\n            fps_x= [0, (1+ t1)/t2,(1-t1)/t2]\n            fps_y= [a*fps_x_i  for fps_x_i in fps_x]\n            ax[1].plot(fps_x,fps_y,'k.')\n        \n\n\n        '''\n        textstr=['$\\dot{x}&gt;0$','$\\dot{x}&lt;0$','$\\dot{y}&gt;0$','$\\dot{y}&lt;0$']\n\n        x_cord=[0.0,0.0,a-1.0,a+1.0]\n        y_cord=[2.0,-2.0,0.0,0.0]\n\n        for i in range(len(textstr)):\n          ax[1].text(\n            x_cord[i],y_cord[i], textstr[i],\n            fontsize=10,\n            verticalalignment='top',\n            bbox=dict(boxstyle=\"round\", facecolor=\"white\", alpha=0.8)\n          )\n        '''\n\n        fig.tight_layout()\n        plt.grid()\n        plt.show()\n        \napp = App(app_ui, server)\nAn app demonstrates a saddle node bifurcation in a 2D flow.\n\nExample 7.3 Consider the system \\[\n\\begin{aligned}\n\\dot{x} & = \\mu x + y +\\sin x \\\\\n\\dot{y} &= x-y.\n\\end{aligned}\n\\] where \\(\\mu \\in \\Re\\). Show that a supercritical pitchfork bifurcation occurs at the origin and determine the bifurcation value \\(\\mu_c\\).\n\nSimilar examples can be considered for transcritical and pitchfork bifurcations. A common property of all the above bifurcations is that one of the eigenvalues of the Jacobian is zero. Next we consider a new mechanism through which bifurcations may arise.",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bifurcations in 2D systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DBifurcations.html#hopf-bifurcations",
+    "href": "2DBifurcations.html#hopf-bifurcations",
+    "title": "7  Bifurcations in 2D systems",
+    "section": "7.3 Hopf bifurcations",
+    "text": "7.3 Hopf bifurcations\nHopf bifurcations describe a bifurcation in which oscillatory solutions emerge. The key idea with Hopf bifurcations is that there is a pair of complex conjugate eigenvalues that cross the imaginary axis. Hence at the bifurcation point the real part of the eigenvalues is zero but the imaginary part is non-zero. Thus the Hopf bifurcation is qualitatively distinct from the previous bifurcations we have considered (characterised by at least one eigenvalue being zero at the bifurcation point).\n\nTheorem 2Hopf bifurcation theorem:\nIf:\n\neigenvalues are complex conjugates\nreal part crosses zero\na nondegeneracy condition holds\n\nThen a limit cycle emerges.\n\n\nHopf bifurcations can be classified as supercritical, subcritical or degenerate. An analytic criterion exists to classify but it often cumbersome to compute.\nSupercritical Hopf bifurcations are characterised by small-amplitude oscillations close to the bifurcation point.\nSubcritical Hopf bifurcations are characterised by large-amplitude oscillations that emerge at the bifurcation point. Thus a system can transition from a stable steady state to large oscillations.\n\n7.3.1 Supercritical Hopf\nThe supercritical Hopf is sometimes known as ‘soft’ in the engineering literature: at the bifurcation point small amplitude oscillations emerge.\n\nExample 7.4 Consider the system \\[\n\\begin{aligned}\n\\dot{r} & = \\mu r - r^3\\\\\n\\dot{\\theta} &= \\omega+br^2.\n\\end{aligned}\n\\] where \\(\\mu\\), \\(\\omega\\) and \\(b\\) are constants.\nShow that the origin undergoes a supercritical Hopf bifurcation at \\(\\mu=0\\).\n\nRules of thumb:\n\nThe size of the limit cycle grows continuously from zero and increases proportionally to \\(\\sqrt{\\mu-\\mu_c}\\) for \\(\\mu\\) close to \\(\\mu_c\\).\nThe frequency of the limit cycle is given approximately by \\(\\omega=\\Im \\lambda\\) evaluated at \\(\\mu=\\mu_c\\). The period is therefore approximately \\(2\\pi/\\Im(\\lambda)\\).\n\nIn more general cases the limit cycle is elliptical rather than circular and the imaginary part of the eigenvalue also depends on \\(\\mu\\).\n\n\n7.3.2 Subcritical Hopf",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bifurcations in 2D systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DBifurcations.html#global-bifurcations-of-cycles",
+    "href": "2DBifurcations.html#global-bifurcations-of-cycles",
+    "title": "7  Bifurcations in 2D systems",
+    "section": "7.4 Global bifurcations of cycles",
+    "text": "7.4 Global bifurcations of cycles\nThe Hopf bifurcation can be studies using linear stability analysis, i.e. by considering behaviour of dynamical system close to a fixed point.\nHowever, the Hopf bifurcation is not the only way in which limit cycles arise in 2D dynamical systems. Another class of bifurcations called global bifurcations, include the following bifurcation types:\n\nSaddle node bifurcation of limit cycles\nInfinite period bifurcation\nHomoclinic bifurcation\n\nEach of the bifurcation types shows signature dependence of properties of the limit cycle (e.g. amplitude, period) on the magnitude of the bifurcation parameter.",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bifurcations in 2D systems</span>"
+    ]
+  },
+  {
+    "objectID": "2DBifurcations.html#references",
+    "href": "2DBifurcations.html#references",
+    "title": "7  Bifurcations in 2D systems",
+    "section": "7.5 References",
+    "text": "7.5 References",
+    "crumbs": [
+      "2D flows",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bifurcations in 2D systems</span>"
+    ]
+  },
+  {
     "objectID": "PythonAppendix.html",
     "href": "PythonAppendix.html",
-    "title": "7  Python",
+    "title": "8  Python",
     "section": "",
-    "text": "7.1 Symbolic calculations\nSymbolic calculations ahve been performed using the Python library Sympy.\nThis library comes with tutorials.\nYou are encouraged to familiarise yourself with the syntax by working through some of the tutorial examples provided at the links above.\nMany of the calculations that we do throughout the course involve solving systems of algebraic equations",
+    "text": "8.1 Symbolic calculations\nSymbolic calculations ahve been performed using the Python library Sympy.\nThis library comes with tutorials.\nYou are encouraged to familiarise yourself with the syntax by working through some of the tutorial examples provided at the links above.\nMany of the calculations that we do throughout the course involve solving systems of algebraic equations",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Python</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Python</span>"
     ]
   },
   {
     "objectID": "PythonAppendix.html#numerical-solution-of-difference-equations",
     "href": "PythonAppendix.html#numerical-solution-of-difference-equations",
-    "title": "7  Python",
-    "section": "7.2 Numerical solution of difference equations",
-    "text": "7.2 Numerical solution of difference equations\nDifference equations have been solved using a for loop. Routinse have been written to solve either single or coupled system of difference equaitons.",
+    "title": "8  Python",
+    "section": "8.2 Numerical solution of difference equations",
+    "text": "8.2 Numerical solution of difference equations\nDifference equations have been solved using a for loop. Routinse have been written to solve either single or coupled system of difference equaitons.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Python</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Python</span>"
     ]
   },
   {
     "objectID": "PythonAppendix.html#numerical-integration-of-odes",
     "href": "PythonAppendix.html#numerical-integration-of-odes",
-    "title": "7  Python",
-    "section": "7.3 Numerical integration of ODEs",
-    "text": "7.3 Numerical integration of ODEs\nThroughout the notes systems of ODEs have been integrated using the Scipy function odeint.",
+    "title": "8  Python",
+    "section": "8.3 Numerical integration of ODEs",
+    "text": "8.3 Numerical integration of ODEs\nThroughout the notes systems of ODEs have been integrated using the Scipy function odeint.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Python</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Python</span>"
     ]
   },
   {
     "objectID": "PythonAppendix.html#plotting",
     "href": "PythonAppendix.html#plotting",
-    "title": "7  Python",
-    "section": "7.4 Plotting",
-    "text": "7.4 Plotting\nLine graphs are plotted using the Python library Matplotlib.",
+    "title": "8  Python",
+    "section": "8.4 Plotting",
+    "text": "8.4 Plotting\nLine graphs are plotted using the Python library Matplotlib.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Python</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Python</span>"
     ]
   }
 ]
