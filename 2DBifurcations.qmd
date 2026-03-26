@@ -1,0 +1,537 @@
+---
+title: "Bifurcations in 2D systems"
+format: html
+---
+
+## Introduction
+
+Previously, we described bifurcations in 1D systems. In this chapter we generalise these ideas to account for the more complex behaviour of 2D systems.
+
+We will find that the previous notion of a bifurcation involving the creation or annihilation of fixed points or a change in their stability still holds. However, we must generalise these ideas to account for the presence of limit cycles in 2D systems.
+
+Consider a system
+$$
+\begin{aligned}
+\dot{x}=f(x,y;\mu), \\
+\dot{y}=g(x,y;\mu),
+\end{aligned}
+$$
+where $\mu$ is a bifurcation parameter and $f$ and $g$ are continuously differentiable functions.
+ 
+::: {.Definition}
+A bifurcation occurs at $\mu  =\mu_c$ if the phase portraits for $\mu < \mu_c$ and $\mu > \mu_c$ are not topologically equivalent.
+:::
+
+
+## Saddle node, transcritical and pitchfork bifurcations
+
+The bifurcations introduced in Chapter 3 (i.e. saddle node, transcritical and pitchfork) have analogues in two dimensions. Near the bifurcation the dynamics reduce to a 1D *centre manifold*.
+ 
+
+
+
+::: {#exm-    }
+Consider the system
+$$
+\begin{aligned}
+\dot{x} & = \mu - x^2 \\
+\dot{y} &= -y.
+\end{aligned}
+$$
+
+Sketch the phase portrait for different values of $\mu$.
+:::
+
+
+::: {.Solution}
+
+FPs at $(\pm\sqrt{\mu},0)$ for $\mu >0$.
+
+Let $\mu>0$.
+
+At $(\sqrt{\mu},0)$,the eigenvalues are $-2\sqrt{\mu}$ and $-1$. Hence it is a stable node.
+
+At $(-\sqrt{\mu},0)$,the eigenvalues are $2\sqrt{\mu}$ and $-1$. Hence it is a saddle.
+
+At $\mu=0$ the FPs have collided and the FP at (0,0) is half-stable.
+
+It is a saddle-node bifurcation.
+
+
+:::
+
+::: {.content-visible when-format="html"}
+
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-saddlenode
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="mu",label="mu ",min=-2.0001,max=2.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T",min=10.0,max=100.0,value=20.1,step=0.1),
+    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=-1.1,step=0.01),
+    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=-2.1,step=0.01),
+    ui.output_plot("plot"),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(1,3,figsize=(8, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        mu=float(input.mu())
+        T=int(input.T())
+        x_0=float(input.x_0())
+        y_0=float(input.y_0())
+
+        def snbfcmodel(t,z,mu):
+          x=z[0]
+          y=z[1]
+          rhs=np.zeros_like(z)
+          
+          xdot=mu-x**2
+          ydot=-y
+          
+          rhs[0]=xdot
+          rhs[1]=ydot
+          return rhs
+        def stop_event(t, z,mu):
+            return np.abs(z[0]-10)          # trigger when y[0] == 0
+
+        # Define discretised time domain
+        t = np.linspace(0, T, 1000)
+        # Define IC
+        init_cond=[x_0,y_0]
+        stop_event.terminal = True   # STOP integration
+        stop_event.direction = 1   # only trigger when crossing downward
+
+        # Numerically integrate ODes
+      
+
+        sol1 = solve_ivp(snbfcmodel,t_span=(0, T),y0=[x_0,y_0],
+                events=stop_event,args=(mu,))
+
+        
+        # PLot results
+        x=sol1.y[0,:]
+        y=sol1.y[1,:]
+        t=sol1.t
+
+        x_vec=np.linspace(-3.5,3.5)
+
+        ax[0].plot(t, x, 'b',t,y,'r')
+        ax[0].legend(['$x$','$y$'],loc='best')
+        ax[0].set_xlabel('$t$')
+        ax[0].set_xlim([0,T])
+        ax[0].set_ylim([-5,5])
+
+
+        ax[1].plot(x, y, 'b',x[0],y[0],'m*')
+        #ax[1].plot(x_vec,F(x_vec),'r',[a,a],[-5,5],'k')
+        #ax[1].legend(['$x$','$\dot{x}$'],loc='best')
+        ax[1].set_xlabel('$x$')
+        ax[1].set_ylabel('$y$')
+        ax[1].set_xlim([-3,3])
+        ax[1].set_ylim([-3.5,3.5])
+
+        x_vec = np.linspace(-3,3,10)
+        y_vec = np.linspace(-3.5,3.5,10)
+        
+
+        X,Y = np.meshgrid(x_vec,y_vec)
+
+        U = np.zeros_like(X)
+        V = np.zeros_like(Y)
+
+        for i in range(len(x_vec)):
+            for j in range(len(y_vec)):
+                sol = snbfcmodel(0,[X[j,i],Y[j,i]],mu)
+                U[j,i] = sol[0]
+                V[j,i] = sol[1]
+        
+        ax[1].streamplot(X,Y,U,V,color='grey')
+        ax[1].plot(x,y,'b',linewidth=2)
+        ax[1].plot(x[0],y[0],'m*',markersize=10)
+        
+        ax[1].plot(x[0],y[0],'m*',markersize=10)
+
+
+        re_lam_pos=[-2*np.sqrt(mu),-1]
+        im_lam_pos=[0,0]
+
+        re_lam_neg=[2*np.sqrt(mu),-1]
+        im_lam_neg=[0,0]
+
+        if mu>0:
+            ax[2].plot(re_lam_pos,im_lam_pos,'rx')
+            ax[2].plot(re_lam_neg,im_lam_neg,'k.')
+            ax[1].plot(np.sqrt(mu),0,'b.')
+            ax[1].plot(-np.sqrt(mu),0,'b.')
+
+        ax[2].set_xlim([-3,3])
+        ax[2].set_ylim([-3,3])
+        ax[2].set_xlabel('$\Re(\lambda)$')
+        ax[2].set_ylabel('$\Im(\lambda)$')
+        ax[2].set_title('Eigenvalue spectrum')
+        ax[1].set_title('Phase portrait')
+        ax[0].set_title('ODE solutions')
+
+
+
+        '''
+        textstr=['$\dot{x}>0$','$\dot{x}<0$','$\dot{y}>0$','$\dot{y}<0$']
+
+        x_cord=[0.0,0.0,a-1.0,a+1.0]
+        y_cord=[2.0,-2.0,0.0,0.0]
+
+        for i in range(len(textstr)):
+          ax[1].text(
+            x_cord[i],y_cord[i], textstr[i],
+            fontsize=10,
+            verticalalignment='top',
+            bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+          )
+        '''
+
+        fig.tight_layout()
+        plt.grid()
+        plt.show()
+        
+app = App(app_ui, server)
+```
+
+An app demonstrates a saddle node bifurcation in a 2D flow.
+:::
+
+
+
+::: {#exm-    }
+Consider the system
+$$
+\begin{aligned}
+\dot{x} & = -ax+y \\
+\dot{y} &= \frac{x^2}{1+x^2}-by.
+\end{aligned}
+$$
+where $a,b > 0$.
+
+Show that there is a saddle node bifurcation at a critical value $a=a_c$.
+:::
+
+::: {.Solution}
+
+FPs: $(0,0)$
+and 
+$$
+\left(\frac{1\pm\sqrt{1-4a^2b^2}}{2ab}, \frac{a(1\pm\sqrt{1-4a^2b^2})}{2ab}\right).
+$$ 
+
+FPs collide when 
+$$
+4a^2b^2=1 \implies a=:a_c=\frac{1}{2b}.
+$$
+
+At the bifurcation the FP is $(1,a)$.
+
+The Jacobian is
+$$
+\begin{pmatrix}
+-a & 1 \\
+\frac{2x}{(1+x^2)^2} & -b
+\end{pmatrix}.
+$$
+
+
+At (0,0) the eigenvalues are $-a$ and $-b$. Hence it is always a stable node (so long as we are not in the degenerate case $a\neq b$).
+
+Note that $\textrm{tr} A<0$. Hence linear stability will be determined by the determinant
+$$
+\det{A}=ab-\frac{2x^*}{(1+{x^*}^2)^2}.
+$$
+
+It is messy to substitute the FPs here. Instead note the identity
+$$
+\frac{x^*}{1+{x^*}^2}= ab.
+$$
+
+Hence
+$$
+\det{A}=ab-\frac{2ab}{1+{x^*}^2} = ab\frac{{x^*}^2-1}{(1+{x^*}^2)}
+$$
+
+Hence for $x^*>1$, $\det{A}<0$ and the FP is a saddle.
+
+For $x^*<1$, $\det{A}>0$ and the FP is linearly stable (it is a stable node).
+
+Hence there a saddle node bifurcation at $a=a_c$.
+
+
+
+
+:::
+
+::: {.content-visible when-format="html"}
+
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-saddlenode
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="a",label="a",min=0.0001,max=2.0,value=0.5,step=0.01),
+     ui.input_slider(id="b",label="b",min=0.0001,max=2.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T",min=10.0,max=100.0,value=20.1,step=0.1),
+    ui.input_slider(id="x_0",label="x_0",min=0.0,max=3.0,value=1.1,step=0.01),
+    ui.input_slider(id="y_0",label="y_0",min=0.0,max=3.0,value=2.1,step=0.01),
+    ui.output_plot("plot"),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(1,2,figsize=(8, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        a=float(input.a())
+        b=float(input.b())
+
+        T=int(input.T())
+        x_0=float(input.x_0())
+        y_0=float(input.y_0())
+
+        def griff(t,z,a,b):
+          x=z[0]
+          y=z[1]
+          rhs=np.zeros_like(z)
+          xdot = -a*x+y 
+          ydot = x**2/(1+x**2)-b*y
+          
+          
+          rhs[0]=xdot
+          rhs[1]=ydot
+          return rhs
+        def stop_event(t, z,a,b):
+            return np.abs(z[0]-10)          # trigger when y[0] == 0
+
+        # Define discretised time domain
+        t = np.linspace(0, T, 1000)
+        # Define IC
+        init_cond=[x_0,y_0]
+        stop_event.terminal = True   # STOP integration
+        stop_event.direction = 1   # only trigger when crossing downward
+
+        # Numerically integrate ODes
+      
+
+        sol1 = solve_ivp(griff,t_span=(0, T),y0=[x_0,y_0],
+                events=stop_event,args=(a,b))
+
+        
+        # PLot results
+        x=sol1.y[0,:]
+        y=sol1.y[1,:]
+        t=sol1.t
+
+        x_vec=np.linspace(-3.5,3.5)
+
+        ax[0].plot(t, x, 'b',t,y,'r')
+        ax[0].legend(['$x$','$y$'],loc='best')
+        ax[0].set_xlabel('$t$')
+        ax[0].set_xlim([0,T])
+        ax[0].set_ylim([0,5])
+
+
+        ax[1].plot(x, y, 'b',x[0],y[0],'m*')
+        #ax[1].plot(x_vec,F(x_vec),'r',[a,a],[-5,5],'k')
+        #ax[1].legend(['$x$','$\dot{x}$'],loc='best')
+        ax[1].set_xlabel('$x$')
+        ax[1].set_ylabel('$y$')
+        ax[1].set_xlim([-0.1,3])
+        ax[1].set_ylim([-0.1,3.5])
+
+        x_vec = np.linspace(0,3,10)
+        y_vec = np.linspace(0,3.5,10)
+        
+
+        X,Y = np.meshgrid(x_vec,y_vec)
+
+        U = np.zeros_like(X)
+        V = np.zeros_like(Y)
+
+        for i in range(len(x_vec)):
+            for j in range(len(y_vec)):
+                sol = griff(0,[X[j,i],Y[j,i]],a,b)
+                U[j,i] = sol[0]
+                V[j,i] = sol[1]
+        
+        ax[1].streamplot(X,Y,U,V,color='grey')
+        ax[1].plot(x,y,'b',linewidth=2)
+        ax[1].plot(x[0],y[0],'m*',markersize=10)
+
+
+        ax[1].plot(0,0,'k.')
+        if a<(1.0/(2.0*b)):
+            t1=np.sqrt(1-4*a**2*b**2)
+            t2=2*a*b
+            fps_x= [0, (1+ t1)/t2,(1-t1)/t2]
+            fps_y= [a*fps_x_i  for fps_x_i in fps_x]
+            ax[1].plot(fps_x,fps_y,'k.')
+        
+
+
+        '''
+        textstr=['$\dot{x}>0$','$\dot{x}<0$','$\dot{y}>0$','$\dot{y}<0$']
+
+        x_cord=[0.0,0.0,a-1.0,a+1.0]
+        y_cord=[2.0,-2.0,0.0,0.0]
+
+        for i in range(len(textstr)):
+          ax[1].text(
+            x_cord[i],y_cord[i], textstr[i],
+            fontsize=10,
+            verticalalignment='top',
+            bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+          )
+        '''
+
+        fig.tight_layout()
+        plt.grid()
+        plt.show()
+        
+app = App(app_ui, server)
+```
+
+An app demonstrates a saddle node bifurcation in a 2D flow.
+:::
+
+
+
+::: {#exm-    }
+Consider the system
+$$
+\begin{aligned}
+\dot{x} & = \mu x + y +\sin x \\
+\dot{y} &= x-y.
+\end{aligned}
+$$
+where $\mu \in \Re$. Show that a supercritical pitchfork bifurcation occurs at the origin and determine the bifurcation value $\mu_c$.
+
+:::
+
+Similar examples can be considered for transcritical and pitchfork bifurcations. A common property of all the above bifurcations is that one of the eigenvalues of the Jacobian is zero. Next we consider a new mechanism through which bifurcations may arise.
+
+
+## Hopf bifurcations
+
+
+
+Hopf bifurcations describe a bifurcation in which oscillatory solutions emerge. 
+The key idea with Hopf bifurcations is that there is a pair of complex conjugate eigenvalues that cross the imaginary axis. Hence at the bifurcation point the real part of the eigenvalues is zero but the imaginary part is non-zero. Thus the Hopf bifurcation is qualitatively distinct from the previous bifurcations we have considered (characterised by at least one eigenvalue being zero at the bifurcation point).
+
+
+::: {.Theorem}
+
+Hopf bifurcation theorem:
+
+If:
+
+1. eigenvalues are complex conjugates
+2. real part crosses zero
+3. a nondegeneracy condition holds
+
+Then a limit cycle emerges.
+:::
+
+
+Hopf bifurcations can be classified as supercritical, subcritical or degenerate. An analytic criterion exists to classify but it often cumbersome to compute. 
+
+
+*Supercritical* Hopf bifurcations are characterised by small-amplitude oscillations close to the bifurcation point. 
+
+ *Subcritical* Hopf bifurcations are characterised by large-amplitude oscillations that emerge at the bifurcation point. Thus a system can transition from a stable steady state to large oscillations.
+
+
+### Supercritical Hopf
+
+The supercritical Hopf is sometimes known as 'soft' in the engineering literature: at the bifurcation point small amplitude oscillations emerge.
+
+::: {#exm-    }
+Consider the system
+$$
+\begin{aligned}
+\dot{r} & = \mu r - r^3\\
+\dot{\theta} &= \omega+br^2.
+\end{aligned}
+$$
+where $\mu$, $\omega$ and $b$ are constants.
+
+Show that the origin undergoes a supercritical Hopf bifurcation at $\mu=0$.
+:::
+
+Rules of thumb:
+
+- The size of the limit cycle grows continuously from zero and increases proportionally to $\sqrt{\mu-\mu_c}$ for $\mu$ close to $\mu_c$.
+- The frequency of the limit cycle is given approximately by $\omega=\Im \lambda$ evaluated at $\mu=\mu_c$. The period is therefore approximately $2\pi/\Im(\lambda)$.
+
+In more general cases the limit cycle is elliptical rather than circular and the imaginary part of the eigenvalue also depends on $\mu$.
+
+### Subcritical Hopf
+
+## Global bifurcations of cycles
+
+The Hopf bifurcation can be studies using linear stability analysis, i.e. by considering behaviour of dynamical system close to a fixed point.
+
+
+However, the Hopf bifurcation is not the only way in which limit cycles arise in 2D dynamical systems. Another class of bifurcations called global bifurcations, include the following bifurcation types:
+
+- Saddle node bifurcation of limit cycles
+- Infinite period bifurcation
+- Homoclinic bifurcation
+
+Each of the bifurcation types shows signature dependence of properties of the limit cycle (e.g. amplitude, period) on the magnitude of the bifurcation parameter.
+
+<!--
+## Poincaire maps
+
+### Introduction
+
+### Floquet multipliers
+
+-->
+
+
+
+
+
+
+
+
+
+
+## References
