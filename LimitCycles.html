@@ -111,34 +111,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
@@ -148,6 +120,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color2: #808080;
 }
 .Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -492,7 +492,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \Delta E = \int_0^T \dot{E}dt
 \]</span> and show that there is a contradiction.</p>
 </div>
-<div id="4e03366d" class="cell" data-execution_count="2">
+<div id="807fd440" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -544,7 +544,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \end{aligned}
 \]</span> has no closed orbits.</p>
 </div>
-<div id="d9b0609c" class="cell" data-execution_count="3">
+<div id="2caf39cf" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -980,17 +980,19 @@ w=\dot{x}+\mu(\frac{1}{3}x^2-x).
 \]</span> where <span class="math display">\[
 F(x)=x(\frac{1}{3}x^2-1).
 \]</span></p>
-<p>If we rescale variable such that <span class="math display">\[
-w=\mu y \quad \tau=\frac{t}{\mu}
+<p>If we rescale variables such that <span class="math display">\[
+w=\mu y \quad \textrm{and} \quad \tau=\frac{t}{\mu},
 \]</span> the system can be written as <span class="math display">\[
-\dot{y}=-x
-\epsilon \dot{x}=y- F(x)
+\begin{aligned}
+\dot{y}&amp;=-x \\
+\epsilon \dot{x}&amp;=y- F(x),
+\end{aligned}
 \]</span> where <span class="math display">\[
 \epsilon = \frac{1}{\mu^2} \ll 1.
 \]</span></p>
 <p>Fixed points satisfy <span class="math display">\[
-x^*=0 \quad y^*=F(x^*).
-\]</span> Hence <span class="math inline">\((0,0)\)</span> is a unique fixed point. To perform linear stability, The Jacobian matrix is <span class="math display">\[
+x^*=0, \quad y^*=F(x^*).
+\]</span> Hence <span class="math inline">\((0,0)\)</span> is a unique fixed point. To determine the linear stability of (0,0), compute the Jacobian matrix <span class="math display">\[
 A=\begin{pmatrix}
 -\frac{1}{\epsilon}F'(x) &amp; \frac{1}{\epsilon} \\
 -1 &amp; 0
@@ -1003,17 +1005,21 @@ A_{(0,0)}=\begin{pmatrix}
 \frac{1}{\epsilon} &amp; \frac{1}{\epsilon} \\
 -1 &amp; 0
 \end{pmatrix}.
-\]</span> As the trace and determinant is positive, the fixed point is linearly unstable.</p>
+\]</span> As the trace and determinant are both positive, the fixed point is linearly unstable.</p>
 <p>The <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> nullclines are given by <span class="math display">\[
-y=F(x) \quad \textrm{and} x=0,
-\]</span> respectively. Above the cubic <span class="math inline">\(\dot{x}&gt;0\)</span> and in the right half-plane <span class="math inline">\(\dot{y}&lt;0\)</span>.</p>
+y=F(x) \quad \textrm{and} \quad x=0,
+\]</span> respectively. Note, for example, that above the cubic <span class="math inline">\(\dot{x}&gt;0\)</span> and in the right half-plane <span class="math inline">\(\dot{y}&lt;0\)</span>.</p>
 <p>It can be shown that the system posesses a confined set. Hence by application of Poincaré Bendixson theorem it must have a limit cycle solution.</p>
-<p>To describe the limit cycle we perform a fast/slow timescale analysis. On the slow time scale the trajectory is approximately on the cubic nullcline, i.e. <span class="math display">\[
+<p>To describe the limit cycle we perform a fast/slow timescale analysis. On the slow time scale the trajectory is approximately on the cubic nullcline, i.e. <span id="eq-slowvdp"><span class="math display">\[
 y\sim F(x).
-\]</span> The system dynamics are described by <span class="math display">\[
+\tag{6.2}\]</span></span> The system dynamics are described by <span id="eq-slowvdpy"><span class="math display">\[
 \dot{y}=-x.
-\]</span> Hence <span class="math display">\[
-\dot{x}(x^2-1)=-x.
+\tag{6.3}\]</span></span></p>
+<p>Differentiating <a href="#eq-slowvdp" class="quarto-xref">Equation&nbsp;<span>6.2</span></a> w.r.t. time yields <span class="math display">\[
+\dot{y}=F'(x)\dot{x}
+\]</span></p>
+<p>Substitution in <span class="citation" data-cites="slowvdpy">(<a href="#ref-slowvdpy" role="doc-biblioref"><strong>slowvdpy?</strong></a>)</span> yields <span class="math display">\[
+\implies\dot{x}(x^2-1)=-x.
 \]</span></p>
 <div id="cell-fig-vdpexc-numsol" class="cell" data-execution_count="7">
 <details class="code-fold">
@@ -1102,7 +1108,7 @@ Figure&nbsp;6.5: Numerical solutions of transformed VdP model. Here <span class=
 y\neq F(x).
 \]</span> In this case <span class="math display">\[
 \dot{x}=\frac{1}{\epsilon}(y-(F(x)))\gg 1.
-\]</span> Hence <span class="math inline">\(x\)</span> rapidly changes and <span class="math inline">\(y\)</span> is approximately constant.</p>
+\]</span> Hence <span class="math inline">\(x\)</span> rapidly changes and <span class="math inline">\(y\)</span> is approximately constant. Hence when a trajectory is far from the cubic nullcline it can be approximated as being a horizontal line in the phase plane, with the direction determined by the sign of <span class="math inline">\(\dot{x}\)</span>.</p>
 <p>The limit cycle can then be represented by the closed loop ABCDA.</p>
 <p>AB is a fast segment of the trajectory. Here <span class="math inline">\(\dot{x}&lt;0\)</span>. <span class="math inline">\(x\)</span> rapidly decreases until it collides with the left-most branch of the cubic nullcline whilst <span class="math inline">\(y\)</span> is approximately constant.</p>
 <p>On BC the trajectory is on the left branch of the cubic nullcline. As <span class="math inline">\(\dot{y}&gt;0\)</span>, <span class="math inline">\(y\)</span> increases on a slow timescale until the trajectory reaches the local maximum of the cubic nullcline (C).</p>
@@ -1130,11 +1136,11 @@ T\sim T_{BC}+T_{DA}\sim 3-2\ln 2.
 </section>
 <section id="excitable-systems" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="excitable-systems"><span class="header-section-number">6.7</span> Excitable systems</h2>
-<p>Excitable systems can be thought of as being perturbed limit cycles. Consider a variant of the Van Der Pol oscillator given by <span class="math display">\[
+<p>Excitable systems can be thought of as frustrated limit cycles. Consider a variant of the Van Der Pol oscillator given by <span class="math display">\[
 \dot{y}=-x+a
 \epsilon \dot{x}=y- F(x)
 \]</span> where <span class="math inline">\(a&gt;1\)</span>, i.e.&nbsp;we have added a positive constant to the right-hand side of the <span class="math inline">\(y\)</span> equation.</p>
-<p>Using a similar approach to above, there is a fixed point at <span class="math inline">\((a,F(a))\)</span>. The Jacobian is again <span class="math display">\[
+<p>Using a similar approach to the above, there is a fixed point at <span class="math inline">\((a,F(a))\)</span>. The Jacobian is again <span class="math display">\[
 A_{(a,F(a))}=\begin{pmatrix}
 -\frac{1}{\epsilon}F'(a) &amp; \frac{1}{\epsilon} \\
 -1 &amp; 0
