@@ -111,19 +111,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Proof {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
-.Solution {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -131,25 +147,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #948bde;
   --color2: #584eab;
 }
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
 }
 </style>
 
@@ -498,7 +498,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \Delta E = \int_0^T \dot{E}dt
 \]</span> and show that there is a contradiction.</p>
 </div>
-<div id="0cc398cd" class="cell" data-execution_count="2">
+<div id="fcb431e9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -550,7 +550,7 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \end{aligned}
 \]</span> has no closed orbits.</p>
 </div>
-<div id="11a3833c" class="cell" data-execution_count="3">
+<div id="bbbe7345" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
