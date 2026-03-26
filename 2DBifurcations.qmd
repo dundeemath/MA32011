@@ -273,9 +273,9 @@ $$
 \det{A}=ab-\frac{2ab}{1+{x^*}^2} = ab\frac{{x^*}^2-1}{(1+{x^*}^2)}
 $$
 
-Hence for $x^*>1$, $\det{A}<0$ and the FP is a saddle.
+Hence for $x^*<1$, $\det{A}<0$ and the FP is a saddle.
 
-For $x^*<1$, $\det{A}>0$ and the FP is linearly stable (it is a stable node).
+For $x^*>1$, $\det{A}>0$ and the FP is linearly stable (it is a stable node).
 
 Hence there a saddle node bifurcation at $a=a_c$.
 
@@ -474,7 +474,7 @@ Hopf bifurcations can be classified as supercritical, subcritical or degenerate.
 
 *Supercritical* Hopf bifurcations are characterised by small-amplitude oscillations close to the bifurcation point. 
 
- *Subcritical* Hopf bifurcations are characterised by large-amplitude oscillations that emerge at the bifurcation point. Thus a system can transition from a stable steady state to large oscillations.
+*Subcritical* Hopf bifurcations are characterised by large-amplitude oscillations that emerge at the bifurcation point. Thus a system can transition from a stable steady state to large oscillations.
 
 
 ### Supercritical Hopf
@@ -494,6 +494,169 @@ where $\mu$, $\omega$ and $b$ are constants.
 Show that the origin undergoes a supercritical Hopf bifurcation at $\mu=0$.
 :::
 
+::: {.content-visible when-format="html"}
+
+Exercises: 
+
+- Choose $\mu<0$ and observe that the oscillations decay (you imght to increase the time, $T$)
+- Make $\mu>0$. Explore the initial conditions (e.g. initialising inside the limit cycle the solution spirals out to the limit cycle).
+
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-saddlenode
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="mu",label="mu",min=-2.0001,max=2.0,value=0.5,step=0.01),
+     ui.input_slider(id="omega",label="omega",min=0.0001,max=2.0,value=0.5,step=0.01),
+     ui.input_slider(id="b",label="b",min=0.0001,max=2.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T",min=10.0,max=100.0,value=20.1,step=0.1),
+    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=1.1,step=0.01),
+    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=2.1,step=0.01),
+    ui.output_plot("plot"),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(1,2,figsize=(8, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        mu=float(input.mu())
+        omega=float(input.omega())
+        b=float(input.b())
+
+        T=int(input.T())
+        x_0=float(input.x_0())
+        y_0=float(input.y_0())
+
+        def supercrithopf(t,z,mu,omega,b):
+          r=z[0]
+          theta=z[1]
+          rhs=np.zeros_like(z)
+          rdot = mu*r-r**3 
+          thdot = omega+b*r**2
+         
+          
+          rhs[0]=rdot
+          rhs[1]=thdot
+          return rhs
+        def stop_event(t, z,mu,omega,b):
+            return np.abs(z[0]-10)          # trigger when y[0] == 0
+
+        # Define discretised time domain
+        t = np.linspace(0, T, 1000)
+        t_eval=t
+        # Define IC
+        init_cond=[x_0,y_0]
+        stop_event.terminal = True   # STOP integration
+        stop_event.direction = 1   # only trigger when crossing downward
+
+        # Numerically integrate ODes
+      
+
+        sol1 = solve_ivp(supercrithopf,t_span=(0, T),y0=[x_0,y_0],
+                events=stop_event,t_eval=t_eval,args=(mu,omega,b))
+
+        
+        # PLot results
+        r=sol1.y[0,:]
+        theta=sol1.y[1,:]
+
+        x=r*np.cos(theta)
+        y=r*np.sin(theta)
+        t=sol1.t
+
+        x_vec=np.linspace(-3.5,3.5)
+
+        ax[0].plot(t, x, 'b',t,y,'r')
+        ax[0].legend(['$x$','$y$'],loc='best')
+        ax[0].set_xlabel('$t$')
+        ax[0].set_xlim([0,T])
+        ax[0].set_ylim([-5,5])
+
+
+        ax[1].plot(x, y, 'b',x[0],y[0],'m*')
+        #ax[1].plot(x_vec,F(x_vec),'r',[a,a],[-5,5],'k')
+        #ax[1].legend(['$x$','$\dot{x}$'],loc='best')
+        ax[1].set_xlabel('$x$')
+        ax[1].set_ylabel('$y$')
+        ax[1].set_xlim([-2,2])
+        ax[1].set_ylim([-2,2])
+        
+
+        if mu > 0:
+            theta_vec=np.linspace(0,2*np.pi)
+            r_fp=np.sqrt(mu)
+            x_circ= r_fp*np.cos(theta_vec)
+            y_circ= r_fp*np.sin(theta_vec)
+            ax[1].plot(x_circ,y_circ,'k')
+
+        x_vec = np.linspace(0,3,10)
+        y_vec = np.linspace(0,3.5,10)
+        
+
+
+        '''
+        X,Y = np.meshgrid(x_vec,y_vec)
+
+        U = np.zeros_like(X)
+        V = np.zeros_like(Y)
+
+        for i in range(len(x_vec)):
+            for j in range(len(y_vec)):
+                sol = supercrithopf(0,[X[j,i],Y[j,i]],mu,omega,b)
+                r=sol[0]
+                theta=sol[1]
+                U[j,i] = r*np.cos(theta)
+                V[j,i] = r*np.sin(theta)
+        
+        ax[1].streamplot(X,Y,U,V,color='grey')
+        ax[1].plot(x,y,'b',linewidth=2)
+        ax[1].plot(x[0],y[0],'m*',markersize=10)
+        '''
+
+        
+
+
+        '''
+        textstr=['$\dot{x}>0$','$\dot{x}<0$','$\dot{y}>0$','$\dot{y}<0$']
+
+        x_cord=[0.0,0.0,a-1.0,a+1.0]
+        y_cord=[2.0,-2.0,0.0,0.0]
+
+        for i in range(len(textstr)):
+          ax[1].text(
+            x_cord[i],y_cord[i], textstr[i],
+            fontsize=10,
+            verticalalignment='top',
+            bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+          )
+        '''
+
+        fig.tight_layout()
+        plt.grid()
+        plt.show()
+        
+app = App(app_ui, server)
+```
+
+An app demonstrates the emergence of small amplitude oscillations at a supercritical Hopf bifurcation. The black circle represents the limit cycle: $r=\sqrt{\mu}$.
+:::
+
+
 Rules of thumb:
 
 - The size of the limit cycle grows continuously from zero and increases proportionally to $\sqrt{\mu-\mu_c}$ for $\mu$ close to $\mu_c$.
@@ -502,6 +665,198 @@ Rules of thumb:
 In more general cases the limit cycle is elliptical rather than circular and the imaginary part of the eigenvalue also depends on $\mu$.
 
 ### Subcritical Hopf
+
+
+::: {.content-visible when-format="html"}
+
+This app explores numerical solutions of the problem
+
+$$
+\begin{aligned}
+\dot{r}&=\mu r+r^3-r^5 \\
+\dot{\theta}&=\omega+br^2
+\end{aligned}
+$$
+
+Solutions are plotted in Cartesian coordinates: i.e.
+$$
+x=r\cos{\theta}, \quad y=r\sin{\theta}.
+$$
+
+Exercises: 
+
+- Choose $\mu>0$. Show that there is a stable limit cycle.
+
+- Choose $\mu<0$. Now there is a linearly stable fixed point at the origin, an unstable limit cycle and an outer stable limit cycle. Explore how by varying the initial conditions you can find these different solutions.
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 800
+#| label: fig-saddlenode
+
+
+from shiny import App, Inputs, Outputs, Session, render, ui
+from shiny import reactive
+
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
+
+app_ui = ui.page_fluid(
+                 
+    ui.input_slider(id="mu",label="mu",min=-2.0001,max=2.0,value=0.5,step=0.01),
+     ui.input_slider(id="omega",label="omega",min=0.0001,max=2.0,value=0.5,step=0.01),
+     ui.input_slider(id="b",label="b",min=0.0001,max=2.0,value=0.5,step=0.01),
+    ui.input_slider(id="T",label="T",min=10.0,max=100.0,value=20.1,step=0.1),
+    ui.input_slider(id="x_0",label="x_0",min=-3.0,max=3.0,value=1.1,step=0.01),
+    ui.input_slider(id="y_0",label="y_0",min=-3.0,max=3.0,value=2.1,step=0.01),
+    ui.output_plot("plot"),
+)
+
+def server(input, output, session):
+    @output
+    @render.plot
+    def plot():
+        fig, ax = plt.subplots(1,2,figsize=(8, 4))
+        #ax.set_ylim([-2, 2])
+        #         
+        mu=float(input.mu())
+        omega=float(input.omega())
+        b=float(input.b())
+
+        T=int(input.T())
+        x_0=float(input.x_0())
+        y_0=float(input.y_0())
+
+        def subcrithopf(t,z,mu,omega,b):
+          r=z[0]
+          theta=z[1]
+          rhs=np.zeros_like(z)
+          rdot = mu*r+r**3-r**5 
+          thdot = omega+b*r**2
+         
+          
+          rhs[0]=rdot
+          rhs[1]=thdot
+          return rhs
+        def stop_event(t, z,mu,omega,b):
+            return np.abs(z[0]-10)          # trigger when y[0] == 0
+
+        # Define discretised time domain
+        t = np.linspace(0, T, 1000)
+        t_eval=t
+        # Define IC
+        init_cond=[x_0,y_0]
+        stop_event.terminal = True   # STOP integration
+        stop_event.direction = 1   # only trigger when crossing downward
+
+        # Numerically integrate ODes
+      
+
+        sol1 = solve_ivp(subcrithopf,t_span=(0, T),y0=[x_0,y_0],
+                events=stop_event,t_eval=t_eval,args=(mu,omega,b))
+
+        
+        # PLot results
+        r=sol1.y[0,:]
+        theta=sol1.y[1,:]
+
+        x=r*np.cos(theta)
+        y=r*np.sin(theta)
+        t=sol1.t
+
+        x_vec=np.linspace(-3.5,3.5)
+
+        ax[0].plot(t, x, 'b',t,y,'r')
+        ax[0].legend(['$x$','$y$'],loc='best')
+        ax[0].set_xlabel('$t$')
+        ax[0].set_xlim([0,T])
+        ax[0].set_ylim([-5,5])
+
+
+        ax[1].plot(x, y, 'b',x[0],y[0],'m*')
+        #ax[1].plot(x_vec,F(x_vec),'r',[a,a],[-5,5],'k')
+        #ax[1].legend(['$x$','$\dot{x}$'],loc='best')
+        ax[1].set_xlabel('$x$')
+        ax[1].set_ylabel('$y$')
+        ax[1].set_xlim([-2,2])
+        ax[1].set_ylim([-2,2])
+        ax[1].plot(0,0,'k.')
+        
+        ax[1].legend(['Traj.','IC','FP']) 
+
+        if mu > -0.25:
+            theta_vec=np.linspace(0,2*np.pi)
+            r_fp_stab=np.sqrt((1+np.sqrt(1+4*mu))/2)
+            x_circstab= r_fp_stab*np.cos(theta_vec)
+            y_circstab= r_fp_stab*np.sin(theta_vec)
+            ax[1].plot(x_circstab,y_circstab,'k')
+        
+            if mu < 0:
+            
+                r_fp_unstab=np.sqrt((1-np.sqrt(1+4*mu))/2)
+            
+
+            
+                x_circunstab= r_fp_unstab*np.cos(theta_vec)
+                y_circunstab= r_fp_unstab*np.sin(theta_vec)
+            
+                ax[1].plot(x_circunstab,y_circunstab,'k--')
+        
+            ax[1].legend(['Traj.','IC','FP','Stab LC','Unstab LC'])
+
+    
+
+
+        '''
+        X,Y = np.meshgrid(x_vec,y_vec)
+
+        U = np.zeros_like(X)
+        V = np.zeros_like(Y)
+
+        for i in range(len(x_vec)):
+            for j in range(len(y_vec)):
+                sol = supercrithopf(0,[X[j,i],Y[j,i]],mu,omega,b)
+                r=sol[0]
+                theta=sol[1]
+                U[j,i] = r*np.cos(theta)
+                V[j,i] = r*np.sin(theta)
+        
+        ax[1].streamplot(X,Y,U,V,color='grey')
+        ax[1].plot(x,y,'b',linewidth=2)
+        ax[1].plot(x[0],y[0],'m*',markersize=10)
+        '''
+
+        
+
+
+        '''
+        textstr=['$\dot{x}>0$','$\dot{x}<0$','$\dot{y}>0$','$\dot{y}<0$']
+
+        x_cord=[0.0,0.0,a-1.0,a+1.0]
+        y_cord=[2.0,-2.0,0.0,0.0]
+
+        for i in range(len(textstr)):
+          ax[1].text(
+            x_cord[i],y_cord[i], textstr[i],
+            fontsize=10,
+            verticalalignment='top',
+            bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+          )
+        '''
+
+        fig.tight_layout()
+        plt.grid()
+        plt.show()
+        
+app = App(app_ui, server)
+```
+
+An app demonstrates the emergence of a subcritical Hopf bifurcation. FP - fixed point. LC - limit cycle.
+:::
+
+
 
 ## Global bifurcations of cycles
 
