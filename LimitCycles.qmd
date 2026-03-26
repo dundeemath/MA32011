@@ -1023,6 +1023,26 @@ def server(input, output, session):
         ax[1].set_xlim([-3,3])
         ax[1].set_ylim([-3.5,3.5])
 
+        x_vec = np.linspace(-3,3,10)
+        y_vec = np.linspace(-3.5,3.5,10)
+        
+
+        X,Y = np.meshgrid(x_vec,y_vec)
+
+        U = np.zeros_like(X)
+        V = np.zeros_like(Y)
+
+        for i in range(len(x_vec)):
+            for j in range(len(y_vec)):
+                sol = tran_vdp_model([X[j,i],Y[j,i]],t,eps,a)
+                U[j,i] = sol[0]
+                V[j,i] = sol[1]
+        
+        sp=ax[1].streamplot(X,Y,U,V,color='grey')
+        sp.lines.set_alpha(0.3)
+        sp.arrows.set_alpha(0.3)
+        
+
 
         textstr=['$\dot{x}>0$','$\dot{x}<0$','$\dot{y}>0$','$\dot{y}<0$']
 
