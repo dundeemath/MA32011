@@ -76,27 +76,11 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 .Definition {
   --color1: #d999d3;
   --color2: #a01793;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Proof {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -104,13 +88,29 @@ ul.task-list li input[type="checkbox"] {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
+}
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .TODO {
   --color1: #e7b1b4;
@@ -703,18 +703,23 @@ app = App(app_ui, server)</code></pre>
 <p>Hopf bifurcations describe a bifurcation in which oscillatory solutions emerge. The key idea with Hopf bifurcations is that there is a pair of complex conjugate eigenvalues that cross the imaginary axis. Hence at the bifurcation point the real part of the eigenvalues is zero but the imaginary part is non-zero. Thus the Hopf bifurcation is qualitatively distinct from the previous bifurcations we have considered (characterised by at least one eigenvalue being zero at the bifurcation point).</p>
 <div id="Theorem-2" class="Theorem">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 2</strong></summary><div>Hopf bifurcation theorem:<p></p>
-<p>If:</p>
+<p>Consider a system <span class="math display">\[
+\begin{aligned}
+\dot{x}=f(x,y;\mu), \\
+\dot{y}=g(x,y;\mu),
+\end{aligned}
+\]</span> where <span class="math inline">\(\mu\)</span> is a bifurcation parameter. Suppose that there exists a FP with corresponding pair of complex eigenvalues <span class="math inline">\(\lambda=\hat{\mu}+i\hat{\omega}\)</span></p>
 <ol type="1">
-<li>eigenvalues are complex conjugates</li>
-<li>real part crosses zero</li>
-<li>a nondegeneracy condition holds</li>
+<li>eigenvalues are complex conjugates (<span class="math inline">\(\hat{\omega}\neq0\)</span>)</li>
+<li>real part crosses zero at the bifurcation (<span class="math inline">\(\mu=\mu_c\)</span>, <span class="math inline">\(\hat{\mu}=0\)</span>.)</li>
+<li>a nondegeneracy condition holds (i.e.&nbsp;the system behaviour is robust to small changes in other parameters/inclusion of other small terms). A formula for this condition can be stated but we will not do so here.</li>
 </ol>
 <p>Then a limit cycle emerges.</p>
 </div></details>
 </div>
-<p>Hopf bifurcations can be classified as supercritical, subcritical or degenerate. An analytic criterion exists to classify but it often cumbersome to compute.</p>
+<p>Hopf bifurcations can be classified as <em>supercritical</em>, <em>subcritical</em> or <em>degenerate</em>. An analytic criterion exists to classify but it often cumbersome to compute.</p>
 <p><em>Supercritical</em> Hopf bifurcations are characterised by small-amplitude oscillations close to the bifurcation point.</p>
-<p><em>Subcritical</em> Hopf bifurcations are characterised by large-amplitude oscillations that emerge at the bifurcation point. Thus a system can transition from a stable steady state to large oscillations.</p>
+<p>In contrast, <em>subcritical</em> Hopf bifurcations are characterised by large-amplitude oscillations that emerge at the bifurcation point. Thus a system can transition from a stable steady state to large oscillations.</p>
 <section id="supercritical-hopf" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="supercritical-hopf"><span class="header-section-number">7.3.1</span> Supercritical Hopf</h3>
 <p>The supercritical Hopf is sometimes known as ‘soft’ in the engineering literature: at the bifurcation point small amplitude oscillations emerge.</p>
@@ -727,9 +732,42 @@ app = App(app_ui, server)</code></pre>
 \]</span> where <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\omega\)</span> and <span class="math inline">\(b\)</span> are constants.</p>
 <p>Show that the origin undergoes a supercritical Hopf bifurcation at <span class="math inline">\(\mu=0\)</span>.</p>
 </div>
+<div id="Solution*-3" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The <span class="math inline">\(r\)</span> equation decouples and can be treated as a 1D flow. Fixed points of the <span class="math inline">\(r\)</span> equation are <span class="math inline">\(r^*=0\)</span> and <span class="math inline">\(r^*_+=\sqrt{\mu}, \mu &gt;0\)</span>.<p></p>
+<p>When <span class="math inline">\(r=r^*_+\)</span>, <span class="math display">\[
+\theta=(w+b\mu)t+\theta_0,
+\]</span> i.e.&nbsp;the equation of a circle in parametric form.</p>
+<p>Compute <span class="math display">\[
+f'(r)=\mu-3r^2.
+\]</span></p>
+<p>At <span class="math inline">\(r^*=0\)</span>, <span class="math inline">\(f'(0)=\mu\)</span>. Hence <span class="math inline">\(r^*=0\)</span> is linearly stable for <span class="math inline">\(\mu&lt;0\)</span> and linearly unstable for <span class="math inline">\(\mu&gt;0\)</span>.</p>
+<p>When <span class="math inline">\(\mu&gt;0\)</span>, <span class="math display">\[
+f'(\sqrt{\mu})=-2\mu.
+\]</span> Hence <span class="math inline">\(r^*=\sqrt{\mu}\)</span> is linearly stable.</p>
+<p>When <span class="math inline">\(\mu=0\)</span>, there is a bifurcation.</p>
+<p>Considering the full system, when <span class="math inline">\(\mu&gt;0\)</span> there is a stable limit cycle given by the circle <span class="math display">\[
+r=r^{*}=\sqrt{\mu}, \theta=(\omega +b\mu)t.
+\]</span></p>
+<p>When <span class="math inline">\(\mu &lt;0\)</span> there is a stable spiral. At <span class="math inline">\(\mu=0\)</span> there is a supercritical Hopf bifurcation; the stable spiral bifurcates to a stable limit cycle.</p>
+<p>We can slso proceed by considering the system in Cartesian coordinates. Define <span class="math display">\[
+x=r\cos(\theta), \quad y=r\sin(\theta).
+\]</span> Changing variables <span class="math display">\[
+\dot{x}=\mu x - \omega y + cubic terms, \quad \dot{y}=\omega x + \mu y + cubic terms.
+\]</span></p>
+<p>Hence <span class="math inline">\((0,0)\)</span> is a fixed point. The Jacobian is given by <span class="math display">\[
+A=\begin{pmatrix} \mu &amp; - \omega \\ \omega &amp; \mu.
+\end{pmatrix}.
+\]</span></p>
+<p>The eigenvalues are <span class="math display">\[
+\lambda_{\pm}=\mu\pm i\omega.
+\]</span></p>
+<p>Note that <span class="math inline">\(\omega \neq 0\)</span> and the transverality condition is satisfied.</p>
+<p>The system has a supercritical Hopf bifurcation at <span class="math inline">\(\mu=0\)</span>. It satisifes the conditions for a Hopf bifurcation. It is supercritical because a stable fixed bifurcates to stable limit cycle, with an amplitude that grows with <span class="math inline">\(\sqrt{\mu}\)</span>.</p>
+</div></details>
+</div>
 <p>Exercises:</p>
 <ul>
-<li>Choose <span class="math inline">\(\mu&lt;0\)</span> and observe that the oscillations decay (you imght to increase the time, <span class="math inline">\(T\)</span>)</li>
+<li>Choose <span class="math inline">\(\mu&lt;0\)</span> and observe that the oscillations decay (you might need to increase the time, <span class="math inline">\(T\)</span>, to see this)</li>
 <li>Make <span class="math inline">\(\mu&gt;0\)</span>. Explore the initial conditions (e.g.&nbsp;initialising inside the limit cycle the solution spirals out to the limit cycle).</li>
 </ul>
 <pre class="shinylive-python" data-engine="python"><code>#| '!! shinylive warning !!': |
@@ -894,6 +932,38 @@ app = App(app_ui, server)</code></pre>
 </section>
 <section id="subcritical-hopf" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="subcritical-hopf"><span class="header-section-number">7.3.2</span> Subcritical Hopf</h3>
+<p>At a subcritical Hopf bifurcation, a stable fixed bifurcates such that trajectories jump to a distant attractor (e.g.&nbsp;a limit cycle or another fixed point).</p>
+<p>We proceed by considering the example <span class="math display">\[
+\begin{aligned}
+\dot{r}&amp;=\mu r+r^3-r^5 \\
+\dot{\theta}&amp;=\omega+br^2.
+\end{aligned}
+\]</span></p>
+<p>Show that there is a supercritical Hopf bifurcation at <span class="math inline">\(\mu=\mu_c=0\)</span>.</p>
+<div id="Solution*-4" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The <span class="math inline">\(r\)</span> equation again decouples and can therefore be treated independently. The <span class="math inline">\(r\)</span> equation has FP <span class="math display">\[
+r^*=0
+\]</span> or <span class="math display">\[
+{r^*}^4-{r^*}^2-\mu.
+\]</span> Hence <span class="math display">\[
+r^*=\pm \sqrt{ \frac{1\pm\sqrt{1+4\mu}}{2}}.
+\]</span><p></p>
+<p>Requiring that <span class="math inline">\(r^*\geq 0\)</span>, the FPs can be classified as follows:</p>
+<p><span class="math inline">\(r^*=0\)</span> is always a FP.</p>
+<ul>
+<li>Case 1: <span class="math inline">\(\mu&lt;-\frac{1}{4}\)</span>, no other FPs</li>
+<li>Case 2: <span class="math inline">\(-\frac{1}{4}&lt;\mu&lt;0\)</span>, Two other FPs: <span class="math inline">\(r^*_{\pm}= \sqrt{ \frac{1\pm\sqrt{1+4\mu}}{2}}\)</span></li>
+<li>Case 3: <span class="math inline">\(\mu &gt;0\)</span>, One other FP: <span class="math inline">\(r^*_+= \sqrt{ \frac{1+\sqrt{1+4\mu}}{2}}\)</span></li>
+</ul>
+<p>Case 1: <span class="math inline">\(r^*=0\)</span> is linearly stable.</p>
+<p>Case 2: <span class="math inline">\(r^*=0\)</span> is linearly stable. <span class="math inline">\(r^*_+\)</span> is linearly unstable. <span class="math inline">\(r^*_-\)</span> is linearly stable.</p>
+<p>Case 3: <span class="math inline">\(r^*=0\)</span> is linearly unstable. <span class="math inline">\(r^*_+\)</span> is linearly stable.</p>
+<p>Reconsidering the full dynamical system, the identified solutions with <span class="math inline">\(r^*&gt;0\)</span> are limit cycles with angular frequency <span class="math display">\[
+\omega+b{r^*}^2.
+\]</span></p>
+<p>An app available on the online version allows you to explore the numerical solution to this problem.</p>
+</div></details>
+</div>
 <p>This app explores numerical solutions of the problem</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -1080,7 +1150,7 @@ app = App(app_ui, server)</code></pre>
 <section id="global-bifurcations-of-cycles" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="global-bifurcations-of-cycles"><span class="header-section-number">7.4</span> Global bifurcations of cycles</h2>
 <p>The Hopf bifurcation can be studies using linear stability analysis, i.e.&nbsp;by considering behaviour of dynamical system close to a fixed point.</p>
-<p>However, the Hopf bifurcation is not the only way in which limit cycles arise in 2D dynamical systems. Another class of bifurcations called global bifurcations, include the following bifurcation types:</p>
+<p>However, the Hopf bifurcation is not the only way in which limit cycles arise in 2D dynamical systems. Another class of bifurcations, known as global bifurcations, include the following bifurcation types:</p>
 <ul>
 <li>Saddle node bifurcation of limit cycles</li>
 <li>Infinite period bifurcation</li>
