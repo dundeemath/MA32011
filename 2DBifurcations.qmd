@@ -459,22 +459,29 @@ The key idea with Hopf bifurcations is that there is a pair of complex conjugate
 
 Hopf bifurcation theorem:
 
-If:
+Consider a system
+$$
+\begin{aligned}
+\dot{x}=f(x,y;\mu), \\
+\dot{y}=g(x,y;\mu),
+\end{aligned}
+$$
+where $\mu$ is a bifurcation parameter. Suppose that there exists a FP with corresponding pair of complex eigenvalues $\lambda=\hat{\mu}+i\hat{\omega}$
 
-1. eigenvalues are complex conjugates
-2. real part crosses zero
-3. a nondegeneracy condition holds
+1. eigenvalues are complex conjugates ($\hat{\omega}\neq0$)
+2. real part crosses zero at the bifurcation ($\mu=\mu_c$, $\hat{\mu}=0$.)
+3. a nondegeneracy condition holds (i.e. the system behaviour is robust to small changes in other parameters/inclusion of other small terms). A formula for this condition can be stated but we will not do so here.
 
 Then a limit cycle emerges.
 :::
 
 
-Hopf bifurcations can be classified as supercritical, subcritical or degenerate. An analytic criterion exists to classify but it often cumbersome to compute. 
+Hopf bifurcations can be classified as *supercritical*, *subcritical* or *degenerate*. An analytic criterion exists to classify but it often cumbersome to compute. 
 
 
 *Supercritical* Hopf bifurcations are characterised by small-amplitude oscillations close to the bifurcation point. 
 
-*Subcritical* Hopf bifurcations are characterised by large-amplitude oscillations that emerge at the bifurcation point. Thus a system can transition from a stable steady state to large oscillations.
+In contrast, *subcritical* Hopf bifurcations are characterised by large-amplitude oscillations that emerge at the bifurcation point. Thus a system can transition from a stable steady state to large oscillations.
 
 
 ### Supercritical Hopf
@@ -494,11 +501,71 @@ where $\mu$, $\omega$ and $b$ are constants.
 Show that the origin undergoes a supercritical Hopf bifurcation at $\mu=0$.
 :::
 
+:::{.Solution}
+
+The $r$ equation decouples and can be treated as a 1D flow. Fixed points of the $r$ equation are $r^*=0$ and $r^*_+=\sqrt{\mu}, \mu >0$.
+
+When $r=r^*_+$,
+$$
+\theta=(w+b\mu)t+\theta_0,
+$$
+i.e. the equation of a circle in parametric form.
+
+Compute
+$$
+f'(r)=\mu-3r^2.
+$$
+
+At $r^*=0$, $f'(0)=\mu$. Hence $r^*=0$ is linearly stable for $\mu<0$ and linearly unstable for $\mu>0$.
+
+
+When $\mu>0$, 
+$$
+f'(\sqrt{\mu})=-2\mu.
+$$
+Hence $r^*=\sqrt{\mu}$ is linearly stable.
+
+When $\mu=0$, there is a bifurcation.
+
+Considering the full system, when $\mu>0$ there is a stable limit cycle given by the circle
+$$
+r=r^{*}=\sqrt{\mu}, \theta=(\omega +b\mu)t.
+$$
+
+When $\mu <0$ there is a stable spiral. At $\mu=0$ there is a supercritical Hopf bifurcation; the stable spiral bifurcates to a stable limit cycle.
+
+We can slso proceed by considering the system in Cartesian coordinates. Define
+$$
+x=r\cos(\theta), \quad y=r\sin(\theta).
+$$
+Changing variables
+$$
+\dot{x}=\mu x - \omega y + cubic terms, \quad \dot{y}=\omega x + \mu y + cubic terms.
+$$
+
+Hence $(0,0)$ is a fixed point. The Jacobian is given by
+$$
+A=\begin{pmatrix} \mu & - \omega \\ \omega & \mu.
+\end{pmatrix}.
+$$
+
+The eigenvalues are 
+$$
+\lambda_{\pm}=\mu\pm i\omega.
+$$
+
+Note that $\omega \neq 0$ and the transverality condition is satisfied.  
+
+
+The system has a supercritical Hopf bifurcation at $\mu=0$. It satisifes the conditions for a Hopf bifurcation. It is supercritical because a stable fixed bifurcates to stable limit cycle, with an amplitude that grows with $\sqrt{\mu}$.
+
+:::
+
 ::: {.content-visible when-format="html"}
 
 Exercises: 
 
-- Choose $\mu<0$ and observe that the oscillations decay (you imght to increase the time, $T$)
+- Choose $\mu<0$ and observe that the oscillations decay (you might need to increase the time, $T$, to see this)
 - Make $\mu>0$. Explore the initial conditions (e.g. initialising inside the limit cycle the solution spirals out to the limit cycle).
 
 ```{shinylive-python}
@@ -666,6 +733,60 @@ In more general cases the limit cycle is elliptical rather than circular and the
 
 ### Subcritical Hopf
 
+
+At a subcritical Hopf bifurcation, a stable fixed bifurcates such that trajectories jump to a distant attractor (e.g. a limit cycle or another fixed point).
+
+We proceed by considering the example
+$$
+\begin{aligned}
+\dot{r}&=\mu r+r^3-r^5 \\
+\dot{\theta}&=\omega+br^2.
+\end{aligned}
+$$
+
+Show that there is a supercritical Hopf bifurcation at $\mu=\mu_c=0$.
+
+
+::: {.Solution}
+
+The $r$ equation again decouples and can therefore be treated independently. The $r$ equation has FP
+$$
+r^*=0
+$$
+or
+$$
+{r^*}^4-{r^*}^2-\mu.
+$$
+Hence
+$$
+r^*=\pm \sqrt{ \frac{1\pm\sqrt{1+4\mu}}{2}}.
+$$
+
+Requiring that $r^*\geq 0$, the FPs can be classified as follows:
+
+$r^*=0$ is always a FP.
+
+- Case 1: $\mu<-\frac{1}{4}$, no other FPs
+- Case 2: $-\frac{1}{4}<\mu<0$, Two other FPs: $r^*_{\pm}= \sqrt{ \frac{1\pm\sqrt{1+4\mu}}{2}}$ 
+- Case 3: $\mu >0$,  One other FP: $r^*_+= \sqrt{ \frac{1+\sqrt{1+4\mu}}{2}}$
+
+Case 1: $r^*=0$ is linearly stable.
+
+Case 2: $r^*=0$ is linearly stable.  $r^*_+$ is linearly unstable. $r^*_-$ is linearly stable.
+
+Case 3: $r^*=0$ is linearly unstable. $r^*_+$ is linearly stable.
+
+Reconsidering the full dynamical system, the identified solutions with $r^*>0$ are limit cycles with angular frequency
+$$
+\omega+b{r^*}^2.
+$$
+
+
+
+An app available on the online version allows you to explore the numerical solution to this problem.
+
+
+:::
 
 ::: {.content-visible when-format="html"}
 
@@ -863,7 +984,7 @@ An app demonstrates the emergence of a subcritical Hopf bifurcation. FP - fixed 
 The Hopf bifurcation can be studies using linear stability analysis, i.e. by considering behaviour of dynamical system close to a fixed point.
 
 
-However, the Hopf bifurcation is not the only way in which limit cycles arise in 2D dynamical systems. Another class of bifurcations called global bifurcations, include the following bifurcation types:
+However, the Hopf bifurcation is not the only way in which limit cycles arise in 2D dynamical systems. Another class of bifurcations, known as global bifurcations, include the following bifurcation types:
 
 - Saddle node bifurcation of limit cycles
 - Infinite period bifurcation
