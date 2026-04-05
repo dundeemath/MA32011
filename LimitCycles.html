@@ -111,23 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Exercise {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Feature {
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
@@ -135,25 +119,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #d999d3;
   --color2: #a01793;
 }
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .Conjecture {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
+}
+.Exercise {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 </style>
 
@@ -345,7 +345,6 @@ window.Quarto = {
   </ul></li>
   <li><a href="#relaxation-oscillators" id="toc-relaxation-oscillators" class="nav-link" data-scroll-target="#relaxation-oscillators"><span class="header-section-number">6.6</span> Relaxation oscillators</a></li>
   <li><a href="#excitable-systems" id="toc-excitable-systems" class="nav-link" data-scroll-target="#excitable-systems"><span class="header-section-number">6.7</span> Excitable systems</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6.8</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -506,7 +505,7 @@ E=\frac{1}{2}(x^2+y^2).
 \]</span></p>
 <p>Hence <span class="math inline">\(E\)</span> is a decreasing function of time for <span class="math inline">\(y\neq0\)</span>.</p>
 <p>If a closed orbit solution existed with period <span class="math inline">\(T\)</span> then <span class="math display">\[
-\int_{t}^{t+T} \dot{E}=0.
+\int_{t}^{t+T} \dot{E} dt=0.
 \]</span> Hence there is a contradiction and therefore no closed orbit solution exists. See <a href="#fig-gradsystem" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> for plot of energy surface</p>
 </div></details>
 </div>
@@ -535,7 +534,7 @@ E=\frac{1}{2}(x^2+y^2).
 <div id="fig-gradsystem" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gradsystem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="500e760d" class="cell" data-execution_count="2">
+<div id="a675c1ff" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -615,7 +614,7 @@ Figure&nbsp;6.2: The surface <span class="math inline">\(x^2\)</span>+<span clas
 <div id="fig-Lya" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-Lya-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="16871fd6" class="cell" data-execution_count="3">
+<div id="80e0c56b" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1332,9 +1331,6 @@ def server(input, output, session):
         
 app = App(app_ui, server)</code></pre>
 <p>An app to explore numerical solutions of limit cycle/excitable solutions.</p>
-</section>
-<section id="references" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="references"><span class="header-section-number">6.8</span> References</h2>
 
 
 </section>
