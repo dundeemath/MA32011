@@ -76,33 +76,9 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.Feature {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Lemma {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Corollary {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 .Solution {
   --color1: #c0c0c0;
@@ -112,9 +88,37 @@ ul.task-list li input[type="checkbox"] {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Feature {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Exercise {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 </style>
 
@@ -293,7 +297,11 @@ window.Quarto = {
   <li><a href="#subcritical-hopf" id="toc-subcritical-hopf" class="nav-link" data-scroll-target="#subcritical-hopf"><span class="header-section-number">7.3.2</span> Subcritical Hopf</a></li>
   </ul></li>
   <li><a href="#global-bifurcations-of-cycles" id="toc-global-bifurcations-of-cycles" class="nav-link" data-scroll-target="#global-bifurcations-of-cycles"><span class="header-section-number">7.4</span> Global bifurcations of cycles</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7.5</span> References</a></li>
+  <li><a href="#stability-of-limit-cycles-in-general-systems" id="toc-stability-of-limit-cycles-in-general-systems" class="nav-link" data-scroll-target="#stability-of-limit-cycles-in-general-systems"><span class="header-section-number">7.5</span> Stability of Limit Cycles in General Systems</a>
+  <ul class="collapse">
+  <li><a href="#poincaré-maps" id="toc-poincaré-maps" class="nav-link" data-scroll-target="#poincaré-maps"><span class="header-section-number">7.5.1</span> Poincaré Maps</a></li>
+  <li><a href="#stability-of-the-limit-cycle" id="toc-stability-of-the-limit-cycle" class="nav-link" data-scroll-target="#stability-of-the-limit-cycle"><span class="header-section-number">7.5.2</span> Stability of the Limit Cycle</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dundeemath/MA32011/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -1157,19 +1165,60 @@ app = App(app_ui, server)</code></pre>
 <li>Homoclinic bifurcation</li>
 </ul>
 <p>Each of the bifurcation types shows signature dependence of properties of the limit cycle (e.g.&nbsp;amplitude, period) on the magnitude of the bifurcation parameter.</p>
-<!--
-## Poincaire maps
-
-### Introduction
-
-### Floquet multipliers
-
--->
 </section>
-<section id="references" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="references"><span class="header-section-number">7.5</span> References</h2>
+<section id="stability-of-limit-cycles-in-general-systems" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="stability-of-limit-cycles-in-general-systems"><span class="header-section-number">7.5</span> Stability of Limit Cycles in General Systems</h2>
+<p>In previous examples of Hopf bifurcations, we determined the stability of limit cycles by rewriting the system in polar coordinates where the radial dynamics were independent of the angular variable <span class="math inline">\(\theta\)</span>. This allowed stability to be determined directly from the radial equation.</p>
+<p>This raises the natural question: how do we determine the stability of a limit cycle for a general system:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot{x} &amp;= f(x,y) \\
+\dot{y} &amp;= g(x,y) ?
+\end{aligned}
+\]</span></p>
+<section id="poincaré-maps" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="poincaré-maps"><span class="header-section-number">7.5.1</span> Poincaré Maps</h3>
+<p>One technique for classifying the stability of a general limit cycle is to construct a <strong>Poincaré map</strong> (also called a first return map).</p>
+<div id="Definition-3" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 3</strong></summary><div>Poincaré section<p></p>
+<p>A Poincaré section is an <span class="math inline">\((N-1)\)</span>–dimensional hypersurface that intersects the limit cycle transversally.</p>
+<p>In a 2D system, this hypersurface is simply a line in the phase plane.</p>
+</div></details>
+</div>
+<p>The idea is simple:</p>
+<ul>
+<li>Choose a transversal section, <span class="math inline">\(\Sigma\)</span></li>
+<li>Follow trajectories starting near the limit cycle</li>
+<li>Record where they next intersect <span class="math inline">\(\Sigma\)</span></li>
+</ul>
+<p>This produces a discrete dynamical system <span class="math display">\[
+x_{n+1} = F(x_n),
+\]</span></p>
+<p>where <span class="math inline">\(x_n\)</span> represents the coordinate where the trajectory intersects the Poincaré section. The fixed points of this map correspond to periodic orbits (limit cycles) of the continuous system.</p>
+</section>
+<section id="stability-of-the-limit-cycle" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="stability-of-the-limit-cycle"><span class="header-section-number">7.5.2</span> Stability of the Limit Cycle</h3>
+<p>If the limit cycle is stable:</p>
+<ul>
+<li>Small perturbations decay</li>
+<li>Trajectories return toward the fixed point of the map</li>
+</ul>
+<p>If the limit cycle is unstable:</p>
+<ul>
+<li>Small perturbations grow</li>
+<li>Trajectories move away from the fixed point</li>
+</ul>
+<p>The eigenvalues of the linearisation of the Poincaré map about a fixed point are called <em>Floquet multipliers</em>. These determine the stability of the limit cycle.</p>
+<p>In a 2D system:</p>
+<ul>
+<li>The Poincaré section is 1–dimensional</li>
+<li>There is only one nontrivial Floquet multiplier</li>
+<li>The second multiplier is always 1 (corresponding to motion along the cycle)</li>
+</ul>
+<p>In most cases, the Floquet multipliers cannot be computed analytically and must be estimated numerically.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

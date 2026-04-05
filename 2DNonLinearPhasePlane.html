@@ -106,45 +106,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Proof {
+.Feature {
   --color1: #c0c0c0;
   --color2: #808080;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
 }
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Feature {
+.Exercise {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 </style>
 
@@ -324,7 +328,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#phase-portraits" id="toc-phase-portraits" class="nav-link" data-scroll-target="#phase-portraits"><span class="header-section-number">5.4</span> Phase portraits</a></li>
   <li><a href="#neglecting-nonlinear-terms" id="toc-neglecting-nonlinear-terms" class="nav-link" data-scroll-target="#neglecting-nonlinear-terms"><span class="header-section-number">5.5</span> Neglecting nonlinear terms?</a></li>
-  <li><a href="#competition" id="toc-competition" class="nav-link" data-scroll-target="#competition"><span class="header-section-number">5.6</span> Competition</a>
+  <li><a href="#case-study-competition" id="toc-case-study-competition" class="nav-link" data-scroll-target="#case-study-competition"><span class="header-section-number">5.6</span> Case study: competition</a>
   <ul class="collapse">
   <li><a href="#nondimensionalisation" id="toc-nondimensionalisation" class="nav-link" data-scroll-target="#nondimensionalisation"><span class="header-section-number">5.6.1</span> Nondimensionalisation</a></li>
   <li><a href="#fixed-points-1" id="toc-fixed-points-1" class="nav-link" data-scroll-target="#fixed-points-1"><span class="header-section-number">5.6.2</span> Fixed points</a></li>
@@ -463,6 +467,30 @@ A=\left(\begin{array}{rr}
 \]</span></p>
 <p>Strategy: - fixed points and their linear stability - nullclines - derivative/vector field - sample trajectories</p>
 </div>
+<div id="Solution*-1" class="Solution">
+<details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
+<p>FP: (-1,0)</p>
+<p>The Jacobian matrix is</p>
+<p><span class="math display">\[
+A=\begin{pmatrix} 1 &amp; -e^{-y} \\ 0 &amp; -1 \end{pmatrix}.
+\]</span></p>
+<p>At (-1,0) <span class="math display">\[
+A=\begin{pmatrix} 1 &amp; -1 \\ 0 &amp; -1 \end{pmatrix}.
+\]</span> Hence the FP at (-1,0) is a saddle.</p>
+<p>The <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> nullclines are given by <span class="math display">\[
+y=-\ln(-x), \quad y=0,
+\]</span> respectively.</p>
+<div id="d19db13f" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2DNonLinearPhasePlane_files/figure-html/cell-2-output-1.png" width="592" height="434" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></details>
+</div>
 </section>
 <section id="neglecting-nonlinear-terms" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="neglecting-nonlinear-terms"><span class="header-section-number">5.5</span> Neglecting nonlinear terms?</h2>
@@ -488,9 +516,25 @@ A=\left(\begin{array}{rr}
 \end{aligned}
 \]</span> where <span class="math inline">\(a\in\Re\)</span>. Show that the linearised system incorrectly predicts that the origin is a centre. By transforming to polar coordinates show that the system is actually either a stable/unspiral for <span class="math inline">\(a\neq 0\)</span>.</p>
 </div>
+<div id="Solution*-2" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>(0,0) is a FP. The Jacobian matrix at (0,0) is <span class="math display">\[
+A=\begin{pmatrix}
+0&amp; 1 \\
+-1 &amp; 0
+\end{pmatrix}.
+\]</span> Hence the FP of the linearised system is a centre.<p></p>
+<p>In polar coordinates <span class="math display">\[
+\begin{aligned}
+\dot{r} &amp; =a r ^3 \\
+\dot{\theta} &amp; =1.
+\end{aligned}
+\]</span></p>
+<p>Hence the FP is a stable spiral for <span class="math inline">\(a&lt;0\)</span>. It is an unstable spiral for <span class="math inline">\(a&gt;0\)</span>.</p>
+</div></details>
+</div>
 </section>
-<section id="competition" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="competition"><span class="header-section-number">5.6</span> Competition</h2>
+<section id="case-study-competition" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="case-study-competition"><span class="header-section-number">5.6</span> Case study: competition</h2>
 <p>In models of competition, two or more species compete for the same resource or in some way inhibit each other’s growth. Letting <span class="math inline">\(N_1(t)\)</span> and <span class="math inline">\(N_2(t)\)</span> represent the population density of two species, we consider the ODEs <span class="math display">\[
 \begin{aligned}
 \frac{d N_1}{dt} &amp;= r_1N_1\left(1-\frac{N_1}{K_1}-b_{12}\frac{N_2}{K_1}\right), \nonumber \\
@@ -626,7 +670,7 @@ a_{12}-1  &amp; -a_{12}(1-a_{12})\\ -\rho a_{21}(1-a_{21}) &amp;\rho(a_{21}-1)\e
 <section id="phase-portrait" class="level3" data-number="5.6.5">
 <h3 data-number="5.6.5" class="anchored" data-anchor-id="phase-portrait"><span class="header-section-number">5.6.5</span> Phase portrait</h3>
 <p>See <a href="#fig-comp-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> for phase portraits of three of the four cases that we have considered. It is expected that you can sketch phase portraits. Key details to consider are the fixed points and their linear stability. You should also sketch the nullclines and depict the sign of the derivatives in the phase plane on either side of the nullclines. You should also sketch one or more sample trajectories.</p>
-<div id="cell-fig-compete-numsol" class="cell" data-execution_count="1">
+<div id="cell-fig-compete-numsol" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -684,7 +728,7 @@ Figure&nbsp;5.1: Numerical solutions of competition model
 </div>
 </div>
 </div>
-<div id="cell-fig-comp-numsol-phplane" class="cell" data-execution_count="2">
+<div id="cell-fig-comp-numsol-phplane" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase plane for the competition model </span></span>
@@ -815,6 +859,38 @@ V(x)=-\frac{1}{2}x^2+\frac{1}{4}x^4.
 <p>The equation of motion is <span class="math display">\[
 m\ddot{x}=-\frac{dV}{dx}.
 \]</span> Find and classify all the fixed points for the system. Plot the phase portrait and provide an interpretation for the results.</p>
+</div>
+<div id="Solution*-3" class="Solution">
+<details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
+<p>In the phase plane <span class="math display">\[
+\begin{aligned}
+\dot{x}= y \\
+\dot{y}= x-x^3.
+\end{aligned}
+\]</span></p>
+<p>The Jacobian is <span class="math display">\[
+A=\begin{pmatrix}
+0&amp; 1 \\
+1-3x^2 &amp; 0
+\end{pmatrix}.
+\]</span></p>
+<p>At (0,0) <span class="math display">\[
+A=\begin{pmatrix}
+0&amp; 1 \\
+1 &amp; 0
+\end{pmatrix}.
+\]</span> This is a saddle point.</p>
+<p>At (1,0) and (-1,0) the FP of the linearised system is a centre.</p>
+<div id="a3b74f33" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2DNonLinearPhasePlane_files/figure-html/cell-5-output-1.png" width="592" height="434" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></details>
 </div>
 
 

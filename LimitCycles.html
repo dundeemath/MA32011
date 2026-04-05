@@ -111,19 +111,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Conjecture {
+.Theorem {
   --color1: #948bde;
   --color2: #584eab;
+}
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Lemma {
+.Exercise {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -135,21 +135,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #d999d3;
   --color2: #a01793;
 }
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Lemma {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Proof {
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Solution {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 </style>
 
@@ -369,7 +373,8 @@ window.Quarto = {
 
 <section id="introduction" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
-<p>Consider a system <span class="math display">\[\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}).
+<p>Consider a system <span class="math display">\[
+\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}).
 \]</span></p>
 <p>A closed orbit is a period <span class="math inline">\(T\)</span> solution such that <span class="math display">\[
 \begin{aligned}
@@ -477,17 +482,8 @@ Figure&nbsp;6.1: Numerical solutions of van der Pol oscillator
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 1</strong></summary><div>Closed orbits cannot exist in gradient systems.<p></p>
 </div></details>
 </div>
-<div id="exm-gradient" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.1</strong></span> Show that the system <span class="math display">\[
-\begin{aligned}
-\dot{x} &amp; =\sin y\\
-\dot{y} &amp;= x\cos y.
-\end{aligned}
-\]</span> has no closed orbits.</p>
-<p>Hint: write the system in gradient form.</p>
-</div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.2</strong></span> Show that the system <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 6.1</strong></span> Show that the system <span class="math display">\[
 \begin{aligned}
 \ddot{x} + \dot{x}^3+x=0
 \end{aligned}
@@ -498,7 +494,22 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 \Delta E = \int_0^T \dot{E}dt
 \]</span> and show that there is a contradiction.</p>
 </div>
-<div id="86110c16" class="cell" data-execution_count="2">
+<div id="Solution*-1" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The system can be written as <span class="math display">\[
+\dot{x}=y, \quad \dot{y}=-y^3-x.
+\]</span><p></p>
+<p>Let <span class="math display">\[
+E=\frac{1}{2}(x^2+y^2).
+\]</span></p>
+<p>Hence <span class="math display">\[
+\dot{E}=x\dot{x}+y\dot{y} = x(y)+y(-y^3-x)=-y^4.
+\]</span></p>
+<p>Hence <span class="math inline">\(E\)</span> is a decreasing function of time for <span class="math inline">\(y\neq0\)</span>.</p>
+<p>If a closed orbit solution existed with period <span class="math inline">\(T\)</span> then <span class="math display">\[
+\int_{t}^{t+T} \dot{E}=0.
+\]</span> Hence there is a contradiction and therefore no closed orbit solution exists. See <a href="#fig-gradsystem" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> for plot of energy surface</p>
+</div></details>
+</div>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -521,6 +532,10 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="fig-gradsystem" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gradsystem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="500e760d" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -529,12 +544,28 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 </div>
 </div>
 </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gradsystem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: The surface <span class="math inline">\(x^2\)</span>+<span class="math inline">\(\dot{x}^2\)</span>.
+</figcaption>
+</figure>
+</div>
+<div id="Exercise-2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise 2</strong></summary><div>Show that the system <span class="math display">\[
+\begin{aligned}
+\dot{x} &amp; =\sin y\\
+\dot{y} &amp;= x\cos y.
+\end{aligned}
+\]</span> has no closed orbits.<p></p>
+<p>Hint: write the system in gradient form.</p>
+</div></details>
+</div>
 </section>
 <section id="lyapunov-functions" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="lyapunov-functions"><span class="header-section-number">6.3.2</span> Lyapunov functions</h3>
 <p>Even for systems that are not mechanical, we can try to construct an energy-like <em>Lyapunov</em> function that decreases along trajectories. If a Lyapunov function exists, closed orbits are impossible.</p>
-<div id="Theorem-2" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 2</strong></summary><div>Consider a system <span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span>. Suppose that we can find a Lyapunov function, i.e.&nbsp;a continuously differentiable real valued function that satisfies:<p></p>
+<div id="Theorem-3" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 3</strong></summary><div>Consider a system <span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span>. Suppose that we can find a Lyapunov function, i.e.&nbsp;a continuously differentiable real valued function that satisfies:<p></p>
 <ul>
 <li><span class="math inline">\(V(x)&gt;0 \forall \  x \ \neq \  x^*\)</span></li>
 <li><span class="math inline">\(\dot{V}&lt;0  \ \forall \ x \ \neq \ x^*\)</span></li>
@@ -543,14 +574,22 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 </div></details>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.3</strong></span> By constructing a Lyapunov function, show that the system <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 6.2</strong></span> By constructing a Lyapunov function, show that the system <span class="math display">\[
 \begin{aligned}
 \dot{x} &amp; =-x+4y\\
 \dot{y} &amp;= -x-y^3.
 \end{aligned}
 \]</span> has no closed orbits.</p>
 </div>
-<div id="c0fd5ec6" class="cell" data-execution_count="3">
+<div id="Solution*-2" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>Try <span class="math inline">\(V(x,y)=x^2+4y^2\)</span>.<p></p>
+<p><span class="math inline">\(V(0,0)=0\)</span>.</p>
+<p><span class="math display">\[
+\dot{V}=2x\dot{x}+8y\dot{y}=2x((-x+4y))+8y(-x-y^3)=-2x^2-8y^4&lt;0.
+\]</span></p>
+<p>Hence <span class="math inline">\(V\)</span> is a Lyapunov function and there are no closed orbit solutions. See <a href="#fig-Lya" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> for plot.</p>
+</div></details>
+</div>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -573,6 +612,10 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="fig-Lya" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Lya-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="16871fd6" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -581,31 +624,44 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 </div>
 </div>
 </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-Lya-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3
+</figcaption>
+</figure>
+</div>
 <p>Note: there is not a systematic technique to find Lyapunov functions and most systems cannot be written in gradient form.</p>
 </section>
 <section id="dulacs-criterion" class="level3" data-number="6.3.3">
 <h3 data-number="6.3.3" class="anchored" data-anchor-id="dulacs-criterion"><span class="header-section-number">6.3.3</span> Dulac’s criterion</h3>
 <p>A third method relies on Green’s theorem in the plane.</p>
-<div id="Theorem-3" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 3</strong></summary><div>Dulac’s criterion<p></p>
+<div id="Theorem-4" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 4</strong></summary><div>Dulac’s criterion<p></p>
 <p>Consider a 2D system <span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span>. Let <span class="math inline">\(\mathbf{f}\)</span> be a continuously differentiable vector field on a simply connected subset <span class="math inline">\(D\)</span> of the plane. If there exists a continuously differentiable real-valued function <span class="math inline">\(g\)</span> such that <span class="math inline">\(\nabla \cdot (g\dot{\mathbf{x}})\)</span> has one sign throughout <span class="math inline">\(D\)</span>, there are no closed orbits in <span class="math inline">\(D\)</span>.</p>
 </div></details>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.4</strong></span> By applying Dulac’s criterion, show that the system <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 6.3</strong></span> By applying Dulac’s criterion, show that the system <span class="math display">\[
 \begin{aligned}
 \dot{x} &amp; =x(2-x-y)\\
 \dot{y} &amp;= y(4x-x^2-3).
 \end{aligned}
 \]</span> has no closed orbits in the positive quadrant.</p>
 </div>
+<div id="Solution*-3" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>Try <span class="math inline">\(g=1/(xy).\)</span><p></p>
+<p>Hence <span class="math display">\[
+\frac{\partial}{\partial x} (\frac{2-x-y}{y})+\frac{\partial}{\partial y} (\frac{4x-x^2-3}{1}) = -\frac{1}{y}
+\]</span> Hence in the positive quadrant the sign is constant and there are therefore no closed orbits.</p>
+</div></details>
+</div>
 </section>
 </section>
 <section id="poincaré-bendixson-theorem" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="poincaré-bendixson-theorem"><span class="header-section-number">6.4</span> Poincaré-Bendixson theorem</h2>
 <p>For particular 2D systems it is also possible to prove the existence of closed orbits. Suppose we can construct a confined set that contains an unstable isolated fixed point. The long time solution must be a periodic orbit.</p>
-<div id="Theorem-4" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 4</strong></summary><div>Suppose that<p></p>
+<div id="Theorem-5" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 5</strong></summary><div>Suppose that<p></p>
 <ol type="1">
 <li><span class="math inline">\(D\)</span> is a closed subset of the plane.</li>
 <li><span class="math inline">\(\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})\)</span> is a continuously differentiable vector field on an open subset containing <span class="math inline">\(D\)</span>.</li>
@@ -616,15 +672,15 @@ E=\frac{1}{2}(x^2+\dot{x}^2).
 </div></details>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.5</strong></span> Consider the system <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 6.4</strong></span> Consider the system <span class="math display">\[
 \begin{aligned}
 \dot{r} &amp; = r(1-r^2)+\mu r\cos(\theta)\\
 \dot{\theta} &amp;= 1.
 \end{aligned}
 \]</span> where <span class="math inline">\(\mu \in \Re\)</span>. Show that there is a closed orbit for <span class="math inline">\(\mu\)</span> sufficiently small.</p>
 </div>
-<div id="Corollary-5" class="Corollary">
-<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary 5</strong></summary><div>Chaotic solutions cannot exist in autonomous systems of two ODEs.<p></p>
+<div id="Corollary-6" class="Corollary">
+<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary 6</strong></summary><div>Chaotic solutions cannot exist in autonomous systems of two ODEs.<p></p>
 </div></details>
 </div>
 </section>
@@ -667,7 +723,7 @@ b-1&amp;a^2\\ -b &amp;-a^2\end{array}\right).
 \mathrm{tr} A=b-1-a^2.
 \]</span></p>
 <p>Hence if <span class="math inline">\(b&gt;1+a^2\)</span> the trace is positive and, referring to <a href="2DLinearSystems.html#fig-tdplane" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>, the fixed point is linearly unstable. Otherwise, the fixed point is linearly stable.</p>
-<p>In <a href="#fig-bruss-numsol" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> we numerically solve <a href="#eq-brussnondim" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> in the case of oscillatory solutions. Note that when the fixed point is unstable, the numerical solution indicates that the system has limit cycle solutions. A valid question to ask is whether one can prove that this is the case.</p>
+<p>In <a href="#fig-bruss-numsol" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> we numerically solve <a href="#eq-brussnondim" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> in the case of oscillatory solutions. Note that when the fixed point is unstable, the numerical solution indicates that the system has limit cycle solutions. A valid question to ask is whether one can prove that this is the case.</p>
 <div id="cell-fig-bruss-numsol" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
@@ -718,7 +774,7 @@ b-1&amp;a^2\\ -b &amp;-a^2\end{array}\right).
 <img src="LimitCycles_files/figure-html/fig-bruss-numsol-output-1.png" width="558" height="429" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bruss-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2: Numerical solutions of the Brusselator model
+Figure&nbsp;6.4: Numerical solutions of the Brusselator model
 </figcaption>
 </figure>
 </div>
@@ -828,17 +884,17 @@ y=\frac{b}{x} \ \ \ \textrm{and} \ \ \ x=0.
 <img src="LimitCycles_files/figure-html/fig-bruss-numsol-phplane-output-1.png" width="661" height="470" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bruss-numsol-phplane-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.3: Numerical solution of the Brusselator.
+Figure&nbsp;6.5: Numerical solution of the Brusselator.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In <a href="#fig-bruss-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> we plot the the oscillatory solution together with the nullclines. Note that the nullclines separate the phase plane into regions of constant sign. Note that the <span class="math inline">\(x\)</span> nullcline separates the phase plane into regions where <span class="math inline">\(dx/dt&gt;0\)</span> and <span class="math inline">\(dx/dt&lt;0\)</span>. Similarly, the <span class="math inline">\(y\)</span> nullcline separates the phase plane into regions where <span class="math inline">\(dy/dt&gt;0\)</span> and <span class="math inline">\(dy/dt&lt;0\)</span>.</p>
+<p>In <a href="#fig-bruss-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> we plot the the oscillatory solution together with the nullclines. Note that the nullclines separate the phase plane into regions of constant sign. Note that the <span class="math inline">\(x\)</span> nullcline separates the phase plane into regions where <span class="math inline">\(dx/dt&gt;0\)</span> and <span class="math inline">\(dx/dt&lt;0\)</span>. Similarly, the <span class="math inline">\(y\)</span> nullcline separates the phase plane into regions where <span class="math inline">\(dy/dt&gt;0\)</span> and <span class="math inline">\(dy/dt&lt;0\)</span>.</p>
 <p>Note that signs for <span class="math inline">\(dx/dt\)</span> can be determined by considering behaviour of the function <span class="math inline">\(f\)</span> as one moves away from the nullcline where, by definition, <span class="math inline">\(f=0\)</span>. Consider some point that sits on the x nullcline. While keeping the <span class="math inline">\(x\)</span> value fixed, increase <span class="math inline">\(y\)</span> so the point moves vertically in the phase plane. This implies that <span class="math inline">\(f\)</span> has increased because the only term to change is <span class="math inline">\(x^2y\)</span>. Hence <span class="math inline">\(f\)</span> increases upon increasing <span class="math inline">\(y\)</span> and therefore <span class="math inline">\(dx/dt\)</span> is positive for all points above the <span class="math inline">\(x\)</span> nullcline. Alternatively, note that in the Jacobian matrix we have calculated that <span class="math inline">\(\partial f/\partial y\)</span> is positive.</p>
 <section id="a-confined-set" class="level4" data-number="6.5.3.1">
 <h4 data-number="6.5.3.1" class="anchored" data-anchor-id="a-confined-set"><span class="header-section-number">6.5.3.1</span> A confined set</h4>
-<p>To define a confined set, we construct the closed loop ABCDEA in phase space (see <a href="#fig-bruss-numsol-phplane-confinedset" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>) where the points A, B, C, D and E are defined as follows. Let the points A and B be two points on the <span class="math inline">\(x\)</span> axis with coordinates <span class="math display">\[
+<p>To define a confined set, we construct the closed loop ABCDEA in phase space (see <a href="#fig-bruss-numsol-phplane-confinedset" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>) where the points A, B, C, D and E are defined as follows. Let the points A and B be two points on the <span class="math inline">\(x\)</span> axis with coordinates <span class="math display">\[
 (\delta,0)
 \]</span> and <span class="math display">\[
 \left(\frac{a}{1+b},0\right).
@@ -963,13 +1019,13 @@ Figure&nbsp;6.3: Numerical solution of the Brusselator.
 <img src="LimitCycles_files/figure-html/fig-bruss-numsol-phplane-confinedset-output-1.png" width="602" height="434" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bruss-numsol-phplane-confinedset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.4: Numerical solution of the Brusselator.
+Figure&nbsp;6.6: Numerical solution of the Brusselator.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Hence at all points on the closed loop ABCDEA trajectories point inwards (see <a href="#fig-bruss-numsol-phplane-confinedset" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>). Hence ABDCEA is a confined set and the Poincaré-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure <a href="#fig-bruss-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p>
+<p>Hence at all points on the closed loop ABCDEA trajectories point inwards (see <a href="#fig-bruss-numsol-phplane-confinedset" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>). Hence ABDCEA is a confined set and the Poincaré-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure <a href="#fig-bruss-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>.</p>
 </section>
 </section>
 </section>
@@ -1104,7 +1160,7 @@ y\sim F(x).
 <img src="LimitCycles_files/figure-html/fig-vdpexc-numsol-output-1.png" width="582" height="429" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vdpexc-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.5: Numerical solutions of transformed VdP model. Here <span class="math inline">\(\epsilon=0.05\)</span>.
+Figure&nbsp;6.7: Numerical solutions of transformed VdP model. Here <span class="math inline">\(\epsilon=0.05\)</span>.
 </figcaption>
 </figure>
 </div>
@@ -1121,11 +1177,11 @@ y\neq F(x).
 <p>CD is again a fast part of the trajectory. Now <span class="math inline">\(\dot{x}&gt;0\)</span>. <span class="math inline">\(x\)</span> rapidly increases until the trajectory reaches the right-most branch of the cubic nullcline with <span class="math inline">\(y\)</span> approximately constant.</p>
 <p>DA is again a slow segment of the trajectory. As <span class="math inline">\(\dot{y}&lt;0\)</span>, the solutions decreases in <span class="math inline">\(y\)</span> until it reaches the local minimum of the cubic nullcline (A).</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.6</strong></span> Show that the period of the van der Pol oscillator is <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 6.5</strong></span> Show that the period of the van der Pol oscillator is <span class="math display">\[
 \mu(3-2\ln 2).
 \]</span></p>
 </div>
-<div id="Solution*-1" class="Solution">
+<div id="Solution*-4" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The period of the limit cycle is dominated by the time spent on the slow segments BC and DA. The time spent on BC can be estimated by integrating <span class="math display">\[
 \dot{x}(x^2-1)=-x
 \]</span> from <span class="math inline">\(x=-2\)</span> up to <span class="math inline">\(x=-1\)</span>.<p></p>

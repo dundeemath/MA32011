@@ -131,21 +131,25 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Lemma {
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Exercise {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Conjecture {
   --color1: #948bde;
   --color2: #584eab;
 }
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
 }
 .Feature {
   --color1: #c0c0c0;
@@ -159,15 +163,15 @@ div.csl-indent {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
-}
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
 }
 .Corollary {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -494,7 +498,7 @@ f'(x^*)=\pm 2\sqrt{-r}.
 <div id="fig-fsaddlenode" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fsaddlenode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="5bd1644f" class="cell" data-execution_count="1">
+<div id="41bbefca" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -550,7 +554,7 @@ Figure&nbsp;3.1
 <div id="fig-saddlenodebfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-saddlenodebfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="fd8caf7a" class="cell" data-execution_count="2">
+<div id="3c177537" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -676,8 +680,9 @@ def server(input, output, session):
         
 app = App(app_ui, server)</code></pre>
 <p>An app to exploring behaviour of the saddle-node bifurcation.</p>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.2</strong></span> Consider the following ODE: <span class="math display">\[
+<div id="Exercise-1" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise 1</strong></summary><div>
+<p>Consider the following ODE: <span class="math display">\[
 \dot{x}=1+rx+x^2, \quad x(0)=x_0.
 \]</span> in the case <span class="math inline">\(r \in \Re^+\)</span>.</p>
 <ol type="1">
@@ -686,6 +691,7 @@ app = App(app_ui, server)</code></pre>
 \dot{y}=r'+y^2.
 \]</span> Hint: try completing the square.</li>
 </ol>
+</div></details>
 </div>
 <!--Note that a saddle-node bifurcation is defined by a tangency condition such that 
 $$
@@ -708,7 +714,7 @@ i.e. the right-hand side is linear in $r$ and quadratic in $x$.
 \dot{x}=rx-x^2,
 \]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.3</strong></span> Identify the fixed points and their linear stability</p>
+<p><span class="theorem-title"><strong>Example 3.2</strong></span> Identify the fixed points and their linear stability</p>
 </div>
 <div id="Solution*-2" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The fixed points are <span class="math inline">\(x^*=0\)</span> and <span class="math inline">\(x^*=r\)</span>. For <span class="math inline">\(r&lt;0\)</span>, <span class="math inline">\(x^*=r\)</span> is linearly unstable and <span class="math inline">\(x^*=0\)</span> is linearly stable. At <span class="math inline">\(r=0\)</span> the fixed points coalesce and the fixed point is half stable. For <span class="math inline">\(r&gt;0\)</span> <span class="math inline">\(x^*=0\)</span> is linearly unstable and <span class="math inline">\(x^*=r\)</span> is linearly stable.<p></p>
@@ -772,7 +778,7 @@ i.e. the right-hand side is linear in $r$ and quadratic in $x$.
 <div id="fig-transcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="056de22d" class="cell" data-execution_count="3">
+<div id="b7233f09" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -831,7 +837,7 @@ Figure&nbsp;3.3
 <div id="fig-transcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="4a776752" class="cell" data-execution_count="4">
+<div id="0d40e1d8" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -984,14 +990,16 @@ $$
 \frac{1}{2}(x-x^*)^2\frac{\partial^2 f}{\partial x^2}_{(x^*,r_c)} +(r-r_c)(x-x^*)\frac{\partial^2 f}{\partial r \partial x}_{(x^*,r_c)} 
 $$
 -->
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.4</strong></span> Sketch the bifurcation diagram for</p>
+<div id="Exercise-2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise 2</strong></summary><div>Sketch the bifurcation diagram for<p></p>
 <p><span class="math display">\[
 \dot{x}=rx+x^2.
 \]</span></p>
+</div></details>
 </div>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.5</strong></span> Consider the ODE</p>
+<div id="Exercise-3" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise 3</strong></summary><div>
+<p>Consider the ODE</p>
 <p><span class="math display">\[
 \dot{x}=r\ln x + x-1.
 \]</span></p>
@@ -1003,6 +1011,7 @@ $$
 \dot{X}=RX-X^2
 \]</span> by making an appropriate change of variables.</li>
 </ol>
+</div></details>
 </div>
 </section>
 <section id="pitchfork" class="level2" data-number="3.4">
@@ -1014,7 +1023,7 @@ $$
 \dot{x}=rx-x^3,
 \]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.6</strong></span> Identify the fixed points and determine their linear stability</p>
+<p><span class="theorem-title"><strong>Example 3.3</strong></span> Identify the fixed points and determine their linear stability</p>
 </div>
 <div id="Solution*-3" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The fixed points satisfy <span class="math display">\[
@@ -1099,7 +1108,7 @@ f'(\pm \sqrt{r})=r-3r=-2r.
 <div id="fig-supcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="eb0d3cca" class="cell" data-execution_count="5">
+<div id="62414ce5" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1157,7 +1166,7 @@ Figure&nbsp;3.5
 <div id="fig-supcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-supcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="12840175" class="cell" data-execution_count="6">
+<div id="f0cd4f9d" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1363,7 +1372,7 @@ app = App(app_ui, server)</code></pre>
 <div id="fig-subcritf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="a18f66c3" class="cell" data-execution_count="7">
+<div id="654cb9e0" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1420,7 +1429,7 @@ Figure&nbsp;3.7
 <div id="fig-subcritbfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subcritbfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="96abbd2d" class="cell" data-execution_count="8">
+<div id="5d91fcc6" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1528,7 +1537,7 @@ r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
 <div id="fig-sprucebudworm-rhs" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rhs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="ad7d33c5" class="cell" data-execution_count="9">
+<div id="1d27f5f1" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1576,7 +1585,7 @@ Figure&nbsp;3.9: Rhs of the spruce budworm model.
 <div id="fig-sprucebudworm-numsol" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-numsol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="04edd781" class="cell" data-execution_count="10">
+<div id="5004bce1" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1684,7 +1693,7 @@ H'(0)=r
 <div id="fig-sprucebudworm-rhsfg" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rhsfg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="f8271fff" class="cell" data-execution_count="11">
+<div id="0e50a840" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1756,7 +1765,7 @@ q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
 <div id="fig-sprucebudworm-rq" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-rq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="5f754c9e" class="cell" data-execution_count="12">
+<div id="8d844a18" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1832,7 +1841,7 @@ r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2},
 <div id="fig-sprucebudworm-bfc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sprucebudworm-bfc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="93e74ef3" class="cell" data-execution_count="13">
+<div id="572668ce" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
