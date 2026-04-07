@@ -6,13 +6,13 @@ format: html
 
 ## Introduction
 
-A 2D linear system has two dependent variables with coupled dynamics. You will have met this system before in the Differential Equations module.
+A 2D linear system of ODEs has two dependent variables with coupled dynamics. You will have met this system before in the Differential Equations module.
 
 Consider
 $$
 \begin{aligned}
 \dot{x} &=ax+by \\
-\dot{y}&=cx+dy
+\dot{y}&=cx+dy.
 \end{aligned}
 $$
 

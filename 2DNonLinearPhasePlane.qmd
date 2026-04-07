@@ -149,6 +149,141 @@ Strategy:
 - sample trajectories
 :::
 
+::: {.Solution}
+
+FP: (-1,0)
+
+The Jacobian matrix is
+
+$$
+A=\begin{pmatrix} 1 & -e^{-y} \\ 0 & -1 \end{pmatrix}.
+$$
+
+At (-1,0)
+$$
+A=\begin{pmatrix} 1 & -1 \\ 0 & -1 \end{pmatrix}.
+$$
+Hence the FP at (-1,0) is a saddle.
+
+
+
+The $x$  and $y$ nullclines are given by 
+$$
+y=-\ln(-x), \quad y=0,
+$$
+respectively. 
+
+
+
+```{python}
+#| code-fold: True
+#| echo: False
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x=np.linspace(-3,3)
+
+a_12=0.5
+a_21=0.5
+rho=1
+
+y_x_nullcline=-np.log(-x)
+
+fig,ax=plt.subplots()
+ax.plot(x,y_x_nullcline,'--',[-3,3],[0,0],'--')
+
+ax.set_ylim([-3.0,3.0])
+ax.set_xlim([-3.0,3.0])
+
+ax.grid(True)
+ax.set_xlabel('$x$')
+ax.set_ylabel('$y$')
+
+textstr='$\dot{x}>0$'
+ax.text(
+    0.4,0.6, textstr,
+    fontsize=10,
+    verticalalignment='top',
+    bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+)
+textstr='$\dot{x}<0$'
+ax.text(
+    -2.0,2.0, textstr,
+    fontsize=10,
+    verticalalignment='top',
+    bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+)
+textstr='$\dot{y}<0$'
+
+ax.text(
+    1.0,2.0, textstr,
+    fontsize=10,
+    verticalalignment='top',
+    bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+)
+textstr='$\dot{y}>0$'
+
+ax.text(
+    0.5,-2.0, textstr,
+    fontsize=10,
+    verticalalignment='top',
+    bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+)
+
+
+x_vec = np.linspace(-3,3,30)
+y_vec = np.linspace(-3,3,30)
+
+
+
+X,Y = np.meshgrid(x_vec,y_vec)
+def q4(t,z):
+    x=z[0]
+    y=z[1]
+    rhs=np.zeros_like(z)
+    xdot = x+np.exp(-y)
+    ydot = -y
+
+
+    rhs[0]=xdot
+    rhs[1]=ydot
+    return rhs
+U = np.zeros_like(X)
+V = np.zeros_like(Y)
+
+for i in range(len(x_vec)):
+    for j in range(len(y_vec)):
+        sol = q4(0,[X[j,i],Y[j,i]])
+        U[j,i] = sol[0]
+        V[j,i] = sol[1]
+
+ax.streamplot(X,Y,U,V,color='grey',maxlength=10,integration_direction='both',density=1)
+#ax.plot(x,y,'b',linewidth=2)
+#ax.plot(x[0],y[0],'m*',markersize=10)
+
+
+v_1 = np.array([1,0])
+v_2 = np.array([1,2])
+
+# normalize (direction only matters)
+v_1 = v_1 / np.linalg.norm(v_1)
+v_2 = v_2 / np.linalg.norm(v_2)
+
+
+t = np.linspace(-0.5,0.5,200)
+
+line_1 = np.outer(t,v_1)
+line_2 = np.outer(t,v_2)
+
+ax.plot(-1+line_1[:,0], line_1[:,1], 'r',
+-1+line_2[:,0], line_2[:,1], 'r', linewidth=2)
+
+plt.show()
+
+```
+:::
+
 
 
 
@@ -191,11 +326,35 @@ where $a\in\Re$. Show that the linearised system incorrectly predicts that the o
 
 :::
 
+:::{.Solution}
+
+(0,0) is a FP. The Jacobian matrix at (0,0) is
+$$
+A=\begin{pmatrix}
+0& 1 \\
+ -1 & 0
+\end{pmatrix}. 
+$$
+Hence the FP of the linearised system is  a centre.
+
+
+In polar coordinates
+$$
+\begin{aligned}
+\dot{r} & =a r ^3 \\
+\dot{\theta} & =1.
+\end{aligned}
+$$
+
+Hence the FP is a stable spiral for $a<0$. It is an unstable spiral for $a>0$.
+
+:::
+
  
 
 
 
-## Competition
+## Case study: competition
 
 In models of competition, two or more species compete for the same resource or in some way inhibit each other's growth. Letting $N_1(t)$ and $N_2(t)$ represent the population density of two species, we consider the ODEs
 $$
@@ -582,4 +741,127 @@ m\ddot{x}=-\frac{dV}{dx}.
 $$
 Find and classify all the fixed points for the system. Plot the phase portrait and provide an interpretation for the results.
 :::
+
+:::{.Solution}
+
+In the phase plane
+$$
+\begin{aligned}
+\dot{x}= y \\
+\dot{y}= x-x^3.
+\end{aligned}
+$$
+
+The Jacobian is
+$$
+A=\begin{pmatrix}
+0& 1 \\
+1-3x^2 & 0
+\end{pmatrix}. 
+$$
+
+At (0,0)
+$$
+A=\begin{pmatrix}
+0& 1 \\
+1 & 0
+\end{pmatrix}. 
+$$
+This is a saddle point.
+
+At (1,0) and (-1,0) the FP of the linearised system is a centre.
+
+
+```{python}
+#| code-fold: True
+#| echo: False
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x=np.linspace(-3,3)
+
+a_12=0.5
+a_21=0.5
+rho=1
+
+
+fig,ax=plt.subplots()
+ax.plot([-3,3],[0,0],'--')
+ax.plot([-1,-1],[-3,3],'r--',[0,0],[-3,3],'r--',[1,1],[-3,3],'r--')
+
+ax.set_ylim([-3.0,3.0])
+ax.set_xlim([-3.0,3.0])
+
+ax.grid(True)
+ax.set_xlabel('$x$')
+ax.set_ylabel('$y$')
+
+
+
+textstr=['$\dot{x}>0$','$\dot{x}<0$','$\dot{y}>0$','$\dot{y}<0$','$\dot{y}>0$']
+xcoord=[0.4,0.4,-1.5,0,1.5]
+ycoord=[0.4,-0.4,1.6,1.6,1.6]
+
+for i in range(len(textstr)):
+    ax.text(
+        xcoord[i],ycoord[i], textstr[i],
+        fontsize=10,
+        verticalalignment='top',
+        bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
+    )
+x_vec = np.linspace(-3,3,30)
+y_vec = np.linspace(-3,3,30)
+
+
+
+X,Y = np.meshgrid(x_vec,y_vec)
+def q4(t,z):
+    x=z[0]
+    y=z[1]
+    rhs=np.zeros_like(z)
+    xdot = y
+    ydot = x-x**3
+
+    rhs[0]=xdot
+    rhs[1]=ydot
+    return rhs
+U = np.zeros_like(X)
+V = np.zeros_like(Y)
+
+for i in range(len(x_vec)):
+    for j in range(len(y_vec)):
+        sol = q4(0,[X[j,i],Y[j,i]])
+        U[j,i] = sol[0]
+        V[j,i] = sol[1]
+
+ax.streamplot(X,Y,U,V,color='grey',maxlength=10,integration_direction='both',density=1)
+#ax.plot(x,y,'b',linewidth=2)
+#ax.plot(x[0],y[0],'m*',markersize=10)
+
+
+v_1 = np.array([1,1])
+v_2 = np.array([1,-1])
+
+# normalize (direction only matters)
+v_1 = v_1 / np.linalg.norm(v_1)
+v_2 = v_2 / np.linalg.norm(v_2)
+
+
+t = np.linspace(-0.5,0.5,200)
+
+line_1 = np.outer(t,v_1)
+line_2 = np.outer(t,v_2)
+
+ax.plot(line_1[:,0], line_1[:,1], 'r',
+line_2[:,0], line_2[:,1], 'r', linewidth=2)
+
+plt.show()
+
+```
+:::
+
+
+
+
 

@@ -318,7 +318,7 @@ An app to exploring behaviour of the saddle-node bifurcation.
 
 
 
-::: {#exm-    }
+::: {.Exercise}
 Consider the following ODE:
 $$
 \dot{x}=1+rx+x^2, \quad x(0)=x_0.
@@ -635,7 +635,7 @@ $$
 $$
 -->
 
-::: {#exm-    }
+::: {.Exercise}
 
 Sketch the bifurcation diagram for
 
@@ -646,7 +646,7 @@ $$
 
 :::
 
-::: {#exm-    }
+::: {.Exercise}
 
 Consider the ODE
 

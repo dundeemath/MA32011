@@ -106,27 +106,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
 .Lemma {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Corollary {
+.Exercise {
   --color1: #948bde;
   --color2: #584eab;
 }
-.Conjecture {
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
+}
+.Theorem {
+  --color1: #948bde;
+  --color2: #584eab;
+}
+.Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
@@ -138,13 +134,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #c0c0c0;
   --color2: #808080;
 }
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
+}
 .DONE {
   --color1: #cce7b1;
   --color2: #86b754;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 </style>
 
@@ -366,8 +370,9 @@ window.Quarto = {
 <p><span class="theorem-title"><strong>Example 2.1</strong></span> Let <span class="math inline">\(x(t)\)</span>. Consider the ODE <span class="math display">\[
 \dot{x}=\sin x.
 \]</span></p>
-<p>For the initial condition <span class="math inline">\(x(0)=\pi/4\)</span>, describe solution behaviour as <span class="math inline">\(t\rightarrow \infty\)</span>.</p>
 </div>
+<div id="Solution*-1" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>For the initial condition <span class="math inline">\(x(0)=\pi/4\)</span>, describe solution behaviour as <span class="math inline">\(t\rightarrow \infty\)</span>.<p></p>
 <p>After applying separation of variables, an implicit solution is given by</p>
 <p><span class="math display">\[
 t=-\ln |\csc x + \cot x| + C,
@@ -375,6 +380,8 @@ t=-\ln |\csc x + \cot x| + C,
 <p>However, this does not help me to describe the limiting behaviour of the solution as <span class="math inline">\(t\rightarrow \infty\)</span>.</p>
 <p>Instead let’s use a graphical method. In <a href="#fig-ODEqual" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> we sketch a graph of <span class="math inline">\(f\)</span>, the right-hand side of the ODE. The arrows depict the vector field. Hence when <span class="math inline">\(f&gt;0\)</span>, <span class="math inline">\(\dot{x}&gt;0\)</span> and the solution increases. In contrast, when <span class="math inline">\(f&lt;0\)</span>, <span class="math inline">\(\dot{x}&lt;0\)</span> and the solution decreases.</p>
 <p>Note that <span class="math inline">\(f&gt;0  \ \forall \ 0&lt;x&lt;\pi\)</span>. Hence for the initial condition <span class="math inline">\(x_0=\pi/4\)</span>, <span class="math inline">\(\dot{x}_{t=0}&gt;0\)</span>. The solution will increase until it reaches <span class="math inline">\(\pi\)</span>. At <span class="math inline">\(x=\pi\)</span>, <span class="math inline">\(f=0\)</span>.</p>
+</div></details>
+</div>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -414,7 +421,7 @@ t=-\ln |\csc x + \cot x| + C,
 <div id="fig-ODEqual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ODEqual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="a4682e88" class="cell" data-execution_count="1">
+<div id="d50e2b74" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -451,7 +458,7 @@ Figure&nbsp;2.1
 \dot{x}=x^2-1,
 \tag{2.2}\]</span></span></p>
 </div>
-<div id="Solution*-1" class="Solution">
+<div id="Solution*-2" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The fixed points are point, <span class="math inline">\(x^*\)</span> defined such that <span class="math display">\[
 \dot{x}=0 \ \implies \ f(x^*)=0.
 \]</span><p></p>
@@ -507,7 +514,7 @@ x^*=\pm 1.
 <div id="fig-fpcalc" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fpcalc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="181f4200" class="cell" data-execution_count="2">
+<div id="b45b3774" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -558,8 +565,18 @@ f(x^*)=0
 \dot{x}=x^2-1.
 \]</span></p>
 </div>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.4</strong></span> What can be said about the stability of the fixed points of the following ODEs:</p>
+<div id="Solution*-3" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>FPs satisfy <span class="math display">\[
+{x^*}^2-1=0.
+\]</span><p></p>
+<p>Hence <span class="math display">\[
+x^*=\pm 1.
+\]</span></p>
+</div></details>
+</div>
+<div id="Exercise-2" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise 2</strong></summary><div>
+<p>What can be said about the stability of the fixed points of the following ODEs:</p>
 <ol type="1">
 <li><p><span class="math display">\[
 \dot{x}=-x^3.
@@ -571,6 +588,7 @@ f(x^*)=0
 \dot{x}=0.
 \]</span></p></li>
 </ol>
+</div></details>
 </div>
 </section>
 </section>
@@ -585,20 +603,25 @@ f'(x*)
 \]</span> where <span class="math display">\[
 \lambda = f'(x^*).
 \]</span></p>
-<div id="Definition-2" class="Definition">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 2</strong></summary><div>A fixed point is said to be <em>hyperbolic</em> when the eigenvalues of its linearisation are nonzero.<p></p>
+<div id="Definition-3" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 3</strong></summary><div>A fixed point is said to be <em>hyperbolic</em> when the eigenvalues of its linearisation are nonzero.<p></p>
 </div></details>
 </div>
 <div id="hartman-grobman" class="Theorem" title="Hartman-Grobman">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 3: </strong>Hartman-Grobman</summary><div>If a system has a hyperbolic FP, the classification of the nonlinear system at the fixed point is determined by the linear classification.<p></p>
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 4: </strong>Hartman-Grobman</summary><div>If a system has a hyperbolic FP, the classification of the nonlinear system at the fixed point is determined by the linear classification.<p></p>
 </div></details>
 </div>
 <p>If a fixed point is non-hypberbolic, it’s classification requires consideration of higher order terms.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.5</strong></span> Apply the Hartman Grobman theorem to the classification of the problem</p>
+<p><span class="theorem-title"><strong>Example 2.4</strong></span> Apply the Hartman Grobman theorem to the classification of the problem</p>
 <p><span class="math display">\[
 \dot{x}=-x^3.
 \]</span></p>
+</div>
+<div id="Solution*-4" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The FPs are <span class="math inline">\(x^*=0\)</span>.<p></p>
+<p>As <span class="math inline">\(f'(0)=0\)</span>, the FP is not hyperbolic. Hence Hartman-Grobman does not apply.</p>
+</div></details>
 </div>
 </section>
 <section id="case-study-population-dynamics" class="level2" data-number="2.4">
@@ -742,11 +765,11 @@ Figure&nbsp;2.4: Right-hand side of the logistic ODE
 </div>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.6</strong></span> Use separation of variables to show that the solution can be written explicitly as <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 2.5</strong></span> Use separation of variables to show that the solution can be written explicitly as <span class="math display">\[
 N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
 \]</span></p>
 </div>
-<div id="Solution*-2" class="Solution">
+<div id="Solution*-5" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div><span class="math display">\[
 \int\frac{ dN}{N(1-\frac{N}{K})}=r\int dt.
 \]</span> Using partial fractions <span class="math display">\[
@@ -780,11 +803,11 @@ N(t)\sim N_0 e^{rt} \\ \ \ \ \ N_0\ll K, t\ll \frac{1}{r}.
 <p>Oscillatory solutions to <a href="intro.html#eq-genODE" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> are impossible, i.e.&nbsp;first order autonomous ODEs (with one dependent variable) cannot oscillate.</p>
 <p>This can be argued using geometrical constraints of dynamics on the line.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.7</strong></span> Consider the integral <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 2.6</strong></span> Consider the integral <span class="math display">\[
 \int_t^{t+T} f(x(t))\frac{dx}{dt}dt,
 \]</span> where <span class="math inline">\(T\)</span> is the oscillation period. Use proof by contradiction to show that periodic solutions are impossible.</p>
 </div>
-<div id="Solution*-3" class="Solution">
+<div id="Solution*-6" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>Suppose that a periodic solution exists such that <span class="math display">\[
 x(t+T)=x(t), \ \ x(t+s)\neq x(t+T) \forall 0&lt;s&lt;T.
 \]</span><p></p>
@@ -818,9 +841,38 @@ f(x)=-\frac{d V(x)}{dx}.
 f(x)=-\frac{d V(x)}{dx}=0.
 \]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.8</strong></span> Graph the potential for the system <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 2.7</strong></span> Graph the potential for the system <span class="math display">\[
 \dot{x}=-x
 \]</span> and identify equilibrium points.</p>
+</div>
+<div id="Solution*-7" class="Solution">
+<details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>
+<p>Need to solve <span class="math display">\[
+-\frac{dV}{dx}=-x
+\]</span> After integration <span class="math display">\[
+V(x)=\frac{1}{2}x^2.
+\]</span> Here the integration constant is set to zero.</p>
+<div id="ec5530f7" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>V<span class="op">=</span>x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>fig,ax<span class="op">=</span>plt.subplots()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ax.plot(x,V)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$V$'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.show</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1DFlows_files/figure-html/cell-6-output-1.png" width="589" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></details>
 </div>
 
 

@@ -24,7 +24,6 @@ book:
       chapters:
        - 1DFlows.qmd
        - Bifurcations.qmd
-       #- FlowsOnCircle.qmd   
     - part: "2D flows"
       chapters:
        - 2DLinearSystems.qmd 
@@ -79,6 +78,8 @@ custom-numbered-blocks:
     Corollary:
       group: thmlike
     Lemma:
+      group: thmlike
+    Exercise:
       group: thmlike
     Conjecture:
       group: thmlike

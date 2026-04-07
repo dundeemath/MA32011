@@ -6,7 +6,8 @@ format: html
 ## Introduction
 
 Consider a system 
-$$\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}).
+$$
+\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x}).
 $$
 
 A closed orbit is a period $T$ solution such that
@@ -50,6 +51,7 @@ $$
 where $\mu\geq 0$.
 
 The nonlinear term acts as a positive damping term for $|x|>1$ and negative damping term for $|x|<1$. See @fig-compete-numsol for numerical solutions that show limit cycle solutions in two limiting cases: $\mu \ll 1$ and $\mu\gg 1$.
+
 
 ```{python}
 #| label: fig-compete-numsol
@@ -122,21 +124,10 @@ Closed orbits cannot exist in gradient systems.
 
 :::
 
-::: {#exm-gradient}
-Show that the system
-$$
-\begin{aligned}
-\dot{x} & =\sin y\\
-\dot{y} &= x\cos y.
-\end{aligned}
-$$
-has no closed orbits.
 
-Hint: write the system in gradient form.
-
-:::
 
 ::: {#exm-    }
+
 Show that the system
 $$
 \begin{aligned}
@@ -155,10 +146,45 @@ $$
 \Delta E = \int_0^T \dot{E}dt
 $$
 and show that there is a contradiction.
+
 :::
 
+
+
+
+::: {.Solution}
+
+The system can be written as
+$$
+\dot{x}=y, \quad \dot{y}=-y^3-x.
+$$
+
+Let
+$$
+E=\frac{1}{2}(x^2+y^2).
+$$
+
+Hence
+$$
+\dot{E}=x\dot{x}+y\dot{y} = x(y)+y(-y^3-x)=-y^4.
+$$
+
+Hence $E$ is a decreasing function of time for $y\neq0$. 
+
+If a closed orbit solution existed with period $T$ then
+$$
+\int_{t}^{t+T} \dot{E} dt=0.
+$$
+Hence there is a contradiction and therefore no closed orbit solution exists. See @fig-gradsystem for plot of energy surface
+::: 
+
+
+
+
+:::{#fig-gradsystem}
 ```{python}
 #| code-fold: true
+
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -181,6 +207,29 @@ plt.ylabel("$\dot{x}$")
 plt.show()
 
 ```
+
+The surface $x^2$+$\dot{x}^2$.
+:::
+
+
+
+::: {.Exercise}
+Show that the system
+$$
+\begin{aligned}
+\dot{x} & =\sin y\\
+\dot{y} &= x\cos y.
+\end{aligned}
+$$
+has no closed orbits.
+
+Hint: write the system in gradient form.
+
+:::
+
+
+
+
 
 ### Lyapunov functions
 
@@ -207,6 +256,22 @@ has no closed orbits.
 
 :::
 
+:::{.Solution}
+
+Try $V(x,y)=x^2+4y^2$.
+
+$V(0,0)=0$.
+
+$$
+\dot{V}=2x\dot{x}+8y\dot{y}=2x((-x+4y))+8y(-x-y^3)=-2x^2-8y^4<0.
+$$
+
+Hence $V$ is a Lyapunov function and there are no closed orbit solutions. See @fig-Lya for plot.
+:::
+
+
+:::{#fig-Lya}
+
 ```{python}
 #| code-fold: true
 
@@ -232,7 +297,12 @@ plt.show()
 
 ```
 
+
+:::
+
 Note: there is not a systematic technique to find Lyapunov functions and most systems cannot be written in gradient form.
+
+
 
 
 ### Dulac's criterion
@@ -242,7 +312,7 @@ A third method relies on Green's theorem in the plane.
 ::: {.Theorem}
 Dulac's criterion
 
-Consider a 2D system $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$. Let $\mathbf{f}$ be a continuously differentiable vector field on a simply connected subset $D$ of the plane. If there exists a continuously differentiable  real-valued function $g$ such that $\nabla \cdot (g\dot{\mathbf{x}})$ has one sign throughout $D$, there are no closed orbits in $D$.
+Consider a 2D system $\dot{\mathbf{x}}=\mathbf{f}(\mathbf{x})$. Let $\mathbf{f}$ be a continuously differentiable vector field on a simply connected subset $D$ of the plane. If there exists a continuously differentiable real-valued function $g$ such that $\nabla \cdot (g\dot{\mathbf{x}})$ has one sign throughout $D$, there are no closed orbits in $D$.
 
 :::
 
@@ -257,6 +327,21 @@ $$
 has no closed orbits in the positive quadrant.
 
 :::
+
+
+:::{.Solution}
+
+Try $g=1/(xy).$
+
+Hence 
+$$
+\frac{\partial}{\partial x} (\frac{2-x-y}{y})+\frac{\partial}{\partial y} (\frac{4x-x^2-3}{1}) = -\frac{1}{y}
+$$
+Hence in the positive quadrant the sign is constant and there are therefore no closed orbits. 
+
+:::
+
+
 
 ## Poincaré-Bendixson theorem
 
@@ -287,11 +372,45 @@ where $\mu \in \Re$. Show that there is a closed orbit for $\mu$ sufficiently sm
 
 :::
 
+:::{.Solution}
+
+Consider a domain bounded by inner and outer circles with radii $r_{min}$ and $r_{max}$, respectively.
+
+Define the inner circle such that $\dot{r}>0$ on $r_{min}$. 
+
+Note that $\cos \theta \geq -1$. Hence on $r=r_{min}$ it is required that
+$$
+r_{min}(1-r_{min}^2)-\mu r_{min} >0.
+$$
+
+For nontrivial $r_{min}$
+$$
+(1-r_{min}^2)-\mu  >0.
+$$
+Hence
+$$
+r_{min}<\sqrt{1-\mu}.
+$$
+
+Using a similar argument
+$$
+r_{max}>\sqrt{1+\mu}.
+$$
+
+As a result trajectories initialised within the domain $r_{min}<r<r_{max}$ cannot escape. By the Poincare-Bendixson theorem the system must have a limit cycle solution.
+
+
+:::
+
+
+
 
 ::: {.Corollary}
 
 Chaotic solutions cannot exist in autonomous systems of two ODEs.
 :::
+
+
 
 ## The Brusselator
 
@@ -304,7 +423,6 @@ $$
 $$ {#eq-brussnondim}
 
  
-
 
 ### Fixed point analysis
 
@@ -352,6 +470,8 @@ $$
 Hence if $b>1+a^2$ the trace is positive and, referring to @fig-tdplane, the fixed point is  linearly unstable. Otherwise, the fixed point is linearly stable.
 
 In @fig-bruss-numsol we numerically solve @eq-brussnondim in the case of oscillatory solutions. Note that when the fixed point is unstable, the numerical solution indicates that the system has limit cycle solutions. A valid question to ask is whether one can prove that this is the case.
+
+
 
 
 ```{python}
@@ -509,6 +629,8 @@ In @fig-bruss-numsol-phplane we plot the the oscillatory solution together with 
 
 Note that signs for $dx/dt$ can be determined by considering behaviour of the function $f$ as one moves away from the nullcline where, by definition, $f=0$. Consider some point that sits on the x nullcline. While keeping the $x$ value fixed, increase $y$ so the point moves vertically in the phase plane. This implies that $f$ has increased because the only term to change is $x^2y$. Hence $f$ increases upon increasing $y$ and therefore $dx/dt$ is positive for all points above the $x$ nullcline. Alternatively, note that in the Jacobian matrix we have calculated that $\partial f/\partial y$ is positive.
  
+
+
 ####  A confined set
 
 To define a confined set, we construct the closed loop ABCDEA in phase space  (see @fig-bruss-numsol-phplane-confinedset) where the points A, B, C, D and E are defined as follows. Let the points A and B be two points on the $x$ axis with coordinates 
@@ -664,7 +786,6 @@ plt.show()
 Hence at all points on the closed loop ABCDEA trajectories point inwards (see @fig-bruss-numsol-phplane-confinedset). Hence ABDCEA is a confined set and the Poincaré-Bendixson theorem states that the system exhibits limit cycle solutions when the fixed point is unstable. This is precisely the behaviour that we see numerically in Figure @fig-bruss-numsol-phplane. 
 
 
-
 ## Relaxation oscillators
 
 
@@ -728,6 +849,7 @@ $$
 As the trace and determinant are both positive, the fixed point is linearly unstable.
 
 
+
 The $x$ and $y$ nullclines are given by
 $$
 y=F(x) \quad \textrm{and} \quad x=0,
@@ -754,6 +876,7 @@ Substitution in @slowvdpy yields
 $$
 \implies\dot{x}(x^2-1)=-x.
 $$
+
 
 
 
@@ -850,6 +973,8 @@ CD is again a fast part of the trajectory. Now $\dot{x}>0$. $x$ rapidly increase
 
 DA is again a slow segment of the trajectory. As $\dot{y}<0$, the solutions decreases in $y$ until it reaches the local minimum of the cubic nullcline (A).
 
+
+
 ::: {#exm-}
 
 Show that the period of the van der Pol oscillator is
@@ -884,6 +1009,7 @@ $$
 
 
 :::
+
 
 
 
@@ -1048,4 +1174,5 @@ An app to explore numerical solutions of limit cycle/excitable solutions.
 :::
 
 
-## References
+
+

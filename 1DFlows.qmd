@@ -13,6 +13,8 @@ $$ {#eq-fp1d}
 
 It is assumed that $f$ is smooth and real valued. 
 
+
+
 ## Geometric
 
 For many problems an explicit solution can either not be constructed or is not of practical use.
@@ -24,10 +26,13 @@ $$
 \dot{x}=\sin x.
 $$
 
-For the initial condition $x(0)=\pi/4$, describe solution behaviour as $t\rightarrow \infty$.
-
 :::
 
+
+
+:::{.Solution}
+
+For the initial condition $x(0)=\pi/4$, describe solution behaviour as $t\rightarrow \infty$.
 
 
 After applying separation of variables, an implicit solution is given by
@@ -42,10 +47,11 @@ However, this does not help me to describe the limiting behaviour of the solutio
 Instead let's use a graphical method. In @fig-ODEqual we sketch a graph of $f$, the right-hand side of the ODE. The arrows depict the vector field. Hence when $f>0$, $\dot{x}>0$ and the solution increases. In contrast, when $f<0$, $\dot{x}<0$ and the solution decreases.
 
 Note that $f>0  \ \forall \ 0<x<\pi$. Hence for the initial condition $x_0=\pi/4$, $\dot{x}_{t=0}>0$. The solution will increase until it reaches $\pi$. At $x=\pi$, $f=0$.
-
+:::
 
 
 ::: {#fig-ODEqual}
+
 ```{python}
 #| code-fold: True
 
@@ -82,7 +88,6 @@ for x_i,y_i,x0_i,y0_i in zip(x,y,x0,y0):
   )
   
 plt.show()
-
 ```
 :::
 
@@ -242,7 +247,22 @@ $$
 $$
 :::
 
-::: {#exm-    }
+
+:::{.Solution}
+
+FPs satisfy
+$$
+{x^*}^2-1=0.
+$$
+
+Hence 
+$$
+x^*=\pm 1.
+$$
+
+:::
+
+::: {.Exercise}
 
 What can be said about the stability of the fixed points of the following ODEs:
 
@@ -299,6 +319,16 @@ Apply the Hartman Grobman theorem to the classification of the problem
 $$
 \dot{x}=-x^3.
 $$
+
+:::
+
+:::{.Solution}
+ 
+ The FPs are $x^*=0$.
+
+As
+ $f'(0)=0$,
+ the FP is not hyperbolic. Hence Hartman-Grobman does not apply.
 
 :::
 
@@ -594,6 +624,34 @@ $$
 \dot{x}=-x
 $$
 and identify equilibrium points.
+
+:::
+
+:::{.Solution}
+
+Need to solve
+$$
+-\frac{dV}{dx}=-x
+$$
+After integration
+$$
+V(x)=\frac{1}{2}x^2.
+$$
+Here the integration constant is set to zero. 
+
+```{python}
+#| Code-fold: True
+
+x=np.linspace(-2,2)
+V=x**2
+
+fig,ax=plt.subplots()
+ax.plot(x,V)
+ax.set_xlabel('$x$')
+ax.set_ylabel('$V$')
+plt.show
+
+```
 
 :::
 
