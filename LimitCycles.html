@@ -111,25 +111,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-.Solution {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Definition {
-  --color1: #d999d3;
-  --color2: #a01793;
+.Conjecture {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .Corollary {
   --color1: #948bde;
   --color2: #584eab;
 }
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Proof {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Exercise {
+  --color1: #948bde;
+  --color2: #584eab;
 }
 .Lemma {
   --color1: #948bde;
@@ -139,21 +131,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Conjecture {
-  --color1: #948bde;
-  --color2: #584eab;
+.Proof {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
-.Theorem {
-  --color1: #948bde;
-  --color2: #584eab;
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
 }
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Exercise {
+.Solution {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Theorem {
   --color1: #948bde;
   --color2: #584eab;
+}
+.Definition {
+  --color1: #d999d3;
+  --color2: #a01793;
 }
 </style>
 
@@ -534,7 +534,7 @@ E=\frac{1}{2}(x^2+y^2).
 <div id="fig-gradsystem" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-gradsystem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="a675c1ff" class="cell" data-execution_count="2">
+<div id="c6a7bc92" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -614,7 +614,7 @@ Figure&nbsp;6.2: The surface <span class="math inline">\(x^2\)</span>+<span clas
 <div id="fig-Lya" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-Lya-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="80e0c56b" class="cell" data-execution_count="3">
+<div id="8fa44a5e" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -677,6 +677,23 @@ Figure&nbsp;6.3
 \dot{\theta} &amp;= 1.
 \end{aligned}
 \]</span> where <span class="math inline">\(\mu \in \Re\)</span>. Show that there is a closed orbit for <span class="math inline">\(\mu\)</span> sufficiently small.</p>
+</div>
+<div id="Solution*-4" class="Solution">
+<p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>Consider a domain bounded by inner and outer circles with radii <span class="math inline">\(r_{min}\)</span> and <span class="math inline">\(r_{max}\)</span>, respectively.<p></p>
+<p>Define the inner circle such that <span class="math inline">\(\dot{r}&gt;0\)</span> on <span class="math inline">\(r_{min}\)</span>.</p>
+<p>Note that <span class="math inline">\(\cos \theta \geq -1\)</span>. Hence on <span class="math inline">\(r=r_{min}\)</span> it is required that <span class="math display">\[
+r_{min}(1-r_{min}^2)-\mu r_{min} &gt;0.
+\]</span></p>
+<p>For nontrivial <span class="math inline">\(r_{min}\)</span> <span class="math display">\[
+(1-r_{min}^2)-\mu  &gt;0.
+\]</span> Hence <span class="math display">\[
+r_{min}&lt;\sqrt{1-\mu}.
+\]</span></p>
+<p>Using a similar argument <span class="math display">\[
+r_{max}&gt;\sqrt{1+\mu}.
+\]</span></p>
+<p>As a result trajectories initialised within the domain <span class="math inline">\(r_{min}&lt;r&lt;r_{max}\)</span> cannot escape. By the Poincare-Bendixson theorem the system must have a limit cycle solution.</p>
+</div></details>
 </div>
 <div id="Corollary-6" class="Corollary">
 <p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary 6</strong></summary><div>Chaotic solutions cannot exist in autonomous systems of two ODEs.<p></p>
@@ -1180,7 +1197,7 @@ y\neq F(x).
 \mu(3-2\ln 2).
 \]</span></p>
 </div>
-<div id="Solution*-4" class="Solution">
+<div id="Solution*-5" class="Solution">
 <p></p><details class="Solution fbx-default closebutton"><summary><strong>Solution</strong></summary><div>The period of the limit cycle is dominated by the time spent on the slow segments BC and DA. The time spent on BC can be estimated by integrating <span class="math display">\[
 \dot{x}(x^2-1)=-x
 \]</span> from <span class="math inline">\(x=-2\)</span> up to <span class="math inline">\(x=-1\)</span>.<p></p>
